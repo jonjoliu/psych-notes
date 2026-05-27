@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC-314 第二讲：理解压力</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --teal: #1D9E75;
+    --teal-light: #E1F5EE;
+    --teal-dark: #085041;
+    --teal-mid: #0F6E56;
+    --gray: #2C2C2A;
+    --gray-mid: #5F5E5A;
+    --gray-light: #F1EFE8;
+    --gray-border: #D3D1C7;
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+    --coral: #D85A30;
+    --coral-light: #FAECE7;
+    --amber: #BA7517;
+    --amber-light: #FAEEDA;
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --bg: #FAFAF8;
+    --card-bg: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--gray);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  /* Header */
+  .hero {
+    background: var(--teal-dark);
+    color: #fff;
+    padding: 3.5rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 40px solid rgba(255,255,255,0.05);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 30%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 30px solid rgba(255,255,255,0.04);
+  }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1.2rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    color: #fff;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  /* Nav pills */
+  .nav-bar {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--gray-border);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-bar ul {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    max-width: 860px;
+    margin: 0 auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-bar ul::-webkit-scrollbar { display: none; }
+  .nav-bar a {
+    display: block;
+    padding: 0.9rem 1rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-mid);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-bar a:hover { color: var(--teal); border-bottom-color: var(--teal); }
+
+  /* Main */
+  .main { max-width: 860px; margin: 0 auto; padding: 2rem; }
+
+  /* Section */
+  .section { margin-bottom: 3rem; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--teal-light);
+  }
+  .section-num {
+    width: 32px; height: 32px;
+    background: var(--teal);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--teal-dark);
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--gray-border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--teal-mid);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Three-way definition layout */
+  .def-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .def-card {
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid;
+  }
+  .def-card.stimulus { background: var(--teal-light); border-color: #9FE1CB; }
+  .def-card.response { background: var(--purple-light); border-color: #CECBF6; }
+  .def-card.transaction { background: var(--amber-light); border-color: #FAC775; }
+  .def-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 0.5rem; }
+  .def-card.stimulus h3 { color: var(--teal-dark); }
+  .def-card.response h3 { color: var(--purple); }
+  .def-card.transaction h3 { color: var(--amber); }
+  .def-card p { font-size: 13.5px; color: var(--gray); }
+  .def-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 0.6rem;
+  }
+  .stimulus .def-badge { background: #9FE1CB; color: var(--teal-dark); }
+  .response .def-badge { background: #CECBF6; color: var(--purple); }
+  .transaction .def-badge { background: #FAC775; color: var(--amber); }
+
+  /* Stress response list */
+  .response-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 2rem;
+    margin: 1rem 0;
+  }
+  .response-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--gray-border);
+  }
+  .response-item::before {
+    content: '↑';
+    color: var(--coral);
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .response-item.down::before { content: '↓'; color: var(--blue); }
+
+  /* Hormone boxes */
+  .hormone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .hormone-box {
+    border-radius: 10px;
+    padding: 1.2rem;
+  }
+  .hormone-box.epi { background: var(--coral-light); border: 1px solid #F5C4B3; }
+  .hormone-box.cort { background: var(--blue-light); border: 1px solid #B5D4F4; }
+  .hormone-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 0.3rem; }
+  .hormone-box.epi h4 { color: var(--coral); }
+  .hormone-box.cort h4 { color: var(--blue); }
+  .hormone-box .pathway { font-size: 11px; color: var(--gray-mid); margin-bottom: 0.6rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+  .hormone-box p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* GAS stages */
+  .gas-stages { display: flex; gap: 0; margin: 1rem 0; }
+  .gas-stage {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid var(--gray-border);
+    border-right: none;
+    position: relative;
+  }
+  .gas-stage:first-child { border-radius: 8px 0 0 8px; }
+  .gas-stage:last-child { border-radius: 0 8px 8px 0; border-right: 1px solid var(--gray-border); }
+  .gas-stage.alarm { background: #fff8f6; }
+  .gas-stage.resistance { background: #fff9ec; }
+  .gas-stage.exhaustion { background: #fef2f2; }
+  .gas-num { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .alarm .gas-num { color: var(--coral); }
+  .resistance .gas-num { color: var(--amber); }
+  .exhaustion .gas-num { color: #A32D2D; }
+  .gas-stage h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .gas-stage p { font-size: 12.5px; color: var(--gray-mid); }
+
+  /* PTSD criteria */
+  .ptsd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+  .ptsd-item {
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    border-left: 3px solid var(--teal);
+  }
+  .ptsd-item .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--teal-mid); margin-bottom: 4px; }
+  .ptsd-item p { font-size: 13px; color: var(--gray); line-height: 1.55; }
+
+  /* Stress sources */
+  .source-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .source-col {
+    border-radius: 10px;
+    padding: 1.2rem;
+    border: 1px solid;
+  }
+  .source-col.individual { background: var(--teal-light); border-color: #9FE1CB; }
+  .source-col.family { background: var(--purple-light); border-color: #CECBF6; }
+  .source-col.society { background: var(--amber-light); border-color: #FAC775; }
+  .source-col h4 { font-size: 13px; font-weight: 700; margin-bottom: 0.6rem; }
+  .source-col.individual h4 { color: var(--teal-dark); }
+  .source-col.family h4 { color: var(--purple); }
+  .source-col.society h4 { color: var(--amber); }
+  .source-col ul { list-style: none; }
+  .source-col li { font-size: 13px; color: var(--gray); padding: 3px 0; padding-left: 12px; position: relative; }
+  .source-col li::before { content: '·'; position: absolute; left: 0; font-weight: 700; }
+
+  /* Quote block */
+  .quote-block {
+    background: var(--teal-light);
+    border-left: 4px solid var(--teal);
+    padding: 1rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1rem 0;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--teal-dark);
+  }
+  .quote-block cite { display: block; margin-top: 6px; font-style: normal; font-size: 12px; font-weight: 700; color: var(--teal-mid); }
+
+  /* Benefit boxes */
+  .benefit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .benefit-item {
+    background: var(--card-bg);
+    border: 1px solid var(--gray-border);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+  }
+  .benefit-item h4 { font-size: 13.5px; font-weight: 700; color: var(--teal-mid); margin-bottom: 4px; }
+  .benefit-item p { font-size: 13px; color: var(--gray-mid); line-height: 1.55; }
+
+  /* Flow diagram */
+  .flow-diagram {
+    background: var(--gray-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .flow-box {
+    background: var(--card-bg);
+    border: 1px solid var(--gray-border);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 13.5px;
+    font-weight: 500;
+    min-width: 110px;
+    text-align: center;
+  }
+  .flow-box.highlight { background: var(--teal); color: #fff; border-color: var(--teal); }
+  .flow-arrow { color: var(--teal); font-size: 18px; font-weight: 700; }
+
+  /* Learning objectives */
+  .objectives {
+    background: var(--teal-dark);
+    color: #fff;
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+  }
+  .objectives h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: rgba(255,255,255,0.9); letter-spacing: 0.05em; text-transform: uppercase; font-size: 12px; }
+  .objectives ol { list-style: none; counter-reset: obj; }
+  .objectives li {
+    counter-increment: obj;
+    padding: 0.5rem 0 0.5rem 2.5rem;
+    position: relative;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    line-height: 1.6;
+  }
+  .objectives li:last-child { border-bottom: none; }
+  .objectives li::before {
+    content: counter(obj);
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 24px; height: 24px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  /* Tips banner */
+  .tips-banner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .tip-card {
+    background: var(--card-bg);
+    border: 1px solid var(--gray-border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .tip-num {
+    width: 26px; height: 26px;
+    background: var(--teal);
+    color: #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tip-card p { font-size: 13.5px; color: var(--gray); line-height: 1.55; }
+
+  /* Key term highlight */
+  .kw { font-weight: 700; color: var(--teal-mid); }
+  .sub-note { font-size: 13px; color: var(--gray-mid); font-style: italic; margin-top: 6px; }
+
+  /* Table for SRRS */
+  .srrs-examples {
+    display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;
+  }
+  .srrs-item {
+    background: var(--card-bg);
+    border: 1px solid var(--gray-border);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .srrs-score {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--coral);
+    min-width: 44px;
+    text-align: center;
+  }
+  .srrs-label { font-size: 13.5px; color: var(--gray); }
+
+  /* Appraisal diagram */
+  .appraisal-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 1rem 0;
+    border: 1px solid var(--gray-border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .ap-step {
+    flex: 1;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-right: 1px solid var(--gray-border);
+    text-align: center;
+  }
+  .ap-step:last-child { border-right: none; }
+  .ap-step:nth-child(2) { background: var(--teal-light); }
+  .ap-step:nth-child(3) { background: var(--purple-light); }
+  .ap-step h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; margin-bottom: 6px; }
+  .ap-step:nth-child(1) h4 { color: var(--gray-mid); }
+  .ap-step:nth-child(2) h4 { color: var(--teal-mid); }
+  .ap-step:nth-child(3) h4 { color: var(--purple); }
+  .ap-step p { font-size: 12.5px; color: var(--gray); line-height: 1.55; }
+
+  /* PTG vs PTSD */
+  .ptg-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .ptg-box {
+    border-radius: 10px;
+    padding: 1.2rem;
+  }
+  .ptg-box.bad { background: var(--coral-light); border: 1px solid #F5C4B3; }
+  .ptg-box.good { background: var(--teal-light); border: 1px solid #9FE1CB; }
+  .ptg-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 0.5rem; }
+  .ptg-box.bad h4 { color: var(--coral); }
+  .ptg-box.good h4 { color: var(--teal-dark); }
+  .ptg-box ul { list-style: none; }
+  .ptg-box li { font-size: 13px; color: var(--gray); padding: 3px 0; padding-left: 14px; position: relative; line-height: 1.55; }
+  .ptg-box li::before { position: absolute; left: 0; font-weight: 700; }
+  .bad li::before { content: '✗'; color: var(--coral); }
+  .good li::before { content: '✓'; color: var(--teal); }
+
+  /* Demand-control model */
+  .demand-matrix {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr;
+    grid-template-rows: 30px 1fr 1fr;
+    gap: 4px;
+    margin: 1rem 0;
+    max-width: 480px;
+  }
+  .dm-cell {
+    background: var(--card-bg);
+    border: 1px solid var(--gray-border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 0.6rem;
+    text-align: center;
+    font-size: 12.5px;
+  }
+  .dm-header { background: transparent; border-color: transparent; font-weight: 700; font-size: 12px; color: var(--gray-mid); }
+  .dm-row-label { background: transparent; border-color: transparent; font-weight: 700; font-size: 12px; color: var(--gray-mid); writing-mode: initial; }
+  .dm-cell.best { background: var(--teal-light); border-color: #9FE1CB; color: var(--teal-dark); font-weight: 600; }
+  .dm-cell.worst { background: var(--coral-light); border-color: #F5C4B3; color: var(--coral); font-weight: 600; }
+  .dm-cell.ok { background: var(--gray-light); color: var(--gray-mid); }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.6rem; }
+    .def-grid, .hormone-grid, .benefit-grid, .ptg-split { grid-template-columns: 1fr; }
+    .gas-stages { flex-direction: column; }
+    .gas-stage { border-right: 1px solid var(--gray-border); border-bottom: none; border-radius: 0; }
+    .gas-stage:first-child { border-radius: 8px 8px 0 0; }
+    .gas-stage:last-child { border-radius: 0 0 8px 8px; border-bottom: 1px solid var(--gray-border); }
+    .response-grid { grid-template-columns: 1fr; }
+    .appraisal-flow { flex-direction: column; }
+    .ap-step { border-right: none; border-bottom: 1px solid var(--gray-border); }
+    .ap-step:last-child { border-bottom: none; }
+    .main { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC-314 · Module 2 / Lecture 2 · UBC Distance Education</div>
+    <h1>搏斗或逃跑——还是崩溃？<br>理解当代压力</h1>
+    <div class="hero-sub">主讲：David King, PhD &nbsp;·&nbsp; 压力定义 · 压力对健康的影响 · PTSD · 压力来源 · 压力的益处</div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#tips">健康提示</a></li>
+    <li><a href="#definition">压力定义</a></li>
+    <li><a href="#physiology">生理机制</a></li>
+    <li><a href="#chronic">慢性压力</a></li>
+    <li><a href="#ptsd">PTSD</a></li>
+    <li><a href="#sources">压力来源</a></li>
+    <li><a href="#benefits">压力的益处</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- Tips -->
+  <section class="section" id="tips">
+    <div class="section-header">
+      <div class="section-num">★</div>
+      <h2>本讲健康提示</h2>
+    </div>
+    <div class="tips-banner">
+      <div class="tip-card"><div class="tip-num">1</div><p><strong>压力主要存在于你的大脑中</strong>（认知评估决定压力大小）。</p></div>
+      <div class="tip-card"><div class="tip-num">2</div><p><strong>避开堵车</strong>——长期交通压力可能危及生命。</p></div>
+      <div class="tip-card"><div class="tip-num">3</div><p>紧急情况下<strong>千万不要"冻结"</strong>！学会应对。</p></div>
+      <div class="tip-card"><div class="tip-num">4</div><p>找到你的<strong>"心流区间"</strong>——并保持在其中。</p></div>
+    </div>
+  </section>
+
+  <!-- Definition -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>什么是压力？三种视角</h2>
+    </div>
+
+    <div class="def-grid">
+      <div class="def-card stimulus">
+        <div class="def-badge">观点一</div>
+        <h3>压力作为刺激</h3>
+        <p>压力是环境中的<strong>刺激或变化</strong>本身——即<span class="kw">压力源（stressor）</span>。分为：<br>
+        <strong>急性</strong>（时间有限，如堵车、争吵）<br>
+        <strong>慢性</strong>（持续重复，如工作压力、贫困）</p>
+      </div>
+      <div class="def-card response">
+        <div class="def-badge">观点二</div>
+        <h3>压力作为反应</h3>
+        <p>压力是个体对刺激的<strong>生理反应</strong>（如心跳加速）或<strong>心理反应</strong>（如焦虑、恐惧），统称为<span class="kw">压力应激（strain）</span>。</p>
+      </div>
+      <div class="def-card transaction">
+        <div class="def-badge">观点三</div>
+        <h3>压力作为交互过程</h3>
+        <p>压力是个体与环境之间<strong>持续互动与调整</strong>的过程，双方相互影响。核心在于<span class="kw">认知评估</span>——个体如何解读情境决定了压力的产生（Lazarus, 1984）。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">主要生活事件量表（Holmes &amp; Rahe, 1967）</div>
+      <p style="font-size:13.5px; margin-bottom:1rem;">无论是积极还是消极的变化都可能产生压力。每项事件被赋予"生活变化单元"分值，高分与多种疾病发病率相关。</p>
+      <div class="srrs-examples">
+        <div class="srrs-item"><div class="srrs-score">100</div><div class="srrs-label">配偶去世</div></div>
+        <div class="srrs-item"><div class="srrs-score">73</div><div class="srrs-label">离婚</div></div>
+        <div class="srrs-item"><div class="srrs-score">63</div><div class="srrs-label">入狱</div></div>
+        <div class="srrs-item"><div class="srrs-score">50</div><div class="srrs-label">结婚</div></div>
+        <div class="srrs-item"><div class="srrs-score">37</div><div class="srrs-label">好友去世</div></div>
+        <div class="srrs-item"><div class="srrs-score">13</div><div class="srrs-label">假期/节假日</div></div>
+      </div>
+      <p class="sub-note">关联疾病包括：心脏病、糖尿病、多发性硬化、肺结核、妊娠并发症、学业下降等。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">日常烦恼（Daily Hassles）</div>
+      <p style="font-size:13.5px;">日常生活中令人不快或潜在有害的小事件。研究显示，<strong>日常烦恼对健康的影响可能强于重大生活事件</strong>（DeLongis, 2014）。不只是消极事件，日常"小确幸"（uplifts）也与健康有关。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">交互式压力模型（Lazarus, 1984）——认知评估阶段</div>
+      <div class="appraisal-flow">
+        <div class="ap-step">
+          <h4>刺激/情境</h4>
+          <p>外部压力源出现<br>（环境事件）</p>
+        </div>
+        <div class="ap-step">
+          <h4>初级评估</h4>
+          <p>这是威胁吗？<br>伤害·威胁·挑战？还是无关？</p>
+        </div>
+        <div class="ap-step">
+          <h4>次级评估</h4>
+          <p>我有资源应对吗？<br>行为控制 vs 认知控制</p>
+        </div>
+      </div>
+      <p class="sub-note">影响评估的因素：个性特征（神经质、自尊）、情境因素（要求程度、可控性、模糊性）。</p>
+    </div>
+  </section>
+
+  <!-- Physiology -->
+  <section class="section" id="physiology">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>压力的生理机制</h2>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="card-title">搏斗或逃跑反应（Cannon, 1932）——身体动员</div>
+      <div class="response-grid">
+        <div class="response-item">呼吸加快</div>
+        <div class="response-item">心率加快</div>
+        <div class="response-item">血压升高</div>
+        <div class="response-item">肌肉紧张</div>
+        <div class="response-item">血糖升高</div>
+        <div class="response-item">瞳孔扩张、隧道视野</div>
+        <div class="response-item">出汗增加</div>
+        <div class="response-item down">消化减慢</div>
+        <div class="response-item down">口腔变干</div>
+        <div class="response-item down">膀胱松弛</div>
+        <div class="response-item down">手脚变冷</div>
+      </div>
+    </div>
+
+    <div class="hormone-grid">
+      <div class="hormone-box epi">
+        <h4>肾上腺素 / 去甲肾上腺素</h4>
+        <div class="pathway">儿茶酚胺 · 交感神经系统（SNS）</div>
+        <p>由肾上腺分泌，调节心率、代谢、呼吸、大脑与肌肉供氧。<br><br>路径：<strong>下丘脑 → 肾上腺</strong></p>
+      </div>
+      <div class="hormone-box cort">
+        <h4>皮质醇（"压力激素"）</h4>
+        <div class="pathway">糖皮质激素 · HPA轴</div>
+        <p>升高血压/血糖；抑制消化、生殖、免疫系统；减少炎症；并帮助恢复<strong>稳态</strong>。<br>通过<strong>负反馈回路</strong>自动减少分泌。<br><br>路径：<strong>下丘脑 → 垂体 → 肾上腺</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chronic Stress -->
+  <section class="section" id="chronic">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>慢性压力与健康影响</h2>
+    </div>
+
+    <div class="gas-stages">
+      <div class="gas-stage alarm">
+        <div class="gas-num">阶段一</div>
+        <h4>警觉</h4>
+        <p>生理动员<br>搏斗或逃跑反应</p>
+      </div>
+      <div class="gas-stage resistance">
+        <div class="gas-num">阶段二</div>
+        <h4>抵抗</h4>
+        <p>身体尝试<br>适应刺激</p>
+      </div>
+      <div class="gas-stage exhaustion">
+        <div class="gas-num">阶段三</div>
+        <h4>衰竭</h4>
+        <p>器官损坏、疾病、<br>死亡；职业倦怠</p>
+      </div>
+    </div>
+    <p class="sub-note" style="text-align:center; margin-top:6px;">一般适应综合征（Selye, 1956）</p>
+
+    <div class="card" style="margin-top:1.25rem;">
+      <div class="card-title">慢性压力的生理影响</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">HPA轴失调 → 皮质醇失效：</p>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;">
+          <span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span>
+          <p><strong>免疫系统受损</strong>：易感染，炎症持续</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;">
+          <span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span>
+          <p><strong>代谢影响</strong>：血糖升高，脂肪细胞成熟，内脏脂肪增加</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;">
+          <span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span>
+          <p><strong>海马萎缩</strong>：神经细胞退化，记忆力受损</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;">
+          <span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span>
+          <p>持续肾上腺素释放 → 心血管疾病、高血压、焦虑风险升高</p>
+        </div>
+      </div>
+      <p class="sub-note" style="margin-top:0.75rem;">后果包括：疼痛、体重增加、疲劳、抑郁、睡眠障碍、衰老加速，以及心脏病/中风/糖尿病/癌症风险升高。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">异稳态负荷（Allostatic Load）</div>
+      <p style="font-size:13.5px;">McEwan &amp; Stellar（1993）提出：身体反复应对压力源所积累的<strong>损耗效应</strong>，会削弱机体未来的应对能力。即便是日常烦恼也可能造成严重的健康问题。</p>
+    </div>
+  </section>
+
+  <!-- PTSD -->
+  <section class="section" id="ptsd">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>创伤与创伤后应激障碍（PTSD）</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">DSM-5-TR 中的创伤相关障碍</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.5rem;">
+        <div style="background:var(--amber-light); border:1px solid #FAC775; border-radius:8px; padding:1rem;">
+          <h4 style="font-size:14px; font-weight:700; color:var(--amber); margin-bottom:6px;">急性应激障碍</h4>
+          <p style="font-size:13px; color:var(--gray);">接触极端创伤性事件后<strong>1个月内</strong>出现严重焦虑、解离等症状。</p>
+        </div>
+        <div style="background:var(--coral-light); border:1px solid #F5C4B3; border-radius:8px; padding:1rem;">
+          <h4 style="font-size:14px; font-weight:700; color:var(--coral); margin-bottom:6px;">创伤后应激障碍（PTSD）</h4>
+          <p style="font-size:13px; color:var(--gray);">暴露于创伤事件后症状<strong>持续1个月以上</strong>的严重焦虑障碍。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-title">PTSD诊断标准（DSM-5-TR, APA, 2022）</div>
+      <div class="ptsd-grid">
+        <div class="ptsd-item"><div class="label">A · 创伤暴露</div><p>直接经历；目睹；间接得知亲近者受伤；工作中反复接触创伤细节</p></div>
+        <div class="ptsd-item"><div class="label">B · 侵入症状</div><p>反复闯入性记忆、创伤噩梦、闪回、接触创伤提示物时的强烈痛苦</p></div>
+        <div class="ptsd-item"><div class="label">C · 回避</div><p>回避创伤相关的思想/感受，及外部提示物（地点、人物、活动等）</p></div>
+        <div class="ptsd-item"><div class="label">D · 认知/情绪负性改变</div><p>持续负面想法与情绪、自我或他人的扭曲责备、对活动的兴趣减退、疏离感</p></div>
+        <div class="ptsd-item"><div class="label">E · 唤醒改变</div><p>易激惹/攻击行为、鲁莽行为、高度警觉、夸大惊吓反应、睡眠障碍</p></div>
+        <div class="ptsd-item"><div class="label">F–H · 其他</div><p>症状持续&gt;1个月；功能性损害显著；排除其他原因</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">搏斗-逃跑-冻结（Freeze Response）</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">当搏斗或逃跑都无法应对，且恐惧极度强烈时，个体可能感到<strong>麻痹，无法行动</strong>——这是运动系统上的副交感神经制动（Roelofs, 2017）。</p>
+      <p style="font-size:13.5px; color:var(--gray-mid); font-style:italic;">事件中的解离（freeze）会增加后续发展为PTSD的风险。有时适应性强，有时则不然。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">创伤后成长（PTG）vs PTSD 风险因素</div>
+      <div class="ptg-split">
+        <div class="ptg-box bad">
+          <h4>❌ PTSD风险增加</h4>
+          <ul>
+            <li>家族史、童年创伤</li>
+            <li>低开放性、低外向性人格</li>
+            <li>事件中强烈的解离感</li>
+            <li>适应不良的应对方式（如否认）</li>
+            <li>创伤后社会支持不足</li>
+            <li>女性、低收入/受教育程度低</li>
+          </ul>
+        </div>
+        <div class="ptg-box good">
+          <h4>✓ 创伤后成长（近50%经历）</h4>
+          <ul>
+            <li>更珍视生命</li>
+            <li>更新目标与优先事项</li>
+            <li>更强的个人力量感</li>
+            <li>更深厚的亲密关系</li>
+            <li>更温暖、更有爱的人格</li>
+            <li>更高的生活满意度</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sub-note">Wu等人（2018年元分析）发现，创伤后近50%的人会经历创伤后成长。</p>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="section" id="sources">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>压力的来源</h2>
+    </div>
+
+    <div class="source-cols" style="margin-bottom:1.25rem;">
+      <div class="source-col individual">
+        <h4>个体内部</h4>
+        <ul>
+          <li>疾病与躯体症状</li>
+          <li>内心冲突（趋近-回避）</li>
+          <li>目标受阻</li>
+        </ul>
+      </div>
+      <div class="source-col family">
+        <h4>家庭与社交网络</h4>
+        <ul>
+          <li>新家庭成员加入</li>
+          <li>关系紧张、分离、离婚</li>
+          <li>家人患病或去世</li>
+        </ul>
+      </div>
+      <div class="source-col society">
+        <h4>社会与环境</h4>
+        <ul>
+          <li>职业压力</li>
+          <li>环境压力源</li>
+          <li>社会不平等</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">职业压力——需求-控制-支持模型（Johnson &amp; Hall, 1988）</div>
+      <p style="font-size:13.5px; margin-bottom:1rem;">三大因素预测工作中的压力与幸福感：</p>
+      <div class="demand-matrix">
+        <div class="dm-cell dm-row-label"></div>
+        <div class="dm-cell dm-header" style="text-align:center">高控制感</div>
+        <div class="dm-cell dm-header" style="text-align:center">低控制感</div>
+        <div class="dm-cell dm-row-label" style="font-size:11px; color:var(--gray-mid); text-align:right; padding-right:6px;">高需求</div>
+        <div class="dm-cell best">压力适中<br>有挑战感</div>
+        <div class="dm-cell worst">压力最高<br>最不健康</div>
+        <div class="dm-cell dm-row-label" style="font-size:11px; color:var(--gray-mid); text-align:right; padding-right:6px;">低需求</div>
+        <div class="dm-cell ok">较轻松</div>
+        <div class="dm-cell ok">无聊</div>
+      </div>
+      <p class="sub-note" style="margin-top:0.75rem;">另外：社会支持越高，压力越低；承担他人生命责任的工作（如急救员、护士）压力尤高。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">压力蔓延（Stress Contagion）</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.5rem;">
+        <div>
+          <h4 style="font-size:14px; font-weight:700; color:var(--teal-mid); margin-bottom:4px;">压力溢出（Spillover）</h4>
+          <p style="font-size:13px;">发生在<strong>个体内部</strong>：工作压力带回家，或家庭压力带到工作。</p>
+        </div>
+        <div>
+          <h4 style="font-size:14px; font-weight:700; color:var(--purple); margin-bottom:4px;">压力交叉（Crossover）</h4>
+          <p style="font-size:13px;">发生在<strong>人际之间</strong>：工作压力传递给配偶或子女等。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section" id="benefits">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>压力可以有益吗？</h2>
+    </div>
+
+    <div class="quote-block">
+      "适度的唤醒是最优的。"——Hebb (1955); Selye (1974, 1985) 区分了 <strong>痛苦（distress）</strong> 与 <strong>欣悦压力（eustress）</strong>——有益或建设性的压力。
+      <cite>来源：Selye, 1974, 1985</cite>
+    </div>
+
+    <div class="card">
+      <div class="card-title">心流（Flow）——最优唤醒状态</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">一种对工作、玩耍或创意活动<strong>完全投入</strong>的最优状态（Csikszentmihalyi, 1990）：</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:0.75rem;">
+        <span style="background:var(--teal-light); color:var(--teal-dark); font-size:12.5px; padding:4px 10px; border-radius:6px;">高度专注</span>
+        <span style="background:var(--teal-light); color:var(--teal-dark); font-size:12.5px; padding:4px 10px; border-radius:6px;">忘记自我</span>
+        <span style="background:var(--teal-light); color:var(--teal-dark); font-size:12.5px; padding:4px 10px; border-radius:6px;">时间感消失</span>
+        <span style="background:var(--teal-light); color:var(--teal-dark); font-size:12.5px; padding:4px 10px; border-radius:6px;">挑战与能力匹配</span>
+        <span style="background:var(--teal-light); color:var(--teal-dark); font-size:12.5px; padding:4px 10px; border-radius:6px;">心理健康指标</span>
+      </div>
+      <p class="sub-note">关键：需求/挑战与技能/能力的匹配——既不无聊，也不焦虑。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">急性/适度压力的其他益处</div>
+      <div class="benefit-grid">
+        <div class="benefit-item">
+          <h4>🧠 促进大脑学习区细胞生长</h4>
+          <p>刺激海马区细胞增殖（Kirby et al., 2013）</p>
+        </div>
+        <div class="benefit-item">
+          <h4>🛡️ 激活免疫活性</h4>
+          <p>短期免疫功能增强（Dhabhar et al., 2012）</p>
+        </div>
+        <div class="benefit-item">
+          <h4>🎯 提升认知任务准确性</h4>
+          <p>适度压力提高决策精度（Kohn et al., 2017）</p>
+        </div>
+        <div class="benefit-item">
+          <h4>🔁 强化习惯形成</h4>
+          <p>巩固良好（及不良）习惯（Neal et al., 2013）</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      "重新评估你的压力反应是有帮助的，将生理反应理解为更接近兴奋与喜悦。"<br>
+      <strong>Kelly McGonigal：如何与压力成为朋友（TED Talk）</strong>
+      <cite>Keller et al., 2012：认为压力有害的人，其健康结果更差。</cite>
+    </div>
+  </section>
+
+  <!-- Objectives -->
+  <section class="section" id="objectives">
+    <div class="section-header">
+      <div class="section-num">✓</div>
+      <h2>学习目标</h2>
+    </div>
+    <div class="objectives">
+      <h3>完成本讲后，你应能：</h3>
+      <ol>
+        <li>描述压力的主要研究视角（刺激、反应、交互过程），并举例说明。</li>
+        <li>总结应激反应的生理与心理机制；定义交互式压力模型。</li>
+        <li>总结慢性压力和皮质醇对健康的主要影响。</li>
+        <li>定义一般适应综合征（GAS）与异稳态负荷（Allostatic Load）。</li>
+        <li>定义PTSD，识别与创伤后成长相关的因素，描述冻结反应。</li>
+        <li>讨论压力的来源，包括职业压力与环境压力及其相关因素。</li>
+        <li>探讨压力的益处；定义心流状态。</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
