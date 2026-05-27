@@ -5,581 +5,177 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Psychology Notes — 心理学学习笔记</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
-
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
   :root {
-    --bg: #0d0f14;
-    --surface: #13161e;
-    --card: #1a1e2a;
-    --border: #252a38;
-    --accent1: #7ec8e3;
-    --accent2: #f0a500;
-    --accent3: #e07b85;
-    --accent4: #7de0aa;
-    --accent5: #b48af7;
-    --text: #e8ecf4;
-    --muted: #7a8099;
+    --teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;
+    --gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;
+    --purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;
+    --amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;
+    --bg:#FAFAF8;--card-bg:#FFFFFF;
   }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    padding: 80px 60px 60px;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--border);
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(126,200,227,0.05) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: 30%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(125,224,170,0.04) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--accent4);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 5vw, 72px);
-    font-weight: 900;
-    line-height: 1.05;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.1s forwards;
-  }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent1);
-  }
-  .hero-sub {
-    font-size: 15px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    max-width: 480px;
-    line-height: 1.7;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.2s forwards;
-  }
-  .hero-stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 40px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.3s forwards;
-  }
-  .stat { display: flex; flex-direction: column; gap: 4px; }
-  .stat-n {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--text);
-    line-height: 1;
-  }
-  .stat-n span { color: var(--accent1); }
-  .stat-l {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  /* ── MAIN LAYOUT ── */
-  .layout {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    min-height: calc(100vh - 280px);
-  }
-
-  /* ── SIDEBAR ── */
-  .sidebar {
-    border-right: 1px solid var(--border);
-    padding: 32px 24px;
-    position: sticky;
-    top: 0;
-    height: fit-content;
-  }
-  .sidebar-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  .filter-group { margin-bottom: 28px; }
-  .filter-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    padding: 7px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.15s;
-    margin-bottom: 2px;
-  }
-  .filter-btn:hover { background: var(--card); color: var(--text); }
-  .filter-btn.active { background: var(--card); color: var(--text); border-left: 2px solid var(--accent1); padding-left: 8px; }
-  .filter-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .progress-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px;
-    margin-top: 8px;
-  }
-  .progress-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .prog-bar-bg {
-    height: 3px;
-    background: var(--border);
-    border-radius: 2px;
-    margin-top: 6px;
-  }
-  .prog-bar-fill {
-    height: 100%;
-    border-radius: 2px;
-    background: var(--accent4);
-    transition: width 1s ease;
-  }
-  .prog-text {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent4);
-    margin-top: 4px;
-  }
-
-  /* ── COURSE GRID ── */
-  .main-content { padding: 32px 40px; }
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  .section-head h2 {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .section-head span {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--border);
-  }
-
-  .course-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 14px;
-    margin-bottom: 40px;
-  }
-
-  .course-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: border-color 0.2s, transform 0.2s;
-    opacity: 0;
-    animation: fadeUp 0.5s ease forwards;
-    position: relative;
-    overflow: hidden;
-  }
-  .course-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .course-card:hover { border-color: #353c52; transform: translateY(-3px); }
-  .course-card:hover::before { opacity: 1; }
-  .course-card.done::before { background: var(--accent4); }
-  .course-card.progress::before { background: var(--accent2); }
-  .course-card.planned::before { background: var(--border); }
-  .course-card.no-link { cursor: default; }
-  .course-card.no-link:hover { transform: none; border-color: var(--border); }
-
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 14px;
-  }
-  .card-code {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 1px;
-  }
-  .status-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    padding: 3px 8px;
-    border-radius: 10px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-  .status-badge.done { background: rgba(125,224,170,0.1); color: var(--accent4); border: 1px solid rgba(125,224,170,0.2); }
-  .status-badge.progress { background: rgba(240,165,0,0.1); color: var(--accent2); border: 1px solid rgba(240,165,0,0.2); }
-  .status-badge.planned { background: rgba(122,128,153,0.1); color: var(--muted); border: 1px solid var(--border); }
-
-  .card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 6px;
-    color: var(--text);
-  }
-  .card-sub {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 14px;
-    line-height: 1.5;
-  }
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 14px;
-  }
-  .tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 3px;
-    background: var(--surface);
-    color: var(--muted);
-    border: 1px solid var(--border);
-  }
-  .card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-  }
-  .lectures-count {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-  }
-  .card-arrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--accent1);
-    opacity: 0;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .course-card:hover .card-arrow { opacity: 1; transform: translateX(3px); }
-
-  .mini-prog {
-    height: 2px;
-    background: var(--border);
-    border-radius: 1px;
-    margin-top: 10px;
-  }
-  .mini-prog-fill {
-    height: 100%;
-    border-radius: 1px;
-  }
-
-  /* ── COMING SOON ── */
-  .coming-soon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 10px;
-    margin-bottom: 40px;
-  }
-  .cs-card {
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: 8px;
-    padding: 16px;
-    opacity: 0.5;
-  }
-  .cs-title {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-  .cs-sub {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--border);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 24px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  footer p {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* stagger cards */
-  .course-card:nth-child(1) { animation-delay: 0.05s; }
-  .course-card:nth-child(2) { animation-delay: 0.1s; }
-  .course-card:nth-child(3) { animation-delay: 0.15s; }
-  .course-card:nth-child(4) { animation-delay: 0.2s; }
-  .course-card:nth-child(5) { animation-delay: 0.25s; }
-  .course-card:nth-child(6) { animation-delay: 0.3s; }
-
-  @media (max-width: 768px) {
-    .hero { padding: 48px 24px 40px; }
-    .layout { grid-template-columns: 1fr; }
-    .sidebar { border-right: none; border-bottom: 1px solid var(--border); position: static; }
-    .main-content { padding: 24px; }
-    footer { flex-direction: column; gap: 8px; padding: 20px 24px; }
-  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .hero{background:var(--teal-dark);color:#fff;padding:3.5rem 2rem 2.5rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero::after{content:'';position:absolute;bottom:-80px;left:30%;width:200px;height:200px;border-radius:50%;border:30px solid rgba(255,255,255,.04);}
+  .hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1.2rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2.4rem;font-weight:700;line-height:1.3;margin-bottom:.75rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:14px;font-weight:300;margin-bottom:2rem;}
+  .hero-stats{display:flex;gap:2.5rem;}
+  .stat-n{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1;}
+  .stat-l{font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.05em;text-transform:uppercase;margin-top:3px;}
+  .filter-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .filter-bar ul{display:flex;gap:0;list-style:none;max-width:960px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .filter-bar ul::-webkit-scrollbar{display:none;}
+  .filter-bar a{display:block;padding:.75rem 1rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer;transition:color .2s,border-color .2s;}
+  .filter-bar a:hover,.filter-bar a.active{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:960px;margin:0 auto;padding:2rem;}
+  .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:2px solid var(--teal-light);}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.15rem;font-weight:700;color:var(--teal-dark);}
+  .section-count{font-size:12px;color:var(--gray-mid);}
+  .course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:2.5rem;}
+  .course-card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;text-decoration:none;color:inherit;display:block;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+  .course-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity .2s;}
+  .course-card.done::before{background:var(--teal);}
+  .course-card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 4px 16px rgba(29,158,117,.08);}
+  .course-card:hover::before{opacity:1;}
+  .course-card.planned{opacity:.65;cursor:default;}
+  .course-card.planned:hover{border-color:var(--gray-border);transform:none;box-shadow:none;}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem;}
+  .card-code{font-size:11px;color:var(--gray-mid);letter-spacing:.06em;text-transform:uppercase;}
+  .status-badge{font-size:10px;padding:3px 8px;border-radius:10px;font-weight:700;}
+  .status-badge.done{background:var(--teal-light);color:var(--teal-dark);border:1px solid #9FE1CB;}
+  .status-badge.planned{background:var(--gray-light);color:var(--gray-mid);border:1px solid var(--gray-border);}
+  .card-title{font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:700;line-height:1.35;margin-bottom:.4rem;color:var(--gray);}
+  .card-sub{font-size:12px;color:var(--gray-mid);margin-bottom:.9rem;line-height:1.5;}
+  .card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.9rem;}
+  .tag{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500;}
+  .tag.teal{background:var(--teal-light);color:var(--teal-dark);}
+  .tag.purple{background:var(--purple-light);color:var(--purple);}
+  .tag.amber{background:var(--amber-light);color:var(--amber);}
+  .tag.coral{background:var(--coral-light);color:var(--coral);}
+  .card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;border-top:1px solid var(--gray-border);}
+  .lec-label{font-size:11px;color:var(--gray-mid);}
+  .card-arrow{font-size:13px;color:var(--teal);opacity:0;transition:opacity .2s,transform .2s;}
+  .course-card:hover .card-arrow{opacity:1;transform:translateX(3px);}
+  .mini-prog{height:2px;background:var(--gray-light);border-radius:1px;margin-top:.75rem;}
+  .mini-prog-fill{height:100%;border-radius:1px;background:var(--teal);}
+  .coming-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.75rem;margin-bottom:2.5rem;}
+  .cs-card{background:var(--card-bg);border:1px dashed var(--gray-border);border-radius:8px;padding:1rem 1.1rem;opacity:.55;}
+  .cs-title{font-size:13.5px;font-weight:500;color:var(--gray);margin-bottom:3px;}
+  .cs-sub{font-size:11px;color:var(--gray-mid);}
+  footer{border-top:1px solid var(--gray-border);padding:1.5rem 2rem;text-align:center;font-size:12px;color:var(--gray-mid);}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="hero-label">Psychology · Learning Archive · UBC</div>
-  <h1>心理学<br><em>学习笔记</em></h1>
-  <p class="hero-sub">个人课程学习记录 / 复习资料整理<br>Personal study notes & lecture summaries</p>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-n">12<span>+</span></div>
-      <div class="stat-l">总课程</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n" id="done-count">1</div>
-      <div class="stat-l">有笔记</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">UBC</div>
-      <div class="stat-l">Distance Ed</div>
+  <div class="hero-inner">
+    <div class="hero-tag">Psychology · Personal Learning Archive · UBC</div>
+    <h1>心理学学习笔记<br><span style="font-size:1.4rem;font-weight:400;color:rgba(255,255,255,.8);">Psychology Study Notes</span></h1>
+    <p class="hero-sub">个人课程学习记录 / Personal course notes &amp; lecture summaries</p>
+    <div class="hero-stats">
+      <div><div class="stat-n">12+</div><div class="stat-l">总课程 Courses</div></div>
+      <div><div class="stat-n">2</div><div class="stat-l">有笔记 With Notes</div></div>
+      <div><div class="stat-n">UBC</div><div class="stat-l">Distance Ed</div></div>
     </div>
   </div>
 </div>
 
-<div class="layout">
+<nav class="filter-bar">
+  <ul>
+    <li><a class="active" onclick="filterCards('all',this)">全部 All</a></li>
+    <li><a onclick="filterCards('done',this)">✓ 有笔记</a></li>
+    <li><a onclick="filterCards('临床',this)">临床/健康</a></li>
+    <li><a onclick="filterCards('认知',this)">认知</a></li>
+    <li><a onclick="filterCards('社会',this)">社会/发展</a></li>
+    <li><a onclick="filterCards('基础',this)">基础</a></li>
+  </ul>
+</nav>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-label">筛选 / Filter</div>
+<main class="main">
 
-    <div class="filter-group">
-      <button class="filter-btn active" onclick="filterCards('all', this)">
-        <span class="filter-dot" style="background:var(--accent1)"></span> 全部课程
-      </button>
-      <button class="filter-btn" onclick="filterCards('done', this)">
-        <span class="filter-dot" style="background:var(--accent4)"></span> 已有笔记
-      </button>
-      <button class="filter-btn" onclick="filterCards('progress', this)">
-        <span class="filter-dot" style="background:var(--accent2)"></span> 进行中
-      </button>
-      <button class="filter-btn" onclick="filterCards('planned', this)">
-        <span class="filter-dot" style="background:var(--muted)"></span> 待整理
-      </button>
-    </div>
+  <div class="section-header">
+    <h2>有笔记的课程 / Courses with Notes</h2>
+    <span class="section-count" id="visible-count">2 课程</span>
+  </div>
 
-    <div class="sidebar-label">分类 / Category</div>
-    <div class="filter-group">
-      <button class="filter-btn" onclick="filterCards('基础', this)">
-        <span class="filter-dot" style="background:var(--accent1)"></span> 基础
-      </button>
-      <button class="filter-btn" onclick="filterCards('认知', this)">
-        <span class="filter-dot" style="background:var(--accent5)"></span> 认知
-      </button>
-      <button class="filter-btn" onclick="filterCards('临床', this)">
-        <span class="filter-dot" style="background:var(--accent3)"></span> 临床/健康
-      </button>
-      <button class="filter-btn" onclick="filterCards('社会', this)">
-        <span class="filter-dot" style="background:var(--accent2)"></span> 社会/发展
-      </button>
-    </div>
+  <div class="course-grid" id="course-grid">
 
-    <div class="progress-wrap">
-      <div class="progress-label">笔记进度</div>
-      <div style="font-size:11px; color:var(--muted); font-family:'DM Mono',monospace;">已整理讲义</div>
-      <div class="prog-bar-bg">
-        <div class="prog-bar-fill" style="width:8%"></div>
+    <a href="PSYC314_Lecture2.html" class="course-card done" data-status="done" data-cat="临床">
+      <div class="card-top">
+        <span class="card-code">PSYC 314 · Lec 02</span>
+        <span class="status-badge done">✓ 有笔记</span>
       </div>
-      <div class="prog-text">1 / 12+ 门课</div>
-    </div>
-  </aside>
+      <div class="card-title">Health Psychology<br>健康心理学</div>
+      <div class="card-sub">UBC Distance Education · David King, PhD</div>
+      <div class="card-tags">
+        <span class="tag teal">临床/健康</span>
+        <span class="tag purple">压力</span>
+        <span class="tag amber">PTSD</span>
+      </div>
+      <div class="card-footer">
+        <span class="lec-label">Lec 02 · Understanding Stress</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="mini-prog"><div class="mini-prog-fill" style="width:15%;"></div></div>
+    </a>
 
-  <!-- MAIN -->
-  <main class="main-content">
+    <a href="PSYC314_Lec03_Coping_v2.html" class="course-card done" data-status="done" data-cat="临床">
+      <div class="card-top">
+        <span class="card-code">PSYC 314 · Lec 03</span>
+        <span class="status-badge done">✓ 有笔记</span>
+      </div>
+      <div class="card-title">Health Psychology<br>健康心理学</div>
+      <div class="card-sub">UBC Distance Education · David King, PhD</div>
+      <div class="card-tags">
+        <span class="tag teal">临床/健康</span>
+        <span class="tag purple">压力管理</span>
+        <span class="tag coral">社会支持</span>
+      </div>
+      <div class="card-footer">
+        <span class="lec-label">Lec 03 · Coping &amp; Stress Management</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="mini-prog"><div class="mini-prog-fill" style="width:15%;"></div></div>
+    </a>
 
-    <!-- Active courses with notes -->
-    <div class="section-head">
-      <h2>有笔记的课程 / With Notes</h2>
-      <span id="visible-count">1 课程</span>
-    </div>
+  </div>
 
-    <div class="course-grid" id="course-grid">
+  <div class="section-header">
+    <h2>待整理 / Coming Soon</h2>
+  </div>
+  <div class="coming-grid">
+    <div class="cs-card" data-status="planned" data-cat="基础"><div class="cs-title">普通心理学</div><div class="cs-sub">PSYC 100 · 基础</div></div>
+    <div class="cs-card" data-status="planned" data-cat="认知"><div class="cs-title">认知心理学</div><div class="cs-sub">PSYC 301 · 认知</div></div>
+    <div class="cs-card" data-status="planned" data-cat="社会"><div class="cs-title">发展心理学</div><div class="cs-sub">PSYC · 社会/发展</div></div>
+    <div class="cs-card" data-status="planned" data-cat="社会"><div class="cs-title">社会心理学</div><div class="cs-sub">PSYC · 社会/发展</div></div>
+    <div class="cs-card" data-status="planned" data-cat="临床"><div class="cs-title">变态心理学</div><div class="cs-sub">PSYC · 临床/健康</div></div>
+    <div class="cs-card" data-status="planned" data-cat="基础"><div class="cs-title">人格心理学</div><div class="cs-sub">PSYC · 基础</div></div>
+    <div class="cs-card" data-status="planned" data-cat="认知"><div class="cs-title">生理心理学</div><div class="cs-sub">PSYC · 认知</div></div>
+    <div class="cs-card" data-status="planned" data-cat="基础"><div class="cs-title">心理测量学</div><div class="cs-sub">PSYC · 基础</div></div>
+    <div class="cs-card" data-status="planned" data-cat="社会"><div class="cs-title">积极心理学</div><div class="cs-sub">PSYC · 社会/发展</div></div>
+    <div class="cs-card" data-status="planned" data-cat="社会"><div class="cs-title">文化与心理学</div><div class="cs-sub">PSYC · 社会/发展</div></div>
+  </div>
 
-      <!-- PSYC 314 -->
-      <a href="PSYC314_Lec03_Coping.html" class="course-card done"
-         data-status="done" data-cat="临床">
-        <div class="card-top">
-          <span class="card-code">PSYC 314</span>
-          <span class="status-badge done">✓ 有笔记</span>
-        </div>
-        <div class="card-title">Health Psychology<br>健康心理学</div>
-        <div class="card-sub">UBC Distance Education · David King, PhD</div>
-        <div class="card-tags">
-          <span class="tag">临床/健康</span>
-          <span class="tag">压力管理</span>
-          <span class="tag">社会支持</span>
-        </div>
-        <div class="card-footer">
-          <span class="lectures-count">Lec 03 · Coping & Stress</span>
-          <span class="card-arrow">→</span>
-        </div>
-        <div class="mini-prog">
-          <div class="mini-prog-fill" style="width:20%; background:var(--accent4)"></div>
-        </div>
-      </a>
+</main>
 
-    </div>
-
-    <!-- Coming soon section -->
-    <div class="section-head" style="margin-top:8px;">
-      <h2>待整理 / Coming Soon</h2>
-    </div>
-
-    <div class="coming-soon-grid">
-      <div class="cs-card" data-status="planned" data-cat="基础">
-        <div class="cs-title">普通心理学</div>
-        <div class="cs-sub">PSYC 100 · 基础</div>
-      </div>
-      <div class="cs-card" data-status="planned" data-cat="认知">
-        <div class="cs-title">认知心理学</div>
-        <div class="cs-sub">PSYC 301 · 认知</div>
-      </div>
-      <div class="cs-card" data-status="planned" data-cat="社会">
-        <div class="cs-title">发展心理学</div>
-        <div class="cs-sub">PSYC · 社会/发展</div>
-      </div>
-      <div class="cs-card" data-status="planned" data-cat="社会">
-        <div class="cs-title">社会心理学</div>
-        <div class="cs-sub">PSYC · 社会/发展</div>
-      </div>
-      <div class="cs-card" data-status="planned" data-cat="临床">
-        <div class="cs-title">变态心理学</div>
-        <div class="cs-sub">PSYC · 临床/健康</div>
-      </div>
-      <div class="cs-card" data-status="planned" data-cat="基础">
-        <div class="cs-title">人格心理学</div>
-        <div class="cs-sub">PSYC · 基础</div>
-      </div>
-      <div class="cs-card" data-status="planned" data-cat="认知">
-        <div class="cs-title">生理心理学</div>
-        <div class="cs-sub">PSYC · 认知</div>
-      </div>
-      <div class="cs-card" data-status="planned" data-cat="基础">
-        <div class="cs-title">心理测量学</div>
-        <div class="cs-sub">PSYC · 基础</div>
-      </div>
-      <div class="cs-card" data-status="planned" data-cat="社会">
-        <div class="cs-title">积极心理学</div>
-        <div class="cs-sub">PSYC · 社会/发展</div>
-      </div>
-      <div class="cs-card" data-status="planned" data-cat="社会">
-        <div class="cs-title">文化与心理学</div>
-        <div class="cs-sub">PSYC · 社会/发展</div>
-      </div>
-    </div>
-
-  </main>
-</div>
-
-<footer>
-  <p>心理学学习笔记 · Personal Psychology Study Archive</p>
-  <p>Built with Claude · Updated 2026</p>
-</footer>
+<footer>心理学学习笔记 · Personal Psychology Study Archive · jonjopsyc.com</footer>
 
 <script>
 function filterCards(filter, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.filter-bar a').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-
   const cards = document.querySelectorAll('.course-card');
   let visible = 0;
   cards.forEach(card => {
-    const status = card.dataset.status;
-    const cat = card.dataset.cat;
-    const show = filter === 'all' || status === filter || cat === filter;
+    const show = filter === 'all' || card.dataset.status === filter || card.dataset.cat === filter;
     card.style.display = show ? 'block' : 'none';
     if (show) visible++;
   });
-
   document.getElementById('visible-count').textContent = visible + ' 课程';
 }
 </script>
-
 </body>
 </html>

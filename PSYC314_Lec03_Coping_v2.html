@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC-314 Lecture 3: Coping & Stress Management</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root {
+    --teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;
+    --gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;
+    --purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;
+    --amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;
+    --bg:#FAFAF8;--card-bg:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);letter-spacing:.05em;}
+  .hero{background:var(--teal-dark);color:#fff;padding:3.5rem 2rem 2.5rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero::after{content:'';position:absolute;bottom:-80px;left:30%;width:200px;height:200px;border-radius:50%;border:30px solid rgba(255,255,255,.04);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1.2rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2.2rem;font-weight:700;line-height:1.3;margin-bottom:.75rem;color:#fff;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:14px;font-weight:300;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;gap:0;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.9rem 1rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.35rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:14px;color:var(--teal-mid);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em;}
+  ul.detail{list-style:none;padding:0;}
+  ul.detail li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.detail li:last-child{border-bottom:none;}
+  ul.detail li::before{content:'→';color:var(--teal);font-weight:700;font-size:13px;flex-shrink:0;margin-top:2px;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  .kw2{font-weight:700;color:var(--purple);}
+  .kw3{font-weight:700;color:var(--amber);}
+  .zh{font-size:12px;color:var(--gray-mid);margin-left:4px;}
+  .sub-note{font-size:13px;color:var(--gray-mid);font-style:italic;margin-top:6px;}
+  .def-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1rem;}
+  .def-card{border-radius:10px;padding:1.25rem;border:1px solid;}
+  .def-card.c-teal{background:var(--teal-light);border-color:#9FE1CB;}
+  .def-card.c-purple{background:var(--purple-light);border-color:#CECBF6;}
+  .def-card.c-amber{background:var(--amber-light);border-color:#FAC775;}
+  .def-card.c-coral{background:var(--coral-light);border-color:#F5C4B3;}
+  .def-card.c-blue{background:var(--blue-light);border-color:#B5D4F4;}
+  .def-card h3{font-size:14px;font-weight:700;margin-bottom:.4rem;}
+  .def-card.c-teal h3{color:var(--teal-dark);}
+  .def-card.c-purple h3{color:var(--purple);}
+  .def-card.c-amber h3{color:var(--amber);}
+  .def-card.c-coral h3{color:var(--coral);}
+  .def-card.c-blue h3{color:var(--blue);}
+  .def-card p{font-size:13px;color:var(--gray);line-height:1.6;}
+  .def-badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:.5rem;}
+  .c-teal .def-badge{background:#9FE1CB;color:var(--teal-dark);}
+  .c-purple .def-badge{background:#CECBF6;color:var(--purple);}
+  .c-amber .def-badge{background:#FAC775;color:var(--amber);}
+  .c-coral .def-badge{background:#F5C4B3;color:var(--coral);}
+  .c-blue .def-badge{background:#B5D4F4;color:var(--blue);}
+  .quote-block{background:var(--teal-light);border-left:4px solid var(--teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;font-style:italic;font-size:14px;color:var(--teal-dark);}
+  .quote-block cite{display:block;margin-top:6px;font-style:normal;font-size:12px;font-weight:700;color:var(--teal-mid);}
+  .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .split-box{border-radius:10px;padding:1.2rem;}
+  .split-box.good{background:var(--teal-light);border:1px solid #9FE1CB;}
+  .split-box.bad{background:var(--coral-light);border:1px solid #F5C4B3;}
+  .split-box h4{font-size:14px;font-weight:700;margin-bottom:.5rem;}
+  .split-box.good h4{color:var(--teal-dark);}
+  .split-box.bad h4{color:var(--coral);}
+  .split-box ul{list-style:none;}
+  .split-box li{font-size:13px;color:var(--gray);padding:3px 0 3px 16px;position:relative;line-height:1.55;}
+  .good li::before{content:'✓';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .bad li::before{content:'✗';position:absolute;left:0;font-weight:700;color:var(--coral);}
+  .cmp-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .cmp-table th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .cmp-table td{padding:8px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .cmp-table td:first-child{font-weight:700;color:var(--teal-mid);}
+  .cmp-table tr:last-child td{border-bottom:none;}
+  .criteria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin:1rem 0;}
+  .criteria-item{background:var(--gray-light);border-radius:8px;padding:.9rem 1rem;border-left:3px solid var(--teal);}
+  .criteria-item .label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--teal-mid);margin-bottom:4px;}
+  .criteria-item p{font-size:13px;color:var(--gray);line-height:1.55;}
+  .tips-banner{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem;}
+  .tip-card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:10px;align-items:flex-start;}
+  .tip-num{width:26px;height:26px;background:var(--teal);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+  .tip-card p{font-size:13.5px;color:var(--gray);line-height:1.55;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.75rem 2rem;}
+  .objectives h3{font-size:12px;font-weight:700;margin-bottom:1rem;color:rgba(255,255,255,.9);letter-spacing:.05em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.5rem 0 .5rem 2.5rem;position:relative;font-size:13.5px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.5rem;width:24px;height:24px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;line-height:24px;text-align:center;}
+  .inline-note{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .inline-good{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .inline-warn{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="back-btn">← Back to Home 返回主页</a>
+  <span class="topbar-right">PSYC 314 · Lecture 03</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 314 · Health Psychology · UBC Distance Education · David King, PhD</div>
+    <h1>Lecture 3: Coping &amp; Stress Management</h1>
+    <p class="hero-sub">Coping · Social Support · Human-Animal Interaction · Nature · Meditation &amp; Mindfulness</p>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#tips">L-3 Tips</a></li>
+    <li><a href="#coping">Coping</a></li>
+    <li><a href="#strategies">Strategies</a></li>
+    <li><a href="#resilience">Resilience</a></li>
+    <li><a href="#social">Social Support</a></li>
+    <li><a href="#hai">HAI</a></li>
+    <li><a href="#nature">Nature</a></li>
+    <li><a href="#mindfulness">Mindfulness</a></li>
+    <li><a href="#objectives">Objectives</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- Tips -->
+  <section class="section" id="tips">
+    <div class="section-header">
+      <div class="section-num">★</div>
+      <h2>L-3 Health Tips</h2>
+    </div>
+    <div class="tips-banner">
+      <div class="tip-card"><div class="tip-num">1</div><p>Accept the things you <strong>cannot change.</strong> <span class="zh">接受无法改变的事情</span></p></div>
+      <div class="tip-card"><div class="tip-num">2</div><p><strong>Change</strong> the things you can. <span class="zh">改变可以改变的事情</span></p></div>
+      <div class="tip-card"><div class="tip-num">3</div><p>Put your <strong>relationships</strong> to good use. <span class="zh">善用你的人际关系</span></p></div>
+      <div class="tip-card"><div class="tip-num">4</div><p>Talk to animals, hug trees, live near water — and <strong>meditate.</strong> <span class="zh">与动物交流，拥抱树木，靠近自然，冥想</span></p></div>
+    </div>
+  </section>
+
+  <!-- Coping -->
+  <section class="section" id="coping">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>What is Coping? 什么是应对？</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Core Definition 核心定义</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">The process by which people try to <span class="kw">manage the perceived discrepancy</span> between demands and resources in a stressful situation. <span class="zh">应对是管理压力情境中需求与资源之间感知差距的过程</span></p>
+      <ul class="detail">
+        <li>Includes efforts to manage <span class="kw">internal and external demands</span>, whether successful or not <span class="zh">包括管理内外部需求的努力，无论是否成功</span></li>
+        <li>Not a single event — involves <span class="kw">continuous transactions</span> with the environment <span class="zh">不是单次事件，是与环境的持续交互过程</span></li>
+        <li>A <span class="kw">dynamic process</span> of continuous appraisals and reappraisals <span class="zh">持续评估与再评估的动态过程</span></li>
+      </ul>
+      <div class="inline-note">⚑ Do NOT confound behaviour with outcome! Coping behaviour ≠ coping outcome. <span class="zh">不要混淆行为与结果！</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Transactional Model (Lazarus et al., 1980, 1984) 交互模型</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:.75rem 0;padding:1rem;background:var(--gray-light);border-radius:8px;justify-content:center;">
+        <div style="background:var(--card-bg);border:1px solid var(--gray-border);border-radius:8px;padding:.6rem 1rem;font-size:13px;font-weight:500;text-align:center;">Stimulus<br><span style="font-size:11px;color:var(--gray-mid);">刺激</span></div>
+        <span style="color:var(--teal);font-weight:700;font-size:18px;">→</span>
+        <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:8px;padding:.6rem 1rem;font-size:13px;font-weight:500;text-align:center;color:var(--teal-dark);">Primary &amp; Secondary<br>Appraisal<br><span style="font-size:11px;">初/次级评估</span></div>
+        <span style="color:var(--teal);font-weight:700;font-size:18px;">→</span>
+        <div style="background:var(--purple-light);border:1px solid #CECBF6;border-radius:8px;padding:.6rem 1rem;font-size:13px;font-weight:500;text-align:center;color:var(--purple);">Coping Response(s)<br><span style="font-size:11px;">应对反应</span></div>
+      </div>
+      <p class="sub-note" style="text-align:center;">Transactional / Dynamic — loops back continuously 动态交互，持续循环</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Four Functions of Coping 四类应对功能</div>
+      <div class="def-grid" style="margin-top:.75rem;">
+        <div class="def-card c-teal">
+          <div class="def-badge">Problem-Focused 问题聚焦</div>
+          <p>Direct efforts to <strong>solve the problem</strong>: changing situation, making plans, learning skills. <span class="zh">直接解决问题</span></p>
+        </div>
+        <div class="def-card c-purple">
+          <div class="def-badge">Emotion-Focused 情绪聚焦</div>
+          <p>Efforts to <strong>manage emotions</strong> generated by the stressor: denial, reappraisal, disclosure. <span class="zh">管理压力引发的情绪</span></p>
+        </div>
+        <div class="def-card c-amber">
+          <div class="def-badge">Relationship-Focused 关系聚焦</div>
+          <p>Efforts to <strong>maintain social relationships</strong> during stress (DeLongis &amp; O'Brien, 1990). <span class="zh">维护社会关系</span></p>
+        </div>
+        <div class="def-card c-blue">
+          <div class="def-badge">Meaning-Focused 意义聚焦</div>
+          <p>Drawing on <strong>beliefs, values, existential goals</strong> to sustain coping (Folkman, 2008). <span class="zh">借助信念、价值观维持应对</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Approach vs. Avoidance Coping 趋近 vs. 回避</div>
+      <div class="split-grid">
+        <div class="split-box good">
+          <h4>Approach 趋近应对</h4>
+          <ul>
+            <li>Actively deal with the problem <span class="zh">积极处理问题</span></li>
+            <li>Cognitive or behavioural <span class="zh">认知或行为层面</span></li>
+            <li>Better when stressor is <strong>controllable</strong> <span class="zh">压力可控时更有效</span></li>
+          </ul>
+        </div>
+        <div class="split-box bad">
+          <h4>Avoidance 回避应对</h4>
+          <ul>
+            <li>Distance oneself from the problem <span class="zh">远离问题</span></li>
+            <li>Cognitive or behavioural <span class="zh">认知或行为层面</span></li>
+            <li>Better when stressor is <strong>uncontrollable</strong> (Roth &amp; Cohen, 1986) <span class="zh">压力不可控时相对更好</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="inline-note">⚑ No one way of coping is good for all situations all of the time. <span class="zh">没有一种应对方式对所有情境都最优</span></div>
+    </div>
+  </section>
+
+  <!-- Strategies -->
+  <section class="section" id="strategies">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>Effective Strategies 有效策略</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Positive Reappraisal 正向重评</div>
+      <ul class="detail">
+        <li>A <span class="kw">highly adaptive</span> strategy focused on gaining meaning from a stressful event <span class="zh">高度适应性策略：从压力事件中获取意义</span></li>
+        <li>Involves deriving <span class="kw">personally relevant positive meaning</span> in the face of an experience's negative qualities — much more than "looking on the bright side" <span class="zh">不仅仅是"往好处想"</span></li>
+        <li>Nowlan et al. (2016): PR → higher positive emotion, lower anxiety &amp; depression in older adults <span class="zh">与更多积极情绪、更少焦虑抑郁相关</span></li>
+        <li>PR intervention programs show success in reducing anxiety (Ockhuijsen et al., 2014) <span class="zh">干预项目在减少焦虑方面有效</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Disclosure 情绪披露</div>
+      <ul class="detail">
+        <li>An adaptive strategy: describing feelings about a stressful/traumatic experience <span class="zh">描述对压力/创伤体验的感受</span></li>
+        <li>Important aspect of <span class="kw">emotion regulation</span>; can be verbal or written <span class="zh">情绪调节的重要方面；可口头或书面</span></li>
+        <li>Cepeda et al. (2008): cancer patients with more emotional disclosure → <strong>less pain</strong> + <strong>higher well-being</strong> <span class="zh">情感披露更多者疼痛更少、幸福感更高</span></li>
+        <li>Benefits also in PTSD (Sloan et al., 2015) and eating disorders (Weber et al., 2006)</li>
+      </ul>
+      <div class="inline-good">✓ Ideally engaged with the intent of resolving or working through things. <span class="zh">理想情况下以解决问题为目的</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Recommended Coping Strategies 推荐策略汇总</div>
+      <div class="criteria-grid">
+        <div class="criteria-item"><div class="label">① Problem-solve</div><p>Deal with things directly. <span class="zh">直接处理问题</span></p></div>
+        <div class="criteria-item"><div class="label">② Disclosure</div><p>Process and express your feelings. <span class="zh">处理并表达情感</span></p></div>
+        <div class="criteria-item"><div class="label">③ Positive Reappraisal</div><p>Engage positive emotions; find benefits &amp; meaning. <span class="zh">调动积极情绪，寻找意义</span></p></div>
+        <div class="criteria-item"><div class="label">④ Acceptance</div><p>Accommodate to the stressor as needed. <span class="zh">接受压力源</span></p></div>
+        <div class="criteria-item"><div class="label">⑤ Social Support</div><p>Find support and collaborate. <span class="zh">寻求支持与合作</span></p></div>
+        <div class="criteria-item"><div class="label">⑥ Nature &amp; Animals</div><p>Interact with animals · nature · meditate. <span class="zh">与动物互动·接触自然·冥想</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resilience -->
+  <section class="section" id="resilience">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>Resilience &amp; Helpful Traits 韧性与人格特质</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Psychological Resilience (Hopf, 2010) 心理韧性</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;"><span class="kw">Positive adaptation or successful coping</span> after a stressful or adverse situation — recovery without a lasting impact. <span class="zh">在压力或逆境后的积极适应，从压力中恢复而不留持久影响</span></p>
+      <div class="def-grid" style="margin-top:.75rem;">
+        <div class="def-card c-teal"><div class="def-badge">Self-Esteem 自尊</div><p>Positive regard for oneself. <span class="zh">对自己的正面评价</span></p></div>
+        <div class="def-card c-purple"><div class="def-badge">Personal Control 个人控制感</div><p>Belief in one's ability to influence outcomes. <span class="zh">相信自己能影响结果</span></p></div>
+        <div class="def-card c-amber"><div class="def-badge">Optimism 乐观</div><p>Expectation that good things will happen. <span class="zh">期待好事发生</span></p></div>
+      </div>
+      <div class="inline-good">✓ Similar to hardiness: control + commitment + challenge <span class="zh">类似坚韧性</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Health Outcomes of Resilience in Old Age (MacLeod et al., 2016)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 2rem;margin-top:.5rem;">
+        <div style="font-size:13.5px;padding:5px 0;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;">✓</span> Improved quality of life <span class="zh">生活质量提升</span></div>
+        <div style="font-size:13.5px;padding:5px 0;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;">✓</span> Faster cardiovascular recovery <span class="zh">心血管恢复更快</span></div>
+        <div style="font-size:13.5px;padding:5px 0;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;">✓</span> Increased longevity &amp; lower mortality <span class="zh">寿命增加，死亡风险降低</span></div>
+        <div style="font-size:13.5px;padding:5px 0;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;">✓</span> Better mental health &amp; well-being <span class="zh">心理健康更好</span></div>
+        <div style="font-size:13.5px;padding:5px 0;display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;">✓</span> Lower rates of depression <span class="zh">抑郁率更低</span></div>
+        <div style="font-size:13.5px;padding:5px 0;display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;">✓</span> Higher life satisfaction <span class="zh">生活满意度更高</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Other Helpful Traits 其他有益特质</div>
+      <ul class="detail">
+        <li><span class="kw">Sense of coherence</span> — seeing life as manageable and meaningful <span class="zh">连贯感</span></li>
+        <li><span class="kw">Optimism</span> — expectation that good things will happen <span class="zh">乐观主义</span></li>
+        <li><span class="kw">Low neuroticism</span> / high emotional stability <span class="zh">低神经质/高情绪稳定性</span></li>
+        <li>High <span class="kw">extraversion, agreeableness, conscientiousness</span> <span class="zh">高外向性、宜人性、尽责性</span></li>
+        <li><span class="kw">Type B personality</span> — low competitiveness, low hostility <span class="zh">B型人格</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Social Support -->
+  <section class="section" id="social">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>Social Support &amp; Networks 社会支持与社交网络</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Key Distinction 关键区别</div>
+      <div class="split-grid">
+        <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:10px;padding:1.2rem;">
+          <h4 style="font-weight:700;font-size:14px;color:var(--teal-dark);margin-bottom:6px;">Social Support 社会支持</h4>
+          <p style="font-size:13px;color:var(--gray);">Functional <strong>content and quality</strong> of social relationships. <span class="zh">社会关系的功能内容与质量</span></p>
+        </div>
+        <div style="background:var(--purple-light);border:1px solid #CECBF6;border-radius:10px;padding:1.2rem;">
+          <h4 style="font-weight:700;font-size:14px;color:var(--purple);margin-bottom:6px;">Social Networks 社交网络</h4>
+          <p style="font-size:13px;color:var(--gray);"><strong>Number</strong> of social relationships; degree of social integration. <span class="zh">社会关系的数量；社会整合程度</span></p>
+        </div>
+      </div>
+      <div class="inline-good">✓ Quality matters more to health, but quantity DOES still matter (Ozbay et al., 2007). <span class="zh">质量更重要，但数量也有影响</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Types of Social Support 社会支持类型</div>
+      <div class="criteria-grid">
+        <div class="criteria-item"><div class="label">Emotional / Esteem</div><p>Feeling loved, cared for, valued; empathy. <span class="zh">情感/尊重支持</span></p></div>
+        <div class="criteria-item"><div class="label">Tangible / Instrumental</div><p>Receiving material aid or assistance. <span class="zh">有形/工具性支持</span></p></div>
+        <div class="criteria-item"><div class="label">Informational</div><p>Getting advice and information. <span class="zh">信息支持</span></p></div>
+        <div class="criteria-item"><div class="label">Companionship</div><p>Availability of others to spend time with. <span class="zh">陪伴支持</span></p></div>
+        <div class="criteria-item" style="border-left-color:var(--amber);"><div class="label" style="color:var(--amber);">Invisible Support</div><p>Support given without recipient's awareness; often more effective (Bolger et al., 2000). <span class="zh">隐性支持：往往更有效</span></p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Stress Buffering Hypothesis 压力缓冲假说</div>
+      <ul class="detail">
+        <li>Social support <span class="kw">buffers the impact of stress</span> on health <span class="zh">社会支持缓冲压力对健康的冲击</span></li>
+        <li>Gellert et al. (2018): high social support buffered negative effect of perceived stress on quality of life in dementia couples <span class="zh">在痴呆症夫妇中，高社会支持缓冲了压力对生活质量的影响</span></li>
+        <li><span class="kw">Tend-and-Befriend</span> (Taylor et al., 2000): social stress response mediated by <strong>oxytocin</strong> <span class="zh">趋向-交友反应，由催产素介导</span></li>
+        <li>Providing support also benefits health: ↓ hypertension (Sneed &amp; Cohen, 2013), ↓ depression (Creaven et al., 2017) <span class="zh">提供支持也有益健康</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Maladaptive Forms &amp; Risks 不良支持与风险</div>
+      <ul class="detail">
+        <li><span class="kw">Protective Buffering</span> — withholding information to "protect"; maladaptive for both parties <span class="zh">保护性缓冲：对双方均有不良影响</span></li>
+        <li><span class="kw">Solicitousness</span> — helping without request; also maladaptive <span class="zh">过度关心：也有不良影响</span></li>
+        <li>Holt-Lunstad et al. (2015) meta-analysis: loneliness <span class="kw">+29%</span> mortality, social isolation <span class="kw">+26%</span>, living alone <span class="kw">+32%</span> <span class="zh">孤独/社会隔离/独居均增加早逝风险</span></li>
+        <li>Cohen et al. (1997): &lt;4 social roles → <span class="kw">4× more likely</span> to contract a cold <span class="zh">社会角色类型少者感冒风险高4倍</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- HAI -->
+  <section class="section" id="hai">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>Human-Animal Interaction (HAI) 人与动物互动</h2>
+    </div>
+
+    <div class="quote-block">
+      <strong>Beetz et al. (2012)</strong> meta-analysis of 69 HAI studies — comprehensive evidence base for physiological and psychosocial benefits.
+      <cite>关键文献：Beetz等(2012)对69项HAI研究的元分析</cite>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Benefits of HAI HAI的益处</div>
+      <div class="split-grid">
+        <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:10px;padding:1.2rem;">
+          <h4 style="font-weight:700;font-size:13px;color:var(--teal-dark);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em;">Physiological 生理益处</h4>
+          <ul style="list-style:none;">
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">↓ Blood pressure &amp; improved cardiovascular health</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">↑ Enhanced immune function</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">↓ Cortisol output</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">↑ Survival time after heart attack (dog owners)</li>
+          </ul>
+        </div>
+        <div style="background:var(--purple-light);border:1px solid #CECBF6;border-radius:10px;padding:1.2rem;">
+          <h4 style="font-weight:700;font-size:13px;color:var(--purple);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em;">Psychosocial 心理社会益处</h4>
+          <ul style="list-style:none;">
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">↑ Improved mood</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">↓ Anxiety &amp; impact of stress</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">↓ Fear &amp; aggression</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">↑ Trust of others</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Animals vs. Humans as Support &amp; Mechanisms 机制</div>
+      <ul class="detail">
+        <li>Allen et al. (2002): pet owners showed <span class="kw">lower stress reaction AND faster recovery</span> than non-owners who had a friend present <span class="zh">宠物主人比有朋友陪同的非宠物主人压力反应更低且恢复更快</span></li>
+        <li>In married couples: pet presence <span class="kw">attenuated stress more than the spouse's presence</span> <span class="zh">宠物在场比配偶更能减轻压力反应</span></li>
+        <li>Mechanism: <span class="kw">oxytocin system activation</span> (Beetz et al., 2012) — released in both humans and animals via touch/petting and mutual gaze <span class="zh">机制：催产素系统激活，抚摸和对视均可触发</span></li>
+        <li>Even viewing an aquarium lowers blood pressure/heart rate (DeSchriver &amp; Riddick, 1990) <span class="zh">观看水族箱也可降低血压和心率</span></li>
+      </ul>
+      <div class="inline-warn">⚠ Limitations in HAI research: lack of standardized measures, small samples, short-term outcomes (Gee et al., 2017). <span class="zh">局限：缺乏标准化测量，样本小，短期结果</span></div>
+    </div>
+  </section>
+
+  <!-- Nature -->
+  <section class="section" id="nature">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>Nature &amp; Health 自然与健康</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Physical Health Benefits (Twohig-Bennett &amp; Jones, 2018 — 143 studies)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:.75rem 0;">
+        <div style="background:var(--teal-light);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--teal-dark);">↓ Heart rate &amp; blood pressure</div>
+        <div style="background:var(--teal-light);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--teal-dark);">↓ Salivary cortisol</div>
+        <div style="background:var(--teal-light);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--teal-dark);">↓ Type 2 diabetes incidence</div>
+        <div style="background:var(--teal-light);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--teal-dark);">↓ All-cause &amp; cardiovascular mortality</div>
+      </div>
+      <ul class="detail">
+        <li>Mechanisms: physical activity, social interaction, sunlight, ↓ pollution, <span class="kw">"old friends" hypothesis</span> (microorganism exposure for immune development) <span class="zh">机制：体育活动、社会互动、阳光、"老朋友"假说</span></li>
+        <li>UBC Study (Fell, 2010): visual presence of wood lowers <span class="kw">sympathetic nervous system (SNS) activation</span> <span class="zh">视觉上有木材可降低交感神经系统激活</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Mental Health &amp; Tree Cover 心理健康与树木</div>
+      <ul class="detail">
+        <li>Lower risk of mental illness (De Vries et al., 2003) <span class="zh">降低精神疾病风险</span></li>
+        <li>Bratman et al. (2015): 90-min nature walk → ↓ rumination + ↓ activity in depression-related brain regions vs. urban walk <span class="zh">90分钟自然漫步→减少反刍，减少抑郁相关脑区活动</span></li>
+        <li>Jiang et al. (2016): <span class="kw">dose-response</span> relationship between urban street tree density and self-reported stress recovery <span class="zh">树木密度与压力恢复呈线性剂量反应关系</span></li>
+        <li><span class="kw">Shinrin-Yoku 森林浴</span>: 3-day forest bathing → ↑ natural killer cell activity (Qing, 2009) <span class="zh">3天森林浴后自然杀伤细胞活性增加</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Mindfulness -->
+  <section class="section" id="mindfulness">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>Meditation &amp; Mindfulness 冥想与正念</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Meditation 冥想</div>
+      <ul class="detail">
+        <li>Broadly refers to practices that induce a <span class="kw">calm, peaceful, or relaxed state</span> <span class="zh">产生平静或放松状态的各种实践</span></li>
+        <li>Suggested to create a <span class="kw">"relaxation response"</span> as alternative to the stress response (Benson, 1984) <span class="zh">能产生"放松反应"作为压力反应的替代</span></li>
+        <li>Alleviates stress, ↓ blood pressure, ↑ immune function (Barnes et al., 2004; Davidson et al., 2003; Jain et al., 2007) <span class="zh">减轻压力，降低血压，增强免疫功能</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Mindfulness 正念</div>
+      <ul class="detail">
+        <li>Intentionally focused awareness of one's <span class="kw">immediate inner and outer experiences</span> <span class="zh">对内外即时体验的有意识关注</span></li>
+        <li>Moment-by-moment attention to thoughts, emotions, sensations, surroundings <span class="zh">对思想、情绪、感觉、周围环境的逐刻注意</span></li>
+        <li><span class="kw">Lack of judgment</span>; simple observation. Combined successfully with <strong>CBT</strong>. <span class="zh">不加评判；简单观察；与CBT成功结合</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Research Evidence 研究证据</div>
+      <table class="cmp-table">
+        <thead><tr><th>Study</th><th>Sample</th><th>Findings</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Khoury et al. (2013) MBT</td>
+            <td>209 studies, 12,145 participants</td>
+            <td>Moderately effective for depression, anxiety, stress; comparable to CBT. <span class="zh">与CBT效果相当</span></td>
+          </tr>
+          <tr>
+            <td>Khoury et al. (2015) MBSR</td>
+            <td>29 studies, 2,668 healthy individuals</td>
+            <td>Moderately effective for stress, depression, anxiety; improves quality of life. <span class="zh">改善生活质量</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="inline-good">✓ How to practice: set aside time to observe the moment · body scan · focus on breathing · observe thoughts without judgment <span class="zh">留出时间观察当下·身体扫描·专注呼吸·不加评判地观察思想</span></div>
+    </div>
+  </section>
+
+  <!-- Objectives -->
+  <section class="section" id="objectives">
+    <div class="section-header">
+      <div class="section-num">✓</div>
+      <h2>Learning Objectives 学习目标</h2>
+    </div>
+    <div class="objectives">
+      <h3>After this lecture, you should be able to: 完成本讲后，你应能：</h3>
+      <ol>
+        <li>Define coping and its primary functions (with examples). <span class="zh">定义应对及其主要功能</span></li>
+        <li>Discuss effective coping and stress management strategies. <span class="zh">讨论有效的应对和压力管理策略</span></li>
+        <li>Distinguish social support vs. social networks; compare direct effects model &amp; stress buffering hypothesis. <span class="zh">区分社会支持与社交网络；比较两种模型</span></li>
+        <li>Name and distinguish among types of social support; identify less healthy forms. <span class="zh">命名并区分各类社会支持，识别不良支持形式</span></li>
+        <li>Consider the role of online social media/technology in health. <span class="zh">考虑社交媒体和技术在健康中的作用</span></li>
+        <li>Describe and critically evaluate HAI research findings, including underlying mechanisms. <span class="zh">描述并批判性思考HAI研究发现及机制</span></li>
+        <li>Discuss the role of nature in physical and mental health. <span class="zh">讨论自然对身心健康的作用</span></li>
+        <li>Discuss meditation and mindfulness as means of stress management. <span class="zh">讨论冥想与正念作为压力管理手段</span></li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
