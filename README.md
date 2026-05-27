@@ -1,2 +1,2 @@
 # psych-notes
-心理学学习笔记
+UBC PSYC
