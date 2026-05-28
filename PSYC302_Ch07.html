@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.7 幼儿期身体与认知发展</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .split-box{border-radius:10px;padding:1.2rem;}
+  .split-box.good{background:var(--teal-light);border:1px solid #9FE1CB;}
+  .split-box.bad{background:var(--coral-light);border:1px solid #F5C4B3;}
+  .split-box h4{font-size:14px;font-weight:700;margin-bottom:.5rem;}
+  .split-box.good h4{color:var(--teal-dark);}
+  .split-box.bad h4{color:var(--coral);}
+  .split-box ul{list-style:none;}
+  .split-box li{font-size:13px;color:var(--gray);padding:3px 0 3px 16px;position:relative;line-height:1.55;}
+  .good li::before{content:'✓';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .bad li::before{content:'✗';position:absolute;left:0;font-weight:700;color:var(--coral);}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3,.split-grid{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.7</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 7</div>
+    <h1>第七章：幼儿期身体与认知发展<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">Physical &amp; Cognitive Development in Early Childhood (2–6岁)</span></h1>
+    <div class="hero-sub">身体与大脑 · 前运算阶段 · Vygotsky · 信息加工 · 心理理论 · 语言发展</div>
+  </div>
+</div>
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#physical">身体与大脑</a></li>
+    <li><a href="#preop">前运算阶段</a></li>
+    <li><a href="#limits">认知局限</a></li>
+    <li><a href="#vygotsky">Vygotsky</a></li>
+    <li><a href="#infoproc">信息加工</a></li>
+    <li><a href="#tom">心理理论</a></li>
+    <li><a href="#language">语言发展</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+<main class="main">
+
+<section class="section" id="physical">
+  <div class="section-header"><div class="section-num">1</div><h2>身体与大脑发展 Physical &amp; Brain Development</h2></div>
+  <div class="card">
+    <div class="card-title">身体生长 Body Growth</div>
+    <ul class="dl">
+      <li>2-6岁：身高每年增加约6-7cm；体重每年增加约2-3kg（比婴幼儿期慢）</li>
+      <li>"婴儿肥（baby fat）"减少；身体比例更接近成人——腹部平坦、腿部延长</li>
+      <li>乳牙（primary teeth）在5-6岁开始脱落；女孩略早于男孩</li>
+      <li>营养不良或疾病（如麻疹）会延缓生长；肥胖会加速骨骼成熟</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">大脑发育 Brain Development</div>
+    <ul class="dl">
+      <li>2-6岁：大脑从成人70%重量增至90%；突触大量形成→突触修剪→能量代谢峰值在4-5岁</li>
+      <li><strong>前额叶皮质（prefrontal cortex）</strong>发展：执行功能（EF）快速进步——抑制控制、工作记忆、认知灵活性</li>
+      <li>左半球（语言）在3-6岁特别活跃→语言爆发；右半球（空间）持续增长</li>
+      <li>小脑（cerebellum）：运动协调进步；海马体（hippocampus）：记忆能力提升；杏仁核（amygdala）：情绪信息加工</li>
+      <li>胼胝体（corpus callosum）：连接两半球，随年龄髓鞘化→两半球协调增强</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">运动发展 Motor Development</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">粗大运动 Gross-Motor</p>
+        <ul class="dl">
+          <li>3岁：可在宽线上走；可上楼梯</li>
+          <li>4岁：可跳；可单脚跳；骑三轮车</li>
+          <li>5岁：可跳绳；跑步协调；骑自行车</li>
+          <li>男孩在力量和爆发力上略有优势；女孩在平衡和柔韧性上略有优势</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">精细运动 Fine-Motor</p>
+        <ul class="dl">
+          <li>3岁：可用叉子；可画简单形状</li>
+          <li>4岁：可用剪刀；可画有识别特征的人</li>
+          <li>5岁：可写字母；可系鞋带</li>
+          <li>绘画：涂鸦→形状→图形符号→写实（亚裔文化儿童在绘画上表现更好，与观察和训练有关）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="preop">
+  <div class="section-header"><div class="section-num">2</div><h2>Piaget 前运算阶段 Preoperational Stage (2–7岁)</h2></div>
+  <div class="card">
+    <div class="card-title">重要认知进步 Major Advances</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>符号功能（symbolic function）</strong>：用符号（词语、图像、手势）代表不在场的事物</li>
+        <li><strong>假装游戏（make-believe play）</strong>：迅速发展，从简单→复杂，从以自我为中心→以玩伴/玩具为对象→联合角色扮演</li>
+        <li>假装游戏的功能：练习社会角色、调节情绪、发展语言和叙事能力</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>符号-现实关系理解（symbol-real world relations）</strong>：约3岁理解图片表示真实物体；约2.5岁理解比例模型表示房间</li>
+        <li>心理空间能力（mental rotation）：逐渐发展</li>
+        <li>分类（categorization）：已会按颜色、形状等基本属性分类</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="limits">
+  <div class="section-header"><div class="section-num">3</div><h2>前运算阶段的认知局限 Limitations of Preoperational Thought</h2></div>
+  <div class="card">
+    <div class="card-title">四大局限 Four Main Limitations</div>
+    <div class="grid2">
+      <div class="cc co">
+        <div class="badge">自我中心 Egocentrism</div>
+        <h4>难以从他人视角看问题</h4>
+        <p><strong>三山实验（three-mountains task）</strong>：幼儿不能描述从另一侧看山的样子，以为所有人看到和自己一样的视角。</p>
+        <p style="margin-top:4px;font-size:12px;color:var(--coral);">后续研究：简化任务中（如"警察找孩子"），3岁儿童就能理解他人视角——说明Piaget高估了自我中心程度。</p>
+      </div>
+      <div class="cc am">
+        <div class="badge">中心化 Centration</div>
+        <h4>只关注事物的一个方面</h4>
+        <p>忽略其他相关方面。如在守恒任务中只关注高度，忽略宽度。</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">守恒缺失 Lack of Conservation</div>
+        <h4>不理解外观变化不改变数量</h4>
+        <p><strong>液体守恒</strong>：同量水倒入不同容器，认为高细杯"更多"。<br>
+        <strong>数量守恒</strong>：同数量硬币展开后，认为展开的"更多"。</p>
+        <p style="margin-top:4px;font-size:12px;color:var(--purple);">原因：中心化 + 不可逆性。</p>
+      </div>
+      <div class="cc bl">
+        <div class="badge">不可逆性 Irreversibility</div>
+        <h4>无法在心理上逆转操作步骤</h4>
+        <p>如不能从结果推回到起始状态。与守恒缺失密切相关。</p>
+      </div>
+    </div>
+    <div class="note-amber">⚑ 另一重要局限：<strong>表象推理（transductive reasoning）</strong>——从特殊到特殊推理，非归纳或演绎。如"我今天没睡午觉，所以今天不是下午。"</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">对前运算阶段的评估 Evaluation</div>
+    <div class="split-grid">
+      <div class="split-box good">
+        <h4>✓ Piaget的贡献</h4>
+        <ul>
+          <li>正确描述了幼儿思维的定性特征</li>
+          <li>揭示了儿童是主动的知识建构者</li>
+          <li>阶段性转变的基本观念获支持</li>
+        </ul>
+      </div>
+      <div class="split-box bad">
+        <h4>✗ 主要批评</h4>
+        <ul>
+          <li>低估幼儿能力：简化任务下能力更强</li>
+          <li>高估了自我中心的程度</li>
+          <li>忽视了社会文化和情境因素</li>
+          <li>训练可以提前引出守恒——质疑阶段的刚性</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="vygotsky">
+  <div class="section-header"><div class="section-num">4</div><h2>Vygotsky 理论在幼儿期的应用</h2></div>
+  <div class="card">
+    <div class="card-title">私语 Private Speech</div>
+    <ul class="dl">
+      <li><span class="kw">私语（private speech）</span>：幼儿自言自语（2-7岁高峰）——不是为了与他人交流，而是自我引导思维</li>
+      <li>Piaget 认为是"自我中心言语"（egocentric speech），发展中会消失</li>
+      <li>Vygotsky 认为是<strong>认知发展的重要工具</strong>：从社会言语→私语→内部言语（inner speech）</li>
+      <li>私语在任务困难时最多；随年龄内化为无声的内部言语</li>
+      <li>研究支持Vygotsky：使用私语更多的幼儿在任务上表现更好！</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vygotsky 视角下的游戏 Make-Believe Play</div>
+    <ul class="dl">
+      <li>Vygotsky 认为假装游戏是<strong>学习的最佳情境</strong>：儿童在游戏中的能力总是高于日常表现（处于ZPD）</li>
+      <li>游戏中儿童<strong>遵守内化规则</strong>（如"当妈妈要照顾宝宝"），练习自我调节</li>
+      <li>游戏创造了ZPD，有助于发展抑制冲动、调节情绪、进行合作</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">早期教育的文化差异 Cultural Variations</div>
+    <ul class="dl">
+      <li>西方文化：语言化解释（verbal explanation）为主的支架</li>
+      <li>村落/部落文化：儿童通过<strong>观察成人工作并逐步参与</strong>来学习（learning through guided participation）</li>
+      <li>两种方式都有效，强调 Vygotsky 的社会文化学习理论是跨文化的</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="infoproc">
+  <div class="section-header"><div class="section-num">5</div><h2>信息加工 Information Processing</h2></div>
+  <div class="card">
+    <div class="card-title">执行功能 Executive Function (EF)</div>
+    <ul class="dl">
+      <li>3-6岁：EF快速发展，包括<strong>抑制控制（inhibitory control）</strong>、工作记忆（working memory）、认知灵活性（cognitive flexibility）</li>
+      <li>父母的温暖回应和支架促进EF发展；反之，苛刻/不一致的养育损害EF</li>
+      <li>游戏（尤其是有规则的社会戏剧性游戏）促进EF发展</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">记忆 Memory</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>情节记忆（episodic memory）</strong>：记住特定时间/地点的事件；3-4岁后快速发展</li>
+        <li><strong>脚本（scripts）</strong>：对重复性日常事件（如用餐、洗澡）的概括性记忆</li>
+        <li>记忆策略（rehearsal, organization）在幼儿期尚不成熟</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>叙事记忆（narrative memory）</strong>：以故事形式组织记忆；受文化影响（西方儿童更详细、更自我中心）</li>
+        <li>父母的<strong>精细化回忆（elaborative reminiscing）</strong>——问"当时还有什么？"——促进幼儿记忆发展</li>
+        <li>自传体记忆（autobiographical memory）：对个人经历的持久记忆，与自我意识和语言发展有关</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tom">
+  <div class="section-header"><div class="section-num">6</div><h2>心理理论 Theory of Mind</h2></div>
+  <div class="card">
+    <div class="card-title">什么是心理理论？</div>
+    <p style="font-size:13.5px;margin-bottom:.75rem;"><span class="kw">心理理论（theory of mind, ToM）</span>：理解<strong>心理状态（mental states）</strong>（信念、愿望、意图、知识、情绪）的能力，并认识到这些状态可以影响行为，且可能与现实不同。</p>
+    <ul class="dl">
+      <li>约<strong>2-3岁</strong>：理解他人有不同的愿望（desires），基本感知到他人的情绪</li>
+      <li>约<strong>4岁</strong>：通过<strong>错误信念任务（false-belief task）</strong>——理解他人可以持有与现实不符的信念</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">错误信念任务 False-Belief Task (Wimmer &amp; Perner, 1983)</div>
+    <div style="background:var(--gray-light);border-radius:8px;padding:1rem 1.25rem;margin-bottom:1rem;">
+      <p style="font-size:13.5px;">经典版本：Maxi把糖果放在蓝色盒子里，然后出去玩。妈妈把糖果移到绿色盒子里。Maxi回来后，他会去<strong>哪里</strong>找糖果？<br><br>
+      <strong>3岁</strong>：通常说绿色盒子（现实所在）——不能区分自己的知识和Maxi的错误信念<br>
+      <strong>4岁</strong>：说蓝色盒子——理解Maxi只知道他原来放的地方</p>
+    </div>
+    <ul class="dl">
+      <li>通过错误信念任务是ToM发展的重要里程碑</li>
+      <li>促进因素：假装游戏、与兄弟姐妹和同伴的互动、父母谈论心理状态、语言发展</li>
+      <li><strong>自闭症（autism spectrum disorder, ASD）</strong>：ToM发展延迟或障碍（<strong>心盲 mindblindness，Baron-Cohen</strong>）——难以推断他人的心理状态</li>
+    </ul>
+    <div class="note-amber">⚑ 错误信念任务是考试高频考点！记住：3岁=现实偏误（reality bias）；4岁=理解错误信念。</div>
+  </div>
+</section>
+
+<section class="section" id="language">
+  <div class="section-header"><div class="section-num">7</div><h2>幼儿期语言发展 Language Development</h2></div>
+  <div class="card">
+    <div class="card-title">词汇与语法 Vocabulary &amp; Grammar</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li>2岁：约200-300词；6岁：约10,000-14,000词</li>
+        <li><strong>快速映射（fast-mapping）</strong>：仅需1-2次接触即可推断新词含义</li>
+        <li>通过多种策略推断词义：句法线索（syntactic bootstrapping）、语用线索（pragmatic cues）、物体约束（whole-object assumption）</li>
+      </ul>
+      <ul class="dl">
+        <li>语法（grammar）迅速复杂化：多词句→疑问句→否定句→被动句等</li>
+        <li><strong>过度规则化（overregularization）</strong>：将规则过度应用于不规则词——"goed"（went的过度规则化）、"foots"——说明儿童主动学习规则</li>
+        <li>理解先于产出（comprehension before production）原则仍适用</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">会话能力 Conversation</div>
+    <ul class="dl">
+      <li>4岁：开始根据听者调整语言（对婴儿说得更简单，对成人更复杂）——<strong>注册调整（register shifting）</strong></li>
+      <li>叙事（narrative）能力：5-6岁可讲述有主题、有逻辑的故事</li>
+      <li>理解言语行为（speech acts）：字面意思 vs. 意图（讽刺、比喻）在幼儿期晚期逐渐理解</li>
+    </ul>
+  </div>
+</section>
+
+<div class="objectives" id="objectives">
+  <h3>第七章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>描述2-6岁身体生长特征和大脑发育的关键变化（前额叶、侧化、胼胝体）。</li>
+    <li>描述粗大运动和精细运动在幼儿期的主要进步。</li>
+    <li>说明前运算阶段的主要认知进步（符号功能、假装游戏）。</li>
+    <li>描述前运算阶段的四大局限（自我中心、中心化、守恒缺失、不可逆性），并举例说明。</li>
+    <li>解释Piaget守恒任务（液体守恒）的过程和幼儿的错误原因。</li>
+    <li>解释Vygotsky的私语（private speech）概念，对比Piaget和Vygotsky的解释。</li>
+    <li>描述幼儿期执行功能的发展；说明记忆（情节记忆、叙事记忆、脚本）的特点。</li>
+    <li>定义心理理论（theory of mind）；描述错误信念任务及4岁前后的表现差异。</li>
+    <li>说明自闭症与心理理论发展的关系；描述影响ToM发展的主要因素。</li>
+    <li>描述快速映射（fast-mapping）和过度规则化（overregularization）现象及其意义。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>

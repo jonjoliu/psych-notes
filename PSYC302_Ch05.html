@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.5 婴幼儿期认知发展</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .note-purple{background:var(--purple-light);border-left:3px solid var(--purple);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--purple);margin-top:10px;}
+  .timeline{margin:1rem 0;}
+  .tl-item{display:flex;gap:14px;margin-bottom:.75rem;align-items:flex-start;}
+  .tl-dot{min-width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+  .tl-content{flex:1;background:var(--card-bg);border:1px solid var(--gray-border);border-radius:8px;padding:.75rem 1rem;}
+  .tl-content h4{font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:3px;}
+  .tl-content p{font-size:13px;color:var(--gray);line-height:1.55;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.5</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 5</div>
+    <h1>第五章：婴幼儿期认知发展<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">Cognitive Development in Infancy and Toddlerhood (0–2岁)</span></h1>
+    <div class="hero-sub">Piaget感知运动阶段 · 信息加工 · Vygotsky理论 · 语言发展</div>
+  </div>
+</div>
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#piaget">Piaget 感知运动</a></li>
+    <li><a href="#followup">后续研究</a></li>
+    <li><a href="#infoproc">信息加工</a></li>
+    <li><a href="#vygotsky">Vygotsky</a></li>
+    <li><a href="#language">语言发展</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+<main class="main">
+
+<section class="section" id="piaget">
+  <div class="section-header"><div class="section-num">1</div><h2>Piaget 感知运动阶段 The Sensorimotor Stage (0–2岁)</h2></div>
+
+  <div class="card">
+    <div class="card-title">Piaget 核心认知概念 Core Concepts</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>图式（scheme）</strong>：用于理解和应对世界的有组织的思维/行动模式</li>
+        <li><strong>同化（assimilation）</strong>：将新信息纳入现有图式（扭曲信息以适应图式）</li>
+        <li><strong>顺应（accommodation）</strong>：修改现有图式或创建新图式以适应新信息</li>
+        <li><strong>平衡（equilibration）</strong>：同化与顺应之间动态平衡的过程；推动认知进步</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>组织（organization）</strong>：将图式整合成内部一致的系统</li>
+        <li>婴幼儿以<strong>感觉和运动（senses and motor actions）</strong>来思考世界</li>
+        <li>感知运动阶段最重要的成就：<strong>客体永久性（object permanence）</strong>和<strong>心理表征（mental representation）</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">感知运动阶段六个子阶段 Six Substages</div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot">0-1m</div><div class="tl-content"><h4>子阶段一：反射图式 Reflexive Schemes</h4><p>以先天反射（吸吮、抓握）应对世界；开始修改反射适应不同情境</p></div></div>
+      <div class="tl-item"><div class="tl-dot">1-4m</div><div class="tl-content"><h4>子阶段二：初级循环反应 Primary Circular Reactions</h4><p>重复涉及<strong>自身身体</strong>的偶然愉快动作（如吸吮手指）；"初级"=围绕自身</p></div></div>
+      <div class="tl-item"><div class="tl-dot">4-8m</div><div class="tl-content"><h4>子阶段三：次级循环反应 Secondary Circular Reactions</h4><p>重复作用于<strong>外部环境</strong>产生有趣效果的动作（如踢腿让摇篮铃响）；开始有意图性；"次级"=作用于外部</p></div></div>
+      <div class="tl-item"><div class="tl-dot">8-12m</div><div class="tl-content"><h4>子阶段四：协调次级图式 Coordination of Secondary Schemes</h4><p><strong>有目的、有意图</strong>的行为（手段-目的分离）；<strong>客体永久性（object permanence）</strong>初步出现；<strong>A-not-B错误</strong>：在B处藏物后，仍向A处搜寻</p></div></div>
+      <div class="tl-item"><div class="tl-dot">12-18m</div><div class="tl-content"><h4>子阶段五：第三级循环反应 Tertiary Circular Reactions</h4><p>主动<strong>尝试新方法</strong>探索世界；"小科学家"——通过实验发现新方法；<strong>可见位移（visible displacement）</strong>：可追踪看到的藏物动作</p></div></div>
+      <div class="tl-item"><div class="tl-dot">18-24m</div><div class="tl-content"><h4>子阶段六：心理结合 Mental Combinations</h4><p>内部<strong>心理表征（mental representation）</strong>开始；<strong>延迟模仿（deferred imitation）</strong>：几小时/天后模仿行为；<strong>假装游戏（make-believe play）</strong>开始；<strong>不可见位移（invisible displacement）</strong>：可追踪未看到的藏物</p></div></div>
+    </div>
+    <div class="note-amber">⚑ 考试高频：A-not-B错误 = 子阶段四；延迟模仿 = 子阶段六；客体永久性初现 = 子阶段四（约8-12月），完全发展 = 子阶段六（约18-24月）。</div>
+  </div>
+</section>
+
+<section class="section" id="followup">
+  <div class="section-header"><div class="section-num">2</div><h2>感知运动阶段的后续研究 Follow-Up Research</h2></div>
+  <div class="card">
+    <div class="card-title">Piaget低估了婴儿的能力 Piaget Underestimated Infants</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">客体永久性更早出现</p>
+        <ul class="dl">
+          <li>Baillargeon（1987）的<strong>违背预期范式（violation of expectation method）</strong>：婴儿注视"不可能"事件（如固体物体穿过另一物体）更久</li>
+          <li>研究显示3-4个月婴儿已有基本客体永久性；远早于Piaget预测的8-12个月</li>
+          <li>解释：执行错误（execution error）vs. 认知能力——婴儿知道但不能协调行动</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">心理表征更早出现</p>
+        <ul class="dl">
+          <li>Meltzoff：新生儿模仿面部表情（吐舌头），表明很早就有基本表征能力（但有争议）</li>
+          <li>延迟模仿：6个月婴儿即可延迟24小时后模仿；远早于Piaget预测的18-24个月</li>
+          <li>符号理解（symbolic understanding）：9个月→理解图片；14-19个月→理解视频中的物体位置</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note-teal">✓ 核心结论：Piaget的<strong>定性描述</strong>基本正确（不同阶段的思维方式确实不同），但<strong>时间线</strong>不准确——婴儿能力远比Piaget认为的更早出现。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">数量认知 Numerical Knowledge</div>
+    <ul class="dl">
+      <li>Wynn（1992）：5个月婴儿可区分1+1=2 vs. 1+1=1的"正确"和"不可能"结果，盯着"不可能"结果更久</li>
+      <li>研究表明婴儿有基本<strong>数量感知（numerical knowledge）</strong>——能区分少量物体的数量变化</li>
+      <li>但争议较多：这是真正的数学理解，还是对变化的一般敏感性？</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="infoproc">
+  <div class="section-header"><div class="section-num">3</div><h2>信息加工理论 Information Processing</h2></div>
+
+  <div class="card">
+    <div class="card-title">注意 Attention</div>
+    <ul class="dl">
+      <li><strong>习惯化（habituation）</strong>：对重复呈现的刺激注意减少——反映婴儿有基本记忆和辨别能力</li>
+      <li><strong>去习惯化（dishabituation）</strong>：引入新刺激后注意恢复——说明婴儿注意到了"新事物"</li>
+      <li>习惯化/去习惯化速度是预测后期认知发展的重要指标（快速习惯化=信息处理效率高）</li>
+      <li>随年龄增长：从外部导向（externally controlled）→内部导向（internally controlled）；持续注意时间延长；注意更有选择性</li>
+      <li><strong>共同注意（joint attention）</strong>：约9-12个月，婴儿开始与他人共同关注一个目标；是语言习得的重要基础</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">记忆 Memory</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>再认记忆（recognition memory）</strong>：识别曾见过的事物；出生时已存在</li>
+        <li><strong>回忆记忆（recall memory）</strong>：无外部线索下再现信息；发展较晚</li>
+        <li>3个月：可记忆操作移动铃铛的动作约1周；提示后可延长到数周</li>
+        <li>随年龄增长：记忆保留时间延长；提取更灵活</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>婴儿期失忆（infantile amnesia）</strong>：成年后无法回忆2-3岁前的情节记忆</li>
+        <li>原因：①语言和自我意识发展不完善；②海马体（hippocampus）未成熟；③记忆组织方式不同</li>
+        <li>早期记忆并非完全消失——内隐记忆（implicit memory）可保留，影响后续行为</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">执行功能 Executive Function</div>
+    <ul class="dl">
+      <li><strong>执行功能（executive function, EF）</strong>：管理思维、行动和情绪的高级认知过程；依赖前额叶皮质</li>
+      <li>核心成分：<strong>抑制控制（inhibitory control）、工作记忆（working memory）、认知灵活性（cognitive flexibility）</strong></li>
+      <li>12个月：出现延迟满足（delay of gratification）的萌芽；18-24个月明显发展</li>
+      <li>婴幼儿期EF发展对未来学业成就、社会能力、心理健康有重要预测作用</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="vygotsky">
+  <div class="section-header"><div class="section-num">4</div><h2>Vygotsky 社会文化理论 &amp; 早期认知 Early Learning</h2></div>
+
+  <div class="card">
+    <div class="card-title">Vygotsky 核心理论 Key Concepts</div>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">最近发展区 ZPD</div>
+        <h4>Zone of Proximal Development</h4>
+        <p>儿童<strong>独立完成</strong>与<strong>在帮助下完成</strong>任务之间的差距——最佳学习区间。发展发生在此区间内。</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">支架 Scaffolding</div>
+        <h4>Scaffolding</h4>
+        <p>根据儿童当前能力<strong>动态调整帮助程度</strong>：能力低时给更多引导，能力提高时逐步撤回帮助→促进独立</p>
+      </div>
+    </div>
+    <ul class="dl" style="margin-top:1rem;">
+      <li>认知发展本质上是<strong>社会性的（social）</strong>：通过与更有能力者的互动，儿童内化文化工具（尤其是语言）</li>
+      <li><strong>共同参与（guided participation）</strong>：成人通过日常活动（一起购物、做饭）引导婴幼儿发展，是Vygotsky思想的文化拓展</li>
+      <li>支架体现在<strong>联合注意（joint attention）</strong>和<strong>共同参与游戏</strong>中</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">早期认知与教育环境 Early Learning Environment</div>
+    <ul class="dl">
+      <li>高质量托幼机构（childcare）：照料比例低（1:3-1:4）、照料者受过专业训练、温暖回应、丰富语言互动→显著促进认知发展</li>
+      <li>SES差异：低SES家庭婴儿词汇量发展更慢——与父母说话量、互动质量相关（Hart &amp; Risley研究）</li>
+      <li>文化差异：西方文化以<strong>言语指导（verbal explanation）</strong>为主；非西方文化更多通过<strong>观察和参与（observation and participation）</strong>学习</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="language">
+  <div class="section-header"><div class="section-num">5</div><h2>语言发展 Language Development</h2></div>
+
+  <div class="card">
+    <div class="card-title">语言习得理论 Theories of Language Development</div>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">先天主义 Nativist (Chomsky)</div>
+        <h4>语言习得装置 LAD</h4>
+        <p>语言刻入大脑结构；所有儿童有<strong>语言习得装置（Language Acquisition Device, LAD）</strong>，内含<strong>普遍语法（universal grammar）</strong>；儿童期是语言学习的<strong>敏感期</strong>（失聪后晚学手语者不如早学者流利）</p>
+        <p style="margin-top:6px;font-size:12px;color:var(--coral);"><strong>批评：</strong>难以确定普遍语法内容；儿童语法习得是逐渐的，有大量错误</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">互动主义 Interactionist</div>
+        <h4>先天能力 + 社会经验</h4>
+        <p>信息加工视角：儿童用强大的通用认知能力分析语言环境<br><br>社会互动视角：照顾者的回应性和<strong>共同注意（joint attention）</strong>对语言习得至关重要；<strong>妈妈语（child-directed speech/motherese）</strong>促进学习</p>
+        <p style="margin-top:6px;font-size:12px;color:var(--teal-dark);">大多数当代研究者持互动主义观点</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">语言发展里程碑 Language Milestones</div>
+    <table class="tbl">
+      <thead><tr><th>年龄</th><th>里程碑</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>出生</td><td>偏好母亲声音和母语</td><td>胎儿期已接触；语言基础</td></tr>
+        <tr><td>约2个月</td><td><strong>咕咕声（cooing）</strong></td><td>元音样愉悦发声；社会互动的开始</td></tr>
+        <tr><td>约6个月</td><td><strong>牙牙学语（babbling）</strong></td><td>辅音+元音音节（"ba-ba"）；包含所有人类语言音素；聋儿牙牙学语但逐渐消失</td></tr>
+        <tr><td>8-10个月</td><td>牙牙学语接近母语</td><td>知觉窄化→只保留母语音节</td></tr>
+        <tr><td>约10-12个月</td><td><strong>指示性手势（pointing）</strong></td><td>前语言交流的重要里程碑；与联合注意密切相关</td></tr>
+        <tr><td>约12个月</td><td><strong>第一个词（first word）</strong></td><td>通常是名词；<strong>理解先于产出</strong>（comprehension before production）</td></tr>
+        <tr><td>12-18个月</td><td>词汇缓慢积累</td><td>约10-50个词；<strong>过度泛化（overextension）</strong>和<strong>过度缩小（underextension）</strong></td></tr>
+        <tr><td>约18个月</td><td><strong>词汇爆炸（vocabulary spurt）</strong></td><td>每天学1-3个新词；<strong>快速映射（fast-mapping）</strong>——仅需1-2次接触即可学习</td></tr>
+        <tr><td>约24个月</td><td><strong>双词短语（two-word utterances）</strong></td><td>电报式语言（telegraphic speech）："爸爸走"；词序已遵循母语规则</td></tr>
+      </tbody>
+    </table>
+    <div class="note-amber">⚑ 理解能力（comprehension）始终领先于产出能力（production）——这是语言发展的普遍规律！</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">妈妈语与支持语言发展 Child-Directed Speech &amp; Support</div>
+    <ul class="dl">
+      <li><strong>妈妈语（child-directed speech, CDS / motherese）</strong>：对婴儿说话时特有的方式——音调高、语速慢、语调夸张、短句、大量重复</li>
+      <li>跨文化普遍存在（包括手语妈妈语）；婴儿偏好CDS</li>
+      <li>CDS的功能：吸引注意、帮助分割词边界、传递情感信息、促进语音学习</li>
+      <li>回应性（responsiveness）：照顾者对婴儿牙牙学语和交流的及时、热情回应→加速词汇发展</li>
+      <li>共读（joint book reading / shared reading）：显著促进词汇和叙事发展</li>
+    </ul>
+    <div class="note-teal">✓ 关键研究（Hart &amp; Risley, 1995）：专业人员家庭婴儿每小时听到约2,100个词；工人阶层约1,200个；福利家庭约600个。3岁时词汇量相差3000万词！这一差距预测学业成就。</div>
+  </div>
+</section>
+
+<div class="objectives" id="objectives">
+  <h3>第五章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>解释Piaget的四个核心认知概念（图式、同化、顺应、平衡）。</li>
+    <li>描述感知运动阶段六个子阶段的主要特征和关键成就（含客体永久性和A-not-B错误）。</li>
+    <li>总结后续研究对Piaget感知运动阶段的修正，说明违背预期范式（violation of expectation）的意义。</li>
+    <li>描述习惯化/去习惯化作为研究婴儿认知的工具；解释婴儿期失忆的成因。</li>
+    <li>解释执行功能（EF）的三个核心成分及其早期发展。</li>
+    <li>对比Vygotsky社会文化理论中ZPD和支架的概念；说明共同注意和联合参与的意义。</li>
+    <li>比较语言习得的先天主义（Chomsky/LAD）与互动主义视角；列出各自的证据和批评。</li>
+    <li>描述0-2岁语言发展的主要里程碑（咕咕声、牙牙学语、第一个词、词汇爆炸、双词短语）。</li>
+    <li>解释妈妈语（CDS）的特征及其对语言发展的促进作用；说明词汇差距（30 million word gap）的含义。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>

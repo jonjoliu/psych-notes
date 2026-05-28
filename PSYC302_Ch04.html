@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.4 婴幼儿期身体发展</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc.gy{background:var(--gray-light);border:1px solid var(--gray-border);}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .timeline{margin:1rem 0;}
+  .tl-item{display:flex;gap:14px;margin-bottom:.75rem;align-items:flex-start;}
+  .tl-dot{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+  .tl-content{flex:1;background:var(--card-bg);border:1px solid var(--gray-border);border-radius:8px;padding:.75rem 1rem;}
+  .tl-content h4{font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:3px;}
+  .tl-content p{font-size:13px;color:var(--gray);line-height:1.55;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.4</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 4</div>
+    <h1>第四章：婴幼儿期身体发展<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">Physical Development in Infancy and Toddlerhood (0–2岁)</span></h1>
+    <div class="hero-sub">身体生长 · 大脑发育 · 睡眠 · 运动发展 · 知觉发展 · 早期营养</div>
+  </div>
+</div>
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#growth">身体生长</a></li>
+    <li><a href="#brain">大脑发育</a></li>
+    <li><a href="#sleep">睡眠变化</a></li>
+    <li><a href="#motor">运动发展</a></li>
+    <li><a href="#perception">知觉发展</a></li>
+    <li><a href="#nutrition">营养</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+<main class="main">
+
+<section class="section" id="growth">
+  <div class="section-header"><div class="section-num">1</div><h2>身体生长 Body Growth</h2></div>
+  <div class="card">
+    <div class="card-title">生长规律与模式 Growth Patterns</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>出生第一年</strong>：体重增加约2倍（6个月）到3倍（1岁）；身高增加约25-30cm</li>
+        <li><strong>1-2岁</strong>：增长速度减慢；第二年增加约5kg和12cm</li>
+        <li><strong>头尾发展方向（cephalocaudal）</strong>：发展从头部向脚部进行；头先于四肢发育</li>
+        <li><strong>近远发展方向（proximodistal）</strong>：从中心到外围；躯干先于手指发育</li>
+      </ul>
+      <ul class="dl">
+        <li>个体差异受<strong>遗传、营养、健康状况</strong>影响</li>
+        <li>群体差异：非裔美国婴儿平均比欧裔美国婴儿稍早成熟；亚裔婴儿体型相对较小</li>
+        <li><strong>骨骼化（ossification）</strong>：软骨→骨骼；女孩略早于男孩</li>
+        <li>牙齿：第一颗乳牙约6-8个月出现；2岁时共20颗乳牙</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="brain">
+  <div class="section-header"><div class="section-num">2</div><h2>大脑发育 Brain Development</h2></div>
+  <div class="card">
+    <div class="card-title">关键神经过程 Key Neural Processes</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>神经元（neurons）</strong>：大脑的基本信息处理单元；出生时约1000亿个</li>
+        <li><strong>突触生成（synaptogenesis）</strong>：神经元之间形成突触连接；出生后急剧增加，产生<strong>突触过度生成（synaptic overproduction）</strong></li>
+        <li><strong>突触修剪（synaptic pruning）</strong>：不常使用的突触被消除；提高效率；从婴儿期持续到成年</li>
+        <li><strong>髓鞘化（myelination）</strong>：神经纤维外包白色绝缘鞘（髓鞘）；加速神经信号传导；从孕期持续到成年期</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>神经胶质细胞（glial cells）</strong>：支持和滋养神经元；产生髓鞘</li>
+        <li><strong>大脑皮质（cerebral cortex）</strong>：大脑最复杂部分；最后成熟，可塑性最强</li>
+        <li><strong>前额叶皮质（prefrontal cortex）</strong>：负责思维、计划、注意等高级功能；发育最缓慢，持续到20多岁</li>
+        <li>脑电图（EEG）、fMRI、NIRS（近红外光谱）等用于研究婴儿大脑</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">大脑可塑性与敏感期 Brain Plasticity &amp; Sensitive Periods</div>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">经验预期性发育</div>
+        <h4>Experience-Expectant Brain Growth</h4>
+        <p>依赖于所有正常儿童都会遇到的普通环境刺激（光线、声音、接触）；对应<strong>敏感期</strong>——大脑主动等待某类经历</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">经验依赖性发育</div>
+        <h4>Experience-Dependent Brain Growth</h4>
+        <p>依赖于<strong>个人特定经历</strong>（学钢琴、特定语言暴露）；可在任何年龄发生，但更多的突触在敏感期形成</p>
+      </div>
+    </div>
+    <div class="note-teal">✓ 大脑可塑性（brain plasticity）：早期损伤后的恢复能力；婴幼儿大脑可塑性最强——右脑可承担左脑语言功能。但并非"越多越好"——<strong>适量、适时的刺激</strong>最佳。</div>
+    <div class="note-coral">✗ "婴儿爱因斯坦"类产品（Baby Einstein）：无证据表明能加速婴儿认知发展，反而可能因减少亲子互动而有害。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">大脑侧化 Brain Lateralization</div>
+    <ul class="dl">
+      <li><strong>大脑侧化（lateralization）</strong>：大脑两半球专门化，各负责不同功能</li>
+      <li>左半球：语言、数学逻辑、手部精细运动（通常）</li>
+      <li>右半球：空间、音乐、情绪识别、整体处理（通常）</li>
+      <li>侧化从胎儿期开始，婴幼儿期进一步发展；<strong>惯用手（handedness）</strong>在2岁左右基本确定</li>
+      <li>约90%的人是右利手；左利手比例跨文化稳定，遗传影响显著</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="sleep">
+  <div class="section-header"><div class="section-num">3</div><h2>睡眠变化 Changing States of Arousal</h2></div>
+  <div class="card">
+    <div class="card-title">婴幼儿期睡眠发展 Sleep Development</div>
+    <ul class="dl">
+      <li>新生儿睡眠约16-18小时/天；随年龄减少；睡眠周期从45-50分钟延长到接近成人的90分钟</li>
+      <li><strong>REM睡眠（主动睡眠）</strong>：新生儿占50%；成人占20%；REM睡眠对<strong>中枢神经系统发育</strong>至关重要</li>
+      <li>约6个月：开始形成较规律的昼夜节律（circadian rhythms）</li>
+      <li>睡眠安排存在<strong>文化差异</strong>：亚洲、非西方文化普遍亲子同床（cosleeping）；西方文化强调婴儿独立睡眠</li>
+    </ul>
+    <div class="note-amber">⚑ 亲子同床（bedsharing）与SIDS：在柔软床铺上同床有增加SIDS风险；但同房不同床（same room, separate sleep surface）被认为可接受，甚至有保护作用。</div>
+  </div>
+</section>
+
+<section class="section" id="motor">
+  <div class="section-header"><div class="section-num">4</div><h2>运动发展 Motor Development</h2></div>
+  <div class="card">
+    <div class="card-title">动态系统理论 Dynamic Systems Theory (Thelen)</div>
+    <p style="font-size:13.5px;margin-bottom:.75rem;">运动技能不是自动成熟（maturation）的结果，而是<strong>大脑、身体（肌肉、关节、骨骼）与环境（重力、支撑面）相互作用</strong>，自组织形成的动态系统产物。</p>
+    <ul class="dl">
+      <li>每个新技能都是系统各部分整合的<strong>新涌现（emergent）</strong>成就</li>
+      <li>解释了为什么文化、照料方式和机会可以加速或延迟里程碑</li>
+      <li>例：踏步反射在出生后消失——不是神经成熟，而是因为腿相对于身体变重了；当放入水中（减轻腿的重量），踏步又出现！</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">粗大运动里程碑 Gross-Motor Milestones</div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot">1m</div><div class="tl-content"><h4>抬头</h4><p>俯卧时可抬起头</p></div></div>
+      <div class="tl-item"><div class="tl-dot">3m</div><div class="tl-content"><h4>支撑头部</h4><p>竖抱时可稳定支撑头部</p></div></div>
+      <div class="tl-item"><div class="tl-dot">4m</div><div class="tl-content"><h4>翻身</h4><p>从仰卧翻到俯卧</p></div></div>
+      <div class="tl-item"><div class="tl-dot">6m</div><div class="tl-content"><h4>独坐 Sitting alone</h4><p>可在没有支撑的情况下独自坐立；重要里程碑，扩大环境探索</p></div></div>
+      <div class="tl-item"><div class="tl-dot">7-9m</div><div class="tl-content"><h4>爬行 Crawling</h4><p>多种形式：腹爬、四肢爬；爬行扩大了空间探索和认知发展</p></div></div>
+      <div class="tl-item"><div class="tl-dot">9m</div><div class="tl-content"><h4>扶站 Pulling to stand</h4><p>扶着家具站立</p></div></div>
+      <div class="tl-item"><div class="tl-dot">11-12m</div><div class="tl-content"><h4>独立行走 Walking alone</h4><p>最重要的运动里程碑之一；拓展独立性；文化范围10-15个月均属正常</p></div></div>
+    </div>
+    <div class="note-teal">✓ 运动里程碑顺序基本稳定，但时间可以变化。文化差异：非洲、加勒比海地区的育儿方式（被动运动练习）与早走相关；荷兰研究发现仰卧时间长→头部控制更好但坐的时间较晚。<strong>多体位（varied positions）</strong>促进全面运动发展。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">精细运动发展 Fine-Motor Development: Reaching &amp; Grasping</div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot">0</div><div class="tl-content"><h4>预伸（prereaching）</h4><p>新生儿有朝向物体的手臂运动，不协调</p></div></div>
+      <div class="tl-item"><div class="tl-dot">3-4m</div><div class="tl-content"><h4>有意向伸手</h4><p>可稳定地伸手触碰物体；用双手</p></div></div>
+      <div class="tl-item"><div class="tl-dot">4-5m</div><div class="tl-content"><h4>尺侧抓握（ulnar grasp）</h4><p>用手指和手掌抓握，不使用拇指</p></div></div>
+      <div class="tl-item"><div class="tl-dot">4-5m</div><div class="tl-content"><h4>手到手传递</h4><p>可将物体从一只手传到另一只手</p></div></div>
+      <div class="tl-item"><div class="tl-dot">9m</div><div class="tl-content"><h4>钳形抓握（pincer grasp）</h4><p>拇指和食指相对配合抓小物体；精细运动的重要里程碑；可捡葡萄干！</p></div></div>
+    </div>
+    <div class="note-teal">✓ 精细运动的进步促进认知发展：通过操作物体，婴儿学习物体的属性（重量、质感、形状）；进而关注成人如何操作物体，扩大学习范围。</div>
+  </div>
+</section>
+
+<section class="section" id="perception">
+  <div class="section-header"><div class="section-num">5</div><h2>知觉发展 Perceptual Development</h2></div>
+  <div class="card">
+    <div class="card-title">听觉发展 Hearing</div>
+    <ul class="dl">
+      <li>4-7个月：音乐短语感（sense of musical phrasing）——偏好有自然停顿的曲目</li>
+      <li><strong>语音知觉（speech perception）</strong>：新生儿可区分几乎所有人类语言的音素；偏好母语</li>
+      <li>6个月起：<strong>知觉窄化（perceptual narrowing）</strong>——对非母语音素敏感度下降；对母语越来越敏感</li>
+      <li>8-10个月：可分割连续语流——识别词边界（word boundaries），是语言习得的基础</li>
+    </ul>
+    <div class="note-amber">⚑ 知觉窄化（perceptual narrowing）是重要考点：表面上是"退化"，实际上是大脑对母语优化的适应性过程！</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">视觉发展 Vision</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">深度知觉 Depth Perception</p>
+        <ul class="dl">
+          <li><strong>视崖实验（visual cliff, Gibson &amp; Walk, 1960）</strong>：铺玻璃的"深"侧和"浅"侧；6-7个月爬行婴儿拒绝越过"深"侧，说明已有深度知觉</li>
+          <li>2-3个月：通过运动线索（kinetic cues）感知深度</li>
+          <li>3-4个月：通过双目视觉（binocular cues）感知深度</li>
+          <li>5-6个月：通过图形线索（pictorial cues）感知深度</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">图形与人脸知觉</p>
+        <ul class="dl">
+          <li>新生儿偏好<strong>高对比度、曲线、人脸刺激</strong></li>
+          <li>2个月：开始扫描内部特征（眼睛、嘴巴）而非只看轮廓</li>
+          <li>5个月：可区分不同面孔；辨别自身种族面孔比其他种族更好（"面孔窄化"）</li>
+          <li>婴儿更喜欢有吸引力的面孔（说明某些美的标准可能是先天的）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">跨感觉知觉与分化理论 Intermodal Perception &amp; Differentiation Theory</div>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">跨感觉知觉</div>
+        <h4>Intermodal Perception</h4>
+        <p>协调来自多个感觉通道的信息；出生时已存在基本形式，随年龄迅速改善。<br><br>例：婴儿看到嘴巴运动与听到的声音匹配时注意力更持久</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">分化理论</div>
+        <h4>Differentiation Theory (Eleanor Gibson)</h4>
+        <p>知觉发展是对环境<strong>不变特征（invariant features）</strong>越来越精细感知的过程。<br><br>婴儿主动探索<strong>可供性（affordances）</strong>——环境中可利用的行动可能性（如"这个斜坡可以让我滑下去吗？"）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nutrition">
+  <div class="section-header"><div class="section-num">6</div><h2>早期营养 Nutrition in Early Development</h2></div>
+  <div class="card">
+    <div class="card-title">母乳喂养 Breastfeeding</div>
+    <ul class="dl">
+      <li><strong>免疫保护</strong>：母乳中含抗体（IgA等）→降低耳部感染、消化道感染、呼吸道感染风险</li>
+      <li><strong>认知获益</strong>：母乳中的脂肪酸（DHA等）促进大脑发育，与更高IQ相关（控制其他变量后）</li>
+      <li><strong>过敏保护</strong>：降低食物过敏、湿疹、哮喘风险</li>
+      <li><strong>母亲益处</strong>：促进子宫收缩、降低乳腺癌/卵巢癌风险、增进母婴联结</li>
+      <li>WHO建议：纯母乳喂养至少6个月；条件允许可持续到2岁</li>
+    </ul>
+    <div class="note-teal">✓ 母乳喂养的益处在低收入国家最为显著（减少感染致死）；在高收入国家也有明显认知和健康获益，但社会支持极其重要。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">营养不良 Malnutrition</div>
+    <div class="grid2">
+      <div class="cc co">
+        <div class="badge">消瘦症 Marasmus</div>
+        <h4>总热量严重不足</h4>
+        <p>通常发生于生命头年；全身肌肉、脂肪极度消耗；皮肤松弛、骨骼突出；影响大脑发育</p>
+      </div>
+      <div class="cc am">
+        <div class="badge">夸希奥科病 Kwashiorkor</div>
+        <h4>蛋白质严重缺乏</h4>
+        <p>通常发生于1-3岁断奶后；典型症状：腹部膨胀（腹水）、水肿、毛发变色变脆；认知和免疫功能受损</p>
+      </div>
+    </div>
+    <div class="note-coral">✗ 早期严重营养不良的影响往往持续终生：即使后来营养改善，大脑结构和功能的损害也难以完全逆转。"窗口期"的重要性。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">学步儿期营养特点</div>
+    <ul class="dl">
+      <li>1岁后：生长速度减慢→食欲也减少→<strong>食欲减退（appetite drop）</strong>是正常现象，父母不必担心</li>
+      <li>学步儿常常对新食物表现出<strong>新奇恐惧（neophobia）</strong>——需要多次暴露才能接受</li>
+      <li>强迫喂食会产生反效果；研究表明儿童平均每天的总营养摄入是稳定的</li>
+      <li>铁缺乏：全球最常见营养缺乏；影响认知发展和注意力（铁缺乏性贫血）</li>
+    </ul>
+  </div>
+</section>
+
+<div class="objectives" id="objectives">
+  <h3>第四章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>描述0-2岁身体生长的规律，解释头尾和近远发展方向的含义。</li>
+    <li>描述突触生成、突触修剪、髓鞘化三个神经发育过程，解释其意义。</li>
+    <li>区分经验预期性和经验依赖性大脑发育；解释大脑可塑性的含义和局限。</li>
+    <li>说明大脑侧化的概念；描述睡眠的发展变化，解释REM睡眠的特殊意义。</li>
+    <li>解释动态系统理论对运动发展的核心观点，列出粗大运动里程碑。</li>
+    <li>描述精细运动从尺侧抓握到钳形抓握的发展过程。</li>
+    <li>描述听觉发展中的知觉窄化；解释视崖实验及其对深度知觉的意义。</li>
+    <li>说明分化理论（Gibson）和可供性的概念。</li>
+    <li>列举母乳喂养的益处；区分消瘦症和夸希奥科病的成因和症状。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>

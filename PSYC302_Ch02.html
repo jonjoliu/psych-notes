@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.2 遗传与环境基础</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc.gy{background:var(--gray-light);border:1px solid var(--gray-border);}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc.gy h4{color:var(--gray-mid);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .note-purple{background:var(--purple-light);border-left:3px solid var(--purple);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--purple);margin-top:10px;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.2</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 2</div>
+    <h1>第二章：遗传与环境基础<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">Genetic and Environmental Foundations</span></h1>
+    <div class="hero-sub">遗传基础 · 基因-基因互动 · 染色体异常 · 环境情境 · 遗传与环境的关系</div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#genetic">遗传基础</a></li>
+    <li><a href="#patterns">遗传模式</a></li>
+    <li><a href="#chromosomal">染色体异常</a></li>
+    <li><a href="#reproductive">生育选择</a></li>
+    <li><a href="#environment">环境情境</a></li>
+    <li><a href="#relationship">遗传与环境关系</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+<!-- 遗传基础 -->
+<section class="section" id="genetic">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <h2>遗传基础 Genetic Foundations</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">关键概念 Key Concepts</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>DNA（脱氧核糖核酸）</strong>：构成染色体的化学物质，携带遗传信息</li>
+        <li><strong>基因（genes）</strong>：DNA片段，指导蛋白质合成；约20,000-25,000个蛋白编码基因</li>
+        <li><strong>染色体（chromosomes）</strong>：细胞核内携带遗传信息的棒状结构；人类有<strong>23对（46条）</strong></li>
+        <li><strong>基因型（genotype）</strong>：个体的遗传组成（不可见）</li>
+        <li><strong>表现型（phenotype）</strong>：基因型+环境经历的可观察特征（可见）</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>配子（gametes/sex cells）</strong>：精子和卵子；通过<strong>减数分裂（meiosis）</strong>形成，各含<strong>23条</strong>染色体</li>
+        <li><strong>合子（zygote）</strong>：受精卵，含46条染色体，由配子结合形成</li>
+        <li>性别由<strong>第23对染色体</strong>决定：XX = 女性；XY = 男性</li>
+        <li>非双胞胎兄弟姐妹基因完全相同的概率约为<strong>七千亿分之一</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">双胞胎类型 Types of Twins</div>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">异卵双胞胎</div>
+        <h4>Fraternal / Dizygotic Twins</h4>
+        <p>两个卵子分别受精→两个独立个体；遗传相似度约<strong>50%</strong>（与普通兄弟姐妹相同）<br><br>
+        影响因素：母亲年龄偏大、促排卵药物、体外受精（IVF）<br>
+        发生率：约1/33（美国）</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">同卵双胞胎</div>
+        <h4>Identical / Monozygotic Twins</h4>
+        <p>一个受精卵分裂成两个→遗传<strong>100%相同</strong><br><br>
+        发生率：约1/350-400（全球恒定）<br>
+        即使基因相同，表现型也可能因环境而不同（说明环境的重要作用）</p>
+      </div>
+    </div>
+    <div class="note-amber">⚑ 双胞胎研究是区分遗传与环境影响的重要方法：同卵双胞胎的差异 = 环境影响；同卵 vs. 异卵双胞胎的差异 = 遗传影响。</div>
+  </div>
+</section>
+
+<!-- 遗传模式 -->
+<section class="section" id="patterns">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <h2>基因-基因互动模式 Patterns of Gene-Gene Interaction</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">等位基因 Alleles</div>
+    <ul class="dl">
+      <li><strong>等位基因（allele）</strong>：同一基因的不同形式，一个来自父方，一个来自母方</li>
+      <li><strong>纯合（homozygous）</strong>：两个等位基因相同 → 表现对应特征</li>
+      <li><strong>杂合（heterozygous）</strong>：两个等位基因不同 → 等位基因间关系决定表现型</li>
+    </ul>
+  </div>
+
+  <div class="grid2" style="margin-bottom:1rem;">
+    <div class="cc tl">
+      <div class="badge">显性-隐性遗传</div>
+      <h4>Dominant-Recessive Inheritance</h4>
+      <p>只有<strong>显性（dominant）</strong>等位基因影响特征；<strong>隐性（recessive）</strong>等位基因需两个才能表达。<br><br>
+      例：PKU（苯丙酮尿症）——两个隐性等位基因→苯丙氨酸无法正常代谢→脑损伤→智力障碍<br>
+      <strong>携带者（carrier）</strong>：有一个隐性等位基因，自身不发病但可传给后代</p>
+    </div>
+    <div class="cc pu">
+      <div class="badge">不完全显性遗传</div>
+      <h4>Incomplete Dominance</h4>
+      <p>两个等位基因均表达，形成<strong>中间型表现型</strong>。<br><br>
+      例：镰刀型细胞贫血症（sickle cell anemia）<br>
+      • 两个显性基因→正常<br>
+      • 两个隐性基因→镰刀型贫血症<br>
+      • 一个显性+一个隐性→镰刀型特质（sickle cell trait）：在低氧时出现轻度症状，但<strong>对疟疾有一定抵抗力</strong></p>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-bottom:1rem;">
+    <div class="cc am">
+      <div class="badge">X染色体连锁遗传</div>
+      <h4>X-Linked Inheritance</h4>
+      <p>有害等位基因位于X染色体上；<strong>男性更易受影响</strong>（XY，Y染色体无对应基因覆盖）<br><br>
+      例：血友病（hemophilia）——血液凝固障碍<br>
+      例：色盲（color blindness）<br><br>
+      女性：一个X携带有害基因，另一个X的显性基因可掩盖→通常只是携带者</p>
+    </div>
+    <div class="cc bl">
+      <div class="badge">多基因遗传</div>
+      <h4>Polygenic Inheritance</h4>
+      <p>大多数重要的人类特征由<strong>多个基因共同决定</strong>，与环境互动，产生<strong>连续变化（continuous variation）</strong>。<br><br>
+      例：身高、体重、智力、人格、皮肤颜色、大多数心理疾病的易感性<br><br>
+      → 无法用简单的孟德尔遗传规律预测</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">表观遗传学 Epigenetics</div>
+    <ul class="dl">
+      <li><strong>表观遗传学（epigenetics）</strong>：研究基因表达如何受<strong>环境因素修改</strong>而不改变DNA序列本身</li>
+      <li>核心机制：<strong>DNA甲基化（methylation）</strong>——甲基附着到DNA→基因"关闭"；去甲基化→基因"开启"</li>
+      <li>环境（营养、压力、毒素、育儿方式）可改变基因表达模式，且<strong>可能传递给下一代</strong></li>
+      <li>案例：图西族种族灭绝后，母亲的创伤压力通过甲基化改变传递给孩子（Tutsi genocide研究）</li>
+      <li>意义：打破"基因决定命运"的观念——<strong>先天与后天的关系远比我们想象的复杂</strong></li>
+    </ul>
+    <div class="note-teal">✓ 表观遗传学是当前发展科学最前沿、最受关注的领域之一，体现了生物与环境真正不可分割的关系。</div>
+  </div>
+</section>
+
+<!-- 染色体异常 -->
+<section class="section" id="chromosomal">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <h2>染色体异常 Chromosomal Abnormalities</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">常见染色体异常 Common Chromosomal Abnormalities</div>
+    <table class="tbl">
+      <thead><tr><th>异常</th><th>染色体类型</th><th>特征</th><th>发生率</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>唐氏综合征<br>Down Syndrome<br>(Trisomy 21)</td>
+          <td>第21号染色体多一条（三体）</td>
+          <td>认知发育迟缓（轻度到重度）；特征性面部外观（眼距宽、鼻梁低）；肌张力低；先天性心脏病；早老性痴呆风险↑。<br>早期干预可显著改善预后。</td>
+          <td>约1/700出生；母亲年龄↑风险↑（35岁后显著增加）</td>
+        </tr>
+        <tr>
+          <td>克林费尔特综合征<br>Klinefelter Syndrome (XXY)</td>
+          <td>男性多一条X染色体</td>
+          <td>睾丸发育不全、不育；身材偏高；语言/学习障碍；通常智力正常</td>
+          <td>约1/1,000男性出生</td>
+        </tr>
+        <tr>
+          <td>特纳综合征<br>Turner Syndrome (XO)</td>
+          <td>女性缺少一条X染色体</td>
+          <td>身材矮小；不育；空间认知困难；社会认知困难；通常智力正常</td>
+          <td>约1/2,500-3,000女性出生</td>
+        </tr>
+        <tr>
+          <td>超Y综合征<br>XYY</td>
+          <td>男性多一条Y染色体</td>
+          <td>身材偏高；轻度学习/语言障碍；过去被误认为与攻击性有关（已被否定）</td>
+          <td>约1/1,000男性出生</td>
+        </tr>
+        <tr>
+          <td>XXX</td>
+          <td>女性多一条X染色体</td>
+          <td>正常外观；轻度学习障碍；青春期发育正常</td>
+          <td>约1/1,000女性出生</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-amber">⚑ 染色体异常大多由<strong>减数分裂错误（meiotic errors）</strong>引起——一对染色体未能正确分离（nondisjunction）。母亲年龄是唐氏综合征的主要风险因素。</div>
+  </div>
+</section>
+
+<!-- 生育选择 -->
+<section class="section" id="reproductive">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <h2>生育选择 Reproductive Choices</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">遗传咨询与产前诊断 Genetic Counseling &amp; Prenatal Diagnosis</div>
+    <ul class="dl">
+      <li><strong>遗传咨询（genetic counseling）</strong>：帮助有遗传病家族史的夫妻了解遗传风险，做出知情决策</li>
+      <li><strong>羊水穿刺（amniocentesis）</strong>：最常用；提取羊水中胎儿细胞；妊娠14周后；结果需1-2周；轻微流产风险</li>
+      <li><strong>绒毛膜取样（chorionic villus sampling, CVS）</strong>：可在妊娠9周进行；结果24小时内；流产风险稍高；可能有轻微肢体畸形风险</li>
+      <li><strong>超声波（ultrasound）</strong>：最安全；显示胎儿大小/形状/位置；可识别多胎妊娠和明显结构异常</li>
+      <li><strong>母体血液分析（maternal blood analysis）</strong>：检测胎儿游离DNA；筛查神经管缺陷等</li>
+      <li><strong>植入前基因诊断（preimplantation genetic diagnosis）</strong>：体外受精后，在植入前检测细胞遗传缺陷</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">收养研究 Adoption Studies</div>
+    <ul class="dl">
+      <li>收养研究通过比较<strong>收养儿童与亲生父母 vs. 养父母</strong>的相似性，区分遗传与环境影响</li>
+      <li>发现：收养儿童在智力和人格上与<strong>亲生父母</strong>更相似，但在<strong>价值观和态度</strong>上受养父母影响更大</li>
+      <li>入养时年龄越大，适应挑战越多；来自高危环境的儿童收养后一般能改善，但早期剥夺的影响可能持续</li>
+      <li>为基因-环境相互作用提供强有力证据</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 环境情境 -->
+<section class="section" id="environment">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <h2>发展的环境情境 Environmental Contexts for Development</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">家庭 The Family</div>
+    <ul class="dl">
+      <li>家庭是发展中最直接、最重要的环境情境；为儿童提供生物、心理和社会资源</li>
+      <li><strong>核心家庭（nuclear family）</strong>：父母+子女；在工业化国家为主</li>
+      <li><strong>扩展家庭（extended family）</strong>：多代同堂；在非西方文化和少数族裔家庭更普遍；提供更多支持和韧性资源</li>
+      <li>家庭关系是<strong>双向的（bidirectional）</strong>：父母影响子女，子女也影响父母</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">社会经济地位与贫困 SES &amp; Poverty</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">社会经济地位（SES）</p>
+        <ul class="dl">
+          <li>综合指标：<strong>收入（income）+ 教育程度（education）+ 职业声望（occupational prestige）</strong></li>
+          <li>SES影响居住环境、教育资源、医疗条件、营养、压力水平</li>
+          <li>高SES家庭：更多学习材料、更有回应性的育儿方式、更低压力</li>
+          <li>低SES家庭：更多权威型/惩罚型管教、更少认知刺激</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">贫困（Poverty）的影响</p>
+        <ul class="dl">
+          <li>持续压力（chronic stress）影响父母心理健康和育儿质量</li>
+          <li>营养不足损害大脑和身体发育</li>
+          <li>不安全的居住环境增加毒素暴露（如铅）风险</li>
+          <li>教育机会减少影响认知发展</li>
+          <li>尤其危害：儿童期贫困对发展的长期影响最为严重</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note-coral">✗ 美国儿童贫困率（约18%）显著高于其他工业化国家；政策支持（家庭补贴、儿童医疗保险）差异显著影响儿童健康结果。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">邻里、学校与文化 Neighborhoods, Schools &amp; Culture</div>
+    <div class="grid3">
+      <div class="cc gy">
+        <div class="badge" style="background:var(--gray-border);color:var(--gray-mid);">邻里</div>
+        <h4>Neighborhoods</h4>
+        <p>安全邻里：户外活动、社区归属感；危险邻里：压力、限制探索、暴力暴露</p>
+      </div>
+      <div class="cc tl">
+        <div class="badge">学校</div>
+        <h4>Schools</h4>
+        <p>学校教育是发展的强大力量：促进认知能力、自我调节、社会技能。质量差异影响巨大。</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">文化</div>
+        <h4>Culture</h4>
+        <p>文化：某一社会群体共享的<strong>价值观、信念、习俗和技能</strong>，塑造育儿实践、教育方式和发展目标</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 遗传与环境关系 -->
+<section class="section" id="relationship">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <h2>理解遗传与环境的关系 Heredity &amp; Environment</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">"占多少比例？"的问题 The "How Much?" Question</div>
+    <ul class="dl">
+      <li><strong>遗传率（heritability）</strong>：在特定群体中，特征的个体差异中可归因于遗传的比例</li>
+      <li>通过双胞胎研究（twin studies）和收养研究（adoption studies）估计</li>
+      <li>同卵双胞胎相关性明显高于异卵双胞胎 → 说明遗传影响；但同卵双胞胎并非100%一致 → 说明环境影响</li>
+    </ul>
+    <div class="note-amber">⚑ 遗传率的局限：①只适用于特定群体，不可推广；②遗传率高≠不受环境影响；③忽视了基因与环境的互动。更重要的是"如何？"的问题。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">"如何互动？"的问题 The "How?" Question</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">基因-环境交互作用<br>Gene-Environment Interaction</p>
+        <ul class="dl">
+          <li>遗传易感性（genetic susceptibility）决定个体对特定环境的<strong>敏感程度不同</strong></li>
+          <li>例：携带短5-HTTLPR基因（血清素转运体）的儿童对不良育儿更敏感，但在良好育儿下也能发展最好</li>
+          <li>即<strong>"双向影响"（differential susceptibility）</strong>：同一基因变体在好环境中是优势，在坏环境中是劣势</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">基因-环境相关<br>Gene-Environment Correlation</p>
+        <ul class="dl">
+          <li><strong>被动型（passive）</strong>：父母提供基因 + 与基因匹配的环境（如音乐天赋父母→音乐环境）</li>
+          <li><strong>唤起型（evocative）</strong>：儿童的遗传特质引发他人特定回应（活跃儿童→更多刺激活动）</li>
+          <li><strong>主动型（active/niche-picking）</strong>：儿童主动选择与基因匹配的环境（年龄越大越明显）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note-teal">✓ 核心结论：遗传与环境<strong>持续双向互动（bidirectional）</strong>——基因影响环境经历，环境经历反过来影响基因表达（表观遗传学）。二者无法截然分开。</div>
+  </div>
+</section>
+
+<!-- 学习目标 -->
+<div class="objectives" id="objectives">
+  <h3>第二章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>解释基因、染色体、DNA的关系；描述减数分裂过程和受精原理。</li>
+    <li>区分异卵双胞胎和同卵双胞胎，说明双胞胎研究在遗传研究中的价值。</li>
+    <li>描述显性-隐性遗传、不完全显性遗传、X染色体连锁遗传、多基因遗传四种模式并举例。</li>
+    <li>解释表观遗传学的含义，举例说明环境如何影响基因表达。</li>
+    <li>列出主要染色体异常（唐氏、克林费尔特、特纳综合征）的特征和成因。</li>
+    <li>描述主要产前诊断方法（羊水穿刺、CVS、超声波）的优缺点。</li>
+    <li>说明SES对儿童发展的影响机制；解释贫困的多方面危害。</li>
+    <li>区分遗传率的"占多少比例"问题与"如何互动"问题；解释基因-环境交互作用和三种基因-环境相关类型。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>

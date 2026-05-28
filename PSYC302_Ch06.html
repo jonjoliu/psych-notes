@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.6 婴幼儿期情感与社会发展</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc.gy{background:var(--gray-light);border:1px solid var(--gray-border);}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .note-purple{background:var(--purple-light);border-left:3px solid var(--purple);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--purple);margin-top:10px;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3,.grid4{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.6</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 6</div>
+    <h1>第六章：婴幼儿期情感与社会发展<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">Emotional and Social Development in Infancy &amp; Toddlerhood (0–2岁)</span></h1>
+    <div class="hero-sub">情绪发展 · 气质 · 依恋理论 · Ainsworth陌生情境 · 自我发展</div>
+  </div>
+</div>
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#erikson">Erikson阶段</a></li>
+    <li><a href="#emotion">情绪发展</a></li>
+    <li><a href="#temperament">气质</a></li>
+    <li><a href="#attachment">依恋理论</a></li>
+    <li><a href="#ainsworth">Ainsworth分类</a></li>
+    <li><a href="#influences">依恋影响因素</a></li>
+    <li><a href="#self">自我发展</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+<main class="main">
+
+<section class="section" id="erikson">
+  <div class="section-header"><div class="section-num">1</div><h2>Erikson 前两阶段 First Two Stages</h2></div>
+  <div class="grid2">
+    <div class="cc tl">
+      <div class="badge">阶段一 (0–1岁)</div>
+      <h4>基本信任 vs. 不信任<br>Basic Trust vs. Mistrust</h4>
+      <p>婴儿从照顾者的一致性、温暖、可靠性中建立对世界的基本信任感。<br><br>解决方式：<strong>希望（hope）</strong>——相信欲望可以实现的信念。<br><br>关键：照顾的质量和回应性</p>
+    </div>
+    <div class="cc pu">
+      <div class="badge">阶段二 (1–3岁)</div>
+      <h4>自主 vs. 羞耻/怀疑<br>Autonomy vs. Shame &amp; Doubt</h4>
+      <p>学步儿通过探索和行使意志力发展自主感（sense of autonomy）。<br><br>过多批评/限制→<strong>羞耻感（shame）</strong>和<strong>怀疑（doubt）</strong>。<br><br>关键：在安全中给予独立探索机会</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="emotion">
+  <div class="section-header"><div class="section-num">2</div><h2>情绪发展 Emotional Development</h2></div>
+  <div class="card">
+    <div class="card-title">基本情绪的出现 Basic Emotions</div>
+    <table class="tbl">
+      <thead><tr><th>情绪</th><th>出现时间</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>快乐 Happiness</td><td>出生后不久；<br>社会性微笑：6-10周</td><td>社会性微笑（social smile）：对熟悉的人/面孔的特定微笑；是照顾者互动的强有力强化物</td></tr>
+        <tr><td>愤怒 Anger</td><td>4-6个月后增加</td><td>对有目的性动作受阻的反应（operant conditioning失败时）；6-12个月急剧增加</td></tr>
+        <tr><td>悲伤 Sadness</td><td>出生后不久</td><td>相对于愤怒较少见；分离时出现；与抑郁母亲的婴儿更常见</td></tr>
+        <tr><td>恐惧 Fear</td><td>6-7个月</td><td>陌生人焦虑（stranger anxiety）：约8个月达到高峰；分离焦虑（separation anxiety）：约8-10个月出现</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">自我意识情绪 Self-Conscious Emotions (18-24个月)</div>
+    <ul class="dl">
+      <li><strong>骄傲（pride）、羞耻（shame）、内疚（guilt）、尴尬（embarrassment）、嫉妒（envy）</strong></li>
+      <li>需要先具备<strong>自我意识（self-awareness）</strong>才能产生这些情绪</li>
+      <li>还需要理解<strong>社会规则和标准（social standards）</strong>，并评估自己是否符合</li>
+      <li>父母的引导（"你打了他，他很伤心"）帮助儿童建立这些情绪的连接</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">情绪理解与调节 Emotional Understanding &amp; Self-Regulation</div>
+    <ul class="dl">
+      <li><strong>社会参照（social referencing）</strong>：约8-10个月起，婴儿在不确定情境中通过查看照顾者的情绪反应来判断情境（"这是危险的还是安全的？"）</li>
+      <li>情绪调节（emotional self-regulation）：早期依赖照顾者外部调节（被抱起、被安慰）；随年龄发展内部策略</li>
+      <li>1岁内：通过接近或退缩来调节刺激量</li>
+      <li>12-24个月：开始使用简单语言策略（"不！"）；注意力转移；物体操作</li>
+    </ul>
+    <div class="note-teal">✓ 良好的情绪调节是未来学业和社会能力的重要预测因素；父母的温暖回应和一致性是早期情绪调节发展的关键。</div>
+  </div>
+</section>
+
+<section class="section" id="temperament">
+  <div class="section-header"><div class="section-num">3</div><h2>气质 Temperament</h2></div>
+  <div class="card">
+    <div class="card-title">定义与特征 Definition</div>
+    <p style="font-size:13.5px;margin-bottom:.75rem;"><span class="kw">气质（temperament）</span>：个体在情绪反应、活动水平和自我调节方面稳定的个体风格，有一定的生物基础，从婴儿期即可观察到，在一定程度上稳定地延续至后来发展中。</p>
+    <ul class="dl">
+      <li>气质是<strong>遗传与环境共同塑造的</strong>：基因奠定基础，养育方式可修改其表达</li>
+      <li>稳定性是<strong>中等程度的</strong>（moderate）——既不完全稳定，也不完全改变</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Thomas &amp; Chess 气质三类型</div>
+    <div class="grid3">
+      <div class="cc tl">
+        <div class="badge">容易型 Easy (40%)</div>
+        <p><ul><li>规律性强</li><li>对新情境适应快</li><li>积极情绪为主</li><li>轻度到中等强度反应</li></ul></p>
+      </div>
+      <div class="cc co">
+        <div class="badge">困难型 Difficult (10%)</div>
+        <p><ul><li>规律性差</li><li>适应新情境慢</li><li>消极情绪为主</li><li>反应强烈</li></ul></p>
+      </div>
+      <div class="cc am">
+        <div class="badge">慢热型 Slow-to-warm-up (15%)</div>
+        <p><ul><li>活动水平低</li><li>最初退缩、消极</li><li>强度低</li><li>给时间后缓慢适应</li></ul></p>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--gray-mid);margin-top:.5rem;">余下约35%混合型，难以归类。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">气质的生物与环境基础</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>抑制性（inhibited/shy）</strong>：约20%婴儿；对新事物持续退缩/恐惧；生理特征明显（心率快、皮质醇↑）；与遗传有关</li>
+        <li><strong>非抑制性（uninhibited/sociable）</strong>：约40%婴儿；对新事物积极接近</li>
+        <li>Kagan研究：高反应性婴儿（对新刺激哭泣踢腿）→倾向发展为抑制性儿童</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>拟合优度（goodness of fit）</strong>：气质与环境要求/照顾方式之间的匹配度</li>
+        <li>匹配好→健康发展；匹配差（如困难气质+苛刻父母）→适应问题</li>
+        <li>文化差异：东亚文化认为抑制气质是积极的；西方文化偏好外向性——说明气质的适应价值依赖于文化背景</li>
+      </ul>
+    </div>
+    <div class="note-amber">⚑ 拟合优度（goodness of fit）是考试高频概念：强调气质本身没有好坏，关键在于气质与环境的<strong>匹配程度</strong>！</div>
+  </div>
+</section>
+
+<section class="section" id="attachment">
+  <div class="section-header"><div class="section-num">4</div><h2>依恋理论 Attachment Theory</h2></div>
+  <div class="card">
+    <div class="card-title">Bowlby 依恋理论基础</div>
+    <ul class="dl">
+      <li><span class="kw">依恋（attachment）</span>：婴儿与特定照顾者之间的<strong>深厚情感纽带</strong>；是探索世界的安全基地（<strong>secure base</strong>）</li>
+      <li>Bowlby 从<strong>动物行为学（ethology）</strong>借鉴：婴儿的哭泣、微笑、伸手、吸吮是内置的信号，促使照顾者靠近和互动</li>
+      <li>依恋的进化意义：保持婴儿靠近照顾者→获得保护、食物、情感——有助于存活</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">依恋发展四阶段 Four Phases of Attachment</div>
+    <table class="tbl">
+      <thead><tr><th>阶段</th><th>年龄</th><th>特征</th></tr></thead>
+      <tbody>
+        <tr><td>前依恋期<br>Preattachment</td><td>出生–6周</td><td>对所有人无差别地发出社会信号（哭泣、微笑）；无特定依恋对象</td></tr>
+        <tr><td>依恋形成期<br>Attachment in the Making</td><td>6周–6-8个月</td><td>开始区分熟悉/陌生的人；对主要照顾者有更多积极反应；但分离时无明显焦虑</td></tr>
+        <tr><td>明确依恋期<br>Clear-Cut Attachment</td><td>6-8个月–18-24个月</td><td><strong>分离焦虑（separation anxiety）</strong>出现；<strong>陌生人焦虑（stranger anxiety）</strong>；将照顾者作为安全基地进行探索</td></tr>
+        <tr><td>目标协调的伙伴关系<br>Goal-Corrected Partnership</td><td>18-24个月后</td><td>理解照顾者的目标和感受；谈判和等待能力发展；依恋关系更对称</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">内部工作模型 Internal Working Model</div>
+    <ul class="dl">
+      <li><span class="kw">内部工作模型（internal working model）</span>：儿童基于与照顾者互动经历建立的关于自我、他人和关系的心理表征</li>
+      <li>安全型依恋→积极的内部工作模型："我是值得被爱的；他人是可靠的"</li>
+      <li>内部工作模型会影响<strong>后续的所有亲密关系</strong>（友谊、恋爱、亲子关系）</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="ainsworth">
+  <div class="section-header"><div class="section-num">5</div><h2>Ainsworth 陌生情境与依恋分类</h2></div>
+  <div class="card">
+    <div class="card-title">陌生情境实验 Strange Situation (Ainsworth, 1970s)</div>
+    <p style="font-size:13.5px;margin-bottom:.75rem;">在实验室中通过8个标准化场景（包括母亲离开、陌生人进入、母亲返回等）评估婴儿（约12-18个月）的依恋质量，重点观察<strong>分离时的行为</strong>和<strong>团聚时的反应</strong>。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">四种依恋类型 Four Attachment Patterns</div>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">安全型 Secure (~65%)</div>
+        <h4>B型 Type B</h4>
+        <p><strong>分离时</strong>：可能难过，但可被安抚<br>
+        <strong>团聚时</strong>：主动寻求接近照顾者，迅速平静，回到探索<br>
+        照顾者通常<strong>敏感回应</strong></p>
+      </div>
+      <div class="cc am">
+        <div class="badge">回避型 Avoidant (~20%)</div>
+        <h4>A型 Type A</h4>
+        <p><strong>分离时</strong>：几乎不难过，独自玩耍<br>
+        <strong>团聚时</strong>：主动回避或忽视照顾者<br>
+        照顾者通常<strong>冷漠或拒绝</strong>身体接触</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">矛盾型 Resistant (~10-15%)</div>
+        <h4>C型 Type C（也称焦虑型 Anxious）</h4>
+        <p><strong>分离时</strong>：极度焦虑，无法平静<br>
+        <strong>团聚时</strong>：寻求接触但同时抗拒安慰（拍打、挣扎）<br>
+        照顾者通常<strong>不一致/不可预测</strong></p>
+      </div>
+      <div class="cc co">
+        <div class="badge">混乱型 Disorganized (~5-10%)</div>
+        <h4>D型 Type D</h4>
+        <p>行为混乱矛盾：团聚时突然冻结、绕圈走、茫然神情<br>
+        照顾者常常是<strong>恐惧来源本身</strong>（虐待、忽视、严重创伤）；预后最差</p>
+      </div>
+    </div>
+    <div class="note-amber">⚑ 考试高频：安全型=积极主动寻求安慰后平静；回避型=团聚时回避（不是无所谓，而是压抑）；矛盾型=寻求接触但同时推开。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">依恋稳定性与跨文化研究</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li>依恋模式具有<strong>中等稳定性</strong>：早期安全型→后期更可能安全型，但生活情境改变可改变依恋质量</li>
+        <li>跨文化研究：安全型在全球各文化均最普遍；但各类不安全型的比例有文化差异</li>
+      </ul>
+      <ul class="dl">
+        <li>德国：回避型比例较高（鼓励独立的育儿文化）</li>
+        <li>以色列基布兹、日本：矛盾型比例较高（照顾者从不离开婴儿，使分离极度陌生）</li>
+        <li>结论：<strong>安全型是全球最适应的</strong>，但"安全"的定义在不同文化中有细微差异</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="influences">
+  <div class="section-header"><div class="section-num">6</div><h2>影响依恋质量的因素 Factors Affecting Attachment Security</h2></div>
+  <div class="card">
+    <div class="card-title">照顾者因素 Caregiver Factors</div>
+    <ul class="dl">
+      <li><strong>敏感回应性（caregiver sensitivity）</strong>是最重要的预测因素：及时、准确察觉婴儿信号，并以温暖、一致的方式回应</li>
+      <li>反应性的<strong>互惠性（mutuality）</strong>：母婴互动中的同步和协调（protoconversation）</li>
+      <li>照顾者自身的<strong>依恋模式（adult attachment style）</strong>影响其养育方式（代际传递）</li>
+      <li>支持性的伴侣关系：降低照顾者压力，提高回应质量</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">婴儿因素与社会因素</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>婴儿气质</strong>：困难型婴儿更难让照顾者敏感回应；但敏感的照顾可以弥补</li>
+        <li>基因（如5-HTTLPR血清素转运体基因）影响婴儿对照顾质量的敏感性：某些基因变体使婴儿对好坏养育都更敏感（双向易感性 differential susceptibility）</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>家庭紧张状况</strong>：贫困、婚姻冲突、心理健康问题降低照顾质量</li>
+        <li><strong>父亲依恋</strong>：与母亲依恋独立预测发展；父亲参与对婴儿认知和情感发展均有促进</li>
+        <li>高质量托幼机构：可与家庭依恋共存，不削弱母婴依恋</li>
+      </ul>
+    </div>
+    <div class="note-teal">✓ <strong>剥夺与机构养育</strong>：早期严重剥夺（孤儿院）→混乱型依恋，情感、认知、社会发展均受损。被收养到有爱心家庭后大多能改善，但越早越好（2岁前的收养改善最显著）。</div>
+  </div>
+</section>
+
+<section class="section" id="self">
+  <div class="section-header"><div class="section-num">7</div><h2>自我发展 Self-Development</h2></div>
+  <div class="card">
+    <div class="card-title">自我认知 Self-Awareness</div>
+    <ul class="dl">
+      <li>约<strong>3个月</strong>：婴儿开始区分自己的运动与他人的运动（生态自我 ecological self）</li>
+      <li>约<strong>18-24个月</strong>：<strong>镜子测试（rouge test）</strong>通过——鼻子上有红点，婴儿触摸自己的鼻子，说明认识到镜中是自己</li>
+      <li>自我认知出现→<strong>自我意识情绪（self-conscious emotions）</strong>开始发展（羞耻、骄傲等）</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">类别自我与自我控制 Categorical Self &amp; Self-Control</div>
+    <ul class="dl">
+      <li><strong>类别自我（categorical self）</strong>：约18-30个月，儿童开始按年龄（"宝宝/大孩子"）、性别（"男孩/女孩"）、体型、善恶等类别描述自己</li>
+      <li><strong>自我控制（self-control）</strong>的萌芽：约12-18个月起，可以在诱惑下克制冲动（延迟满足 delay of gratification）</li>
+      <li>自我控制与EF和气质（effortful control）密切相关；是未来道德发展的基础</li>
+      <li>学步儿的"第一次反抗期（terrible twos）"：是正常的自主性发展，不是"叛逆"问题</li>
+    </ul>
+    <div class="note-teal">✓ 镜子测试（rouge test）和类别自我是标志着<strong>具体客观自我（objective self）</strong>出现的里程碑，是学步期最重要的社会认知成就之一。</div>
+  </div>
+</section>
+
+<div class="objectives" id="objectives">
+  <h3>第六章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>描述Erikson前两阶段（信任vs.不信任；自主vs.羞耻/怀疑）的核心危机和解决方式。</li>
+    <li>描述基本情绪（快乐、愤怒、悲伤、恐惧）在婴幼儿期的出现时间和发展轨迹。</li>
+    <li>解释自我意识情绪的出现条件；说明社会参照的定义和发展时间。</li>
+    <li>定义气质，描述Thomas和Chess的三种气质类型；解释拟合优度（goodness of fit）的概念。</li>
+    <li>描述Bowlby依恋理论的动物行为学基础；列出依恋发展的四个阶段。</li>
+    <li>描述陌生情境实验的程序；区分Ainsworth四种依恋类型（安全型、回避型、矛盾型、混乱型）的行为特征。</li>
+    <li>说明影响依恋安全性的主要因素（照顾者敏感性、婴儿气质、家庭环境）。</li>
+    <li>解释内部工作模型（internal working model）的概念及其对后续发展的影响。</li>
+    <li>描述镜子测试（rouge test）的意义；解释类别自我和自我控制的发展时间及意义。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>

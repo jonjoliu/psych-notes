@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.3 产前发展、分娩与新生儿</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc.gy{background:var(--gray-light);border:1px solid var(--gray-border);}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc.gy h4{color:var(--gray-mid);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .stage-flow{display:flex;margin:1rem 0;}
+  .stage{flex:1;padding:.9rem;text-align:center;border:1px solid var(--gray-border);border-right:none;}
+  .stage:first-child{border-radius:8px 0 0 8px;}
+  .stage:last-child{border-radius:0 8px 8px 0;border-right:1px solid var(--gray-border);}
+  .stage.s1{background:#f0fdf8;}
+  .stage.s2{background:#f5f3ff;}
+  .stage.s3{background:#fffbeb;}
+  .stage.s1 h4{color:var(--teal-mid);}
+  .stage.s2 h4{color:var(--purple);}
+  .stage.s3 h4{color:var(--amber);}
+  .stage h4{font-size:12px;font-weight:700;margin-bottom:4px;}
+  .stage p{font-size:11.5px;color:var(--gray-mid);line-height:1.5;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3,.stage-flow{grid-template-columns:1fr;flex-direction:column;}.stage{border-right:1px solid var(--gray-border);border-bottom:none;border-radius:0;}.stage:first-child{border-radius:8px 8px 0 0;}.stage:last-child{border-radius:0 0 8px 8px;border-bottom:1px solid var(--gray-border);}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.3</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 3</div>
+    <h1>第三章：产前发展、分娩与新生儿<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">Prenatal Development, Birth, and the Newborn Baby</span></h1>
+    <div class="hero-sub">产前三阶段 · 致畸因子 · 母体因素 · 分娩 · 早产儿 · 新生儿能力</div>
+  </div>
+</div>
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#periods">产前三阶段</a></li>
+    <li><a href="#teratogens">致畸因子</a></li>
+    <li><a href="#maternal">母体因素</a></li>
+    <li><a href="#birth">分娩过程</a></li>
+    <li><a href="#preterm">早产儿</a></li>
+    <li><a href="#newborn">新生儿能力</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+<main class="main">
+
+<section class="section" id="periods">
+  <div class="section-header"><div class="section-num">1</div><h2>产前发展三阶段 Three Periods of Prenatal Development</h2></div>
+  <div class="stage-flow">
+    <div class="stage s1">
+      <h4>受精卵期<br>Germinal Period</h4>
+      <p><strong>受精→第2周</strong><br>合子分裂形成囊胚（blastocyst）；第7-9天植入子宫壁；形成羊膜（amnion）、绒毛膜（chorion）、胎盘（placenta）、脐带（umbilical cord）</p>
+    </div>
+    <div class="stage s2">
+      <h4>胚胎期<br>Period of the Embryo</h4>
+      <p><strong>第3–8周</strong><br>所有主要器官形成；对致畸因子<strong>最敏感</strong>；心脏第4周跳动；第5周神经元以每分钟25万+速度产生</p>
+    </div>
+    <div class="stage s3">
+      <h4>胎儿期<br>Period of the Fetus</h4>
+      <p><strong>第9周→出生</strong><br>器官完善，体积快速增大；第22-28周后具存活可能（<strong>age of viability</strong>）；第6个月完成大多数神经元形成</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">产前发展里程碑 Milestones of Prenatal Development</div>
+    <table class="tbl">
+      <thead><tr><th>阶段/周数</th><th>大小</th><th>主要发育事件</th></tr></thead>
+      <tbody>
+        <tr><td>受精卵期<br>1–2周</td><td>微小</td><td>合子分裂→囊胚→植入；胎盘和脐带开始形成</td></tr>
+        <tr><td>胚胎期<br>3–4周</td><td>约6mm</td><td>原始大脑和脊髓出现；心脏、肌肉、肋骨、脊椎、消化道开始发育</td></tr>
+        <tr><td>胚胎期<br>5–8周</td><td>约2.5cm，4g</td><td>面部、四肢、手指、脚趾及内脏器官形成；神经元产生和迁移开始；触觉开始发展</td></tr>
+        <tr><td>胎儿期<br>9–12周</td><td>约7.6cm，28g</td><td>快速增大；神经系统、器官和肌肉连接；有踢腿、吮拇指等行为；外生殖器形成，可辨别性别</td></tr>
+        <tr><td>胎儿期<br>13–24周</td><td>约30cm，820g</td><td>母亲可感觉到胎动；眼睛对光敏感；对声音有反应；大多数神经元到位（24周）</td></tr>
+        <tr><td>胎儿期<br>25–38周</td><td>约50cm，3400g</td><td>存活率高；肺部成熟；脑部快速发育；皮下脂肪形成；胎儿转为头朝下位置准备分娩</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="teratogens">
+  <div class="section-header"><div class="section-num">2</div><h2>致畸因子 Teratogens</h2></div>
+  <div class="card">
+    <div class="card-title">影响致畸严重程度的四大原则 Four Principles</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>剂量（dose）</strong>：暴露量越大，影响越严重</li>
+        <li><strong>发育时间（timing）</strong>：胚胎期（第3-8周）最脆弱，各器官有自己的敏感期</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>遗传易感性（genetic susceptibility）</strong>：个体基因型影响对特定致畸因子的敏感程度</li>
+        <li><strong>多因素叠加（combined effects）</strong>：多种致畸因子同时存在，危害倍增</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">主要致畸因子 Major Teratogens</div>
+    <table class="tbl">
+      <thead><tr><th>致畸因子</th><th>主要影响</th><th>关键信息</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>酒精（alcohol）</td>
+          <td>胎儿酒精谱系障碍（FASD）：智力障碍、颜面异常（薄上唇、低鼻梁、小头）、心脏缺陷、行为问题</td>
+          <td>最常见的可预防出生缺陷；<strong>任何剂量均无安全保证</strong>；全孕期均有影响</td>
+        </tr>
+        <tr>
+          <td>烟草（tobacco）</td>
+          <td>低出生体重（low birth weight）、早产、SIDS风险↑、注意力/学习障碍</td>
+          <td>尼古丁收缩血管→胎儿氧气/营养不足；电子烟同样有风险</td>
+        </tr>
+        <tr>
+          <td>处方/非处方药</td>
+          <td>反应停（thalidomide）→四肢缺陷；抗癫痫药→神经管缺陷；阿司匹林→出血风险</td>
+          <td>孕期任何药物均应谨慎；许多药物的产前安全性尚未充分研究</td>
+        </tr>
+        <tr>
+          <td>辐射（radiation）</td>
+          <td>小头症（microcephaly）、智力障碍、白血病风险↑</td>
+          <td>核电站事故（切尔诺贝利）影响最深；医疗放射线应尽量避免</td>
+        </tr>
+        <tr>
+          <td>感染——风疹（rubella）</td>
+          <td>先天性耳聋、白内障、心脏缺陷、智力障碍</td>
+          <td>孕前接种疫苗是最有效的预防措施</td>
+        </tr>
+        <tr>
+          <td>感染——AIDS/HIV</td>
+          <td>免疫缺陷；婴儿期快速发病</td>
+          <td>未经治疗的母亲传播率10-20%；抗逆转录病毒治疗可降至&lt;1-2%</td>
+        </tr>
+        <tr>
+          <td>感染——弓形虫（toxoplasmosis）</td>
+          <td>第一孕期：眼部和脑损伤；晚期：轻度视觉/认知障碍</td>
+          <td>通过猫粪、生肉传播；孕期避免清理猫砂盆、吃熟肉</td>
+        </tr>
+        <tr>
+          <td>铅（lead）、汞（mercury）</td>
+          <td>神经系统损害、智力障碍、行为问题</td>
+          <td>旧房油漆含铅；某些鱼类含汞</td>
+        </tr>
+        <tr>
+          <td>母亲严重情绪压力</td>
+          <td>早产、低出生体重、情绪/行为问题、注意力短暂、焦虑</td>
+          <td>皮质醇/肾上腺素穿过胎盘；社会支持可显著缓冲影响</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-amber">⚑ 神经管缺陷（neural tube defects）可通过孕前和孕早期补充<strong>叶酸（folic acid, 0.4mg/天）</strong>预防70%以上！</div>
+  </div>
+</section>
+
+<section class="section" id="maternal">
+  <div class="section-header"><div class="section-num">3</div><h2>其他母体因素 Other Maternal Factors</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">营养 Nutrition</div>
+      <ul class="dl">
+        <li>孕期理想增重：25-30磅（10-13.5kg）；营养不足影响脑重、器官发育</li>
+        <li>孕晚期营养不良对大脑影响最大（脑部快速增大阶段）</li>
+        <li>低出生体重与成年期<strong>高血压、心脏病、糖尿病</strong>风险显著相关</li>
+        <li>叶酸（folic acid）：预防神经管缺陷；铁：预防贫血</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">母亲年龄 Maternal Age</div>
+      <ul class="dl">
+        <li>健康的30多岁女性：并发症率与20多岁相似</li>
+        <li>40岁+：并发症明显增加；50-55岁：急剧上升</li>
+        <li>青少年母亲：并发症不是因年龄，而是因贫困、压力、营养差</li>
+        <li>父亲年龄：老年父亲（&gt;40岁）→DNA突变风险↑→自闭症、精神分裂症风险↑</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Rh因子不相容 Rh Factor Incompatibility</div>
+    <ul class="dl">
+      <li>母亲Rh阴性（-）+ 父亲Rh阳性（+）→胎儿可能Rh阳性 → 母亲产生抗Rh抗体</li>
+      <li>第一胎通常无碍（抗体尚未大量产生）；第二胎起风险增加</li>
+      <li>抗体侵入胎儿→红细胞被破坏→缺氧→智力障碍、心脏损伤、流产、死亡</li>
+      <li><strong>预防</strong>：每次分娩Rh阳性婴儿后，给母亲注射Rh免疫球蛋白疫苗→阻止抗体形成</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="birth">
+  <div class="section-header"><div class="section-num">4</div><h2>分娩过程 Childbirth</h2></div>
+  <div class="card">
+    <div class="card-title">分娩三阶段 Three Stages of Labor</div>
+    <div class="grid3">
+      <div class="cc tl"><div class="badge">第一阶段（最长）</div><h4>Stage 1 — 宫口扩张</h4><p>子宫颈从0扩张到10cm；持续数小时到超过一天；初产妇（first-time mothers）最长</p></div>
+      <div class="cc pu"><div class="badge">第二阶段</div><h4>Stage 2 — 胎儿娩出</h4><p>宫颈完全扩张→婴儿娩出；持续20分钟到1小时；头先露（head crowning）</p></div>
+      <div class="cc am"><div class="badge">第三阶段</div><h4>Stage 3 — 胎盘娩出</h4><p>胎盘（placenta/afterbirth）娩出；通常5-10分钟内</p></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">分娩方式与医疗干预 Approaches &amp; Medical Interventions</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">自然/备产分娩 Natural/Prepared Childbirth</p>
+        <ul class="dl">
+          <li>拉马兹法（Lamaze method）：孕前训练、控制呼吸、配偶/导乐（doula）支持</li>
+          <li>导乐陪产：降低剖宫产率、减少分娩疼痛、提升母婴联结</li>
+          <li>家庭分娩（home delivery）：低风险妊娠可选；需专业助产士</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">医疗干预 Medical Interventions</p>
+        <ul class="dl">
+          <li>胎儿监测（fetal monitoring）：持续监测胎心；过度使用可能增加不必要剖宫产</li>
+          <li>分娩镇痛药（medication）：麻醉药可穿过胎盘→新生儿困倦、反应迟钝</li>
+          <li>剖宫产（cesarean delivery）：必要时（胎位不正、Rh不相容等）；美国发生率约33%；不必要的剖宫产应避免</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">新生儿评估 Assessing the Newborn: Apgar Scale</div>
+    <table class="tbl">
+      <thead><tr><th>评估项目</th><th>0分</th><th>1分</th><th>2分</th></tr></thead>
+      <tbody>
+        <tr><td>外观 Appearance（肤色）</td><td>全身青紫/苍白</td><td>躯干粉红，四肢青紫</td><td>全身粉红</td></tr>
+        <tr><td>脉搏 Pulse（心率）</td><td>无</td><td>&lt;100次/分</td><td>≥100次/分</td></tr>
+        <tr><td>皱眉反应 Grimace（刺激反应）</td><td>无反应</td><td>轻微皱眉</td><td>哭、咳嗽</td></tr>
+        <tr><td>活动 Activity（肌张力）</td><td>松软</td><td>轻微弯曲</td><td>积极活动</td></tr>
+        <tr><td>呼吸 Respiration</td><td>无</td><td>缓慢不规律</td><td>强劲哭声</td></tr>
+      </tbody>
+    </table>
+    <div class="note-teal">✓ 出生后1分钟和5分钟各评估一次；<strong>7-10分</strong>：正常；4-6分：需监护；0-3分：需立即抢救。</div>
+  </div>
+</section>
+
+<section class="section" id="preterm">
+  <div class="section-header"><div class="section-num">5</div><h2>早产儿与低出生体重儿 Preterm &amp; Low-Birth-Weight Infants</h2></div>
+  <div class="card">
+    <div class="card-title">两类区分 Two Categories</div>
+    <div class="grid2">
+      <div class="cc pu">
+        <div class="badge">早产儿 Preterm</div>
+        <h4>提前数周或更多出生</h4>
+        <p>出生体重可能相对正常（按孕期时间）；约11%的美国婴儿</p>
+      </div>
+      <div class="cc co">
+        <div class="badge">小于胎龄儿 Small-for-Date</div>
+        <h4>体重低于孕期预期值</h4>
+        <p>可能是早产也可能是足月；通常预后<strong>更差</strong>；营养不足、胎盘功能不良所致；神经损伤风险更高</p>
+      </div>
+    </div>
+    <div class="note-amber">⚑ 即使只早出生1-2周（34-35周）也会导致认知和学习差异；医学上不必要的引产应避免。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">干预措施 Interventions</div>
+    <ul class="dl">
+      <li><strong>袋鼠式护理（kangaroo care）</strong>：父母与早产儿皮肤接触（skin-to-skin contact）；降低压力激素、改善睡眠、促进大脑发育、增进亲子联结</li>
+      <li>播放母亲声音和心跳录音：减少应激反应，改善呼吸</li>
+      <li>高风险监护室（NICU）护理：精确调节温度、营养和氧气</li>
+      <li>出院后需要持续、高敏感的父母养育支持</li>
+    </ul>
+    <div class="note-teal">✓ 大多数早产儿最终发展正常；约50%出生于23-24周（极低体重）的婴儿也没有持久残障——关键是优质医疗护理和高质量家庭环境。</div>
+  </div>
+</section>
+
+<section class="section" id="newborn">
+  <div class="section-header"><div class="section-num">6</div><h2>新生儿的能力 The Newborn Baby's Capacities</h2></div>
+  <div class="card">
+    <div class="card-title">新生儿反射 Newborn Reflexes</div>
+    <table class="tbl">
+      <thead><tr><th>反射</th><th>引发方式</th><th>反应</th><th>消失时间</th><th>功能</th></tr></thead>
+      <tbody>
+        <tr><td>吸吮反射 Sucking</td><td>触碰嘴唇/口腔</td><td>吸吮动作</td><td>自主进食取代</td><td>进食（生存性）</td></tr>
+        <tr><td>觅食反射 Rooting</td><td>触碰面颊</td><td>头转向刺激侧</td><td>约3周</td><td>帮助寻找乳头（生存性）</td></tr>
+        <tr><td>摩罗反射 Moro</td><td>突然声响或失去支撑</td><td>双臂张开→合拢，背拱起</td><td>约6个月</td><td>进化遗留（抓握母亲）</td></tr>
+        <tr><td>掌握反射 Palmar grasp</td><td>手掌受压</td><td>手指弯曲紧握</td><td>约3-4个月</td><td>进化遗留</td></tr>
+        <tr><td>踏步反射 Stepping</td><td>扶住婴儿让脚接触平面</td><td>交替迈步</td><td>约2个月</td><td>行走的前体（动态系统）</td></tr>
+        <tr><td>巴宾斯基反射 Babinski</td><td>轻划脚底</td><td>脚趾张开</td><td>约8-12个月</td><td>神经学检查标准</td></tr>
+      </tbody>
+    </table>
+    <div class="note-amber">⚑ 考试重点：原始反射（primitive reflexes）是否按时消失，是评估神经系统健康的重要指标！</div>
+  </div>
+  <div class="card">
+    <div class="card-title">新生儿感觉能力 Sensory Capacities</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>触觉（touch）</strong>：最发达的感觉；全身可感觉到；是舒适和与他人联结的基础</li>
+        <li><strong>味觉/嗅觉</strong>：偏好甜味；可识别母亲的气味（仅数天内）</li>
+        <li><strong>听觉（hearing）</strong>：已发育完善；偏好母亲声音（子宫内已习惯）、母语、高音调声音</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>视觉（vision）</strong>：最不发达；约20/600；焦点约30cm；偏好人脸（facelike stimuli）、高对比度、曲线</li>
+        <li>跨感觉整合（intermodal perception）：已存在，如将听到的声音与视觉刺激匹配</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">新生儿学习能力 Learning Capacities</div>
+    <ul class="dl">
+      <li><strong>经典条件反射（classical conditioning）</strong>：可建立CS-US关联（如摇晃体位与喂奶的关联）</li>
+      <li><strong>操作条件反射（operant conditioning）</strong>：可通过强化增加行为（如吸吮获得甜液）</li>
+      <li><strong>习惯化（habituation）</strong>：对重复刺激反应减弱；<strong>去习惯化（dishabituation）</strong>：对新刺激恢复反应——证明婴儿有基本记忆和辨别能力</li>
+      <li><strong>模仿（imitation）</strong>：新生儿是否能模仿面部表情（如吐舌头）仍有争议，但数周后的模仿能力是确定的</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">觉醒状态与SIDS States of Arousal &amp; SIDS</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">觉醒状态（6种）</p>
+        <ul class="dl">
+          <li>从深睡→浅睡→困倦→安静清醒→主动清醒→哭泣</li>
+          <li>新生儿每天睡16-18小时；睡眠周期约45-50分钟（成人：90分钟）</li>
+          <li>REM睡眠（主动睡眠）比例高：约50%（成人：20%）——促进脑部发育</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">婴儿猝死综合征 SIDS</p>
+        <ul class="dl">
+          <li>1-12个月婴儿<strong>首要死亡原因</strong>；睡眠中突然停止呼吸</li>
+          <li>风险因素：俯卧睡（prone sleeping）、柔软床铺、过热、父母吸烟、早产</li>
+          <li><strong>"仰睡（Back to Sleep）"运动</strong>：将SIDS发生率降低了50%以上</li>
+          <li>其他保护措施：母乳喂养、避免共享被褥（but同房间可以）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="objectives" id="objectives">
+  <h3>第三章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>描述产前发展三阶段（受精卵期、胚胎期、胎儿期）的时间范围和主要发育事件。</li>
+    <li>解释影响致畸因子危害程度的四大原则；列出主要致畸因子及其影响。</li>
+    <li>说明酒精、烟草对胎儿发育的特定危害；解释叶酸的预防作用。</li>
+    <li>描述母亲营养、情绪压力、年龄、Rh因子不相容对产前发展的影响。</li>
+    <li>描述分娩三阶段；比较自然分娩与医疗干预的优缺点；解释Apgar量表的评估内容。</li>
+    <li>区分早产儿和小于胎龄儿；描述袋鼠式护理等干预措施的效果。</li>
+    <li>列出新生儿的主要反射，说明其生存和神经评估意义。</li>
+    <li>描述新生儿的感觉能力（触觉、嗅觉、听觉、视觉）和学习能力（习惯化、经典/操作条件反射）。</li>
+    <li>说明SIDS的定义、风险因素和主要预防措施（仰睡）。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>

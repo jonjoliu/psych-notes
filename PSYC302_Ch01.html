@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.1 历史、理论与研究方法</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root {
+    --teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;
+    --gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;
+    --purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;
+    --amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;
+    --bg:#FAFAF8;--card-bg:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc.gy{background:var(--gray-light);border:1px solid var(--gray-border);}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc.gy h4{color:var(--gray-mid);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .note-purple{background:var(--purple-light);border-left:3px solid var(--purple);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--purple);margin-top:10px;}
+  .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .split-box{border-radius:10px;padding:1.2rem;}
+  .split-box.good{background:var(--teal-light);border:1px solid #9FE1CB;}
+  .split-box.bad{background:var(--coral-light);border:1px solid #F5C4B3;}
+  .split-box h4{font-size:14px;font-weight:700;margin-bottom:.5rem;}
+  .split-box.good h4{color:var(--teal-dark);}
+  .split-box.bad h4{color:var(--coral);}
+  .split-box ul{list-style:none;}
+  .split-box li{font-size:13px;color:var(--gray);padding:3px 0 3px 16px;position:relative;line-height:1.55;}
+  .good li::before{content:'✓';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .bad li::before{content:'✗';position:absolute;left:0;font-weight:700;color:var(--coral);}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3,.split-grid{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.1</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 1</div>
+    <h1>第一章：历史、理论与研究方法<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">History, Theory, and Research Strategies</span></h1>
+    <div class="hero-sub">发展的基本议题 · 毕生发展观 · 主要理论视角 · 研究方法与设计</div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#issues">基本议题</a></li>
+    <li><a href="#lifespan">毕生发展观</a></li>
+    <li><a href="#history">历史背景</a></li>
+    <li><a href="#theories">主要理论</a></li>
+    <li><a href="#recent">近代视角</a></li>
+    <li><a href="#methods">研究方法</a></li>
+    <li><a href="#designs">研究设计</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+<!-- 基本议题 -->
+<section class="section" id="issues">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <h2>发展的三大基本议题 Three Basic Issues</h2>
+  </div>
+
+  <div class="grid3">
+    <div class="cc tl">
+      <div class="badge">议题一</div>
+      <h4>连续 vs. 非连续<br><span style="font-weight:400;font-size:11px;">Continuous vs. Discontinuous</span></h4>
+      <p>发展是<strong>量变积累（continuous）</strong>的平缓过程，还是经历质变的<strong>阶段跃升（discontinuous/stages）</strong>？<br><br>
+      行为主义：连续 ↔ Piaget、Erikson：不连续（阶段论）</p>
+    </div>
+    <div class="cc pu">
+      <div class="badge">议题二</div>
+      <h4>单一路径 vs. 多元路径<br><span style="font-weight:400;font-size:11px;">One Course vs. Many</span></h4>
+      <p>所有人是否遵循相同的发展顺序？还是因文化、历史、个人经历而出现多种路径？<br><br>
+      毕生发展观强调<strong>多元路径</strong>的可能性。</p>
+    </div>
+    <div class="cc am">
+      <div class="badge">议题三</div>
+      <h4>先天 vs. 后天<br><span style="font-weight:400;font-size:11px;">Nature vs. Nurture</span></h4>
+      <p>遗传基因（<strong>nature</strong>）与环境经历（<strong>nurture</strong>）各起多大作用？<br><br>
+      现代观点：两者<strong>双向互动</strong>，无法截然分开。</p>
+    </div>
+  </div>
+  <div class="note-teal">✓ 另一个重要议题：<strong>稳定性 vs. 可变性（stability vs. plasticity）</strong>——早期发展经历能否被后来的经历改变？毕生发展观认为发展始终具有<strong>可塑性（plasticity）</strong>。</div>
+</section>
+
+<!-- 毕生发展观 -->
+<section class="section" id="lifespan">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <h2>毕生发展观 The Lifespan Perspective (Baltes)</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">六大特征 Six Characteristics</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>终身性（lifelong）</strong>：发展不止于童年，贯穿整个生命周期，任何年龄段都可能发生重要变化</li>
+        <li><strong>多维度（multidimensional）</strong>：同时涵盖身体（physical）、认知（cognitive）、情感（emotional）、社会（social）多个领域</li>
+        <li><strong>多方向（multidirectional）</strong>：某些能力增长（gain），某些下降（loss），同一人不同能力轨迹不同</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>可塑性（plastic）</strong>：在整个生命过程中，发展可以被经历修改；但可塑性随年龄有所下降</li>
+        <li><strong>多重情境（multiple contexts）</strong>：受历史时期、文化背景、社会环境等多层次情境影响</li>
+        <li><strong>多学科性（interdisciplinary）</strong>：需要心理学、生物学、社会学等多学科协作研究</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">影响发展的三类因素 Three Influences on Lifespan Development</div>
+    <div class="grid3">
+      <div class="cc tl">
+        <div class="badge">年龄分级影响</div>
+        <h4>Age-Graded Influences</h4>
+        <p>与年龄高度相关的生物或社会事件。如：青春期（puberty）、婚姻、退休。<br>各文化中大致相似。</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">历史分级影响</div>
+        <h4>History-Graded Influences</h4>
+        <p>特定历史时期影响某一<strong>同龄群体（cohort）</strong>的事件。如：大萧条、二战、COVID-19。<br>解释代际差异。</p>
+      </div>
+      <div class="cc am">
+        <div class="badge">非规范影响</div>
+        <h4>Nonnormative Influences</h4>
+        <p>不可预测、高度个人化的事件。如：失业、重病、中奖。<br>随年龄在生活中比重增加。</p>
+      </div>
+    </div>
+    <div class="note-teal">✓ 毕生发展观强调发展是"树枝状（branching）"而非单线条的——许多路径均有可能，而非仅有一条"正常"轨迹。</div>
+  </div>
+</section>
+
+<!-- 历史背景 -->
+<section class="section" id="history">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <h2>发展科学的历史背景 Historical Roots</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">科学起源 Scientific Beginnings</div>
+    <ul class="dl">
+      <li><strong>Charles Darwin（达尔文, 1809–1882）</strong>：自然选择理论（natural selection）和"适者生存"——行为的适应价值；儿童研究科学先驱</li>
+      <li><strong>G. Stanley Hall（1844–1924）</strong>：儿童研究运动创始人；开创<strong>规范性研究法（normative approach）</strong>——收集大量儿童数据，计算年龄均值代表典型发展</li>
+      <li><strong>Arnold Gesell（1880–1961）</strong>：Hall 的学生；发展由遗传决定的成熟过程（maturation）；建立详细运动里程碑规范</li>
+      <li><strong>Alfred Binet（1857–1911）</strong>：也采用规范法，但目的不同——建立智力测验（mental testing movement）；第一个标准化智力量表</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 主要理论 -->
+<section class="section" id="theories">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <h2>主要理论视角（20世纪中期）Mid-20th Century Theories</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">心理分析理论 Psychoanalytic Perspective</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">Freud 的心理性欲理论 Psychosexual Theory</p>
+        <ul class="dl">
+          <li>发展由<strong>无意识力量（unconscious forces）</strong>和早年经历驱动</li>
+          <li>人格三部分：<strong>本我（id）</strong>（原始冲动）、<strong>自我（ego）</strong>（现实调节）、<strong>超我（superego）</strong>（道德/良心）</li>
+          <li>五个心理性欲阶段：口腔期（oral）→肛门期（anal）→性器期（phallic）→潜伏期（latency）→生殖期（genital）</li>
+          <li>若某阶段需求未得满足 → <strong>固着（fixation）</strong>，影响成年人格</li>
+        </ul>
+        <div class="note-coral">✗ 局限：过度强调性冲动、理论难以证伪、未直接观察儿童、忽视文化差异。</div>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">Erikson 的心理社会理论 Psychosocial Theory</p>
+        <ul class="dl">
+          <li>在 Freud 基础上扩展：强调<strong>社会文化因素</strong>，发展贯穿一生（8阶段 vs. Freud 5阶段）</li>
+          <li>每阶段面临一个<strong>心理社会危机（psychosocial crisis）</strong>，解决方式影响后续发展</li>
+          <li>前五阶段与 Freud 对应，<strong>额外增加三个成人阶段</strong></li>
+          <li>正常发展必须放在<strong>特定文化情境</strong>中理解</li>
+        </ul>
+        <div class="note-teal">✓ 贡献：强调毕生发展、社会文化背景、自我（ego）的积极力量。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Erikson 心理社会发展八阶段 Eight Psychosocial Stages</div>
+    <table class="tbl">
+      <thead><tr><th>阶段</th><th>年龄</th><th>心理社会危机 Psychosocial Crisis</th><th>核心问题</th></tr></thead>
+      <tbody>
+        <tr><td>婴儿期</td><td>0–1岁</td><td><strong>信任 vs. 不信任</strong><br>Basic Trust vs. Mistrust</td><td>照顾者是否可靠？</td></tr>
+        <tr><td>学步期</td><td>1–3岁</td><td><strong>自主 vs. 羞耻/怀疑</strong><br>Autonomy vs. Shame &amp; Doubt</td><td>我能独立行动吗？</td></tr>
+        <tr><td>幼儿期</td><td>3–6岁</td><td><strong>主动 vs. 内疚</strong><br>Initiative vs. Guilt</td><td>我能主动做事吗？</td></tr>
+        <tr><td>童年中期</td><td>6–11岁</td><td><strong>勤奋 vs. 自卑</strong><br>Industry vs. Inferiority</td><td>我能胜任工作吗？</td></tr>
+        <tr><td>青少年期</td><td>青春期</td><td><strong>自我认同 vs. 角色混乱</strong><br>Identity vs. Role Confusion</td><td>我是谁？</td></tr>
+        <tr><td>成年早期</td><td>20–40岁</td><td><strong>亲密 vs. 孤独</strong><br>Intimacy vs. Isolation</td><td>我能爱吗？</td></tr>
+        <tr><td>成年中期</td><td>40–65岁</td><td><strong>繁殖 vs. 停滞</strong><br>Generativity vs. Stagnation</td><td>我能有所贡献吗？</td></tr>
+        <tr><td>成年晚期</td><td>65岁+</td><td><strong>自我完整 vs. 绝望</strong><br>Ego Integrity vs. Despair</td><td>我的一生有意义吗？</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">行为主义与社会学习理论 Behaviorism &amp; Social Learning Theory</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">行为主义 Behaviorism</p>
+        <ul class="dl">
+          <li><strong>Watson（华生）</strong>：经典条件反射（classical conditioning）；环境塑造一切行为；"给我一打健康婴儿……"</li>
+          <li><strong>Skinner（斯金纳）</strong>：操作条件反射（operant conditioning）；<strong>强化（reinforcement）</strong>增加行为；<strong>惩罚（punishment）</strong>减少行为；发展是连续的</li>
+        </ul>
+        <div class="note-coral">✗ 局限：忽视内部心理过程；无法解释复杂认知和语言发展。</div>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">社会学习理论 Social Learning Theory (Bandura)</p>
+        <ul class="dl">
+          <li>行为通过<strong>观察与模仿（observational learning / modeling）</strong>习得</li>
+          <li><strong>自我效能感（self-efficacy）</strong>：相信自己能成功完成任务，影响行为选择</li>
+          <li>认知在行为习得中起重要作用（社会认知理论 social-cognitive theory）</li>
+          <li>环境、行为、个人（认知）三者<strong>相互决定（reciprocal determinism）</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Piaget 认知发展理论 Cognitive-Developmental Theory</div>
+    <ul class="dl">
+      <li>儿童是<strong>主动的知识建构者（active constructors of knowledge）</strong>，不是被动接受信息</li>
+      <li>核心概念：<strong>图式（scheme/schema）</strong>——用于理解世界的认知结构</li>
+      <li><strong>同化（assimilation）</strong>：将新信息纳入现有图式；<strong>顺应（accommodation）</strong>：修改图式以适应新信息</li>
+      <li><strong>平衡（equilibration）</strong>：通过同化与顺应达到认知平衡的动态过程</li>
+      <li>四个阶段：<strong>感知运动（sensorimotor, 0-2）→ 前运算（preoperational, 2-7）→ 具体运算（concrete operational, 7-11）→ 形式运算（formal operational, 11+）</strong></li>
+    </ul>
+    <div class="note-teal">✓ 贡献：证明儿童是主动学习者；促进发现学习教育理念。</div>
+    <div class="note-coral">✗ 局限：低估婴幼儿的能力；忽视社会文化影响；训练可以改善儿童在Piaget任务上的表现。</div>
+  </div>
+</section>
+
+<!-- 近代视角 -->
+<section class="section" id="recent">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <h2>近代理论视角 Recent Theoretical Perspectives</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">信息加工理论 Information Processing</div>
+    <ul class="dl">
+      <li>将人类心智比作<strong>计算机（computer metaphor）</strong>：信息输入→处理→输出</li>
+      <li>关注<strong>注意（attention）、记忆（memory）、问题解决（problem solving）、计划（planning）</strong>等具体过程</li>
+      <li>发展是<strong>连续的（continuous）</strong>——同一过程在各年龄段均存在，只是程度不同</li>
+      <li><strong>执行功能（executive function）</strong>：自我控制、自我调节、延迟满足；是学业成就和心理健康的重要预测因素</li>
+      <li>用<strong>流程图（flowcharts）</strong>描述认知步骤</li>
+    </ul>
+    <div class="note-coral">✗ 局限：擅长分析认知过程，但难以整合成统一理论；对创造力、想象力等非线性思维解释有限。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">发展神经科学 Developmental Neuroscience</div>
+    <ul class="dl">
+      <li>综合心理学、生物学、神经科学，研究<strong>大脑发育与行为/认知</strong>之间的关系</li>
+      <li><strong>发展认知神经科学（developmental cognitive neuroscience）</strong>：大脑变化与认知加工</li>
+      <li><strong>发展社会神经科学（developmental social neuroscience）</strong>：大脑变化与情感/社会发展</li>
+      <li>关键研究问题：早期剥夺（early deprivation）对大脑的影响；自闭症（autism）的神经基础</li>
+    </ul>
+    <div class="note-amber">⚑ 注意：神经科学研究不应过度强调生物因素而忽视环境影响（父母养育、教育、经济不平等）。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">动物行为学与进化发展心理学 Ethology &amp; Evolutionary Developmental Psychology</div>
+    <ul class="dl">
+      <li><strong>动物行为学（ethology）</strong>：研究行为的适应价值（adaptive value）及其进化历史；Lorenz、Tinbergen</li>
+      <li><strong>印刻（imprinting）</strong>：鸟类早期跟随母亲的行为，发生在特定时期；启发了人类的<strong>敏感期</strong>概念</li>
+      <li><strong>关键期（critical period）</strong>：特定能力发展的限定时间窗口，过后难以弥补；<strong>敏感期（sensitive period）</strong>：界限更模糊，发展仍可发生但更困难</li>
+      <li>Bowlby：将动物行为学应用于<strong>依恋理论（attachment theory）</strong>——婴儿先天社会信号保持母婴亲近</li>
+      <li><strong>进化发展心理学（evolutionary developmental psychology）</strong>：研究认知、情感、社会能力的适应价值如何随年龄变化</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vygotsky 社会文化理论 Sociocultural Theory</div>
+    <ul class="dl">
+      <li>认知发展通过<strong>社会互动（social interaction）</strong>和<strong>文化传递（cultural transmission）</strong>发生</li>
+      <li>儿童通过与更有能力者的协作，在<strong>最近发展区（ZPD, Zone of Proximal Development）</strong>内学习</li>
+      <li><strong>支架（scaffolding）</strong>：随儿童能力增长动态调整帮助程度</li>
+      <li>强调<strong>语言</strong>在思维发展中的核心作用（私语→内部言语）</li>
+      <li>对跨文化差异和教育实践有重要启示</li>
+    </ul>
+    <div class="note-coral">✗ 局限：对个体认知发展过程描述不够详细；研究方法较难操作化。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Bronfenbrenner 生态系统理论 Ecological Systems Theory</div>
+    <p style="font-size:13.5px;margin-bottom:.75rem;">发展嵌套在相互作用的多层次环境系统中：</p>
+    <div class="grid2">
+      <div>
+        <ul class="dl">
+          <li><strong>微观系统（microsystem）</strong>：儿童直接接触的环境——家庭、学校、同伴、邻里</li>
+          <li><strong>中间系统（mesosystem）</strong>：微观系统之间的连接——如家庭与学校的关系</li>
+          <li><strong>外围系统（exosystem）</strong>：儿童不直接参与但受其影响的环境——父母工作单位、社区服务</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="dl">
+          <li><strong>宏观系统（macrosystem）</strong>：文化价值观、法律、习俗、意识形态——最宏观的背景</li>
+          <li><strong>时间系统（chronosystem）</strong>：时间维度——历史变迁、生命事件的时机对发展的影响</li>
+          <li>后期修订为<strong>生物生态学模型（bioecological model）</strong>，强调<strong>近端过程（proximal processes）</strong>的核心作用</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note-teal">✓ 体现发展是个人与多层次环境双向互动的结果，是迄今最全面的发展背景框架。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">动态系统理论 Dynamic Systems Theory</div>
+    <ul class="dl">
+      <li>发展是大脑、身体与环境多个组成部分<strong>相互作用、自组织（self-organizing）</strong>的动态过程</li>
+      <li>没有单一的"控制因素"——行为从系统各部分的协调中<strong>涌现（emerge）</strong></li>
+      <li>应用于运动发展（Thelen）、认知发展、情绪调节等多个领域</li>
+      <li>强调<strong>个体差异</strong>和<strong>情境特异性（context-specificity）</strong></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">各理论比较 Comparing Theories</div>
+    <table class="tbl">
+      <thead><tr><th>理论</th><th>发展连续性</th><th>先天 vs 后天</th><th>主动 vs 被动</th><th>阶段论</th></tr></thead>
+      <tbody>
+        <tr><td>心理分析（Freud/Erikson）</td><td>非连续</td><td>两者均有</td><td>被动</td><td>有</td></tr>
+        <tr><td>行为主义（Watson/Skinner）</td><td>连续</td><td>后天为主</td><td>被动</td><td>无</td></tr>
+        <tr><td>社会学习（Bandura）</td><td>连续</td><td>两者均有</td><td>主动</td><td>无</td></tr>
+        <tr><td>认知发展（Piaget）</td><td>非连续</td><td>两者均有</td><td>主动</td><td>有</td></tr>
+        <tr><td>信息加工</td><td>连续</td><td>两者均有</td><td>主动</td><td>无</td></tr>
+        <tr><td>社会文化（Vygotsky）</td><td>连续/非连续</td><td>两者均有</td><td>主动</td><td>有限</td></tr>
+        <tr><td>生态系统（Bronfenbrenner）</td><td>两者均有</td><td>两者均有</td><td>主动</td><td>无</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 研究方法 -->
+<section class="section" id="methods">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <h2>研究方法 Research Methods</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">数据收集方法 Data Collection Methods</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">系统观察 Systematic Observation</p>
+        <ul class="dl">
+          <li><strong>自然观察（naturalistic observation）</strong>：在真实环境中观察；<strong>生态效度（ecological validity）</strong>高，但难以控制无关变量</li>
+          <li><strong>结构性观察（structured observation）</strong>：在实验室中设置统一情境；可控性强，但缺乏自然性；适用于少见行为</li>
+        </ul>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;margin-top:12px;">自我报告 Self-Reports</p>
+        <ul class="dl">
+          <li><strong>临床访谈（clinical interview）</strong>：开放式问题，深入了解；个别化程度高，但难以比较</li>
+          <li><strong>结构性访谈/问卷（structured interview）</strong>：统一问题，易于比较；但限制深度</li>
+          <li>局限：社会期望偏差（social desirability bias）</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">神经生物学测量 Neurobiological Measures</p>
+        <ul class="dl">
+          <li>心率、血压、激素水平（唾液皮质醇）等对心理状态敏感</li>
+          <li>脑电图（EEG）、功能性磁共振（fMRI）等脑成像技术</li>
+          <li>连接生物测量与心理/社会发展</li>
+        </ul>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;margin-top:12px;">案例研究 Case Studies</p>
+        <ul class="dl">
+          <li>对单一个体进行深入研究</li>
+          <li>优点：丰富信息；局限：难以推广，可能存在研究者偏见</li>
+        </ul>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;margin-top:12px;">人类学现场研究 Ethnography</p>
+        <ul class="dl">
+          <li>研究者深入社区，直接参与和观察文化实践</li>
+          <li>适用于跨文化比较研究</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 研究设计 -->
+<section class="section" id="designs">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <h2>研究设计 Research Designs</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">一般研究设计 General Research Designs</div>
+    <div class="split-grid">
+      <div class="split-box good">
+        <h4>实验研究 Experimental Design</h4>
+        <ul>
+          <li>随机分组（random assignment）</li>
+          <li>操控自变量（independent variable）</li>
+          <li>测量因变量（dependent variable）</li>
+          <li>可得出<strong>因果结论（causal conclusions）</strong></li>
+          <li>局限：实验室设置可能缺乏生态效度</li>
+        </ul>
+      </div>
+      <div style="background:var(--blue-light);border:1px solid #B5D4F4;border-radius:10px;padding:1.2rem;">
+        <h4 style="color:var(--blue);font-size:14px;font-weight:700;margin-bottom:.5rem;">相关研究 Correlational Design</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:13px;color:var(--gray);padding:3px 0 3px 14px;position:relative;"><span style="position:absolute;left:0;">·</span>检验变量间<strong>相关关系</strong></li>
+          <li style="font-size:13px;color:var(--gray);padding:3px 0 3px 14px;position:relative;"><span style="position:absolute;left:0;">·</span>相关系数（r）：-1 到 +1</li>
+          <li style="font-size:13px;color:var(--gray);padding:3px 0 3px 14px;position:relative;"><span style="position:absolute;left:0;">·</span><strong>不能</strong>得出因果结论</li>
+          <li style="font-size:13px;color:var(--gray);padding:3px 0 3px 14px;position:relative;"><span style="position:absolute;left:0;">·</span>第三变量问题（third variable problem）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note-amber">⚑ 记忆口诀：相关 ≠ 因果（correlation ≠ causation）——这是最常考的考点之一！</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">发展研究设计 Developmental Research Designs</div>
+    <table class="tbl">
+      <thead><tr><th>设计</th><th>方法</th><th>优点</th><th>缺点</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>横断设计<br>Cross-Sectional</td>
+          <td>同时比较不同年龄组</td>
+          <td>省时省钱；可快速获得年龄差异数据</td>
+          <td><strong>同龄效应（cohort effect）</strong>：年龄差异可能反映历史差异而非发展变化；无法追踪个体变化轨迹</td>
+        </tr>
+        <tr>
+          <td>纵向设计<br>Longitudinal</td>
+          <td>跟踪同一群体随时间变化</td>
+          <td>可见真实发展轨迹；可研究早期经历对后期发展的影响</td>
+          <td>耗时耗资；<strong>练习效应（practice effects）</strong>；<strong>样本流失（attrition）</strong>；同龄效应仍存在</td>
+        </tr>
+        <tr>
+          <td>序列设计<br>Sequential</td>
+          <td>结合横断和纵向</td>
+          <td>区分年龄、同龄群体、历史时间效应；减少各自局限性</td>
+          <td>最耗时、最昂贵；数据分析复杂</td>
+        </tr>
+        <tr>
+          <td>微观发生设计<br>Microgenetic</td>
+          <td>在短期内密集追踪变化</td>
+          <td>可直接捕捉变化发生的过程</td>
+          <td>样本小；练习效应明显</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">研究伦理 Ethics in Research</div>
+    <ul class="dl">
+      <li><strong>知情同意（informed consent）</strong>：研究前充分告知并获得同意；未成年人需监护人同意 + 儿童认同（assent）</li>
+      <li><strong>无伤害（protection from harm）</strong>：身体和心理均不得受到伤害</li>
+      <li><strong>保密性（confidentiality）</strong>：参与者信息保密</li>
+      <li><strong>知识共享（knowledge of results）</strong>：有权了解研究结果</li>
+      <li><strong>善意处理（beneficial treatments）</strong>：对照组应在研究后获得有益干预</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 学习目标 -->
+<div class="objectives" id="objectives">
+  <h3>第一章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>区分连续/非连续、单一/多元路径、先天/后天三大基本议题，并举例说明。</li>
+    <li>描述毕生发展观的六大特征，区分年龄分级、历史分级和非规范影响。</li>
+    <li>概述发展科学的历史起源（Darwin、Hall、Gesell、Binet）。</li>
+    <li>比较心理分析理论（Freud vs. Erikson），列出 Erikson 八个心理社会阶段。</li>
+    <li>对比行为主义（Watson、Skinner）与 Bandura 社会学习理论的核心观点及局限。</li>
+    <li>解释 Piaget 认知发展理论的核心概念（图式、同化、顺应、平衡）及四个阶段。</li>
+    <li>描述信息加工理论、发展神经科学、动物行为学/进化视角、Vygotsky 社会文化理论、Bronfenbrenner 生态系统理论的核心主张。</li>
+    <li>区分自然观察与结构性观察、临床访谈与结构性访谈，说明各自优缺点。</li>
+    <li>比较相关设计与实验设计；区分横断、纵向、序列研究设计的优缺点。</li>
+    <li>说明发展研究的主要伦理原则。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>
