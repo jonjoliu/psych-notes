@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.9 童年中期身体与认知发展</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc.gy{background:var(--gray-light);border:1px solid var(--gray-border);}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.9</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 9</div>
+    <h1>第九章：童年中期身体与认知发展<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">Physical &amp; Cognitive Development in Middle Childhood (6–11岁)</span></h1>
+    <div class="hero-sub">身体生长 · 运动与游戏 · 具体运算阶段 · 信息加工 · 智力理论 · 语言 · 学校教育</div>
+  </div>
+</div>
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#physical">身体发展</a></li>
+    <li><a href="#concrete">具体运算阶段</a></li>
+    <li><a href="#infoproc">信息加工</a></li>
+    <li><a href="#intelligence">智力理论</a></li>
+    <li><a href="#language">语言发展</a></li>
+    <li><a href="#school">学校教育</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+<main class="main">
+
+<section class="section" id="physical">
+  <div class="section-header"><div class="section-num">1</div><h2>身体发展 Physical Development</h2></div>
+  <div class="card">
+    <div class="card-title">身体生长 Body Growth</div>
+    <ul class="dl">
+      <li>6-11岁：生长速度放缓，每年增高约5-6cm，增重约2-3kg；<strong>女孩在9岁左右追上男孩体型</strong></li>
+      <li>骨骼持续延长变宽；乳牙开始脱落，恒牙替换（6-12岁）</li>
+      <li>大脑发育：前额叶皮质继续髓鞘化→执行功能（EF）显著提升；海马体增大→记忆力增强</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">童年肥胖 Childhood Obesity</div>
+    <ul class="dl">
+      <li><strong>肥胖（obesity）</strong>：BMI高于同龄同性别儿童第95百分位；在工业化和发展中国家均显著增加</li>
+      <li>遗传因素贡献约50%；但快速增加趋势主要反映环境变化——高热量食物↑、体力活动↓</li>
+      <li>影响：自尊↓、同伴拒绝↑、学业成绩↓、成年期代谢综合征、心血管疾病风险↑</li>
+      <li>有效干预：<strong>以家庭为单位</strong>的多成分干预（营养教育+运动增加+父母育儿技能）效果最佳；仅靠学校项目效果有限</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">运动与游戏 Motor Development &amp; Play</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li>粗大运动：灵活性、平衡性、敏捷性显著提高</li>
+        <li>精细运动：书写更清晰；绘画更有组织、更多细节、更能表现深度</li>
+        <li>男女差异：男孩在力量/速度方面略优；女孩在平衡/柔韧性方面略优</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>有规则的游戏（games with rules）</strong>：童年中期快速增加；促进道德发展、社会技能、情绪调节</li>
+        <li><strong>粗野嬉闹（rough-and-tumble play）</strong>：追逐打闹，男孩为主；与真正攻击的区别在于笑和后续合作；进化遗留（练习战斗技能）</li>
+        <li>美国学校削减课间休息和体育课→儿童运动量不足，影响健康</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="concrete">
+  <div class="section-header"><div class="section-num">2</div><h2>Piaget 具体运算阶段 Concrete Operational Stage (7–11岁)</h2></div>
+  <div class="card">
+    <div class="card-title">核心特征 Core Characteristics</div>
+    <p style="font-size:13.5px;margin-bottom:.75rem;">7-11岁儿童进入<span class="kw">具体运算阶段（concrete operational stage）</span>：思维更有组织、更符合逻辑，但仍依赖<strong>具体事物</strong>而非抽象符号。</p>
+    <ul class="dl">
+      <li><strong>守恒（conservation）</strong>：理解物质量不因外观改变而改变——液体守恒约7岁，体积守恒约9-11岁</li>
+      <li><strong>去中心化（decentration）</strong>：可同时关注问题多个方面（克服了前运算的中心化）</li>
+      <li><strong>可逆性（reversibility）</strong>：可在心理上逆转操作步骤</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">新获得的逻辑技能 New Logical Skills</div>
+    <div class="grid3">
+      <div class="cc tl">
+        <div class="badge">分类 Classification</div>
+        <h4>类包含 Class Inclusion</h4>
+        <p>同时思考整体与部分的关系。<br>如：一束12朵花，其中10朵黄的，儿童能理解黄花&lt;所有花。</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">序列化 Seriation</div>
+        <h4>系统排序</h4>
+        <p>按维度（如长度、重量）系统排序一系列物体。<br><strong>传递性推理（transitive inference）</strong>：若A&gt;B且B&gt;C，则A&gt;C。</p>
+      </div>
+      <div class="cc am">
+        <div class="badge">空间推理</div>
+        <h4>认知地图 Cognitive Maps</h4>
+        <p>对大型空间（如邻里、学校）更准确的心理表征；能描述从A到B的路线。</p>
+      </div>
+    </div>
+    <div class="note-amber">⚑ 具体运算阶段的局限：思维仍依赖具体事物；对纯抽象/假设性问题的推理仍有困难——这是与形式运算阶段的主要区别。</div>
+    <div class="note-teal">✓ 跨文化研究：守恒任务的通过年龄因文化和教育经验而异——支持<strong>环境在认知发展中的重要性</strong>。</div>
+  </div>
+</section>
+
+<section class="section" id="infoproc">
+  <div class="section-header"><div class="section-num">3</div><h2>信息加工 Information Processing</h2></div>
+  <div class="card">
+    <div class="card-title">注意 Attention</div>
+    <ul class="dl">
+      <li><strong>选择性注意（selective attention）</strong>：忽略无关信息的能力显著提升（约6-7岁开始快速发展）</li>
+      <li><strong>适应性注意（adaptability）</strong>：灵活调整注意策略以适应任务需求</li>
+      <li><strong>计划能力（planfulness）</strong>：在行动前先扫描和比较替代选项</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">记忆策略 Memory Strategies</div>
+    <div class="grid3">
+      <div class="cc tl">
+        <div class="badge">复述 Rehearsal</div>
+        <p>在心里或口头反复重复待记信息；约6-7岁出现；是最基础的记忆策略。</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">组织 Organization</div>
+        <p>将信息按类别或关系分组记忆；约9岁起自发使用；显著提高记忆效果。</p>
+      </div>
+      <div class="cc am">
+        <div class="badge">精细加工 Elaboration</div>
+        <p>在待记信息之间构建联系或意义（如造句、图像）；青少年期及以后更常用。</p>
+      </div>
+    </div>
+    <div class="note-teal">✓ 策略不足（production deficiency）→策略使用不足（utilization deficiency）→有效策略使用：儿童先学会策略但使用不稳定，随后在各类任务中广泛、有效地使用。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">元认知 Metacognition</div>
+    <ul class="dl">
+      <li><span class="kw">元认知（metacognition）</span>：对自身思维过程的认识和监控——"想关于思想的想法"</li>
+      <li>童年中期快速发展：开始理解记忆的局限性、任务难度对学习的影响</li>
+      <li><strong>认知自我调节（cognitive self-regulation）</strong>：在完成任务中监控自己的理解，在遇到困难时调整策略；是学业成就的重要预测因素</li>
+      <li>元认知发展受到父母和教师的<strong>元认知引导（metacognitive guidance）</strong>的促进</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">注意力缺陷多动障碍 ADHD</div>
+    <ul class="dl">
+      <li><span class="kw">ADHD（注意力缺陷多动障碍）</span>：持续注意力不足（inattention）和/或多动-冲动（hyperactivity-impulsivity）；影响3-7%的学龄儿童；男孩发生率约为女孩2-3倍</li>
+      <li>核心表现：难以持续注意、高度活动、冲动控制差</li>
+      <li>遗传成分高；前额叶皮质和多巴胺系统发育异常</li>
+      <li>治疗：<strong>兴奋性药物（stimulant medication）</strong>（利他林等）+ 行为训练最有效；单独药物治疗不如结合行为干预</li>
+    </ul>
+    <div class="note-coral">✗ ADHD不是"家长管教不严"的结果——有明确神经生物学基础，但环境因素（压力、不一致的育儿）会加重症状。</div>
+  </div>
+</section>
+
+<section class="section" id="intelligence">
+  <div class="section-header"><div class="section-num">4</div><h2>智力的本质与测量 Intelligence</h2></div>
+  <div class="card">
+    <div class="card-title">主要智力理论 Major Theories of Intelligence</div>
+    <div class="grid2">
+      <div class="cc pu">
+        <div class="badge">Sternberg 三元理论</div>
+        <h4>Triarchic Theory of Successful Intelligence</h4>
+        <p>智力由三个相互作用的部分构成：<br>
+        • <strong>分析智力（analytical）</strong>：信息加工技能（传统IQ测的）<br>
+        • <strong>创造智力（creative）</strong>：解决新颖问题的能力<br>
+        • <strong>实践智力（practical）</strong>：在日常情境中应用技能</p>
+      </div>
+      <div class="cc am">
+        <div class="badge">Gardner 多元智力理论</div>
+        <h4>Theory of Multiple Intelligences</h4>
+        <p>人有8种相对独立的智力：<br>
+        语言·逻辑数学·音乐·空间·身体运动·自然·人际·内省<br>
+        传统IQ测试只测前两种；强调文化和情境对智力表现的影响</p>
+      </div>
+    </div>
+    <div class="note-amber">⚑ 批评：Gardner理论缺乏充分实证支持；标准IQ测验在预测学业成就上仍有效（尽管有局限）。两种理论都强调IQ不是固定不变的单一能力。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">IQ测验与智力的影响因素</div>
+    <ul class="dl">
+      <li><strong>弗林效应（Flynn Effect）</strong>：过去一个世纪中IQ分数稳定上升（约每10年+3分）；反映教育、营养、技术和认知刺激的改善——说明IQ深受环境影响</li>
+      <li><strong>遗传与环境</strong>：遗传约贡献50%的IQ差异；收养研究表明高质量环境可显著提高IQ</li>
+      <li><strong>刻板印象威胁（stereotype threat）</strong>：知道自己所属群体被认为"不擅长"某任务→焦虑→表现下降；影响少数族裔儿童的测试成绩</li>
+      <li><strong>动态评估（dynamic assessment）</strong>：测量儿童在教学支持下能达到什么水平（Vygotsky ZPD的应用）；比静态IQ测验更公平地评估少数群体儿童的潜力</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">学习障碍与特殊教育 Learning Disabilities</div>
+    <ul class="dl">
+      <li><span class="kw">学习障碍（learning disabilities）</span>：在某一特定领域（如阅读、数学、书写）的成绩显著低于IQ预期水平；占学龄儿童5-10%</li>
+      <li><strong>阅读障碍（dyslexia）</strong>：最常见；主要表现为音韵处理困难（phonological processing）→阅读和拼写困难</li>
+      <li>有效干预：明确的、系统的音韵意识训练（phonological awareness training）</li>
+      <li><strong>全纳教育（inclusive classrooms）</strong>：将特殊需求学生整合进普通班级；需要足够支持才能发挥最佳效果</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="language">
+  <div class="section-header"><div class="section-num">5</div><h2>语言发展 Language Development</h2></div>
+  <div class="card">
+    <div class="card-title">词汇与语法 Vocabulary &amp; Grammar</div>
+    <ul class="dl">
+      <li>小学阶段词汇量扩大约4倍，最终理解约4万个词；通过分析词根/词缀学习新词</li>
+      <li>开始理解词语的<strong>多重含义</strong>（双关、隐喻、讽刺）→幽默感发展（谜语和双关笑话流行）</li>
+      <li>语法复杂度增加：被动语态使用频率↑；不定式短语的细微差别</li>
+      <li><strong>叙事能力（narrative skill）</strong>：叙述更有组织、更多细节、更有评价性内容；叙事风格受文化影响</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">双语发展 Bilingual Development</div>
+    <ul class="dl">
+      <li>同时习得两种语言的儿童不混淆两套系统；双语儿童在执行功能（EF）测试中优于单语儿童——因为需要持续管理两种语言</li>
+      <li>双语儿童在<strong>抑制控制、持续注意、认知灵活性</strong>等方面优于单语儿童（Bialystok）</li>
+      <li><strong>双语教育（bilingual education）</strong>：同时用母语和第二语言教学；支持第一语言的同时促进第二语言习得；研究表明优于"沉浸式"纯第二语言教学</li>
+    </ul>
+    <div class="note-teal">✓ 双语能力不是负担，而是认知优势——特别是在EF和元语言意识（metalinguistic awareness）方面。</div>
+  </div>
+</section>
+
+<section class="section" id="school">
+  <div class="section-header"><div class="section-num">6</div><h2>学校教育 Schooling</h2></div>
+  <div class="card">
+    <div class="card-title">有效教育实践 Effective Educational Practices</div>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">良好实践</div>
+        <h4>以儿童为中心 Child-Centered</h4>
+        <p>• 合作学习（cooperative learning）<br>
+        • 真实情境中的有意义任务<br>
+        • 探究学习、批判性思维<br>
+        • 教师作为引导者，非权威传授者<br>
+        → 学习动机↑，理解更深</p>
+      </div>
+      <div class="cc co">
+        <div class="badge">有风险</div>
+        <h4>过度以教师为主 Teacher-Directed</h4>
+        <p>• 只强调记忆事实<br>
+        • 忽视高层次推理和批判性思维<br>
+        • 按能力分组（ability grouping）→低能力组机会↓，差距扩大</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">国际学业成就比较 International Achievement</div>
+    <ul class="dl">
+      <li>PISA测试：中国（上海）、新加坡、日本、韩国、芬兰位居前列；美国低于国际均值（数学）</li>
+      <li>高成就国家的共同特征：<strong>重视努力而非天赋</strong>（亚洲文化）；教师待遇高、培训严格（芬兰）；全国统一高质量课程；社会经济平等性高</li>
+      <li>美国面临挑战：教学质量差异大；过于强调标准化考试；低SES和少数族裔学生教育资源不足</li>
+    </ul>
+  </div>
+</section>
+
+<div class="objectives" id="objectives">
+  <h3>第九章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>描述6-11岁身体生长规律；说明童年肥胖的成因、影响和有效干预方式。</li>
+    <li>描述童年中期粗大和精细运动的发展；区分有规则游戏和粗野嬉闹的特征和功能。</li>
+    <li>描述具体运算阶段的核心特征（守恒、去中心化、可逆性）；解释类包含、序列化和传递性推理。</li>
+    <li>描述童年中期信息加工的三大进步（注意、记忆策略、元认知）；解释ADHD的定义、成因和治疗。</li>
+    <li>比较Sternberg三元理论和Gardner多元智力理论；解释Flynn效应和刻板印象威胁的含义。</li>
+    <li>解释动态评估（dynamic assessment）与Vygotsky ZPD的关系；说明学习障碍（dyslexia）的特征和干预。</li>
+    <li>描述童年中期语言发展（词汇、隐喻理解、叙事）；说明双语发展的认知优势。</li>
+    <li>比较以儿童为中心和以教师为主的教育方式；理解国际学业成就差异的社会文化原因。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>

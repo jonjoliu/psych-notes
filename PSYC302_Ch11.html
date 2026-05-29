@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.11 青少年期身体与认知发展</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.11</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 11</div>
+    <h1>第十一章：青少年期身体与认知发展<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">Physical &amp; Cognitive Development in Adolescence</span></h1>
+    <div class="hero-sub">青春期 · 大脑发育 · 健康 · 形式运算阶段 · 信息加工 · 学校教育</div>
+  </div>
+</div>
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#puberty">青春期</a></li>
+    <li><a href="#brain">大脑发育</a></li>
+    <li><a href="#health">健康</a></li>
+    <li><a href="#formal">形式运算</a></li>
+    <li><a href="#infoproc">信息加工</a></li>
+    <li><a href="#school">学校教育</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+<main class="main">
+
+<section class="section" id="puberty">
+  <div class="section-header"><div class="section-num">1</div><h2>青春期 Puberty: Physical Transition to Adulthood</h2></div>
+  <div class="card">
+    <div class="card-title">激素变化 Hormonal Changes</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>雌激素（estrogens）</strong>：女性为主；促进乳房、子宫、阴道发育；调控月经周期；使身体呈现女性曲线</li>
+        <li><strong>雄激素（androgens）</strong>：男性为主（睾酮testosterone）；促进肌肉发育、体毛/胡须、男性性征</li>
+        <li>两性均有两种激素，只是比例不同</li>
+      </ul>
+      <ul class="dl">
+        <li>肾上腺雄激素（adrenal androgens）：6-8岁开始分泌↑→10岁增加10倍；促进女孩生长突增、腋毛/阴毛发育</li>
+        <li>睾酮→男性肌肉增长；雌激素→女性骨密度增加（与雄激素共同作用）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">身体生长 Body Growth</div>
+    <ul class="dl">
+      <li><strong>生长突增（growth spurt）</strong>：女孩约10岁；男孩约12.5岁；女孩早男孩约2年</li>
+      <li>青少年期共增高25-28cm，体重增加约23-34kg（接近成人体重的50%）</li>
+      <li>生长规律与婴幼儿期<strong>相反</strong>：手脚先生长，然后躯干→这导致早期青少年看起来"四肢修长"、比例不协调</li>
+      <li>肌肉与脂肪：男孩↑肌肉大幅度增加；女孩↑脂肪增加（手臂、腿、躯干）；男孩红细胞增多→携氧能力更强→运动成绩超过女孩</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">性成熟 Sexual Maturation</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">女孩 Girls</p>
+        <ul class="dl">
+          <li>阴毛→乳房发育→生长突增→腋毛→月经初潮（menarche，约12-13岁）</li>
+          <li>月经初潮是重要里程碑；最初几年常为无排卵月经</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">男孩 Boys</p>
+        <ul class="dl">
+          <li>睾丸增大→阴毛→阴茎增大→生长突增→遗精（spermarche，约13-14岁）</li>
+          <li>变声、腋毛、胡须</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">青春期时机的影响 Timing of Puberty</div>
+    <table class="tbl">
+      <thead><tr><th>性别</th><th>早熟（Early Maturation）</th><th>晚熟（Late Maturation）</th></tr></thead>
+      <tbody>
+        <tr><td>女孩</td><td><strong>风险更高</strong>：自我形象差、抑郁↑、结交年龄更大的同伴、早期性行为风险↑</td><td>短期焦虑；长期影响相对小</td></tr>
+        <tr><td>男孩</td><td>短期优势（肌肉、运动成绩）；但也有冒险行为↑的风险</td><td>短期自信↓；长期与早熟者差异消失</td></tr>
+      </tbody>
+    </table>
+    <div class="note-amber">⚑ 青春期时机的影响是"社会情境性的"——在支持性的家庭和学校环境中，早熟或晚熟的负面影响减轻。</div>
+  </div>
+</section>
+
+<section class="section" id="brain">
+  <div class="section-header"><div class="section-num">2</div><h2>青少年期大脑发育 Brain Development in Adolescence</h2></div>
+  <div class="card">
+    <div class="card-title">双系统理论 Dual Systems Model</div>
+    <div class="grid2">
+      <div class="cc co">
+        <div class="badge">情感/社会系统 先发育</div>
+        <h4>Emotional/Social Network</h4>
+        <p>杏仁核（amygdala）等边缘系统：受青春期激素影响，在青少年期<strong>更活跃</strong>——情感反应更强烈，对奖励更敏感，寻求刺激行为↑</p>
+      </div>
+      <div class="cc tl">
+        <div class="badge">认知控制系统 后发育</div>
+        <h4>Cognitive-Control Network</h4>
+        <p>前额叶皮质（prefrontal cortex）：发育持续到<strong>20多岁</strong>——抑制冲动、计划、权衡后果的能力仍在发展中</p>
+      </div>
+    </div>
+    <div class="note-coral">✗ 结论：青少年的情感系统超前于认知控制系统→在情绪激动、同伴在场时更容易冒险，决策能力弱于成人——这是神经生物学原因，不是"不听话"！</div>
+  </div>
+  <div class="card">
+    <div class="card-title">睡眠变化 Sleep Changes</div>
+    <ul class="dl">
+      <li>青春期→生物节律（circadian rhythms）改变：褪黑素分泌推迟→<strong>晚睡晚起（delayed sleep phase）</strong>倾向</li>
+      <li>学校早起时间与青少年的生物节律冲突→睡眠剥夺→注意力、情绪调节、学业成绩受损</li>
+      <li>推迟上学时间的学区：青少年出勤率↑、成绩↑、交通事故↓</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="health">
+  <div class="section-header"><div class="section-num">3</div><h2>青少年健康问题 Health in Adolescence</h2></div>
+  <div class="card">
+    <div class="card-title">营养与饮食障碍</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>神经性厌食症（anorexia nervosa）</strong>：体重比正常低15%+；对"变胖"的强烈恐惧；月经停止；体像扭曲；好发于青少年女孩；有高遗传易感性</li>
+        <li><strong>神经性暴食症（bulimia nervosa）</strong>：反复暴食后清除（呕吐/泻药）；体重通常正常；羞耻感强；更多见于女孩</li>
+      </ul>
+      <ul class="dl">
+        <li>两者均有严重医疗后果；需要专业治疗（认知行为疗法+家庭治疗）</li>
+        <li>触发因素：社会文化对纤瘦的强调、媒体影响、家庭压力、完美主义人格</li>
+        <li>青少年期整体营养需求↑（生长突增）；钙、铁、锌最易缺乏</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">性行为 Sexual Activity</div>
+    <ul class="dl">
+      <li>美国约半数青少年有过性行为；大多数与稳定约会对象；约12%有4+个性伴侣</li>
+      <li>早期性行为相关因素：冲动性强、父母监控弱、同伴影响、贫困、低学业成就</li>
+      <li><strong>青少年避孕使用率</strong>：约86%使用某种避孕；但约14%仍面临意外怀孕风险</li>
+      <li><strong>青少年妊娠</strong>：与贫困、学业中断、单亲处境、婴儿发展不良结果密切相关</li>
+      <li>有效性教育：同时传授拒绝技能和避孕知识；父母开放沟通最有保护作用</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">药物滥用 Substance Use &amp; Abuse</div>
+    <ul class="dl">
+      <li>青少年期实验性使用药物（包括酒精）普遍，少数发展为滥用</li>
+      <li>风险因素：冲动性、低自尊、同伴压力、家庭监控弱、遗传因素</li>
+      <li>有效预防：父母监控、青少年参与社区活动、技能训练（拒绝技能）</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="formal">
+  <div class="section-header"><div class="section-num">4</div><h2>Piaget 形式运算阶段 Formal Operational Stage (11岁+)</h2></div>
+  <div class="card">
+    <div class="card-title">核心特征 Core Features</div>
+    <p style="font-size:13.5px;margin-bottom:.75rem;">约11岁起进入<span class="kw">形式运算阶段（formal operational stage）</span>：能以<strong>抽象、系统、科学</strong>的方式思考；不再局限于具体事物。</p>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">假设演绎推理</div>
+        <h4>Hypothetico-Deductive Reasoning</h4>
+        <p>从<strong>可能性（possibility）</strong>出发，推导出逻辑性的可检验假设，再系统检验。<br><br>对比：具体运算儿童从<strong>现实（reality）</strong>出发，无法考虑所有可能性。<br><br>例：钟摆实验——系统分离并测试每个变量</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">命题性思维</div>
+        <h4>Propositional Thought</h4>
+        <p>能评估<strong>纯逻辑命题</strong>的真假，无需参照现实。<br><br>例："如果猫比大象大，大象比老鼠大，那么猫比老鼠大。"→形式运算者能判断逻辑成立，即便前提与现实不符。</p>
+      </div>
+    </div>
+    <div class="note-amber">⚑ 形式运算阶段的局限：并非所有青少年/成人都能达到；在有大量经验和练习的领域更容易出现；受教育水平显著影响。Piaget低估了社会文化因素的作用。</div>
+  </div>
+</section>
+
+<section class="section" id="infoproc">
+  <div class="section-header"><div class="section-num">5</div><h2>信息加工视角 Information Processing</h2></div>
+  <div class="card">
+    <div class="card-title">科学推理 Scientific Reasoning</div>
+    <ul class="dl">
+      <li>青少年越来越能分离<strong>理论（theory）与证据（evidence）</strong>；儿童常常混淆两者</li>
+      <li>在复杂、多变量任务上，青少年比儿童更能系统检验假设；但即便成人在陌生领域也常犯类似错误</li>
+      <li>科学推理是<strong>文化传递的思维方式</strong>，通过学校教育获得</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">青少年认知特点 Adolescent Cognitive Characteristics</div>
+    <div class="grid2">
+      <div class="cc am">
+        <div class="badge">想象观众</div>
+        <h4>Imaginary Audience 想象观众</h4>
+        <p>青少年相信自己是他人持续注意和评判的焦点。来自于以自我为中心的视角。<br><br>→ 过度在意他人看法；对批评极度敏感；在公开场合极度自我意识</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">个人寓言</div>
+        <h4>Personal Fable 个人寓言</h4>
+        <p>相信自己是独特的、无所不能的，别人无法理解自己的体验。<br><br>→ "没人理解我"；感到无所不能（omnipotence）→冒险行为；也可以是自尊和积极应对的来源</p>
+      </div>
+    </div>
+    <div class="note-teal">✓ 想象观众和个人寓言源于视角采择的提升（青少年更关心他人的看法）+青春期激素对社会敏感性的影响——随年龄逐渐减弱。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">决策能力 Decision Making</div>
+    <ul class="dl">
+      <li>青少年决策比成人更差，即使在"冷静"（非情绪化）情境下也如此</li>
+      <li>更容易被<strong>即时奖励（immediate reward）</strong>诱惑；更愿意冒险；更少仔细评估所有选项</li>
+      <li>作为很多情境中的"第一次者"，缺乏预测结果所需的经验</li>
+      <li>没有负面后果的冒险行为→高估益处、低估风险→恶性循环</li>
+      <li>有效干预：教授元认知决策技能；提供监督保护；减少同伴在场（因同伴在场激活情感网络）</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="school">
+  <div class="section-header"><div class="section-num">6</div><h2>学校教育 Schooling in Adolescence</h2></div>
+  <div class="card">
+    <div class="card-title">学校过渡的影响 School Transitions</div>
+    <ul class="dl">
+      <li>每次学校过渡（小学→初中→高中）：成绩↓、出勤率↓、学业成绩测试分数↓</li>
+      <li>原因：更少个人关注；更多全班授课；更多竞争；决策机会↓（恰在自主需求↑时）</li>
+      <li>高风险青少年（家庭混乱、贫困、少数族裔）受影响更大</li>
+      <li>缓冲因素：父母监控和参与；教师温暖支持；跨过渡期维持友谊；小校/小班环境</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">学业成就的影响因素</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>父母影响</strong>：权威型育儿→成就更高；参与、监控和重视努力而非仅结果</li>
+        <li><strong>同伴影响</strong>：学习型同伴群体→鼓励学业；反学业同伴群体→成就↓</li>
+        <li>刻板印象威胁（stereotype threat）：持续威胁少数族裔青少年的学业认同</li>
+      </ul>
+      <ul class="dl">
+        <li><strong>辍学（high school dropout）</strong>：与贫困、家庭问题、早期学业挫败、低自尊、反学业同伴密切相关</li>
+        <li>干预：导师制、职业培训、小班教学、减少威胁感</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="objectives" id="objectives">
+  <h3>第十一章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>描述青春期的激素变化（雌激素、雄激素、肾上腺雄激素）及其对男女的不同影响。</li>
+    <li>描述青春期的生长突增规律；说明早熟和晚熟对男女的不同心理影响。</li>
+    <li>解释青少年期大脑的双系统发育（情感/社会系统 vs 认知控制系统）及其对行为的影响。</li>
+    <li>描述睡眠模式改变的原因及推迟上学时间的益处。</li>
+    <li>描述神经性厌食症和暴食症的特征；说明青少年性行为的特征和风险因素。</li>
+    <li>描述形式运算阶段的两大特征（假设演绎推理、命题性思维）；说明其局限性。</li>
+    <li>区分想象观众和个人寓言，说明其对青少年行为的影响。</li>
+    <li>解释青少年决策能力差的原因；描述有效的干预策略。</li>
+    <li>说明学校过渡对青少年学业和心理的影响；描述有效的缓冲因素。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.12 青少年期情感与社会发展</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc.gy{background:var(--gray-light);border:1px solid var(--gray-border);}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.12</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 12</div>
+    <h1>第十二章：青少年期情感与社会发展<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">Emotional &amp; Social Development in Adolescence</span></h1>
+    <div class="hero-sub">Erikson身份认同 · Kohlberg道德 · 同伴关系 · 家庭 · 抑郁与自杀 · 青少年犯罪</div>
+  </div>
+</div>
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#identity">身份认同</a></li>
+    <li><a href="#self">自我</a></li>
+    <li><a href="#moral">道德发展</a></li>
+    <li><a href="#family">家庭</a></li>
+    <li><a href="#peers">同伴关系</a></li>
+    <li><a href="#problems">发展问题</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+<main class="main">
+
+<section class="section" id="identity">
+  <div class="section-header"><div class="section-num">1</div><h2>Erikson 第五阶段：身份认同 vs. 角色混乱 Identity vs. Role Confusion</h2></div>
+  <div class="card">
+    <div class="card-title">身份认同的含义 What is Identity?</div>
+    <p style="font-size:13.5px;margin-bottom:.75rem;"><span class="kw">身份认同（identity）</span>：青少年期最重要的人格成就——明确"我是谁、我重视什么、我的人生方向"。Erikson是第一位系统阐述身份认同作为发展任务的理论家。</p>
+    <ul class="dl">
+      <li><strong>身份认同危机（identity crisis）</strong>：在确立价值观和目标前经历的暂时性困惑和探索期</li>
+      <li>涉及领域：职业、恋爱关系、宗教/道德价值观、族裔认同、性取向、政治立场等</li>
+      <li>成功解决→形成统一的自我定义；失败→<strong>角色混乱（role confusion）</strong>，缺乏明确的自我方向</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Marcia 四种身份状态 Four Identity Statuses (Marcia)</div>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">✓ 身份达成 Identity Achievement</div>
+        <h4>探索后做出承诺</h4>
+        <p>经历探索期后，对价值观、信念和目标<strong>做出坚定的个人承诺</strong>。心理调适最佳。</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">○ 延缓状态 Identity Moratorium</div>
+        <h4>探索但尚未承诺</h4>
+        <p>正处于积极探索、考虑各种可能性的阶段，尚未做出承诺。<strong>心理健康的中间状态</strong>，是走向达成的必要过程。</p>
+      </div>
+      <div class="cc am">
+        <div class="badge">△ 早闭状态 Identity Foreclosure</div>
+        <h4>无探索就承诺</h4>
+        <p>不经历探索，就接受他人（通常是父母）强加的价值观和目标。<strong>长期早闭与调适困难相关</strong>；表面稳定，实则脆弱。</p>
+      </div>
+      <div class="cc co">
+        <div class="badge">✗ 弥漫状态 Identity Diffusion</div>
+        <h4>既无探索也无承诺</h4>
+        <p>对探索漠不关心；回避或退缩。<strong>与调适最差相关</strong>；可能是探索前的早期阶段，也可能是长期停滞的危险信号。</p>
+      </div>
+    </div>
+    <div class="note-amber">⚑ 考试重点：身份达成（Achievement）和延缓状态（Moratorium）→心理健康；早闭（Foreclosure）和弥漫（Diffusion）→调适困难。探索是关键！</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">族裔身份认同 Ethnic Identity</div>
+    <ul class="dl">
+      <li>少数族裔青少年面临额外挑战：需要在主流文化身份和族裔文化身份之间协商</li>
+      <li><strong>文化适应压力（acculturative stress）</strong>：来自两种文化冲突的焦虑和紧张</li>
+      <li><strong>双文化身份（bicultural identity）</strong>：同时整合主流文化和本族裔文化——提供额外的情感和社会益处；是最适应的结果</li>
+      <li>强烈的族裔认同→更高自尊、更好心理健康——家庭和社区的支持至关重要</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="self">
+  <div class="section-header"><div class="section-num">2</div><h2>自我理解 Self-Understanding in Adolescence</h2></div>
+  <div class="card">
+    <div class="card-title">自我概念与自尊的变化</div>
+    <ul class="dl">
+      <li>认知发展→更有组织、更一致的自我描述；以<strong>社会、个人和道德价值观</strong>为核心主题</li>
+      <li>自尊对大多数青少年总体上升（尤其是那些有积极同伴和家庭关系的人）</li>
+      <li>青春期时机、同伴接受度、育儿方式、教师鼓励→均影响自尊水平</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="moral">
+  <div class="section-header"><div class="section-num">3</div><h2>道德发展 Moral Development: Kohlberg's Theory</h2></div>
+  <div class="card">
+    <div class="card-title">Kohlberg 道德发展三水平六阶段</div>
+    <table class="tbl">
+      <thead><tr><th>水平</th><th>阶段</th><th>道德判断基础</th><th>年龄</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>前习俗水平<br>Preconventional</strong></td>
+          <td>阶段1：惩罚与服从（punishment-obedience）<br>阶段2：工具性目的（instrumental purpose）</td>
+          <td>道德由外部控制；以后果（奖惩）判断行为；自身利益为主</td>
+          <td>儿童期</td>
+        </tr>
+        <tr>
+          <td><strong>习俗水平<br>Conventional</strong></td>
+          <td>阶段3：互惠人际期望（mutual interpersonal）<br>阶段4：社会系统与良心（social system）</td>
+          <td>遵守规则和法律以维持积极的人际关系和社会秩序；权威应被遵从</td>
+          <td>青少年期-成年期（多数人止步于此）</td>
+        </tr>
+        <tr>
+          <td><strong>后习俗水平<br>Postconventional</strong></td>
+          <td>阶段5：社会契约（social contract）<br>阶段6：普遍伦理原则（universal ethical principle）</td>
+          <td>道德由抽象、普遍原则定义；超越特定法律的公平和正义；少数人达到</td>
+          <td>成年期（罕见）</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-amber">⚑ 经典难题：Heinz困境——妻子病危，药剂师拒绝降价，Heinz是否该偷药？Kohlberg关注的是推理过程，不是答案本身！</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">对Kohlberg理论的评估与挑战</div>
+    <div class="grid2">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">支持证据</p>
+        <ul class="dl">
+          <li>阶段顺序跨文化基本一致（Stages 1-4）</li>
+          <li>更高阶段推理者→更多亲社会行为</li>
+          <li>父母温暖讨论、同伴互动、学校教育促进道德发展</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:8px;">主要批评</p>
+        <ul class="dl">
+          <li>高后习俗水平（Stage 5-6）是否跨文化普遍存在？村落社会很少超过Stage 3</li>
+          <li>Gilligan的挑战："关怀伦理（ethic of care）"是否被低估？（但研究不支持性别差异）</li>
+          <li>道德推理与道德行为的相关只是<strong>中等</strong>程度</li>
+          <li>务实取向（pragmatic approach）：道德判断常是行为后的合理化</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">道德身份认同 Moral Identity</div>
+    <ul class="dl">
+      <li><strong>道德身份认同（moral identity）</strong>：道德在自我概念中的核心程度→预测道德行为</li>
+      <li>归纳式纪律（inductive discipline）和明确的道德期望→增强道德身份认同</li>
+      <li>宗教参与：与更多社区服务、更负责的社会行为相关——通过建立支持性关系网络和提供道德讨论机会发挥作用</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="family">
+  <div class="section-header"><div class="section-num">4</div><h2>家庭关系 Family Relationships</h2></div>
+  <div class="card">
+    <div class="card-title">亲子关系变化 Parent-Adolescent Relationships</div>
+    <ul class="dl">
+      <li>青少年追求<strong>自主性（autonomy）</strong>——情感上更依赖自我，行为上独立决策</li>
+      <li>青春期触发<strong>心理距离化（psychological distancing）</strong>：亲子冲突增加（但多为小事，如穿着、时间管理）</li>
+      <li>青少年"去理想化"父母——视父母为"普通人"，不再盲目服从权威</li>
+      <li><strong>有效育儿</strong>：温暖支持+适当监控+逐步给予自主权→良好青少年发展结果</li>
+      <li>关键：平衡<strong>连接（connection）</strong>和<strong>分离（separation）</strong>——既允许独立，又保持情感联结</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="peers">
+  <div class="section-header"><div class="section-num">5</div><h2>同伴关系 Peer Relations</h2></div>
+  <div class="card">
+    <div class="card-title">友谊 Friendships</div>
+    <ul class="dl">
+      <li>青少年友谊基于<strong>亲密性（intimacy）、相互理解和忠诚</strong>；自我披露增多</li>
+      <li>女孩：更强调情感亲密；男孩：更强调共同活动和成就</li>
+      <li>高质量友谊→促进自我概念、视角采择、身份认同和亲密关系能力</li>
+      <li>网络社交的影响：可以增强友谊；但过度使用→面对面社交不满意↑；网络欺凌风险</li>
+      <li>与有攻击性/反社会行为朋友→放大行为问题</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">小团体与人群 Cliques &amp; Crowds</div>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">小团体 Cliques</div>
+        <p>5-7个密切相关的朋友组成；基于互动和共同活动；女孩的小团体联系更紧密；青春期早期同性别，随后混合性别</p>
+      </div>
+      <div class="cc pu">
+        <div class="badge">人群 Crowds</div>
+        <p>基于声誉/刻板印象的较大群体（如"学霸"、"运动员"、"另类"）；在大型高中中最明显；为青少年提供学校大社会结构中的身份认同</p>
+      </div>
+    </div>
+    <div class="note-teal">✓ 随着青少年确立个人价值观和目标，对小团体和人群的依赖逐渐减弱——这是身份认同发展的标志。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">恋爱关系 Romantic Relationships</div>
+    <ul class="dl">
+      <li>恋爱关系中的亲密度落后于友谊中的亲密度</li>
+      <li>混合性别小团体为早期约会提供练习机会（在不需要极度亲密的情况下互动）</li>
+      <li>与父母和朋友的积极关系→促进安全的浪漫联系</li>
+      <li>青少年期浪漫关系的质量对情感和社会发展有重要影响</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="problems">
+  <div class="section-header"><div class="section-num">6</div><h2>发展问题 Problems of Development</h2></div>
+  <div class="card">
+    <div class="card-title">抑郁 Depression</div>
+    <ul class="dl">
+      <li>抑郁是青少年期最常见的心理问题；青少年期以后，<strong>女孩发生率约为男孩2倍</strong>（工业化国家）</li>
+      <li>原因：遗传易感性 + 适应不良的养育（拒绝、冷漠、批评）+ 负性生活事件的叠加</li>
+      <li>少数族裔、LGBT青少年风险更高</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">自杀 Suicide</div>
+    <ul class="dl">
+      <li>青少年期自杀率<strong>急剧上升</strong>；是15-24岁第二位死因（美国）</li>
+      <li>女孩<strong>自杀尝试</strong>次数多于男孩；但男孩<strong>自杀死亡</strong>率更高（使用更致命的方式）</li>
+      <li>风险因素：抑郁、物质滥用、家庭冲突、同伴拒绝、学业失败、先前自杀尝试</li>
+      <li>LGBT青少年：自杀尝试率显著高于同龄人（不接受的家庭和社会环境为主要风险）</li>
+      <li>保护因素：家庭支持和温暖、积极的学校氛围、心理健康服务的可及性</li>
+    </ul>
+    <div class="note-coral">✗ 注意自杀传播效应（contagion effect / copycat suicides）：媒体对自杀的过度报道→可能诱发模仿自杀；需要负责任的媒体报道。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">青少年犯罪 Delinquency</div>
+    <ul class="dl">
+      <li>犯罪行为青少年期上升，20多岁后下降；大多数只是暂时性的实验行为</li>
+      <li>少数<strong>严重重复犯罪者（serious repeat offenders）</strong>：通常是男孩，有儿童期品行问题史</li>
+      <li>两条途径：①<strong>童年起始型（childhood-onset）</strong>：早期攻击性持续→成年犯罪风险高；②<strong>青少年起始型（adolescent-onset）</strong>：在同伴影响下的一时行为，通常随年龄消退</li>
+      <li>风险因素：低温暖高冲突的家庭、粗暴不一致的惩罚、低监控、贫困邻里、反社会同伴</li>
+    </ul>
+  </div>
+</section>
+
+<div class="objectives" id="objectives">
+  <h3>第十二章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>描述Erikson第五阶段（身份认同vs.角色混乱）；解释身份认同危机的含义。</li>
+    <li>描述Marcia四种身份状态（达成、延缓、早闭、弥漫）及其与心理调适的关系。</li>
+    <li>解释族裔身份认同的挑战、文化适应压力和双文化身份的益处。</li>
+    <li>描述Kohlberg道德发展三水平六阶段的核心特征；解释Heinz困境的推理方式。</li>
+    <li>评估Kohlberg理论的主要批评（文化局限性、性别差异、道德推理与行为的不一致）。</li>
+    <li>说明道德身份认同的含义及促进因素（归纳式纪律、宗教参与）。</li>
+    <li>描述青少年期亲子关系的主要变化（自主性追求、心理距离化、去理想化）。</li>
+    <li>区分小团体（cliques）和人群（crowds）的特征；描述友谊在青少年期的变化。</li>
+    <li>描述青少年抑郁和自杀的特征、风险因素和保护因素；解释自杀的性别差异。</li>
+    <li>描述青少年犯罪的两条发展路径（童年起始型vs.青少年起始型）及主要风险因素。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>

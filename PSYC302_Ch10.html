@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 302 — Ch.10 童年中期情感与社会发展</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.8rem .9rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:13px;color:var(--teal-mid);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  ul.dl{list-style:none;padding:0;}
+  ul.dl li{padding:5px 0;font-size:13.5px;color:var(--gray);border-bottom:1px dashed var(--gray-border);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+  ul.dl li:last-child{border-bottom:none;}
+  ul.dl li::before{content:'→';color:var(--teal);font-weight:700;font-size:12px;flex-shrink:0;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+  .cc{border-radius:10px;padding:1.1rem;border:1px solid;}
+  .cc.tl{background:var(--teal-light);border-color:#9FE1CB;}
+  .cc.pu{background:var(--purple-light);border-color:#CECBF6;}
+  .cc.am{background:var(--amber-light);border-color:#FAC775;}
+  .cc.co{background:var(--coral-light);border-color:#F5C4B3;}
+  .cc.bl{background:var(--blue-light);border-color:#B5D4F4;}
+  .cc.gy{background:var(--gray-light);border:1px solid var(--gray-border);}
+  .cc h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .cc.tl h4{color:var(--teal-dark);}
+  .cc.pu h4{color:var(--purple);}
+  .cc.am h4{color:var(--amber);}
+  .cc.co h4{color:var(--coral);}
+  .cc.bl h4{color:var(--blue);}
+  .cc p,.cc ul{font-size:13px;color:var(--gray);line-height:1.6;}
+  .cc ul{list-style:none;padding:0;}
+  .cc ul li{padding:2px 0 2px 14px;position:relative;}
+  .cc ul li::before{content:'·';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
+  .tl .badge{background:#9FE1CB;color:var(--teal-dark);}
+  .pu .badge{background:#CECBF6;color:var(--purple);}
+  .am .badge{background:#FAC775;color:var(--amber);}
+  .co .badge{background:#F5C4B3;color:var(--coral);}
+  .bl .badge{background:#B5D4F4;color:var(--blue);}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .tbl th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .tbl td{padding:7px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .tbl td:first-child{font-weight:700;color:var(--teal-mid);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .note-amber{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .note-teal{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .note-coral{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.5rem 2rem;}
+  .objectives h3{font-size:11px;font-weight:700;margin-bottom:.75rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.4rem 0 .4rem 2.2rem;position:relative;font-size:13px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.4rem;width:22px;height:22px;background:rgba(255,255,255,.12);border-radius:50%;font-size:10px;font-weight:700;color:#fff;line-height:22px;text-align:center;}
+  @media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="PSYC302_index.html" class="back-btn">← 返回 PSYC 302 目录</a>
+  <span class="topbar-right">PSYC 302 · Berk Ch.10</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 302 · Berk (2018) · Chapter 10</div>
+    <h1>第十章：童年中期情感与社会发展<br><span style="font-size:1.3rem;font-weight:400;color:rgba(255,255,255,.8);">Emotional &amp; Social Development in Middle Childhood (6–11岁)</span></h1>
+    <div class="hero-sub">Erikson · 自我概念 · 自尊 · 情绪 · 道德 · 同伴关系 · 家庭 · 韧性</div>
+  </div>
+</div>
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#erikson">Erikson</a></li>
+    <li><a href="#self">自我</a></li>
+    <li><a href="#emotion">情绪</a></li>
+    <li><a href="#moral">道德</a></li>
+    <li><a href="#peers">同伴</a></li>
+    <li><a href="#family">家庭</a></li>
+    <li><a href="#problems">常见问题</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+<main class="main">
+
+<section class="section" id="erikson">
+  <div class="section-header"><div class="section-num">1</div><h2>Erikson 第四阶段 Industry vs. Inferiority (6–11岁)</h2></div>
+  <div class="card">
+    <div class="card-title">勤奋感 vs. 自卑感 Industry vs. Inferiority</div>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">积极解决</div>
+        <h4>勤奋感（industry）</h4>
+        <p>通过掌握有意义的技能和任务发展<strong>胜任感</strong>（sense of competence）；学会分工合作、道德责任感、与同伴合作。<br><br>实现方式：学校、家庭、社区活动中的真实挑战</p>
+      </div>
+      <div class="cc co">
+        <div class="badge">消极结果</div>
+        <h4>自卑感（inferiority）</h4>
+        <p>当家庭经历未准备好儿童应对学校生活，或当教师和同伴用负面反应摧毁儿童自信时产生。<br><br>表现为：缺乏自信、对做事能力悲观</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="self">
+  <div class="section-header"><div class="section-num">2</div><h2>自我理解 Self-Understanding</h2></div>
+  <div class="card">
+    <div class="card-title">自我概念 Self-Concept</div>
+    <ul class="dl">
+      <li>8-11岁：自我描述从<strong>具体行为</strong>转向<strong>心理特质</strong>（"我很善良""我数学不太好"）</li>
+      <li>开始进行<strong>社会比较（social comparison）</strong>：将自己的能力与同龄人比较</li>
+      <li>能同时持有正负面特质的自我描述（"我有时很友好，有时有点刻薄"）——不再是"全好"或"全坏"</li>
+      <li>文化差异：西方儿童自我描述强调个人特质；中国/日本儿童更多提及社会关系和群体成员资格</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">自尊 Self-Esteem</div>
+    <ul class="dl">
+      <li>6-7岁时自尊形成<strong>层级结构</strong>：学业能力、社会能力、运动/体育能力、外貌——整合为总体自尊</li>
+      <li><strong>外貌</strong>与总体自尊的相关最强——强调外貌的媒体和文化有重要影响</li>
+      <li>整体偏高但随年龄变得更现实；个体差异趋于稳定</li>
+    </ul>
+    <div class="grid2">
+      <div class="cc tl">
+        <div class="badge">掌握导向 Mastery-Oriented</div>
+        <h4>归因成功→能力；归因失败→可控因素（努力不够）</h4>
+        <p>→ 坚持不懈，随挑战而成长</p>
+      </div>
+      <div class="cc co">
+        <div class="badge">习得性无助 Learned Helplessness</div>
+        <h4>归因成功→运气；归因失败→固定的低能力</h4>
+        <p>→ 放弃努力，表现螺旋式下降（Dweck）</p>
+      </div>
+    </div>
+    <div class="note-amber">⚑ 过程表扬（process praise）："你很努力"→促进掌握导向；个人表扬（person praise）："你很聪明"→可能导致习得性无助！（Dweck的经典研究）</div>
+  </div>
+</section>
+
+<section class="section" id="emotion">
+  <div class="section-header"><div class="section-num">3</div><h2>情绪发展 Emotional Development</h2></div>
+  <div class="card">
+    <div class="card-title">自我意识情绪与情绪理解</div>
+    <ul class="dl">
+      <li><strong>骄傲（pride）</strong>和<strong>内疚（guilt）</strong>由个人责任感清晰支配；强烈的羞耻感（shame）尤其有害——导致内化和外化问题</li>
+      <li>10岁左右：理解<strong>混合情绪</strong>（同时感到快乐和悲伤）；共情（empathy）更深，包括对他人长期生活状况的共情</li>
+      <li><strong>情绪自我效能感（emotional self-efficacy）</strong>：相信自己能管理情绪→积极调整</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">情绪调节策略 Coping Strategies</div>
+    <ul class="dl">
+      <li>约10岁：开始灵活转换<strong>问题中心应对（problem-centered coping）</strong>和<strong>情绪中心应对（emotion-centered coping）</strong></li>
+      <li>情境可控→优先问题解决；情境不可控→优先调节情绪（回避、寻求社会支持）</li>
+      <li>学会管理负面情绪→为积极同伴关系和学业成就打下基础</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="moral">
+  <div class="section-header"><div class="section-num">4</div><h2>道德发展 Moral Development</h2></div>
+  <div class="card">
+    <div class="card-title">道德与社会习俗的理解</div>
+    <ul class="dl">
+      <li>更清晰区分<strong>道德规则</strong>（不能伤害/偷窃——普遍、权威不可改变）和<strong>社会习俗</strong>（可以商定的社会规范）</li>
+      <li>理解<strong>个人自由领域（personal choice）</strong>：某些决定属于个人领域，他人无权干涉</li>
+      <li>理解<strong>公平（fairness）</strong>的复杂含义：从平等分配→到按需分配（考虑特殊情况）</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">对多元和不平等的理解</div>
+    <ul class="dl">
+      <li>约6-7岁：理解种族、民族等群体差异是文化传承，不是天生固定</li>
+      <li>但儿童也会受到群体偏见（group prejudice）的影响——通过内群体偏爱（in-group favoritism）表现</li>
+      <li>多接触跨群体友谊、公正的教师和学校项目→减少偏见</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="peers">
+  <div class="section-header"><div class="section-num">5</div><h2>同伴关系 Peer Relations</h2></div>
+  <div class="card">
+    <div class="card-title">同伴群体 Peer Groups</div>
+    <ul class="dl">
+      <li>童年中期：形成<strong>正式的同伴群体</strong>，有共同价值观、社会规范和等级结构</li>
+      <li>功能：学习合作、领导力、追随力、对集体目标的忠诚</li>
+      <li>也有排斥行为：利用关系攻击（relational aggression）驱逐成员</li>
+      <li>正式群体联系（如童子军、宗教青年团）：成人监督减少负面行为</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">友谊 Friendships</div>
+    <ul class="dl">
+      <li>8-9岁：友谊变得<strong>心理性</strong>——互相喜欢对方的个人特质，有相互信任（mutual trust）</li>
+      <li><strong>信任（trust）</strong>成为友谊的决定性特征：违背信任（背后说坏话、不履行承诺）被视为严重违规</li>
+      <li>朋友在年龄、性别、种族、SES、人格和学业成就上趋于相似</li>
+      <li>高质量友谊稳定（50-70%维持超过学年）；攻击性朋友关系充满敌意且易破裂</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">同伴接受度 Peer Acceptance</div>
+    <table class="tbl">
+      <thead><tr><th>类型</th><th>特征</th><th>结果</th></tr></thead>
+      <tbody>
+        <tr><td>受欢迎型<br>Popular</td><td>亲社会-受欢迎型：学业+社交双优；反社会-受欢迎型：运动好但攻击性强，被认为"酷"</td><td>一般发展良好；反社会型随年龄变得不受欢迎</td></tr>
+        <tr><td>被拒绝型<br>Rejected</td><td>攻击型（冲突多、身体攻击）；退缩型（被动、社交焦虑）</td><td><strong>风险最高</strong>：学业差、孤独、青少年期反社会行为、成年期犯罪</td></tr>
+        <tr><td>有争议型<br>Controversial</td><td>同时有许多"喜欢"和"不喜欢"票；既亲社会又有攻击性</td><td>受到保护，不被完全排斥</td></tr>
+        <tr><td>被忽视型<br>Neglected</td><td>很少被提及；互动频率低</td><td>通常发展良好！不一定不快乐</td></tr>
+        <tr><td>一般型<br>Average</td><td>约三分之一儿童</td><td>正常发展</td></tr>
+      </tbody>
+    </table>
+    <div class="note-amber">⚑ 被忽视型（neglected）≠ 有问题！很多被忽视儿童社交能力正常，只是性格内向。<strong>被拒绝型才是高风险</strong>。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">欺凌 Bullying</div>
+    <ul class="dl">
+      <li><strong>约20%儿童是欺凌者，约25%反复被欺凌</strong>；男孩更多身体欺凌；女孩更多关系欺凌</li>
+      <li><strong>网络欺凌（cyberbullying）</strong>：20-40%青少年有此经历；性别差异较小</li>
+      <li>被欺凌者特征：气质抑制、身体较弱、焦虑、低自尊；有依恋不安全和过度保护育儿的历史</li>
+      <li>后果：焦虑、抑郁、自杀意念、学业下降、皮质醇功能紊乱</li>
+      <li>有效干预：全校反欺凌政策；旁观者培训（intervene不看热闹）；加强成人监督</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="family">
+  <div class="section-header"><div class="section-num">6</div><h2>家庭影响 Family Influences</h2></div>
+  <div class="card">
+    <div class="card-title">亲子关系变化</div>
+    <ul class="dl">
+      <li>童年中期：从<strong>共同调节（coregulation）</strong>转向儿童自我调节——父母逐渐撤回直接管控</li>
+      <li>父母角色从直接管控转为<strong>监控（monitoring）</strong>、建立规则和提供支持</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">离婚对儿童的影响 Divorce</div>
+    <ul class="dl">
+      <li>离婚后第一年：儿童普遍出现学业和行为退步（两性均有）</li>
+      <li>男孩：外化问题（攻击性增加）；女孩：内化问题（焦虑、抑郁），但也受年龄和气质影响</li>
+      <li><strong>缓冲因素</strong>：温暖、有监控的养育；减少父母间冲突；监护父母的心理健康；社会支持</li>
+      <li><strong>共同监护（joint custody）</strong>：若父母能合作，双亲监护对儿童有益</li>
+      <li>长期影响：大多数儿童逐渐适应，特别是在低冲突、高支持环境中</li>
+    </ul>
+    <div class="note-teal">✓ 家庭功能（family functioning）比家庭结构（family structure）对儿童发展的预测力更强——双亲家庭如果充满冲突，不如低冲突的单亲家庭。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">其他家庭因素</div>
+    <div class="grid2">
+      <ul class="dl">
+        <li><strong>再婚/混合家庭（blended families）</strong>：整合挑战多；继父母-继子女关系的建立需要时间</li>
+        <li><strong>母亲就业（maternal employment）</strong>：整体对儿童有益——提供经济资源、母亲自尊和幸福感提升；前提是优质托幼安排</li>
+      </ul>
+      <ul class="dl">
+        <li>独生子女：在成就、自尊、社会能力方面无显著劣势；但需要刻意创造同伴互动</li>
+        <li><strong>兄弟姐妹</strong>：争执→道德推理；合作→亲社会行为发展；关系质量影响后续友谊</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="problems">
+  <div class="section-header"><div class="section-num">7</div><h2>常见发展问题 Common Problems</h2></div>
+  <div class="card">
+    <div class="card-title">恐惧与焦虑 Fears &amp; Anxieties</div>
+    <ul class="dl">
+      <li>童年中期常见恐惧：学业失败、身体伤害、自然灾害、社会评价</li>
+      <li>约5%儿童发展为<strong>恐惧症（phobia）</strong>——强烈、不可控；气质抑制者风险↑</li>
+      <li><strong>拒绝上学（school refusal）</strong>：约5-7岁与母婴分离焦虑有关；11-13岁与学校具体威胁（欺凌、挑剔老师）有关</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">儿童期韧性 Fostering Resilience</div>
+    <ul class="dl">
+      <li>韧性的四大保护因素：①儿童的个人特征（从容气质、掌握导向）；②温暖的亲子关系；③家庭外的支持性成人；④社区资源（好学校、社会服务）</li>
+      <li>这些因素相互强化；综合的社会情绪学习项目（如4Rs）提高学业动机、社会能力和支持性关系</li>
+      <li>韧性不是固定的特质，而是一种<strong>动态发展的能力</strong>——可以通过内外部资源培养</li>
+    </ul>
+  </div>
+</section>
+
+<div class="objectives" id="objectives">
+  <h3>第十章学习目标 Learning Objectives</h3>
+  <ol>
+    <li>描述Erikson第四阶段（勤奋vs.自卑）的核心危机和解决方式。</li>
+    <li>描述童年中期自我概念的变化（心理特质、社会比较）；说明自尊的层级结构。</li>
+    <li>区分掌握导向归因和习得性无助的特征；解释过程表扬vs.个人表扬的不同影响。</li>
+    <li>描述童年中期情绪发展（混合情绪理解、情绪调节策略从问题到情绪中心的灵活转换）。</li>
+    <li>说明童年中期道德理解的进步（道德规则vs.社会习俗、公平概念的复杂化）。</li>
+    <li>描述同伴群体的功能；解释友谊在童年中期的心理特征（信任成为核心）。</li>
+    <li>区分五类同伴接受度（受欢迎、被拒绝、有争议、被忽视、一般）及其发展结果。</li>
+    <li>描述欺凌的特征、后果和有效干预策略；解释网络欺凌的特点。</li>
+    <li>说明离婚对儿童的影响及主要缓冲因素；解释为何家庭功能比家庭结构更重要。</li>
+    <li>描述韧性的四大保护因素及其相互关系。</li>
+  </ol>
+</div>
+
+</main>
+</body>
+</html>
