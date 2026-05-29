@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC 314 — 健康心理学 目录</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{--teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;--gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;--purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;--amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;--bg:#FAFAF8;--card-bg:#FFFFFF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .hero{background:var(--teal-dark);color:#fff;padding:3rem 2rem 2rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero::after{content:'';position:absolute;bottom:-80px;left:30%;width:200px;height:200px;border-radius:50%;border:30px solid rgba(255,255,255,.04);}
+  .hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2.2rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:13px;margin-bottom:1.75rem;}
+  .hero-stats{display:flex;gap:2.5rem;}
+  .stat-n{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1;}
+  .stat-l{font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.05em;text-transform:uppercase;margin-top:3px;}
+  .main{max-width:960px;margin:0 auto;padding:2rem;}
+  .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:2px solid var(--teal-light);}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.15rem;font-weight:700;color:var(--teal-dark);}
+  .lec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:2.5rem;}
+  .lec-card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;text-decoration:none;color:inherit;display:block;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+  .lec-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);opacity:0;transition:opacity .2s;}
+  .lec-card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 4px 16px rgba(29,158,117,.08);}
+  .lec-card:hover::before{opacity:1;}
+  .lec-card.planned{opacity:.55;cursor:default;}
+  .lec-card.planned:hover{border-color:var(--gray-border);transform:none;box-shadow:none;}
+  .lec-card.planned::before{display:none;}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem;}
+  .card-code{font-size:11px;color:var(--gray-mid);letter-spacing:.06em;text-transform:uppercase;}
+  .lec-num{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+  .lec-num.planned{background:var(--gray-border);}
+  .card-title{font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:700;line-height:1.35;margin-bottom:.35rem;color:var(--gray);}
+  .card-sub{font-size:12px;color:var(--gray-mid);margin-bottom:.85rem;line-height:1.5;}
+  .card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.85rem;}
+  .tag{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500;}
+  .tag.tl{background:var(--teal-light);color:var(--teal-dark);}
+  .tag.pu{background:var(--purple-light);color:var(--purple);}
+  .tag.am{background:var(--amber-light);color:var(--amber);}
+  .tag.co{background:var(--coral-light);color:var(--coral);}
+  .tag.bl{background:var(--blue-light);color:var(--blue);}
+  .tag.gy{background:var(--gray-light);color:var(--gray-mid);}
+  .card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;border-top:1px solid var(--gray-border);}
+  .status-pill{font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .status-pill.done{background:var(--teal-light);color:var(--teal-dark);border:1px solid #9FE1CB;}
+  .status-pill.planned{background:var(--gray-light);color:var(--gray-mid);border:1px solid var(--gray-border);}
+  .card-arrow{font-size:13px;color:var(--teal);opacity:0;transition:opacity .2s,transform .2s;}
+  .lec-card:hover .card-arrow{opacity:1;transform:translateX(3px);}
+  footer{border-top:1px solid var(--gray-border);padding:1.5rem 2rem;text-align:center;font-size:12px;color:var(--gray-mid);}
+  @media(max-width:600px){.lec-grid{grid-template-columns:1fr;}.main{padding:1rem;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="back-btn">← 返回主页 Home</a>
+  <span style="font-size:12px;color:var(--gray-mid);">PSYC 314 · David King, PhD</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 314 · Health Psychology · UBC Distance Education</div>
+    <h1>健康心理学<br><span style="font-size:1.4rem;font-weight:400;color:rgba(255,255,255,.8);">Health Psychology</span></h1>
+    <p class="hero-sub">中文为主 · 英文关键词标注 · David King, PhD</p>
+    <div class="hero-stats">
+      <div><div class="stat-n">3</div><div class="stat-l">有笔记 Done</div></div>
+      <div><div class="stat-n">14+</div><div class="stat-l">总讲次 Lectures</div></div>
+      <div><div class="stat-n">UBC</div><div class="stat-l">Distance Ed</div></div>
+    </div>
+  </div>
+</div>
+
+<main class="main">
+
+  <div class="section-header">
+    <h2>已完成讲次 / Completed Lectures</h2>
+  </div>
+
+  <div class="lec-grid">
+
+    <a href="PSYC314_Lecture1.html" class="lec-card">
+      <div class="card-top">
+        <span class="card-code">PSYC 314 · Lecture 01</span>
+        <div class="lec-num">1</div>
+      </div>
+      <div class="card-title">健康心理学导论<br><span style="font-size:.85rem;font-weight:400;color:var(--gray-mid);">Introduction to Health Psychology</span></div>
+      <div class="card-sub">健康定义 · 生物心理社会模型 · 疾病模式变迁 · 学科历史</div>
+      <div class="card-tags">
+        <span class="tag tl">BPS模型</span>
+        <span class="tag pu">健康定义</span>
+        <span class="tag bl">疾病模式</span>
+      </div>
+      <div class="card-footer">
+        <span class="status-pill done">✓ 有笔记</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="PSYC314_Lecture2.html" class="lec-card">
+      <div class="card-top">
+        <span class="card-code">PSYC 314 · Lecture 02</span>
+        <div class="lec-num">2</div>
+      </div>
+      <div class="card-title">理解压力<br><span style="font-size:.85rem;font-weight:400;color:var(--gray-mid);">Understanding Stress</span></div>
+      <div class="card-sub">压力定义 · HPA轴 · GAS · PTSD · 心流</div>
+      <div class="card-tags">
+        <span class="tag tl">压力</span>
+        <span class="tag pu">PTSD</span>
+        <span class="tag am">心流 Flow</span>
+        <span class="tag co">GAS</span>
+      </div>
+      <div class="card-footer">
+        <span class="status-pill done">✓ 有笔记</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="PSYC314_Lecture3.html" class="lec-card">
+      <div class="card-top">
+        <span class="card-code">PSYC 314 · Lecture 03</span>
+        <div class="lec-num">3</div>
+      </div>
+      <div class="card-title">应对与压力管理<br><span style="font-size:.85rem;font-weight:400;color:var(--gray-mid);">Coping &amp; Stress Management</span></div>
+      <div class="card-sub">应对策略 · 社会支持 · HAI · 自然 · 正念</div>
+      <div class="card-tags">
+        <span class="tag tl">应对 Coping</span>
+        <span class="tag pu">社会支持</span>
+        <span class="tag am">HAI</span>
+        <span class="tag bl">正念 Mindfulness</span>
+      </div>
+      <div class="card-footer">
+        <span class="status-pill done">✓ 有笔记</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="section-header">
+    <h2>待整理讲次 / Coming Soon</h2>
+  </div>
+
+  <div class="lec-grid">
+
+    <div class="lec-card planned">
+      <div class="card-top">
+        <span class="card-code">PSYC 314 · Lecture 04</span>
+        <div class="lec-num planned">4</div>
+      </div>
+      <div class="card-title">健康行为<br><span style="font-size:.85rem;font-weight:400;color:var(--gray-mid);">Health Behaviours</span></div>
+      <div class="card-sub">运动、饮食、睡眠对健康的影响</div>
+      <div class="card-tags"><span class="tag gy">待整理</span></div>
+      <div class="card-footer"><span class="status-pill planned">待整理</span></div>
+    </div>
+
+    <div class="lec-card planned">
+      <div class="card-top">
+        <span class="card-code">PSYC 314 · Lecture 05</span>
+        <div class="lec-num planned">5</div>
+      </div>
+      <div class="card-title">疼痛<br><span style="font-size:.85rem;font-weight:400;color:var(--gray-mid);">Pain</span></div>
+      <div class="card-sub">疼痛的生理与心理机制 · 管理策略</div>
+      <div class="card-tags"><span class="tag gy">待整理</span></div>
+      <div class="card-footer"><span class="status-pill planned">待整理</span></div>
+    </div>
+
+    <div class="lec-card planned">
+      <div class="card-top">
+        <span class="card-code">PSYC 314 · Lecture 06</span>
+        <div class="lec-num planned">6</div>
+      </div>
+      <div class="card-title">心血管疾病与癌症<br><span style="font-size:.85rem;font-weight:400;color:var(--gray-mid);">CVD &amp; Cancer</span></div>
+      <div class="card-sub">A型人格 · 心理社会因素与疾病</div>
+      <div class="card-tags"><span class="tag gy">待整理</span></div>
+      <div class="card-footer"><span class="status-pill planned">待整理</span></div>
+    </div>
+
+    <div class="lec-card planned">
+      <div class="card-top">
+        <span class="card-code">PSYC 314 · Lecture 07</span>
+        <div class="lec-num planned">7</div>
+      </div>
+      <div class="card-title">慢性病心理<br><span style="font-size:.85rem;font-weight:400;color:var(--gray-mid);">Chronic Illness</span></div>
+      <div class="card-sub">慢性病适应 · 生活质量</div>
+      <div class="card-tags"><span class="tag gy">待整理</span></div>
+      <div class="card-footer"><span class="status-pill planned">待整理</span></div>
+    </div>
+
+    <div class="lec-card planned">
+      <div class="card-top">
+        <span class="card-code">PSYC 314 · Lecture 08</span>
+        <div class="lec-num planned">8</div>
+      </div>
+      <div class="card-title">积极心理学与健康<br><span style="font-size:.85rem;font-weight:400;color:var(--gray-mid);">Positive Psychology &amp; Health</span></div>
+      <div class="card-sub">幸福感 · 积极情绪 · 感恩</div>
+      <div class="card-tags"><span class="tag gy">待整理</span></div>
+      <div class="card-footer"><span class="status-pill planned">待整理</span></div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>PSYC 314 · Health Psychology · UBC Distance Education · David King, PhD</footer>
+
+</body>
+</html>
