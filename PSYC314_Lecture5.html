@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC-314 第五讲：从习惯到健康——理解行为</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root {
+    --teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;--teal-mid:#0F6E56;
+    --gray:#2C2C2A;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;--gray-border:#D3D1C7;
+    --purple:#534AB7;--purple-light:#EEEDFE;--coral:#D85A30;--coral-light:#FAECE7;
+    --amber:#BA7517;--amber-light:#FAEEDA;--blue:#185FA5;--blue-light:#E6F1FB;
+    --bg:#FAFAF8;--card-bg:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--gray);line-height:1.75;font-size:15px;}
+  .topbar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:10px 2rem;display:flex;align-items:center;justify-content:space-between;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;padding:5px 14px;border:1px solid var(--gray-border);border-radius:6px;background:var(--bg);transition:all .15s;}
+  .back-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-light);}
+  .topbar-right{font-size:12px;color:var(--gray-mid);letter-spacing:.05em;}
+  .hero{background:var(--teal-dark);color:#fff;padding:3.5rem 2rem 2.5rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(255,255,255,.05);}
+  .hero::after{content:'';position:absolute;bottom:-80px;left:30%;width:200px;height:200px;border-radius:50%;border:30px solid rgba(255,255,255,.04);}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:4px;margin-bottom:1.2rem;color:rgba(255,255,255,.85);}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2.2rem;font-weight:700;line-height:1.3;margin-bottom:.75rem;color:#fff;}
+  .hero-sub{color:rgba(255,255,255,.7);font-size:14px;font-weight:300;}
+  .nav-bar{background:var(--card-bg);border-bottom:1px solid var(--gray-border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+  .nav-bar ul{display:flex;gap:0;list-style:none;max-width:860px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+  .nav-bar ul::-webkit-scrollbar{display:none;}
+  .nav-bar a{display:block;padding:.9rem 1rem;font-size:13px;font-weight:500;color:var(--gray-mid);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+  .nav-bar a:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .main{max-width:860px;margin:0 auto;padding:2rem;}
+  .section{margin-bottom:3rem;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:2px solid var(--teal-light);}
+  .section-num{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-family:'Noto Serif SC',serif;font-size:1.35rem;font-weight:700;color:var(--teal-dark);}
+  .card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;}
+  .card-title{font-weight:700;font-size:14px;color:var(--teal-mid);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em;}
+  .kw{font-weight:700;color:var(--teal-mid);}
+  .sub-note{font-size:13px;color:var(--gray-mid);font-style:italic;margin-top:6px;}
+  .def-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1rem;}
+  .def-card{border-radius:10px;padding:1.25rem;border:1px solid;}
+  .def-card.c-teal{background:var(--teal-light);border-color:#9FE1CB;}
+  .def-card.c-purple{background:var(--purple-light);border-color:#CECBF6;}
+  .def-card.c-amber{background:var(--amber-light);border-color:#FAC775;}
+  .def-card.c-coral{background:var(--coral-light);border-color:#F5C4B3;}
+  .def-card.c-blue{background:var(--blue-light);border-color:#B5D4F4;}
+  .def-card h3{font-size:14px;font-weight:700;margin-bottom:.4rem;}
+  .def-card.c-teal h3{color:var(--teal-dark);}
+  .def-card.c-purple h3{color:var(--purple);}
+  .def-card.c-amber h3{color:var(--amber);}
+  .def-card.c-coral h3{color:var(--coral);}
+  .def-card.c-blue h3{color:var(--blue);}
+  .def-card p{font-size:13px;color:var(--gray);line-height:1.6;}
+  .def-badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:.5rem;}
+  .c-teal .def-badge{background:#9FE1CB;color:var(--teal-dark);}
+  .c-purple .def-badge{background:#CECBF6;color:var(--purple);}
+  .c-amber .def-badge{background:#FAC775;color:var(--amber);}
+  .c-coral .def-badge{background:#F5C4B3;color:var(--coral);}
+  .c-blue .def-badge{background:#B5D4F4;color:var(--blue);}
+  .quote-block{background:var(--teal-light);border-left:4px solid var(--teal);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0;font-style:italic;font-size:14px;color:var(--teal-dark);}
+  .quote-block cite{display:block;margin-top:6px;font-style:normal;font-size:12px;font-weight:700;color:var(--teal-mid);}
+  .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+  .split-box{border-radius:10px;padding:1.2rem;}
+  .split-box.good{background:var(--teal-light);border:1px solid #9FE1CB;}
+  .split-box.bad{background:var(--coral-light);border:1px solid #F5C4B3;}
+  .split-box h4{font-size:14px;font-weight:700;margin-bottom:.5rem;}
+  .split-box.good h4{color:var(--teal-dark);}
+  .split-box.bad h4{color:var(--coral);}
+  .split-box ul{list-style:none;}
+  .split-box li{font-size:13px;color:var(--gray);padding:3px 0 3px 16px;position:relative;line-height:1.55;}
+  .good li::before{content:'✓';position:absolute;left:0;font-weight:700;color:var(--teal);}
+  .bad li::before{content:'✗';position:absolute;left:0;font-weight:700;color:var(--coral);}
+  .cmp-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:.75rem;}
+  .cmp-table th{text-align:left;padding:7px 10px;background:var(--gray-light);color:var(--gray-mid);font-size:11px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--teal-light);}
+  .cmp-table td{padding:8px 10px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray);line-height:1.55;}
+  .cmp-table td:first-child{font-weight:700;color:var(--teal-mid);}
+  .cmp-table tr:last-child td{border-bottom:none;}
+  .criteria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin:1rem 0;}
+  .criteria-item{background:var(--gray-light);border-radius:8px;padding:.9rem 1rem;border-left:3px solid var(--teal);}
+  .criteria-item .label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--teal-mid);margin-bottom:4px;}
+  .criteria-item p{font-size:13px;color:var(--gray);line-height:1.55;}
+  .tips-banner{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem;}
+  .tip-card{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:10px;align-items:flex-start;}
+  .tip-num{width:26px;height:26px;background:var(--teal);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+  .tip-card p{font-size:13.5px;color:var(--gray);line-height:1.55;}
+  .objectives{background:var(--teal-dark);color:#fff;border-radius:12px;padding:1.75rem 2rem;}
+  .objectives h3{font-size:12px;font-weight:700;margin-bottom:1rem;color:rgba(255,255,255,.9);letter-spacing:.05em;text-transform:uppercase;}
+  .objectives ol{list-style:none;counter-reset:obj;}
+  .objectives li{counter-increment:obj;padding:.5rem 0 .5rem 2.5rem;position:relative;font-size:13.5px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08);line-height:1.6;}
+  .objectives li:last-child{border-bottom:none;}
+  .objectives li::before{content:counter(obj);position:absolute;left:0;top:.5rem;width:24px;height:24px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;line-height:24px;text-align:center;}
+  .inline-note{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--amber);margin-top:10px;}
+  .inline-good{background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--teal-dark);margin-top:10px;}
+  .inline-warn{background:var(--coral-light);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:8px 12px;font-size:13px;color:var(--coral);margin-top:10px;}
+  .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin:.75rem 0;}
+  .stat-box{border-radius:8px;padding:.9rem 1rem;text-align:center;}
+  .stat-box .num{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;line-height:1.1;}
+  .stat-box .desc{font-size:12px;margin-top:4px;line-height:1.4;}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:.75rem 0;padding:1rem;background:var(--gray-light);border-radius:8px;justify-content:center;}
+  .flow-box{background:var(--card-bg);border:1px solid var(--gray-border);border-radius:8px;padding:.6rem 1rem;font-size:13px;font-weight:500;text-align:center;}
+  .flow-box.teal{background:var(--teal-light);border-color:#9FE1CB;color:var(--teal-dark);}
+  .flow-box.purple{background:var(--purple-light);border-color:#CECBF6;color:var(--purple);}
+  .flow-box.coral{background:var(--coral-light);border-color:#F5C4B3;color:var(--coral);}
+  .flow-box.amber{background:var(--amber-light);border-color:#FAC775;color:var(--amber);}
+  .flow-arrow{color:var(--teal);font-weight:700;font-size:18px;}
+  .stages-flow{display:flex;flex-direction:column;gap:6px;margin:.75rem 0;}
+  .stage-item{display:flex;align-items:center;gap:12px;padding:.75rem 1rem;border-radius:8px;border:1px solid;}
+  .stage-item .stage-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;}
+  .stage-item .stage-content{flex:1;}
+  .stage-item .stage-name{font-size:13px;font-weight:700;margin-bottom:2px;}
+  .stage-item .stage-desc{font-size:12px;color:var(--gray-mid);}
+  .study-card{background:var(--gray-light);border-radius:10px;padding:1.25rem;margin:.75rem 0;border-left:4px solid var(--blue);}
+  .study-card .study-title{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:.4rem;}
+  .study-card p{font-size:13px;color:var(--gray);line-height:1.6;}
+  .model-box{background:var(--card-bg);border:2px solid var(--teal-light);border-radius:12px;padding:1.5rem;margin:.75rem 0;}
+  .model-box .model-name{font-size:12px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem;}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin:2px;}
+  .tag.red{background:var(--coral-light);color:var(--coral);}
+  .tag.green{background:var(--teal-light);color:var(--teal-dark);}
+  .tag.blue{background:var(--blue-light);color:var(--blue);}
+  .tag.purple{background:var(--purple-light);color:var(--purple);}
+  .tag.amber{background:var(--amber-light);color:var(--amber);}
+  @media(max-width:600px){.split-grid{grid-template-columns:1fr;}.stat-row{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="PSYC314_index.html" class="back-btn">← 返回主页 Back to Home</a>
+  <span class="topbar-right">PSYC 314 · 第五讲</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 314 · Health Psychology · UBC · David King, PhD</div>
+    <h1>第五讲：从习惯到健康——理解行为<br><span style="font-size:1.4rem;font-weight:400;color:rgba(255,255,255,.8);">Lecture 5: From Habits to Health: Understanding Behaviour</span></h1>
+    <div class="hero-sub">健康行为 · 心理社会因素 · 疾病威胁 · 疫苗犹豫与抵制</div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#tips">健康提示</a></li>
+    <li><a href="#behaviours">健康行为</a></li>
+    <li><a href="#studies">重要研究</a></li>
+    <li><a href="#prevention">预防层级</a></li>
+    <li><a href="#factors">行为影响因素</a></li>
+    <li><a href="#hbm">健康信念模型</a></li>
+    <li><a href="#tpb">计划行为理论</a></li>
+    <li><a href="#stages">变化阶段模型</a></li>
+    <li><a href="#emotional">情感因素</a></li>
+    <li><a href="#vaccine">疫苗犹豫</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- Tips -->
+  <section class="section" id="tips">
+    <div class="section-header">
+      <div class="section-num">★</div>
+      <h2>本讲健康提示 L-5 Health Tips</h2>
+    </div>
+    <div class="tips-banner">
+      <div class="tip-card"><div class="tip-num">1</div><p><strong>日常行为至关重要！</strong><br><span style="font-size:12px;color:var(--gray-mid);">What you do on a daily basis matters!</span></p></div>
+      <div class="tip-card"><div class="tip-num">2</div><p><strong>但你为什么这样做，却很复杂……</strong><br><span style="font-size:12px;color:var(--gray-mid);">But WHY you do it is complicated…</span></p></div>
+      <div class="tip-card"><div class="tip-num">3</div><p><strong>在任何公共卫生危机中，思考你的选择如何影响他人。</strong><br><span style="font-size:12px;color:var(--gray-mid);">In any crisis of public health, consider how your choices affect others.</span></p></div>
+      <div class="tip-card"><div class="tip-num">4</div><p><strong>疫苗也很复杂，但其实不必如此。</strong><br><span style="font-size:12px;color:var(--gray-mid);">Vaccines are complicated, too, but they don't need to be.</span></p></div>
+    </div>
+  </section>
+
+  <!-- Health Behaviours -->
+  <section class="section" id="behaviours">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>健康行为 Health Behaviours</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">核心定义 Core Definition</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;"><span class="kw">健康行为（Health Behaviours）</span>是指人们为维持或改善健康（或预防疾病与伤害）而进行的活动，无论其健康状况如何，也无论该活动是否真正改善了健康。</p>
+      <div class="inline-good">✓ 我们知道人们日常的健康相关行为（"健康习惯"）会影响其患慢性病和致命疾病（如心脏病、癌症、HIV/AIDS）的可能性（WHO, 2019）。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">健康状况与行为类型 Health Behaviour Types by Status</div>
+      <div class="def-grid">
+        <div class="def-card c-teal">
+          <div class="def-badge">健康行为 Well Behaviour</div>
+          <h3>维持良好健康</h3>
+          <p>健康个体为维持或改善当前良好健康状态、避免疾病而采取的活动。</p>
+          <p style="font-size:11px;color:var(--teal-mid);margin-top:6px;">例：健康饮食、锻炼、接种疫苗</p>
+        </div>
+        <div class="def-card c-amber">
+          <div class="def-badge">症状行为 Symptom-Based</div>
+          <h3>识别与寻求解决</h3>
+          <p>生病的人为确定问题并寻求解决方案而采取的活动。</p>
+          <p style="font-size:11px;color:var(--amber);margin-top:6px;">例：描述症状、寻求建议</p>
+        </div>
+        <div class="def-card c-coral">
+          <div class="def-badge">患病角色行为 Sick-Role</div>
+          <h3>应对健康问题</h3>
+          <p>人们为治疗或适应健康问题而采取的活动。</p>
+          <p style="font-size:11px;color:var(--coral);margin-top:6px;">例：遵医嘱、居家休息</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">许多健康损害行为 Health-Compromising Behaviours</div>
+      <div class="criteria-grid">
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">身体不活动</div><p>Physical Inactivity</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">不良饮食与营养</div><p>Poor Diet &amp; Nutrition</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">吸烟</div><p>Cigarette Smoking</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">过量饮酒</div><p>Alcohol Consumption</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">不安全性行为</div><p>Unprotected Sex</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">过度日晒</div><p>Excessive Sun Exposure</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">睡眠不规律</div><p>Poor Sleep Habits</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">不洗手</div><p>Infrequent Handwashing</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">口腔卫生差</div><p>Poor Oral Hygiene</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">不就医</div><p>Not Seeking Medical Care</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">道路安全意识差</div><p>Poor Road Safety</p></div>
+        <div class="criteria-item" style="border-left-color:var(--gray-mid);"><div class="label" style="color:var(--gray-mid);">等等……</div><p>etc.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Studies -->
+  <section class="section" id="studies">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>重要流行病学研究 Key Epidemiological Studies</h2>
+    </div>
+
+    <div class="study-card">
+      <div class="study-title">📍 阿拉米达县研究 The Alameda County Study（1965–1999）</div>
+      <p>调查了生活方式与健康之间的联系。研究对象为<strong>6,928人</strong>，随访20年。确定了与较差身体健康和死亡率增加相关的<strong>7项危险因素（健康习惯）</strong>：</p>
+      <div class="criteria-grid" style="margin-top:.75rem;">
+        <div class="criteria-item"><div class="label">1</div><p>吸烟</p></div>
+        <div class="criteria-item"><div class="label">2</div><p>过量饮酒</p></div>
+        <div class="criteria-item"><div class="label">3</div><p>肥胖</p></div>
+        <div class="criteria-item"><div class="label">4</div><p>身体不活动</p></div>
+        <div class="criteria-item"><div class="label">5</div><p>两餐之间进食</p></div>
+        <div class="criteria-item"><div class="label">6</div><p>不吃早餐</p></div>
+        <div class="criteria-item"><div class="label">7</div><p>睡眠少于或多于7–8小时/晚</p></div>
+      </div>
+    </div>
+
+    <div class="study-card" style="border-left-color:var(--teal);">
+      <div class="study-title" style="color:var(--teal-mid);">🌍 PURE研究（2002—）Prospective Urban Rural Epidemiology</div>
+      <p>涵盖<strong>25个国家、135,000+成人</strong>（含加拿大），研究广泛健康行为与结果的关联。</p>
+      <div class="split-grid" style="margin-top:.75rem;">
+        <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:8px;padding:1rem;">
+          <p style="font-size:12px;font-weight:700;color:var(--teal-dark);margin-bottom:4px;">Dehghan et al. (2017)</p>
+          <p style="font-size:13px;color:var(--gray);">较高碳水化合物摄入和较低总脂肪摄入与更高死亡率相关；较低饱和脂肪摄入与中风相关。</p>
+        </div>
+        <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:8px;padding:1rem;">
+          <p style="font-size:12px;font-weight:700;color:var(--teal-dark);margin-bottom:4px;">Miller et al. (2017)</p>
+          <p style="font-size:13px;color:var(--gray);">较高的水果、蔬菜和豆类消耗与较低的总死亡风险相关。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="study-card" style="border-left-color:var(--purple);">
+      <div class="study-title" style="color:var(--purple);">🇺🇸 美国健康与退休研究（1992–2014）</div>
+      <p>Puterman et al. (2020) 分析了 <strong>13,611名美国成人</strong>（1992–2008年）的数据，从57个因素中找出与死亡最相关的10项因素（按显著性排序）：</p>
+      <div style="margin-top:.75rem;">
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="tag red">1. 当前吸烟者</span>
+          <span class="tag red">2. 有离婚史</span>
+          <span class="tag red">3. 有酒精滥用史</span>
+          <span class="tag red">4. 近期财务困难</span>
+          <span class="tag red">5. 有失业史</span>
+          <span class="tag amber">6. 曾经吸烟史</span>
+          <span class="tag amber">7. 较低的生活满意度</span>
+          <span class="tag amber">8. 从未结婚</span>
+          <span class="tag amber">9. 有使用食品券史</span>
+          <span class="tag amber">10. 负面情感倾向</span>
+        </div>
+      </div>
+      <div class="inline-note" style="margin-top:.75rem;">⚑ 社会行为和经济因素同样在死亡率中扮演重要角色，不仅仅是纯粹的生理因素！</div>
+    </div>
+  </section>
+
+  <!-- Prevention -->
+  <section class="section" id="prevention">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>预防层级 Levels of Prevention</h2>
+    </div>
+
+    <div class="def-grid">
+      <div class="def-card c-teal">
+        <div class="def-badge">一级预防 Primary</div>
+        <h3>避免疾病或伤害</h3>
+        <p>采取行动以<strong>避免疾病或伤害发生</strong>（预防疾病发作）。可由个人或社会实施。</p>
+        <p style="font-size:11px;color:var(--teal-mid);margin-top:6px;">例：锻炼、系安全带、使用牙线、免疫接种、洗手、保持社交距离、戴口罩</p>
+      </div>
+      <div class="def-card c-amber">
+        <div class="def-badge">二级预防 Secondary</div>
+        <h3>早期识别与治疗</h3>
+        <p>采取行动以<strong>早期识别和治疗</strong>疾病或伤害，旨在阻止或逆转问题。</p>
+        <p style="font-size:11px;color:var(--amber);margin-top:6px;">例：体检、癌症筛查、就医治疗症状、遵医嘱服药</p>
+      </div>
+      <div class="def-card c-coral">
+        <div class="def-badge">三级预防 Tertiary</div>
+        <h3>控制损害与康复</h3>
+        <p>采取行动以<strong>控制或减缓</strong>伤害/疾病的损害，预防残疾或复发，并对患者进行康复治疗。</p>
+        <p style="font-size:11px;color:var(--coral);margin-top:6px;">例：关节炎物理治疗、疼痛管理用药、晚期癌症姑息护理</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">促进健康的障碍 Problems in Promoting Wellness</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">成功促进健康取决于多种因素，可能面临的障碍包括：</p>
+      <div class="criteria-grid">
+        <div class="criteria-item" style="border-left-color:var(--purple);">
+          <div class="label" style="color:var(--purple);">个人因素</div>
+          <p>态度、认知、改变习惯的困难、资源不足、自我效能低等</p>
+        </div>
+        <div class="criteria-item" style="border-left-color:var(--amber);">
+          <div class="label" style="color:var(--amber);">人际因素</div>
+          <p>缺乏社会支持、家庭系统中的行为冲突、行为中断等</p>
+        </div>
+        <div class="criteria-item" style="border-left-color:var(--coral);">
+          <div class="label" style="color:var(--coral);">社区因素</div>
+          <p>缺乏公共卫生资金、缺乏安全/清洁空间、经济资源不足等</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Psychosocial Factors -->
+  <section class="section" id="factors">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>健康行为的影响因素 Factors in Health Behaviour</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">学习 Learning</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">虽然健康行为有一定的遗传性，但<strong>学习</strong>也发挥着重要作用。</p>
+      <table class="cmp-table">
+        <thead><tr><th>学习类型</th><th>机制说明</th><th>健康行为示例</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>操作性条件反射<br>Operant Conditioning</td>
+            <td><strong>强化</strong>：愉快后果增加行为重复的倾向；<strong>消退</strong>：维持行为的后果消除后，行为倾向逐渐减弱；<strong>惩罚</strong>：不良后果抑制行为</td>
+            <td>因运动后感到精力充沛而坚持锻炼</td>
+          </tr>
+          <tr>
+            <td>模仿 Modelling</td>
+            <td>通过观察他人（如父母）来学习</td>
+            <td>父母吸烟→子女更可能吸烟</td>
+          </tr>
+          <tr>
+            <td>经典条件反射<br>Classical Conditioning</td>
+            <td>刺激（如烟盒）通过与无条件刺激（如放松感）的联结，逐渐引发反应，成为行为的"线索"或"触发器"</td>
+            <td>看到烟盒→产生吸烟冲动</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">其他心理与社会因素 Other Psychosocial Factors</div>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">→</span><strong>社会影响、压力、情绪因素、人格</strong>等均影响健康行为</li>
+        <li style="padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">→</span>"大五"人格中的<span class="kw">尽责性（Conscientiousness）</span>与健康行为增加、问题行为减少相关（Bogg &amp; Roberts, 2004），包括在COVID-19期间遵守规定（Clark et al., 2020）</li>
+        <li style="padding:5px 0;font-size:13.5px;display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">→</span><strong>感知（对健康和症状的认知）</strong>以及<strong>认知（健康知识、症状判断、乐观/悲观信念）</strong>均发挥重要作用</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">本讲聚焦：疾病威胁相关行为 Focus on Disease Threat</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">本讲将重点考察与疾病威胁相关的行为，作为健康行为影响因素分析的切入点：</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:.5rem;">
+        <span class="tag green">😷 戴口罩</span>
+        <span class="tag green">💉 接种疫苗</span>
+        <span class="tag green">🧼 洗手 &amp; 消毒</span>
+        <span class="tag green">📏 保持社交距离</span>
+        <span class="tag green">🛡️ 使用避孕套</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Health Belief Model -->
+  <section class="section" id="hbm">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>健康信念模型 Health Belief Model</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">模型概述 Model Overview（Hochbaum, 1958; Rosenstock, 1966）</div>
+      <p style="font-size:13.5px;margin-bottom:1rem;">一个人执行某种健康行为的可能性取决于两方面评估的结果。该模型已在多种健康行为（如牙科就诊、接种疫苗、运动计划）中得到广泛支持。</p>
+      <div class="flow-row" style="flex-direction:column;gap:8px;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;width:100%;">
+          <div style="background:var(--coral-light);border:1px solid #F5C4B3;border-radius:8px;padding:.75rem 1.25rem;text-align:center;flex:1;min-width:160px;">
+            <div style="font-size:11px;font-weight:700;color:var(--coral);margin-bottom:4px;">评估一</div>
+            <div style="font-size:13px;font-weight:700;color:var(--gray);">感知威胁</div>
+            <div style="font-size:12px;color:var(--gray-mid);margin-top:4px;">• 感知严重性<br>• 感知易感性<br>• 行动线索 / 提醒</div>
+          </div>
+          <div style="display:flex;align-items:center;font-size:20px;color:var(--teal);font-weight:700;">+</div>
+          <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:8px;padding:.75rem 1.25rem;text-align:center;flex:1;min-width:160px;">
+            <div style="font-size:11px;font-weight:700;color:var(--teal-dark);margin-bottom:4px;">评估二</div>
+            <div style="font-size:13px;font-weight:700;color:var(--gray);">感知利弊</div>
+            <div style="font-size:12px;color:var(--gray-mid);margin-top:4px;">相信收益 &gt; 障碍<br>（收益 − 障碍 = 净值）</div>
+          </div>
+          <div style="display:flex;align-items:center;" class="flow-arrow">→</div>
+          <div style="background:var(--purple-light);border:1px solid #CECBF6;border-radius:8px;padding:.75rem 1.25rem;text-align:center;flex:1;min-width:160px;">
+            <div style="font-size:11px;font-weight:700;color:var(--purple);margin-bottom:4px;">结果</div>
+            <div style="font-size:13px;font-weight:700;color:var(--gray);">执行健康行为的可能性</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">应用示例：流感疫苗接种 Applied to Flu Vaccination</div>
+      <div class="split-grid">
+        <div style="background:var(--coral-light);border:1px solid #F5C4B3;border-radius:10px;padding:1.2rem;">
+          <h4 style="font-weight:700;font-size:13px;color:var(--coral);margin-bottom:8px;">感知威胁</h4>
+          <p style="font-size:13px;color:var(--gray);">"我没有打流感疫苗，这让我面临患流感的风险。"</p>
+          <p style="font-size:12px;color:var(--gray-mid);margin-top:6px;">• 感知流感的严重性/易感性<br>• 来自医生的行动线索</p>
+        </div>
+        <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:10px;padding:1.2rem;">
+          <h4 style="font-weight:700;font-size:13px;color:var(--teal-dark);margin-bottom:8px;">感知利弊</h4>
+          <p style="font-size:13px;color:var(--gray);">"我相信流感疫苗有效。我不认为流感疫苗会让我得流感。"</p>
+          <p style="font-size:12px;color:var(--gray-mid);margin-top:6px;">收益 &gt; 障碍 → 更可能接种</p>
+        </div>
+      </div>
+      <div class="inline-note">⚑ 参考：Abraham &amp; Sheeran (2005); Cheney &amp; John (2013)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">感知风险与乐观主义 Perceived Risk &amp; Optimism</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">感知到生理风险有时会对心理健康产生负面影响。</p>
+      <div style="background:var(--purple-light);border:1px solid #CECBF6;border-radius:10px;padding:1.2rem;">
+        <p style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:6px;">认知适应理论 Cognitive Adaptation Theory (Taylor, 1983)</p>
+        <p style="font-size:13px;color:var(--gray);">那些没有完全接受其生理风险的人（持<strong>乐观信念</strong>）可能拥有更好的心理健康，并且更能应对风险。</p>
+        <p style="font-size:12px;color:var(--gray-mid);margin-top:6px;">Taylor et al. (1992)：HIV阳性男性中，不准确但乐观地相信自己能阻止AIDS进展的人比悲观者表现出<strong>更好的健康习惯</strong>。</p>
+      </div>
+      <div class="inline-warn" style="margin-top:.5rem;">⚠ 悖论：但研究也发现"不切实际的乐观主义者"往往采取更少的预防行动——如何调和这两种发现？</div>
+    </div>
+  </section>
+
+  <!-- Theory of Planned Behaviour -->
+  <section class="section" id="tpb">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>计划行为理论 Theory of Planned Behaviour</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">模型概述（Ajzen &amp; Madden; Fishbein &amp; Ajzen）</div>
+      <p style="font-size:13.5px;margin-bottom:1rem;">健康行为是<strong>行为意图</strong>的直接结果，而意图受三个关键因素影响。该理论已在多种健康行为（运动、吸烟、癌症筛查、减重、献血）中得到广泛支持，尤其适用于临床情境。</p>
+      <div class="flow-row" style="flex-direction:column;gap:6px;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;width:100%;">
+          <div style="display:flex;flex-direction:column;gap:6px;flex:2;min-width:220px;">
+            <div style="background:var(--coral-light);border:1px solid #F5C4B3;border-radius:8px;padding:.6rem 1rem;font-size:13px;"><strong style="color:var(--coral);">1. 态度 Attitude</strong><br><span style="font-size:12px;color:var(--gray-mid);">对该行为是好是坏的判断</span></div>
+            <div style="background:var(--amber-light);border:1px solid #FAC775;border-radius:8px;padding:.6rem 1rem;font-size:13px;"><strong style="color:var(--amber);">2. 主观规范 Subjective Norm</strong><br><span style="font-size:12px;color:var(--gray-mid);">基于对他人意见、社会规范的信念，判断行为的适当性或可接受性</span></div>
+            <div style="background:var(--blue-light);border:1px solid #B5D4F4;border-radius:8px;padding:.6rem 1rem;font-size:13px;"><strong style="color:var(--blue);">3. 感知行为控制 Perceived Behavioural Control</strong><br><span style="font-size:12px;color:var(--gray-mid);">对成功的预期；类似于自我效能感——相信自己能够执行某行为</span></div>
+          </div>
+          <div style="display:flex;align-items:center;" class="flow-arrow">→</div>
+          <div style="background:var(--purple-light);border:1px solid #CECBF6;border-radius:8px;padding:.75rem 1.25rem;text-align:center;flex:1;min-width:120px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:13px;font-weight:700;color:var(--purple);">行为意图</div>
+            <div style="font-size:12px;color:var(--gray-mid);">Intention</div>
+          </div>
+          <div style="display:flex;align-items:center;" class="flow-arrow">→</div>
+          <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:8px;padding:.75rem 1.25rem;text-align:center;flex:1;min-width:100px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:13px;font-weight:700;color:var(--teal-dark);">行为</div>
+            <div style="font-size:12px;color:var(--gray-mid);">Behaviour</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">应用：HPV疫苗接种 Applied to HPV Vaccine Uptake（Bowyer et al., 2014）</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">研究发现，青少年女孩接种HPV疫苗的<strong>基线意图</strong>是后续实际接种至少一剂疫苗的强预测因素（约2/3）。其他因素（如族裔和文化价值观）也发挥作用。</p>
+      <table class="cmp-table">
+        <thead><tr><th>理论因素</th><th>具体内容（HPV疫苗背景）</th></tr></thead>
+        <tbody>
+          <tr><td>态度</td><td>认为HPV严重，认为疫苗安全有效</td></tr>
+          <tr><td>主观规范</td><td>父母和朋友认为她们应该接种</td></tr>
+          <tr><td>感知行为控制</td><td>相信疫苗能预防宫颈癌；相信父母会允许接种</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">主观规范的重要性 Importance of Subjective Norm</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;"><strong>名人效应（Celebrity Influence）</strong>——主观规范可来自公众人物：</p>
+      <div class="split-grid">
+        <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:10px;padding:1.2rem;">
+          <p style="font-size:12px;font-weight:700;color:var(--teal-dark);margin-bottom:4px;">正面影响</p>
+          <p style="font-size:13px;color:var(--gray);">查理·辛（Charlie Sheen）2015年公开HIV阳性状态，引发了网络上关于性病/HIV检测和家用HIV检测的<strong>显著增加的搜索量</strong>。</p>
+        </div>
+        <div style="background:var(--coral-light);border:1px solid #F5C4B3;border-radius:10px;padding:1.2rem;">
+          <p style="font-size:12px;font-weight:700;color:var(--coral);margin-bottom:4px;">负面影响</p>
+          <p style="font-size:13px;color:var(--gray);">特朗普推测将家用消毒剂注射可治疗新冠的次日，纽约市中毒控制中心接到了比正常更多的求助电话。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stages of Change -->
+  <section class="section" id="stages">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>跨理论模型（变化阶段）Transtheoretical / Stages of Change Model</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">模型概述（Prochaska &amp; DiClemente, 1983; Prochaska et al., 1992）</div>
+      <p style="font-size:13.5px;margin-bottom:1rem;">该模型认识到<strong>改变可能不是一次性完成的</strong>，已在多种健康行为（戒烟、癌症筛查、蔬菜摄入、安全性行为）中得到验证，在临床环境中尤其有用。</p>
+      <div class="stages-flow">
+        <div class="stage-item" style="background:var(--coral-light);border-color:#F5C4B3;">
+          <div class="stage-num" style="background:var(--coral);">1</div>
+          <div class="stage-content">
+            <div class="stage-name" style="color:var(--coral);">前沉思期 Precontemplation</div>
+            <div class="stage-desc">没有考虑改变，没有改变的意图。</div>
+          </div>
+        </div>
+        <div class="stage-item" style="background:var(--amber-light);border-color:#FAC775;">
+          <div class="stage-num" style="background:var(--amber);">2</div>
+          <div class="stage-content">
+            <div class="stage-name" style="color:var(--amber);">沉思期 Contemplation</div>
+            <div class="stage-desc">意识到需要改变，正在考虑改变。</div>
+          </div>
+        </div>
+        <div class="stage-item" style="background:var(--blue-light);border-color:#B5D4F4;">
+          <div class="stage-num" style="background:var(--blue);">3</div>
+          <div class="stage-content">
+            <div class="stage-name" style="color:var(--blue);">准备期 Preparation</div>
+            <div class="stage-desc">准备改变，计划很快实施改变。</div>
+          </div>
+        </div>
+        <div class="stage-item" style="background:var(--teal-light);border-color:#9FE1CB;">
+          <div class="stage-num" style="background:var(--teal);">4</div>
+          <div class="stage-content">
+            <div class="stage-name" style="color:var(--teal-dark);">行动期 Action</div>
+            <div class="stage-desc">开始成功地改变行为。</div>
+          </div>
+        </div>
+        <div class="stage-item" style="background:var(--purple-light);border-color:#CECBF6;">
+          <div class="stage-num" style="background:var(--purple);">5</div>
+          <div class="stage-content">
+            <div class="stage-name" style="color:var(--purple);">维持期 Maintenance</div>
+            <div class="stage-desc">努力维持新行为，避免复发。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">应用：HPV疫苗接种 Applied（Fernandez et al., 2013）</div>
+      <table class="cmp-table">
+        <thead><tr><th>阶段</th><th>HPV疫苗接种背景下的表现</th></tr></thead>
+        <tbody>
+          <tr><td>前沉思期</td><td>没有开始或完成疫苗系列接种的意图</td></tr>
+          <tr><td>沉思期</td><td>计划在未来6个月内开始接种</td></tr>
+          <tr><td>准备期</td><td>计划在30天内接种第一针，或在6个月内完成全程</td></tr>
+          <tr><td>行动/维持期</td><td>报告已完成3个月的疫苗系列接种</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">推进变化阶段的策略（Armitage, 2006; Perz et al., 2006）</div>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">→</span>详细描述如何执行行为改变（如提供信息、步骤说明）</li>
+        <li style="padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">→</span>将策略与个人当前需求匹配（如前沉思期提供健康风险信息；沉思期讨论感知障碍）</li>
+        <li style="padding:5px 0;font-size:13.5px;display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">→</span>预先规划可能出现的问题（如如何应对渴望、失误或复发）</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Emotional Factors -->
+  <section class="section" id="emotional">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>非理性过程与情感因素 Less Rational &amp; Emotional Factors</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">动机性推理 Motivated Reasoning</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;"><span class="kw">动机性推理（Motivated Reasoning）</span>是指情感偏向的推理，目的是产生最想要的理由或决定，而非反映证据的决定。</p>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">具体而言，人们可能寻找接受支持性信息的理由，并否定不利信息（<strong>否认，denial</strong>）。这是人们维持不健康行为并抵制采纳健康行为的一种方式。</p>
+      <div class="inline-warn">⚠ 这是人们如何合理化不健康行为的核心机制之一。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">冲突理论 Conflict Theory</div>
+      <p style="font-size:13.5px;">人们在所有重大决策（尤其是健康相关决策）中都会经历压力，因为这些决定的重要性及其冲突。这种冲突始于对个人生活方式或"现状"的挑战（如疾病症状、关于健康风险的新闻报道）。</p>
+      <div class="inline-note" style="margin-top:.75rem;">⚑ 在某些情境（如过度警觉/hypervigilance：风险高、希望低、时间紧迫），人们会迫切寻求解决方案并可能做出非理性行为。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">SuperAmma洗手运动 SuperAmma Handwashing Campaign</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">设计用于增加印度南部14个农村村庄的洗手行为。针对情感驱动因素（已被证明是行为改变最有效的杠杆）：</p>
+      <div class="criteria-grid">
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">厌恶 Disgust</div><p>避免和去除污染的欲望</p></div>
+        <div class="criteria-item" style="border-left-color:var(--teal);"><div class="label" style="color:var(--teal);">养育 Nurture</div><p>希望孩子快乐、茁壮成长的欲望</p></div>
+        <div class="criteria-item" style="border-left-color:var(--amber);"><div class="label" style="color:var(--amber);">地位 Status</div><p>拥有比他人更多资源获取机会的欲望</p></div>
+        <div class="criteria-item" style="border-left-color:var(--purple);"><div class="label" style="color:var(--purple);">归属 Affiliation</div><p>融入群体的欲望</p></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-box" style="background:var(--teal-light);border:1px solid #9FE1CB;">
+          <div class="num" style="color:var(--teal);">+31%</div>
+          <div class="desc" style="color:var(--teal-dark);">6个月后用肥皂洗手率<br>较对照组提升</div>
+        </div>
+        <div class="stat-box" style="background:var(--teal-light);border:1px solid #9FE1CB;">
+          <div class="num" style="color:var(--teal);">12月</div>
+          <div class="desc" style="color:var(--teal-dark);">效果维持持续时间<br>（Biran et al., 2014）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">医护人员洗手研究 Grant &amp; Hoffman (2011)</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">监测医院洗手液分配器的使用情况——在安放新标识之前和之后对比。三种标识：</p>
+      <div class="criteria-grid">
+        <div class="criteria-item" style="border-left-color:var(--gray-mid);"><div class="label">标识A（自我保护）</div><p>"手部卫生可以防止你患病。"</p></div>
+        <div class="criteria-item" style="border-left-color:var(--gray-mid);"><div class="label">标识B（Gel in, wash out）</div><p>"进来用凝胶，出去洗手。"</p></div>
+        <div class="criteria-item" style="border-left-color:var(--teal);"><div class="label" style="color:var(--teal);">★ 标识C（以患者为中心）</div><p>"手部卫生可以防止<strong>患者</strong>患病。"</p></div>
+      </div>
+      <div class="inline-good">✓ <strong>以患者为中心的标识C</strong>使洗手液使用率提升了<strong>17%</strong>。可能原因：<strong>共情（empathy）</strong>——关注他人而非自身更具说服力。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">共情与疾病威胁 Empathy and Disease Threat</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">在SARS（2003）、西尼罗河病毒（2003）、H1N1（2009）和季节性流感（2015）期间的应对研究均发现相同关系：</p>
+      <div class="flow-row">
+        <div class="flow-box coral">共情响应↑<br><span style="font-size:11px;">↑ Empathic Responding</span></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-box teal">推荐预防措施采取率↑<br><span style="font-size:11px;">↑ Recommended Precautions</span></div>
+      </div>
+      <p style="font-size:12px;color:var(--gray-mid);margin-top:.5rem;">（包括：洗手、消毒剂使用、接种疫苗、保持社交距离）<br>King et al. (2016); Lee-Baggley et al. (2004); Puterman et al. (2004)</p>
+
+      <div class="study-card" style="border-left-color:var(--teal);margin-top:.75rem;">
+        <div class="study-title" style="color:var(--teal-mid);">COVID-19期间的共情研究（Morstead, Zheng, Sin, King, &amp; DeLongis, 2021）</div>
+        <p>基于2020年3月18日至5月23日间<strong>3,183名</strong>主要来自北美的参与者的数据，确认了共情响应（及特质共情）在COVID-19预防行为中的作用，还发现了共情响应与COVID-19感知威胁之间存在显著<strong>交互作用</strong>。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">共情的社会效益 Social Benefits of Empathy</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">共情和换位思考已被证明能够：</p>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>减少偏见（Vescio, Sechrist, &amp; Paolucci, 2003）</li>
+        <li style="padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>减少刻板印象表达（Galinsky &amp; Moskowitz, 2000）</li>
+        <li style="padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>减少人际攻击行为（Batanova &amp; Loukas, 2011）</li>
+        <li style="padding:5px 0;font-size:13.5px;display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>除增加健康预防措施外，还能减轻大流行病的负面社会后果（种族主义、歧视、"他者化"），同时改善对病人的支持与护理</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">反社会特质与大流行病 Antisocial Traits in a Pandemic</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">Miguel et al. (2021) 研究了巴西反社会特质与COVID-19防控措施依从性的关系。</p>
+      <div class="inline-warn">⚠ 反社会特质（尤其是<strong>较低的共情</strong>和较高的冷漠、欺骗性、冒险性，如心理变态特征）与<strong>较低的防控依从性</strong>直接相关，包括保持社交距离、戴口罩、洗手。</div>
+      <p style="font-size:13px;color:var(--gray-mid);margin-top:.5rem;">Nowak et al. (2020) 还发现<strong>自恋</strong>与COVID-19期间更少预防/更多囤积行为之间的关联。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">考虑：群体免疫 Herd Immunity</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">这不仅仅关乎你或你的家人……</p>
+      <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:10px;padding:1.2rem;">
+        <p style="font-size:13px;color:var(--gray);">对疫苗成分过敏或免疫系统严重受损的个体必须依靠<span class="kw">群体免疫（herd immunity）</span>来预防许多疾病。接种疫苗的人越多，感染链被打断的可能性就越大，从而保护整个人群。</p>
+      </div>
+      <div class="inline-good" style="margin-top:.5rem;">✓ 共情是推动接种疫苗的重要动力——为了保护那些无法自我保护的人。</div>
+    </div>
+  </section>
+
+  <!-- Vaccine Hesitancy -->
+  <section class="section" id="vaccine">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <h2>疫苗犹豫与抗疫苗运动 Anti-Vax Movement &amp; Vaccine Hesitancy</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">背景与现状</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">在西方国家，过去20年中对疫苗的负面态度不断上升，从"疫苗犹豫"到"反疫苗"。这导致了免疫接种率下降，以及麻疹和百日咳等病毒在西方国家及其他地区爆发频率增加，并显著影响了COVID-19疫苗的接种率。（Burki, 2020; Hussain et al., 2018; Pandolfi et al., 2018）</p>
+      <div class="inline-warn">⚠ WHO将"疫苗犹豫"列为2019年全球十大健康威胁之一（排名第8）。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">MMR疫苗与自闭症——造假丑闻 MMR Vaccine &amp; Autism Fraud</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">1998年，一项将自闭症与MMR（麻疹、腮腺炎、风疹）疫苗联系起来的研究不仅不正确，而且是<strong>欺诈性的</strong>，已被《柳叶刀》撤稿。</p>
+      <div class="split-grid">
+        <div style="background:var(--coral-light);border:1px solid #F5C4B3;border-radius:10px;padding:1.2rem;">
+          <h4 style="font-weight:700;font-size:13px;color:var(--coral);margin-bottom:8px;">造假事实</h4>
+          <ul style="list-style:none;">
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">安德鲁·韦克菲尔德（Andrew Wakefield）蓄意伪造了12名研究对象的医疗信息</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">事后发现他曾被一家准备起诉疫苗制造商的律师事务所付费</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">随后被吊销医疗执照</li>
+          </ul>
+        </div>
+        <div style="background:var(--teal-light);border:1px solid #9FE1CB;border-radius:10px;padding:1.2rem;">
+          <h4 style="font-weight:700;font-size:13px;color:var(--teal-dark);margin-bottom:8px;">科学共识</h4>
+          <ul style="list-style:none;">
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">无儿童白血病相关性</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">无MMR疫苗与自闭症关联</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">无乙肝疫苗与多发性硬化症关联</li>
+            <li style="font-size:13px;color:var(--gray);padding:3px 0;">不良反应极其罕见（1/4,000 到 1/70,000），远低于所预防病毒的并发症风险</li>
+          </ul>
+        </div>
+      </div>
+      <div class="inline-note" style="margin-top:.5rem;">⚑ Maglione et al. (2014), Pediatrics — 综述67项疫苗安全性研究。媒体的"平衡报道"（false balance）也在传播错误信息。2007年起，珍妮·麦卡锡等名人主导的反疫苗舆论进一步强化了这一现象——再次凸显主观规范的重要性。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">解释疫苗犹豫与抵制的心理因素</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">什么心理因素预测反疫苗态度？（Browne et al., 2015; Hill et al., 2021; Hornsey et al., 2018; Hussain et al., 2018; Jolley &amp; Douglas, 2014; Murphy et al., 2021）</p>
+      <div class="criteria-grid">
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">对医疗界不信任</div><p>对医生和卫生专业人员的不信任；普遍低信任感</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">感知疫苗危害</div><p>对疫苗危险性的感知</p></div>
+        <div class="criteria-item" style="border-left-color:var(--coral);"><div class="label" style="color:var(--coral);">对血液和针头的厌恶</div><p>Disgust towards blood and needles</p></div>
+        <div class="criteria-item" style="border-left-color:var(--amber);"><div class="label" style="color:var(--amber);">偏好替代医学</div><p>Preferring alternative medicine</p></div>
+        <div class="criteria-item" style="border-left-color:var(--amber);"><div class="label" style="color:var(--amber);">宗教性；灵性知识</div><p>Religiousness; spirituality as knowledge</p></div>
+        <div class="criteria-item" style="border-left-color:var(--amber);"><div class="label" style="color:var(--amber);">阴谋论思维</div><p>Conspiratorial thinking; paranoia</p></div>
+        <div class="criteria-item" style="border-left-color:var(--purple);"><div class="label" style="color:var(--purple);">低宜人性、低尽责性</div><p>Low agreeableness, low conscientiousness</p></div>
+        <div class="criteria-item" style="border-left-color:var(--purple);"><div class="label" style="color:var(--purple);">高个人主义与自恋</div><p>High individualism and narcissism; low altruism</p></div>
+        <div class="criteria-item" style="border-left-color:var(--purple);"><div class="label" style="color:var(--purple);">心理抗拒</div><p>Reactance — 对个人自由受侵犯的低耐受性</p></div>
+        <div class="criteria-item" style="border-left-color:var(--blue);"><div class="label" style="color:var(--blue);">低目的感</div><p>Low sense of purpose (common or related to public health)</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">邓宁-克鲁格效应 The Dunning-Kruger Effect</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;"><span class="kw">邓宁-克鲁格效应（Dunning-Kruger Effect）</span>是一种认知偏见，指在特定智识或社会领域知识或能力有限的人，往往大大高估了自己在该领域的知识或能力（"你不知道你不知道什么"）。</p>
+      <div class="study-card" style="border-left-color:var(--purple);">
+        <div class="study-title" style="color:var(--purple);">Motta et al. (2018)</div>
+        <p><strong>过度自信</strong>与反疫苗态度（及反对疫苗强制令）相关；在反疫苗观念中，知识水平越低的人过度自信程度越高。</p>
+        <p style="margin-top:6px;">过度自信还与在政策决策中更支持非专业人士观点相关。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">虚假信息与错误信息的传播 Misinformation Online</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">网络上的虚假信息和错误信息严重影响疫苗态度：</p>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>Hornsey et al. (2020)："阅读特朗普的反疫苗推文增加了特朗普支持者对接种疫苗的担忧。"</li>
+        <li style="padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>对2014–2017年推文的分析发现，机器人和水军发布了更多支持疫苗和反疫苗的内容，内容污染者发布的反疫苗信息比普通用户多75%。</li>
+        <li style="padding:5px 0;font-size:13.5px;display:flex;gap:8px;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>"通过两边下注，他们侵蚀了公众对疫苗接种的信任……"（Mark Dredze, PhD）</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">解决之道 The Solution?</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">研究表明，提供<strong>疾病威胁信息</strong>比<strong>揭穿接种神话</strong>更能有效改变对疫苗的态度。</p>
+      <div class="study-card" style="border-left-color:var(--teal);">
+        <div class="study-title" style="color:var(--teal-mid);">Horne et al. (2015)</div>
+        <p>将持有不同疫苗态度的参与者随机分配到三种信息条件（疾病风险、自闭症纠正、控制组），发现：<strong>疾病风险信息</strong>对父母和非父母群体的疫苗态度改变最为明显，且效果最为持久。</p>
+      </div>
+      <div class="inline-warn" style="margin-top:.5rem;">⚠ 警惕"反弹效应"（Backfire Effect）！Nyhan &amp; Reifler (2015)：当向担心流感疫苗副作用的人提供关于它不会导致流感的信息时，他们实际上<strong>变得更不愿意</strong>接种疫苗。直接反驳有时会强化既有信念。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">戴口罩与共情 Mask Wearing &amp; Empathy</div>
+      <p style="font-size:13.5px;margin-bottom:.75rem;">Capraro &amp; Barcelo (2020) 研究了美国大样本中COVID-19期间戴口罩的意图：</p>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--gray-border);display:flex;gap:8px;"><span style="color:var(--amber);font-weight:700;flex-shrink:0;">→</span>在口罩非强制性地区，男性更不愿意报告有戴口罩的意图，且更可能认为戴口罩令人羞耻、不够"酷"、是软弱的表现，是一种污名。</li>
+        <li style="padding:5px 0;font-size:13.5px;display:flex;gap:8px;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>聚焦"你的社区"的信息比"你"、"你的家人"或"你的国家"更能有效激励戴口罩行为。</li>
+      </ul>
+      <div class="inline-good">✓ 共情导向的信息在促进防护行为方面更为有效！</div>
+    </div>
+  </section>
+
+  <!-- Learning Objectives -->
+  <section class="section" id="objectives">
+    <div class="section-header">
+      <div class="section-num">✓</div>
+      <h2>学习目标 Learning Objectives</h2>
+    </div>
+    <div class="objectives">
+      <h3>完成本讲后，你应能：After this lecture, you should be able to:</h3>
+      <ol>
+        <li>定义健康行为，并根据流行病学研究列举健康促进和健康损害行为的例子。</li>
+        <li>讨论健康行为的影响因素，包括学习、人格以及非理性过程（包括共情和反社会特质等心理因素）。</li>
+        <li>定义、描述并举例说明健康信念模型（Health Belief Model）、计划行为理论（Theory of Planned Behaviour）和跨理论变化阶段模型（Transtheoretical/Stages of Change Model）；并比较和应用这些模型。</li>
+        <li>讨论疾病威胁及相关行为（接种疫苗、洗手、戴口罩、保持社交距离等）中涉及的关键心理社会因素。</li>
+        <li>批判性地思考疫苗抵制和犹豫问题，运用健康信念模型和计划行为理论进行分析，并列举可能发挥作用的心理社会因素。</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
