@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC-314 第八讲：疼痛</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --teal: #1D9E75;--teal-light: #E1F5EE;--teal-dark: #085041;--teal-mid: #0F6E56;
+    --gray: #2C2C2A;--gray-mid: #5F5E5A;--gray-light: #F1EFE8;--gray-border: #D3D1C7;
+    --purple: #534AB7;--purple-light: #EEEDFE;--coral: #D85A30;--coral-light: #FAECE7;
+    --amber: #BA7517;--amber-light: #FAEEDA;--blue: #185FA5;--blue-light: #E6F1FB;
+    --bg: #FAFAF8;--card-bg: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--gray); line-height: 1.75; font-size: 15px; }
+
+  .topbar { background: var(--card-bg); border-bottom: 1px solid var(--gray-border); padding: 10px 2rem; display: flex; align-items: center; justify-content: space-between; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--gray-mid); text-decoration: none; padding: 5px 14px; border: 1px solid var(--gray-border); border-radius: 6px; background: var(--bg); transition: all .15s; }
+  .back-btn:hover { color: var(--teal); border-color: var(--teal); background: var(--teal-light); }
+  .topbar-right { font-size: 12px; color: var(--gray-mid); letter-spacing: .05em; }
+
+  .hero { background: var(--teal-dark); color: #fff; padding: 3.5rem 2rem 2.5rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; border: 40px solid rgba(255,255,255,0.05); }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: 30%; width: 200px; height: 200px; border-radius: 50%; border: 30px solid rgba(255,255,255,0.04); }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 4px; margin-bottom: 1.2rem; color: rgba(255,255,255,0.85); }
+  .hero h1 { font-family: 'Noto Serif SC', serif; font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.75rem; color: #fff; }
+  .hero-sub { color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 300; }
+
+  .nav-bar { background: var(--card-bg); border-bottom: 1px solid var(--gray-border); padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
+  .nav-bar ul { display: flex; gap: 0; list-style: none; max-width: 860px; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
+  .nav-bar ul::-webkit-scrollbar { display: none; }
+  .nav-bar a { display: block; padding: 0.9rem 1rem; font-size: 13px; font-weight: 500; color: var(--gray-mid); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .nav-bar a:hover { color: var(--teal); border-bottom-color: var(--teal); }
+
+  .main { max-width: 860px; margin: 0 auto; padding: 2rem; }
+  .section { margin-bottom: 3rem; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--teal-light); }
+  .section-num { width: 32px; height: 32px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .section-header h2 { font-family: 'Noto Serif SC', serif; font-size: 1.35rem; font-weight: 700; color: var(--teal-dark); }
+
+  .card { background: var(--card-bg); border: 1px solid var(--gray-border); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .card-title { font-weight: 700; font-size: 14px; color: var(--teal-mid); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .kw { font-weight: 700; color: var(--teal-mid); }
+  .en { font-size: 12px; color: var(--gray-mid); font-style: italic; margin-left: 2px; }
+  .sub-note { font-size: 13px; color: var(--gray-mid); font-style: italic; margin-top: 6px; }
+
+  .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .model-card { border-radius: 10px; padding: 1.25rem; border: 1px solid; }
+  .model-card.bio { background: var(--coral-light); border-color: #F5C4B3; }
+  .model-card.bps { background: var(--teal-light); border-color: #9FE1CB; }
+  .model-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 0.5rem; }
+  .model-card.bio h3 { color: var(--coral); }
+  .model-card.bps h3 { color: var(--teal-dark); }
+  .model-card p { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+  .model-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.6rem; }
+  .bio .model-badge { background: #F5C4B3; color: var(--coral); }
+  .bps .model-badge { background: #9FE1CB; color: var(--teal-dark); }
+
+  .bps-venn { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .bps-circle { border-radius: 10px; padding: 1.1rem; text-align: center; }
+  .bps-circle.bio-c { background: var(--coral-light); border: 1px solid #F5C4B3; }
+  .bps-circle.psy-c { background: var(--purple-light); border: 1px solid #CECBF6; }
+  .bps-circle.soc-c { background: var(--blue-light); border: 1px solid #B5D4F4; }
+  .bps-circle h4 { font-size: 13px; font-weight: 700; margin-bottom: 0.5rem; }
+  .bps-circle.bio-c h4 { color: var(--coral); }
+  .bps-circle.psy-c h4 { color: var(--purple); }
+  .bps-circle.soc-c h4 { color: var(--blue); }
+  .bps-circle ul { list-style: none; text-align: left; }
+  .bps-circle li { font-size: 12.5px; color: var(--gray); padding: 2px 0 2px 12px; position: relative; }
+  .bps-circle li::before { content: '·'; position: absolute; left: 0; font-weight: 700; }
+
+  .timeline { display: flex; flex-direction: column; gap: 0; margin: 1rem 0; }
+  .tl-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed var(--gray-border); }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-era { min-width: 130px; font-size: 12px; font-weight: 700; color: var(--teal-mid); text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+  .tl-content { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+
+  .disease-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .disease-box { border-radius: 10px; padding: 1.2rem; }
+  .disease-box.old { background: var(--amber-light); border: 1px solid #FAC775; }
+  .disease-box.new { background: var(--teal-light); border: 1px solid #9FE1CB; }
+  .disease-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 0.5rem; }
+  .disease-box.old h4 { color: var(--amber); }
+  .disease-box.new h4 { color: var(--teal-dark); }
+  .disease-box ul { list-style: none; }
+  .disease-box li { font-size: 13px; color: var(--gray); padding: 3px 0 3px 14px; position: relative; line-height: 1.55; }
+  .disease-box li::before { position: absolute; left: 0; }
+  .old li::before { content: '✗'; color: var(--amber); font-weight: 700; }
+  .new li::before { content: '✓'; color: var(--teal); font-weight: 700; }
+
+  .tips-banner { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .tip-card { background: var(--card-bg); border: 1px solid var(--gray-border); border-radius: 10px; padding: 1rem 1.1rem; display: flex; gap: 10px; align-items: flex-start; }
+  .tip-num { width: 26px; height: 26px; background: var(--teal); color: #fff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .tip-card p { font-size: 13.5px; color: var(--gray); line-height: 1.55; }
+
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+  .term-item { background: var(--gray-light); border-radius: 8px; padding: 0.9rem 1rem; border-left: 3px solid var(--teal); }
+  .term-item .term-name { font-size: 13px; font-weight: 700; color: var(--teal-mid); margin-bottom: 4px; }
+  .term-item p { font-size: 13px; color: var(--gray); line-height: 1.55; }
+
+  .objectives { background: var(--teal-dark); color: #fff; border-radius: 12px; padding: 1.75rem 2rem; }
+  .objectives h3 { font-size: 12px; font-weight: 700; margin-bottom: 1rem; color: rgba(255,255,255,0.9); letter-spacing: 0.05em; text-transform: uppercase; }
+  .objectives ol { list-style: none; counter-reset: obj; }
+  .objectives li { counter-increment: obj; padding: 0.5rem 0 0.5rem 2.5rem; position: relative; font-size: 13.5px; color: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,255,255,0.08); line-height: 1.6; }
+  .objectives li:last-child { border-bottom: none; }
+  .objectives li::before { content: counter(obj); position: absolute; left: 0; top: 0.5rem; width: 24px; height: 24px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; line-height: 24px; text-align: center; }
+
+  .inline-note { background: var(--amber-light); border-left: 3px solid var(--amber); border-radius: 0 6px 6px 0; padding: 8px 12px; font-size: 13px; color: var(--amber); margin-top: 10px; }
+  .inline-good { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 6px 6px 0; padding: 8px 12px; font-size: 13px; color: var(--teal-dark); margin-top: 10px; }
+  .inline-bad { background: var(--coral-light); border-left: 3px solid var(--coral); border-radius: 0 6px 6px 0; padding: 8px 12px; font-size: 13px; color: var(--coral); margin-top: 10px; }
+
+  .quote-block { background: var(--teal-light); border-left: 4px solid var(--teal); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; font-size: 14px; color: var(--teal-dark); }
+  .quote-block cite { display: block; margin-top: 6px; font-style: normal; font-size: 12px; font-weight: 700; color: var(--teal-mid); }
+
+  /* Coping split */
+  .cope-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .cope-box { border-radius: 10px; padding: 1.2rem; }
+  .cope-box.mal { background: var(--coral-light); border: 1px solid #F5C4B3; }
+  .cope-box.ada { background: var(--teal-light); border: 1px solid #9FE1CB; }
+  .cope-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 0.5rem; }
+  .cope-box.mal h4 { color: var(--coral); }
+  .cope-box.ada h4 { color: var(--teal-dark); }
+  .cope-box p, .cope-box li { font-size: 13px; color: var(--gray); line-height: 1.55; }
+  .cope-box ul { list-style: none; margin-top: 6px; }
+  .cope-box li { padding: 3px 0 3px 14px; position: relative; }
+  .mal li::before { content: '✗'; color: var(--coral); font-weight: 700; position: absolute; left: 0; }
+  .ada li::before { content: '✓'; color: var(--teal); font-weight: 700; position: absolute; left: 0; }
+
+  /* Flow diagram */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 1rem 0; justify-content: center; }
+  .flow-box { background: var(--gray-light); border: 1px solid var(--gray-border); border-radius: 8px; padding: 0.7rem 1rem; font-size: 12.5px; font-weight: 600; color: var(--gray); text-align: center; min-width: 100px; }
+  .flow-arrow { font-size: 16px; color: var(--teal); font-weight: 700; }
+
+  /* Word cloud style tag list */
+  .cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 0.75rem 0; }
+  .cloud span { background: var(--gray-light); color: var(--gray-mid); padding: 4px 10px; border-radius: 6px; font-size: 12px; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.6rem; }
+    .model-grid, .bps-venn, .disease-split, .cope-split { grid-template-columns: 1fr; }
+    .main { padding: 1rem; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="PSYC314_index.html" class="back-btn">← 返回主页 Back to Home</a>
+  <span class="topbar-right">PSYC 314 · 第八讲</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 314 · Health Psychology · UBC Distance Education · David King, PhD</div>
+    <h1>第八讲：解构疼痛——从测量到管理<br><span style="font-size:1.4rem; font-weight:400; color:rgba(255,255,255,0.8);">Lecture 8: Dissecting Pain — From Measurement to Management</span></h1>
+    <div class="hero-sub">疼痛理论与定义 · 疼痛评估 · 疼痛中的心理社会因素 · 疼痛应对 · 疼痛管理</div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#tips">健康提示</a></li>
+    <li><a href="#why">为何关注疼痛</a></li>
+    <li><a href="#theories">疼痛理论</a></li>
+    <li><a href="#assessment">疼痛评估</a></li>
+    <li><a href="#psychosocial">心理社会因素</a></li>
+    <li><a href="#coping">应对疼痛</a></li>
+    <li><a href="#social">社会因素与疼痛</a></li>
+    <li><a href="#socialpain">社会性疼痛</a></li>
+    <li><a href="#management">疼痛管理</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- Tips -->
+  <section class="section" id="tips">
+    <div class="section-header">
+      <div class="section-num">★</div>
+      <h2>本讲健康提示 L-8 Health Tips</h2>
+    </div>
+    <div class="tips-banner">
+      <div class="tip-card"><div class="tip-num">1</div><p><strong>疼痛确实"在你脑子里"</strong>——Pain is literally IN YOUR HEAD（神经基质产生痛觉体验）。</p></div>
+      <div class="tip-card"><div class="tip-num">2</div><p><strong>相信他人的疼痛</strong>——即使你看不见（Believe in people's pain, even when you can't see it）。</p></div>
+      <div class="tip-card"><div class="tip-num">3</div><p><strong>心碎也可以吃泰诺</strong>——Take Tylenol for a broken heart（对乙酰氨基酚可缓解社会性疼痛）。</p></div>
+      <div class="tip-card"><div class="tip-num">4</div><p><strong>治疗患者的社会网络</strong>也能帮助控制疼痛——You can treat a patient's pain by treating their social network。</p></div>
+    </div>
+  </section>
+
+  <!-- Why focus on pain -->
+  <section class="section" id="why">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>为何关注疼痛？Why Focus on Pain?</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">疼痛的重要性 Why Pain Matters</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">疼痛是<strong>患者最关心的症状</strong>，也是最有可能促使他们<strong>使用医疗服务</strong>的原因。同时，疼痛也<strong>深受心理社会因素影响</strong>——这正是健康心理学关注疼痛的核心原因。</p>
+      <div class="card-title" style="margin-top:1rem;">疼痛的功能 Pain Serves a Purpose</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">警示自己或他人存在<strong>组织损伤 / 受伤 / 疾病</strong>，并唤起照护行为。</p>
+      <div class="inline-bad">但疼痛也可能导致：不良健康行为、失业/收入损失、抑郁焦虑恐惧、社交孤立、睡眠障碍、婚姻与家庭功能失调。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">重要提醒：我们对疼痛的理解仍在演变 An Important Caveat</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;"><strong>案例：鱼类确实会感受疼痛（Fish DO feel pain）。</strong>鱼类具有<span class="kw">伤害感受器 nociceptors</span>，能探测高温、高压与腐蚀性化学物质；鱼类还会产生与哺乳动物相同的<strong>内源性阿片类物质</strong>；受伤时的脑电活动也与陆生脊椎动物类似——刺激伤害感受器后，电信号会传导至负责意识性感觉知觉的脑区（如小脑、视顶盖、端脑）。</p>
+      <div class="quote-block">
+        "更多的人开始接受这一事实：鱼确实会感到疼痛。它可能与人类感受到的不同，但仍然是一种疼痛。"
+        <cite>— Victoria Braithwaite, 生物学家, 2014</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Theories of Pain -->
+  <section class="section" id="theories">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>疼痛理论与测量 Theories of Pain; Pain Measurement</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">特异性理论 Specificity Theory of Pain（Descartes, 1664）</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;"><strong>疼痛与组织损伤程度成正比</strong>。受伤后，疼痛信号从受损组织相关神经传向脊髓，再传递到（a）运动神经，与（b）大脑——疼痛在大脑中被<strong>感知（perceived）</strong>。</p>
+      <div class="inline-bad">纯生物医学取向的局限：假设损伤/疾病与疼痛一一对应；可能导致责怪患者、假定精神障碍或故意伪装症状等不当做法；过度依赖药物、手术等医学干预。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">闸门控制理论 Gate-Control Theory（Melzack & Wall, 1965）</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">疼痛<strong>并非</strong>与组织损伤直接成正比。脊髓中存在一个神经<strong>"闸门"</strong>，通过抑制性与投射性神经元对来自躯体感觉输入的反应，来开启或关闭传向大脑的疼痛信号。</p>
+      <table style="width:100%; border-collapse:collapse; font-size:12.5px; margin-top:0.5rem;">
+        <tr style="background:var(--gray-light);">
+          <th style="text-align:left; padding:8px; border:1px solid var(--gray-border);">因素类型</th>
+          <th style="text-align:left; padding:8px; border:1px solid var(--gray-border); color:var(--coral);">开启闸门 Opens Gate</th>
+          <th style="text-align:left; padding:8px; border:1px solid var(--gray-border); color:var(--teal-dark);">关闭闸门 Closes Gate</th>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--gray-border); font-weight:700;">生理 Physical</td>
+          <td style="padding:8px; border:1px solid var(--gray-border);">损伤程度增加 · 活动不当或不活动</td>
+          <td style="padding:8px; border:1px solid var(--gray-border);">药物 · 反刺激（按摩、热敷）</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--gray-border); font-weight:700;">情绪 Emotional</td>
+          <td style="padding:8px; border:1px solid var(--gray-border);">焦虑/担忧 · 紧张 · 抑郁 · 关系问题</td>
+          <td style="padding:8px; border:1px solid var(--gray-border);">积极情绪 · 放松 · 社会支持</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--gray-border); font-weight:700;">认知 Cognitive</td>
+          <td style="padding:8px; border:1px solid var(--gray-border);">聚焦疼痛 · 无聊</td>
+          <td style="padding:8px; border:1px solid var(--gray-border);">分心 · 专注 · 对活动的参与和兴趣</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">无（已知）病理的疼痛 Pain without (Known) Pathology</div>
+      <p style="font-size:13.5px;">多种疼痛状况的研究表明，<strong>客观检查结果与疼痛水平之间没有显著临床相关性</strong>（Bogduk, 2012; Cheung et al., 2009; Guermazi et al., 2012）。美国医学会（AMA, 2001）指出：在<strong>高达85%</strong>报告背痛的人中，无法识别出致痛病理。例如非特异性下背痛。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">神经病理性疼痛 Neuropathic Pain</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">源于外周神经<strong>当前或既往的疾病/损伤</strong>；患者在无伤害性刺激的情况下体验到疼痛。</p>
+      <ul style="font-size:13px; padding-left:1.2rem; margin-bottom:0.5rem;">
+        <li><strong>神经痛 Neuralgia</strong>：沿神经反复发作的剧烈、锐利或刺痛，常在感染后出现。</li>
+        <li><strong>灼痛 / 复杂区域疼痛综合征 Causalgia</strong>：反复发作的严重灼烧样疼痛，常由轻微刺激（如衣物触碰）引发。</li>
+      </ul>
+      <div class="model-grid">
+        <div class="model-card bio">
+          <div class="model-badge">案例</div>
+          <h3>纤维肌痛 Fibromyalgia</h3>
+          <p>一种慢性广泛性疼痛障碍，对压力有<strong>异常增强的疼痛反应</strong>，但<strong>没有组织损伤</strong>。可能源于神经化学失衡（含脑内炎症通路激活），导致疼痛处理异常（Fleming & Volcheck, 2015）。越来越多证据支持将其归类为<strong>神经病理性</strong>，但争议仍存，患者常被误诊或忽视（CDC, 2017; Clauw, 2014）。</p>
+        </div>
+        <div class="model-card bps">
+          <div class="model-badge">案例</div>
+          <h3>幻肢痛 Phantom Limb Pain</h3>
+          <p>在<strong>已截肢的肢体</strong>上体验到疼痛；归类为神经病理性疼痛。提出的问题是：如果没有组织，疼痛怎么可能源自组织损伤部位？</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">神经基质理论 Neuromatrix Theory（Melzack, 1990, 2001）</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;"><strong>神经基质（neuromatrix）</strong>分布于大脑多个区域，由广泛的神经元网络组成，生成一种被感受为"拥有自我意识的整个身体"的模式——即<strong>"身体-自我神经基质"</strong>。这一神经元矩阵可以在<strong>没有感觉神经信号</strong>的情况下产生疼痛（及其他感觉）。疼痛产生于<strong>中枢神经系统</strong>（大脑、脊髓）。</p>
+      <div class="flow-row">
+        <div class="flow-box">认知输入<br>Cognitive</div>
+        <div class="flow-box">情绪输入<br>Emotion</div>
+        <div class="flow-box">感觉输入<br>Sensory</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="background:var(--teal-light); border-color:#9FE1CB;">神经基质<br>Neuromatrix</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">疼痛 / 运动 / 压力 / 情绪<br>Output</div>
+      </div>
+      <div class="inline-good">重要：认知与情绪因素也会影响神经基质！</div>
+      <div class="quote-block">
+        "在现代科学中，很少有理论比闸门控制理论与神经基质理论催生了更多的实证研究。事实上，尽管在技术上仍属理论，学界已普遍将这些模型视为对疼痛本质的准确解释，因为已有大量实证证据证实了它们。"
+        <cite>— McAllister, 2015</cite>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">疼痛的生物心理社会模型 A Biopsychosocial Model of Pain</div>
+      <div class="bps-venn">
+        <div class="bps-circle bio-c">
+          <h4>生物 Biology</h4>
+          <ul><li>损伤、组织损害</li><li>神经系统</li><li>躯体感觉</li></ul>
+        </div>
+        <div class="bps-circle psy-c">
+          <h4>心理 Psychology</h4>
+          <ul><li>感觉因素</li><li>认知因素</li><li>情绪因素</li></ul>
+        </div>
+        <div class="bps-circle soc-c">
+          <h4>社会 Social Factors</h4>
+          <ul><li>孤立/社会支持</li><li>关系健康</li><li>工作环境</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">疼痛的定义 How Do We Define Pain?</div>
+      <div class="quote-block">
+        "一种与实际或潜在组织损伤相关，或以此类损伤描述的，令人不快的感觉与情绪体验。"
+        <cite>— 国际疼痛研究协会 International Association for the Study of Pain (IASP), 1994</cite>
+      </div>
+      <p style="font-size:13.5px;">"疼痛<strong>始终是主观的</strong>"（IASP, 2002）——正如那句关于鱼的提醒："我们不可能确切知道另一个生物的主观体验是否与我们自己的相同。"</p>
+    </div>
+  </section>
+
+  <!-- Pain Assessment -->
+  <section class="section" id="assessment">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>如何评估疼痛？How Do We Assess Pain?</h2>
+    </div>
+
+    <div class="quote-block">
+      "疼痛就是患者所说的那样，只要患者说它存在，它就存在……"
+      <cite>— McCaffery & Pasero, 1999</cite>
+    </div>
+
+    <div class="card">
+      <div class="card-title">自我报告测量 Self-Report Measures of Pain</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">例如：<strong>Wong-Baker FACES 疼痛评定量表</strong>（让患者用表情脸谱评定疼痛程度，0=无痛，10=最痛）；<strong>McGill 疼痛问卷</strong>（标记疼痛部位，并用词汇描述疼痛性质，如刺痛、灼烧、跳痛等）。</p>
+      <div class="model-grid">
+        <div class="model-card bps">
+          <div class="model-badge">优点 Advantages</div>
+          <h3>自我报告的价值</h3>
+          <p>在进化中曾发挥重要生存作用；能相对准确地反映疼痛的存在、严重程度、性质与影响；方法上简便易行。</p>
+        </div>
+        <div class="model-card bio">
+          <div class="model-badge">局限 Limitations</div>
+          <h3>自我报告的问题</h3>
+          <p>依赖认知与沟通能力；受情境与情绪影响；具有选择性，可能反映患者认为对自己"最有利"的表述或社会期许。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">非言语测量 Nonverbal Measures of Pain</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;"><strong>疼痛行为（pain behaviours）</strong>是对疼痛做出的可观察反应，包括：面部与声音上表达的痛苦、姿势或步态异常、负性情绪（情绪低落、焦虑、抑郁）、回避活动等。</p>
+      <div class="cloud">
+        <span>新生儿面部编码量表 Neonatal Facial Coding Scale</span>
+        <span>皱眉 Brow Lower</span>
+        <span>眯眼 Eye Squeeze</span>
+        <span>鼻翼张开 Flared Nostril</span>
+        <span>唇角上提 Lip Corner Puller</span>
+      </div>
+      <p style="font-size:13.5px; margin-top:0.5rem;">该方法甚至被用于动物研究，例如<strong>小鼠面部表情编码</strong>（Langford et al., 2010, <em>Nature Methods</em>），通过眼眶收紧、鼻部隆起、脸颊隆起、耳朵位置等指标判断疼痛程度。</p>
+      <div class="quote-block">
+        "无法用言语沟通，并不能否定个体正在经历疼痛、需要适当疼痛缓解治疗的可能性。"
+        <cite>— IASP, 2002</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Psychosocial Factors -->
+  <section class="section" id="psychosocial">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>疼痛中的心理社会因素 Psychosocial Factors in Pain</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">"器质性"与"心因性"疼痛 "Organic" vs. "Psychogenic" Pain</div>
+      <p style="font-size:13.5px;"><strong>器质性疼痛（Organic pain）</strong>=有明确可识别生理原因的疼痛；<strong>心因性疼痛（Psychogenic pain）</strong>=源于心理过程的疼痛。过去科学家认为二者是<strong>相互独立</strong>的实体，但今天普遍认为：<strong>几乎所有疼痛体验都涉及生理与心理社会因素的相互作用</strong>。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">情绪与疼痛 Emotions and Pain</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;"><strong>积极情绪</strong>（如大笑）似乎能减轻疼痛；<strong>负性情绪</strong>则往往加重疼痛（也可能由疼痛引发）。大多数慢性疼痛患者伴有高水平的抑郁、焦虑和/或愤怒；这些情绪的高水平与随后更高的疼痛/失能水平相关。情绪还可能<strong>扭曲对疼痛的记忆</strong>——研究发现，高焦虑患者对疼痛的记忆更多取决于他们<strong>预期</strong>会感受到什么，而非实际感受到的（Gedney & Logan, 2006）。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">疼痛与压力 Pain and Stress</div>
+      <p style="font-size:13.5px;">疼痛与压力密切相连：（1）疼痛本身是一种压力源（部分源于感知控制感的缺失）；（2）压力也可能导致疼痛（如头痛），二者互相加重彼此的体验。例如：偏头痛与肌肉收缩性头痛常在高压期后出现，这一关联在抑郁个体中更为显著（Janke et al., 2004）。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">疼痛的意义 The Meaning of Pain</div>
+      <p style="font-size:13.5px;">疼痛的强度可因其<strong>意义</strong>或潜在损伤含义而有所不同。例如：性行为中痛感带来的愉悦（受虐倾向）；战争负伤后的<strong>宽慰与乐观</strong>（相较于平民手术）。<strong>经典条件作用</strong>可能是疼痛意义发生改变的一种机制。</p>
+    </div>
+  </section>
+
+  <!-- Coping with Pain -->
+  <section class="section" id="coping">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>如何应对疼痛？Coping with Pain</h2>
+    </div>
+
+    <div class="cope-split">
+      <div class="cope-box mal">
+        <h4>不良应对 Maladaptive Coping</h4>
+        <p>破坏性思维；无助感。</p>
+        <ul>
+          <li><strong>灾难化 Catastrophizing</strong>：频繁、放大化的疼痛相关负性思维，包括夸大、反刍、无助感。</li>
+          <li>灾难化随疼痛强度增加而增加，被认为在<strong>急性疼痛向慢性疼痛转化</strong>中起重要作用（Wade et al., 2012; Williams, 2010）。</li>
+        </ul>
+      </div>
+      <div class="cope-box ada">
+        <h4>适应性应对 Adaptive Coping</h4>
+        <p>放松；分心；重新定义疼痛（再评估）；愿意改变，采取主动。</p>
+        <ul>
+          <li><strong>接纳 Acceptance</strong>：倾向于在有痛的情况下仍参与活动，不倾向于控制或回避疼痛。</li>
+          <li>高接纳者对疼痛的关注更少，日常任务自我效能感更高，功能更好，使用的止痛药更少（Cook et al., 2015; McCracken & Eccleston, 2005; Viane et al., 2004）。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">灾难化的评估模型 Appraisal Model of Pain Catastrophizing（Severeijns et al., 2004）</div>
+      <div class="flow-row">
+        <div class="flow-box">初级评估<br>关注并夸大疼痛的威胁价值</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">次级评估<br>感到无助、无法应对</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">积极再评估 Positive Reappraisal</div>
+      <p style="font-size:13.5px;"><strong>积极再评估能减轻疼痛感受</strong>。例如，积极的自我陈述（如"无论多冷，我都能应付"）在冷压任务中降低了疼痛评分——但前提是被试获得了关于自我陈述如何起作用的解释（Girodo & Wood, 1979）。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">社会支持与疼痛 Social Support & Pain</div>
+      <p style="font-size:13.5px;"><strong>社会支持</strong>同样能减轻疼痛。例如，在冷压任务中获得的言语支持，相比他人单纯在场或独自一人，更强烈地降低了参与者的疼痛评分（以及压力水平）（Roberts et al., 2015）。</p>
+    </div>
+  </section>
+
+  <!-- Social factors in pain -->
+  <section class="section" id="social">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>疼痛中的社会因素 Social Factors in Pain</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">病人角色与疼痛 The Sick Role and Pain</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">患者的疼痛行为与他们获得的<strong>社会性回报</strong>相关，例如得以回避不喜欢的社交活动，或获得帮助与关注。例如：配偶更频繁的<strong>关切行为（solicitous behaviour）</strong>（帮助与关注）与更强的疼痛相关（Block et al., 1980）。</p>
+      <div class="inline-bad">关切行为可能导致更多疼痛行为，进而引发更多关切行为，形成加重依赖与身体机能退化的<strong>恶性循环</strong>。良好的支持与照护固然重要（Stephenson et al., 2014），但患者的自我效能同样关键。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">疼痛灾难化的共同应对模型 Communal Coping Model of Pain Catastrophizing（Sullivan, 2012）</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">照护者为疼痛中的人提供陪伴、支持、共情与协助，目标是<strong>在社会情境中（而非个体层面）管理痛苦</strong>。但对疼痛的过度关注和夸大的疼痛行为反而可能<strong>加重疼痛体验</strong>，使个体显得更难以应对疼痛。</p>
+      <p style="font-size:13.5px;">Sullivan（2012）发现，高灾难化者在他人在场时表现出<strong>更强的疼痛行为</strong>（且应对更无效）。当个体从配偶处获得支持性回应时，灾难化对疼痛的负面影响会显著降低（Holtzman & DeLongis, 2007）——但灾难化本身仍往往是有害的。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">疼痛的社会沟通模型 The Social Communication Model of Pain（Craig & Korol, 2008）</div>
+      <div class="flow-row">
+        <div class="flow-box">创伤<br>（生理或感知性）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">个人疼痛体验</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">疼痛表达</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">疼痛评估</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">疼痛管理</div>
+      </div>
+      <p style="font-size:13.5px;">该模型强调疼痛的<strong>人际情境</strong>：疼痛中的个体与照护者双方都带来各自独特的特质，二者相互影响疼痛体验；同时还考虑<strong>情境因素</strong>——例如，实验室中暴露于疼痛的被试会调整自己的疼痛反应，以匹配当时在场他人的反应（Craig, 2009）。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">治疗社会网络 Treating the Social Network</div>
+      <p style="font-size:13.5px;">个体社会网络的健康状况也会影响疼痛结果。例如，在类风湿关节炎患者中，<strong>配偶的抑郁</strong>可预测患者一年内疼痛与失能的加重，即使控制了患者自身的抑郁水平（Lam et al., 2009）。因此，一种解决方案是：<strong>同时治疗患者的社会网络</strong>。</p>
+    </div>
+  </section>
+
+  <!-- Social Pain -->
+  <section class="section" id="socialpain">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>什么是社会性疼痛？What is Social Pain?</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">社会性疼痛的定义 Defining Social Pain</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;"><strong>社会性疼痛（Social pain）</strong>——由人际拒绝或丧失所引发的痛苦体验，例如被社交群体排斥、欺凌，或失去挚爱之人（MacDonald & Jensen-Campbell, 2011）。从进化视角看，社会性疼痛具有<strong>适应性</strong>；语言层面，我们常用与身体疼痛相似的词汇描述社会性疼痛——如"伤心（hurt feelings）"、"心碎（broken-hearted）"。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">是否等同于"身体"疼痛？Is It the Same as "Physical" Pain?</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">负性社会体验依赖于与身体疼痛<strong>情感成分</strong>相同的神经系统——即<strong>背侧前扣带皮层（dACC）</strong>与<strong>脑岛前部（AI）</strong>。fMRI研究发现：左侧dACC与痛苦程度相关；右侧腹外侧前额叶皮层与调节痛苦相关（Eisenberger et al., 2003; Kross et al., 2011; Meyer et al., 2015）。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">对治疗的启示 Implications for Treatment</div>
+      <p style="font-size:13.5px;"><strong>对乙酰氨基酚（Acetaminophen，即Tylenol泰诺）</strong>似乎能减轻社会性疼痛——相较安慰剂，能降低每日自我报告的社会性疼痛；fMRI脑活动测量发现，服用对乙酰氨基酚可减少dACC与脑岛前部对社会拒绝的神经反应（DeWall et al., 2010）。</p>
+    </div>
+  </section>
+
+  <!-- Pain Management -->
+  <section class="section" id="management">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>疼痛管理 Pain Management</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">临床干预 Clinical Interventions for Pain</div>
+      <div class="terms-grid">
+        <div class="term-item">
+          <div class="term-name">手术干预 Surgical Interventions</div>
+        </div>
+        <div class="term-item">
+          <div class="term-name">化学（药物）治疗 Chemical Treatments</div>
+          <p>外周镇痛药（如对乙酰氨基酚）；中枢镇痛药/阿片类（如吗啡）；局部麻醉剂（如奴佛卡因）</p>
+        </div>
+        <div class="term-item">
+          <div class="term-name">刺激疗法 Stimulation Therapies</div>
+          <p>例如经皮神经电刺激（TENS）</p>
+        </div>
+        <div class="term-item">
+          <div class="term-name">物理治疗与康复 Physical Therapy & Rehabilitation</div>
+        </div>
+      </div>
+      <div class="inline-bad">仅靠医学（尤其是化学）方法通常<strong>不足以</strong>控制疼痛，尤其是慢性疼痛。由于心理社会因素在疼痛体验及急性向慢性转化中扮演重要角色（参见闸门控制理论），治疗心理因素与挑战往往<strong>至关重要</strong>。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">心理治疗方法 Psychological Treatments for Pain</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">目标包括：帮助患者降低疼痛<strong>频率与强度</strong>；改善患者对疼痛的<strong>情绪适应</strong>；提高<strong>社会与身体活动</strong>；减少<strong>止痛药物使用</strong>。可以个体或团体形式开展。</p>
+      <div class="terms-grid">
+        <div class="term-item">
+          <div class="term-name">操作性方法 The Operant Approach</div>
+          <p>应用操作性条件作用改变行为后果：促进"健康"行为、抑制疼痛行为，训练患者社会环境中的人监测并记录疼痛行为、避免强化，并系统奖励身体活动。效果良好，但奖励撤除后可能难以维持。</p>
+        </div>
+        <div class="term-item">
+          <div class="term-name">恐惧降低 Fear Reduction</div>
+          <p>恐惧导致回避活动（负强化）。<strong>渐进暴露（in vivo exposure）</strong>类似系统脱敏，通过恐惧活动等级表反复暴露；已成功降低慢性下背痛患者的疼痛恐惧与灾难化，提升活动水平。</p>
+        </div>
+        <div class="term-item">
+          <div class="term-name">放松与生物反馈 Relaxation & Biofeedback</div>
+          <p>渐进性肌肉放松、冥想（含正念冥想）、生物反馈（学习对心率等身体功能实施自主控制）。已证实能缓解疼痛，但仍存在很多未解问题，可能不足以单独使用。</p>
+        </div>
+        <div class="term-item">
+          <div class="term-name">认知方法 Cognitive Methods</div>
+          <p>评估/处理疼痛相关信念与应对策略：分心、非疼痛意象、重新定义（用更具建设性/现实的想法替代无益想法）；促进疼痛接纳。效果因急性/慢性疼痛而异。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">其他治疗形式 Other Forms of Therapy</div>
+      <p style="font-size:13.5px;"><strong>催眠（Hypnosis）</strong>对急性与慢性疼痛均有效，但效果因诸多因素而异。其他心理疗法，如<strong>认知行为疗法（CBT）</strong>与精神分析，通过改变患者与社会环境（关系）的互动与感知方式，帮助其处理情绪困难（如适应慢性疼痛），有助于改善关系、减轻抑郁等。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">多学科方法 A Multidisciplinary Approach</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">单一方法治疗慢性疼痛的成功率<strong>低于综合方案</strong>。这进一步印证了<strong>生物心理社会取向</strong>的重要性。</p>
+      <div class="bps-venn">
+        <div class="bps-circle bio-c"><h4>生物 Biology</h4></div>
+        <div class="bps-circle psy-c"><h4>心理 Psychology</h4></div>
+        <div class="bps-circle soc-c"><h4>社会 Social Factors</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Objectives -->
+  <section class="section" id="objectives">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <h2>学习目标 Learning Objectives</h2>
+    </div>
+    <div class="objectives">
+      <h3>完成本讲后，你应能够 After this lecture, you should be able to…</h3>
+      <ol>
+        <li>解释研究疼痛/关注疼痛的重要性（Explain the importance of studying pain / focusing on pain）</li>
+        <li>讨论疼痛特异性模型的局限性（Discuss the limitations of the specificity model of pain）</li>
+        <li>简要解释闸门控制理论与神经基质理论（Briefly explain the gate-control and neuromatrix theories of pain）</li>
+        <li>根据国际疼痛研究协会（IASP）定义疼痛并进行讨论（Define pain according to the IASP and discuss this definition）</li>
+        <li>解释测量/评估疼痛的不同方法（Explain the different methods for measuring/assessing pain）</li>
+        <li>识别并描述疼痛中的心理社会因素（如压力）（Identify and describe psychosocial factors in pain, e.g., stress）</li>
+        <li>描述应对疼痛的适应性与不良方法，包括疼痛社会模型的要点（Describe adaptive and maladaptive methods of coping with pain, including key points from social models of pain）</li>
+        <li>简要描述疼痛中的社会因素：疼痛灾难化的共同应对模型与疼痛的社会沟通模型（Briefly describe social factors in pain; the communal coping model of pain catastrophizing and the social communication model of pain）</li>
+        <li>定义社会性疼痛并思考其与"身体"疼痛的关系（Define social pain and consider its relation to "physical" pain）</li>
+        <li>说明/描述控制与管理疼痛的心理社会方法（Name/describe psychosocial methods for controlling/managing pain）</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
