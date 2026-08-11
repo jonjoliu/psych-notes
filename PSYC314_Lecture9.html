@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC-314 第九讲：疾病中的应对——慢性病与临终关怀管理</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --teal: #1D9E75;--teal-light: #E1F5EE;--teal-dark: #085041;--teal-mid: #0F6E56;
+    --gray: #2C2C2A;--gray-mid: #5F5E5A;--gray-light: #F1EFE8;--gray-border: #D3D1C7;
+    --purple: #534AB7;--purple-light: #EEEDFE;--coral: #D85A30;--coral-light: #FAECE7;
+    --amber: #BA7517;--amber-light: #FAEEDA;--blue: #185FA5;--blue-light: #E6F1FB;
+    --bg: #FAFAF8;--card-bg: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--gray); line-height: 1.75; font-size: 15px; }
+
+  .topbar { background: var(--card-bg); border-bottom: 1px solid var(--gray-border); padding: 10px 2rem; display: flex; align-items: center; justify-content: space-between; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--gray-mid); text-decoration: none; padding: 5px 14px; border: 1px solid var(--gray-border); border-radius: 6px; background: var(--bg); transition: all .15s; }
+  .back-btn:hover { color: var(--teal); border-color: var(--teal); background: var(--teal-light); }
+  .topbar-right { font-size: 12px; color: var(--gray-mid); letter-spacing: .05em; }
+
+  .hero { background: var(--teal-dark); color: #fff; padding: 3.5rem 2rem 2.5rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; border: 40px solid rgba(255,255,255,0.05); }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: 30%; width: 200px; height: 200px; border-radius: 50%; border: 30px solid rgba(255,255,255,0.04); }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 4px; margin-bottom: 1.2rem; color: rgba(255,255,255,0.85); }
+  .hero h1 { font-family: 'Noto Serif SC', serif; font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.75rem; color: #fff; }
+  .hero-sub { color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 300; }
+
+  .nav-bar { background: var(--card-bg); border-bottom: 1px solid var(--gray-border); padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
+  .nav-bar ul { display: flex; gap: 0; list-style: none; max-width: 860px; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
+  .nav-bar ul::-webkit-scrollbar { display: none; }
+  .nav-bar a { display: block; padding: 0.9rem 1rem; font-size: 13px; font-weight: 500; color: var(--gray-mid); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .nav-bar a:hover { color: var(--teal); border-bottom-color: var(--teal); }
+
+  .main { max-width: 860px; margin: 0 auto; padding: 2rem; }
+  .section { margin-bottom: 3rem; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--teal-light); }
+  .section-num { width: 32px; height: 32px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .section-header h2 { font-family: 'Noto Serif SC', serif; font-size: 1.35rem; font-weight: 700; color: var(--teal-dark); }
+
+  .card { background: var(--card-bg); border: 1px solid var(--gray-border); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .card-title { font-weight: 700; font-size: 14px; color: var(--teal-mid); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .kw { font-weight: 700; color: var(--teal-mid); }
+  .en { font-size: 12px; color: var(--gray-mid); font-style: italic; margin-left: 2px; }
+  .sub-note { font-size: 13px; color: var(--gray-mid); font-style: italic; margin-top: 6px; }
+
+  .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .model-card { border-radius: 10px; padding: 1.25rem; border: 1px solid; }
+  .model-card.bio { background: var(--coral-light); border-color: #F5C4B3; }
+  .model-card.bps { background: var(--teal-light); border-color: #9FE1CB; }
+  .model-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 0.5rem; }
+  .model-card.bio h3 { color: var(--coral); }
+  .model-card.bps h3 { color: var(--teal-dark); }
+  .model-card p { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+  .model-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.6rem; }
+  .bio .model-badge { background: #F5C4B3; color: var(--coral); }
+  .bps .model-badge { background: #9FE1CB; color: var(--teal-dark); }
+
+  .bps-venn { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .bps-circle { border-radius: 10px; padding: 1.1rem; text-align: center; }
+  .bps-circle.bio-c { background: var(--coral-light); border: 1px solid #F5C4B3; }
+  .bps-circle.psy-c { background: var(--purple-light); border: 1px solid #CECBF6; }
+  .bps-circle.soc-c { background: var(--blue-light); border: 1px solid #B5D4F4; }
+  .bps-circle h4 { font-size: 13px; font-weight: 700; margin-bottom: 0.5rem; }
+  .bps-circle.bio-c h4 { color: var(--coral); }
+  .bps-circle.psy-c h4 { color: var(--purple); }
+  .bps-circle.soc-c h4 { color: var(--blue); }
+  .bps-circle ul { list-style: none; text-align: left; }
+  .bps-circle li { font-size: 12.5px; color: var(--gray); padding: 2px 0 2px 12px; position: relative; }
+  .bps-circle li::before { content: '·'; position: absolute; left: 0; font-weight: 700; }
+
+  .timeline { display: flex; flex-direction: column; gap: 0; margin: 1rem 0; }
+  .tl-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed var(--gray-border); }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-era { min-width: 130px; font-size: 12px; font-weight: 700; color: var(--teal-mid); text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+  .tl-content { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+
+  .disease-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .disease-box { border-radius: 10px; padding: 1.2rem; }
+  .disease-box.old { background: var(--amber-light); border: 1px solid #FAC775; }
+  .disease-box.new { background: var(--teal-light); border: 1px solid #9FE1CB; }
+  .disease-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 0.5rem; }
+  .disease-box.old h4 { color: var(--amber); }
+  .disease-box.new h4 { color: var(--teal-dark); }
+  .disease-box ul { list-style: none; }
+  .disease-box li { font-size: 13px; color: var(--gray); padding: 3px 0 3px 14px; position: relative; line-height: 1.55; }
+  .disease-box li::before { position: absolute; left: 0; }
+  .old li::before { content: '✗'; color: var(--amber); font-weight: 700; }
+  .new li::before { content: '✓'; color: var(--teal); font-weight: 700; }
+
+  .tips-banner { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .tip-card { background: var(--card-bg); border: 1px solid var(--gray-border); border-radius: 10px; padding: 1rem 1.1rem; display: flex; gap: 10px; align-items: flex-start; }
+  .tip-num { width: 26px; height: 26px; background: var(--teal); color: #fff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .tip-card p { font-size: 13.5px; color: var(--gray); line-height: 1.55; }
+
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+  .term-item { background: var(--gray-light); border-radius: 8px; padding: 0.9rem 1rem; border-left: 3px solid var(--teal); }
+  .term-item .term-name { font-size: 13px; font-weight: 700; color: var(--teal-mid); margin-bottom: 4px; }
+  .term-item p { font-size: 13px; color: var(--gray); line-height: 1.55; }
+
+  .objectives { background: var(--teal-dark); color: #fff; border-radius: 12px; padding: 1.75rem 2rem; }
+  .objectives h3 { font-size: 12px; font-weight: 700; margin-bottom: 1rem; color: rgba(255,255,255,0.9); letter-spacing: 0.05em; text-transform: uppercase; }
+  .objectives ol { list-style: none; counter-reset: obj; }
+  .objectives li { counter-increment: obj; padding: 0.5rem 0 0.5rem 2.5rem; position: relative; font-size: 13.5px; color: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,255,255,0.08); line-height: 1.6; }
+  .objectives li:last-child { border-bottom: none; }
+  .objectives li::before { content: counter(obj); position: absolute; left: 0; top: 0.5rem; width: 24px; height: 24px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; line-height: 24px; text-align: center; }
+
+  .inline-note { background: var(--amber-light); border-left: 3px solid var(--amber); border-radius: 0 6px 6px 0; padding: 8px 12px; font-size: 13px; color: var(--amber); margin-top: 10px; }
+  .inline-good { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 6px 6px 0; padding: 8px 12px; font-size: 13px; color: var(--teal-dark); margin-top: 10px; }
+  .inline-bad { background: var(--coral-light); border-left: 3px solid var(--coral); border-radius: 0 6px 6px 0; padding: 8px 12px; font-size: 13px; color: var(--coral); margin-top: 10px; }
+
+  .quote-block { background: var(--teal-light); border-left: 4px solid var(--teal); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; font-size: 14px; color: var(--teal-dark); }
+  .quote-block cite { display: block; margin-top: 6px; font-style: normal; font-size: 12px; font-weight: 700; color: var(--teal-mid); }
+
+  /* Stat grid for Canadian statistics */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+  .stat-box { background: var(--gray-light); border-radius: 8px; padding: 0.9rem 1rem; text-align: center; }
+  .stat-box .stat-n { font-family: 'Noto Serif SC', serif; font-size: 1.5rem; font-weight: 700; color: var(--teal-dark); }
+  .stat-box .stat-l { font-size: 11.5px; color: var(--gray-mid); margin-top: 2px; }
+
+  /* Process flow (crisis theory) */
+  .flow-row { display: flex; align-items: stretch; gap: 8px; margin: 1rem 0; flex-wrap: wrap; }
+  .flow-box { flex: 1; min-width: 120px; background: var(--purple-light); border: 1px solid #CECBF6; border-radius: 8px; padding: 0.8rem 0.9rem; font-size: 12.5px; color: var(--purple); text-align: center; display: flex; align-items: center; justify-content: center; }
+  .flow-box.result { background: var(--teal-light); border-color: #9FE1CB; color: var(--teal-dark); font-weight: 700; }
+  .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--gray-mid); font-size: 18px; }
+
+  /* Two column compare (support vs control) */
+  .compare-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .compare-box { border-radius: 10px; padding: 1.1rem; text-align: center; }
+  .compare-box.a { background: var(--coral-light); border: 1px solid #F5C4B3; }
+  .compare-box.b { background: var(--teal-light); border: 1px solid #9FE1CB; }
+  .compare-box .cbig { font-family: 'Noto Serif SC', serif; font-size: 1.6rem; font-weight: 700; }
+  .compare-box.a .cbig { color: var(--coral); }
+  .compare-box.b .cbig { color: var(--teal-dark); }
+  .compare-box .clabel { font-size: 12px; color: var(--gray-mid); margin-top: 4px; }
+
+  /* Trajectory list */
+  .traj-list { display: flex; flex-direction: column; gap: 0.6rem; margin: 1rem 0; }
+  .traj-item { display: flex; gap: 12px; background: var(--gray-light); border-radius: 8px; padding: 0.75rem 1rem; align-items: flex-start; }
+  .traj-num { width: 24px; height: 24px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .traj-item p { font-size: 13px; color: var(--gray); line-height: 1.55; }
+  .traj-item strong { color: var(--teal-mid); }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.6rem; }
+    .model-grid, .bps-venn, .disease-split, .compare-split, .stat-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .main { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="PSYC314_index.html" class="back-btn">← 返回主页 Back to Home</a>
+  <span class="topbar-right">PSYC 314 · 第九讲</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 314 · Health Psychology · UBC Distance Education · David King, PhD</div>
+    <h1>第九讲：疾病中的应对——慢性病与临终疾病的管理<br><span style="font-size:1.4rem; font-weight:400; color:rgba(255,255,255,0.8);">Lecture 9: In Poor Health — Managing Chronic and Terminal Illness</span></h1>
+    <div class="hero-sub">应对慢性与临终疾病 · 生活质量 · 心理社会干预 · 照护者角色</div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#tips">健康提示</a></li>
+    <li><a href="#chronic">慢性疾病概况</a></li>
+    <li><a href="#initial">初期反应与应对</a></li>
+    <li><a href="#maladaptive">适应不良的应对</a></li>
+    <li><a href="#stigma">污名与社会挑战</a></li>
+    <li><a href="#qol">生活质量与自评健康</a></li>
+    <li><a href="#interventions">心理社会干预</a></li>
+    <li><a href="#caregiving">照护者角色</a></li>
+    <li><a href="#terminal">临终疾病</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- Tips -->
+  <section class="section" id="tips">
+    <div class="section-header">
+      <div class="section-num">★</div>
+      <h2>本讲健康提示 L-9 Health Tips</h2>
+    </div>
+    <div class="tips-banner">
+      <div class="tip-card"><div class="tip-num">1</div><p><strong>责怪自己无济于事</strong>——自我责备（self-blame）与更高的抑郁水平相关。</p></div>
+      <div class="tip-card"><div class="tip-num">2</div><p><strong>你如何看待自己的健康，比血压数字更重要</strong>——自评健康（SRH）能独立预测死亡率。</p></div>
+      <div class="tip-card"><div class="tip-num">3</div><p><strong>支持团体也能对抗癌症</strong>——心理社会干预与更长的生存期相关联。</p></div>
+      <div class="tip-card"><div class="tip-num">4</div><p><strong>回馈社会，就去支持一位照护者</strong>——照护是一种慢性压力源，照护者本身也需要被照顾。</p></div>
+    </div>
+  </section>
+
+  <!-- Chronic conditions overview -->
+  <section class="section" id="chronic">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>慢性疾病概况 Chronic Conditions in Canada</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">加拿大统计数据 Canadian Community Health Survey (2016)</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;"><strong>44%</strong> 的成年人（20岁以上）至少患有以下10种常见慢性病之一：</p>
+      <div class="stat-grid">
+        <div class="stat-box"><div class="stat-n">25%</div><div class="stat-l">高血压 Hypertension</div></div>
+        <div class="stat-box"><div class="stat-n">14%</div><div class="stat-l">骨关节炎 Osteoarthritis</div></div>
+        <div class="stat-box"><div class="stat-n">13%</div><div class="stat-l">情绪/焦虑障碍</div></div>
+        <div class="stat-box"><div class="stat-n">12%</div><div class="stat-l">骨质疏松症</div></div>
+        <div class="stat-box"><div class="stat-n">11%</div><div class="stat-l">糖尿病 Diabetes</div></div>
+        <div class="stat-box"><div class="stat-n">11%</div><div class="stat-l">哮喘 Asthma</div></div>
+        <div class="stat-box"><div class="stat-n">10%</div><div class="stat-l">慢阻肺 COPD</div></div>
+        <div class="stat-box"><div class="stat-n">8%</div><div class="stat-l">缺血性心脏病</div></div>
+        <div class="stat-box"><div class="stat-n">8%</div><div class="stat-l">癌症 Cancer</div></div>
+        <div class="stat-box"><div class="stat-n">7%</div><div class="stat-l">痴呆 Dementia</div></div>
+      </div>
+      <div class="inline-note">⚑ 我们中的大多数人一生中都可能患上至少一种最终致命的慢性病。慢性病占加拿大医疗支出的<strong>三分之二</strong>，且在低收入人群、女性与老年人中更为常见。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">思考 Consider Throughout</div>
+      <p style="font-size:13.5px;">当诊断结果是<strong>终末期（terminal）</strong>时，会出现哪些独特的心理与社会挑战？人们又是如何适应即将死亡这一前景的？</p>
+    </div>
+  </section>
+
+  <!-- Initial response & adaptive tasks -->
+  <section class="section" id="initial">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>初期反应与应对过程 The Initial Response & Coping Process</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">诊断后的初期反应 The Initial Response</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">慢性病确诊后，患者往往立即进入<strong>危机或休克状态</strong>——急性应激反应（acute stress reaction）。表现为震惊、困惑，行为呆板而疏离；此阶段更多采用<strong>情绪聚焦应对（emotion-focused coping）</strong>；<strong>否认（denial）</strong>在此阶段常见，其作用具有两面性。</p>
+    </div>
+
+    <div class="model-grid">
+      <div class="model-card bio">
+        <div class="model-badge">情绪反应</div>
+        <h3>焦虑 Anxiety</h3>
+        <p>紧张、担忧的感受，在等待检测结果、接收诊断、等待手术及经历治疗副作用时尤为强烈。</p>
+      </div>
+      <div class="model-card bps">
+        <div class="model-badge">情绪反应</div>
+        <h3>愤怒 Anger</h3>
+        <p>沮丧、易怒与敌意，是诊断慢性病后常见的早期反应，可能指向家人、朋友或医护人员。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">危机理论 Crisis Theory（Moos, 1982; Moos & Schaefer, 1986）</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">描述人们在初次得知患有慢性病后，哪些因素影响其适应与应对过程：</p>
+      <div class="flow-row">
+        <div class="flow-box">疾病相关因素</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">应对过程<br>（评估、适应性任务、应对技能）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box result">危机结果<br>（适应）</div>
+      </div>
+      <div class="flow-row" style="margin-top:-0.5rem;">
+        <div class="flow-box" style="background:var(--blue-light); border-color:#B5D4F4; color:var(--blue);">背景 / 个人因素</div>
+        <div class="flow-box" style="background:var(--amber-light); border-color:#FAC775; color:var(--amber);">物理 / 社会环境</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">应对中的两类适应性任务 Adaptive Tasks in Coping（Moos, 1982）</div>
+      <div class="bps-venn" style="grid-template-columns: 1fr 1fr;">
+        <div class="bps-circle bio-c">
+          <h4>与疾病/治疗相关的任务</h4>
+          <ul>
+            <li>应对症状或功能障碍</li>
+            <li>适应医院环境、流程与治疗</li>
+            <li>与医护人员建立良好关系</li>
+          </ul>
+        </div>
+        <div class="bps-circle psy-c">
+          <h4>与心理社会功能相关的任务</h4>
+          <ul>
+            <li>控制负面情绪、保持积极心态</li>
+            <li>维持良好自我形象与胜任感</li>
+            <li>维护与家人朋友的关系</li>
+            <li>为不确定的未来做准备</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">慢性病的应对策略 Coping Strategies for Chronic Illness（Moos, 1982）</div>
+      <div class="terms-grid">
+        <div class="term-item"><p>否认或最小化问题的严重性</p></div>
+        <div class="term-item"><p>寻求关于诊断与治疗的信息</p></div>
+        <div class="term-item"><p>学习自我照护的医疗技能</p></div>
+        <div class="term-item"><p>设定具体、有限的目标</p></div>
+        <div class="term-item"><p>招募工具性与情感性支持</p></div>
+        <div class="term-item"><p>预先考虑未来可能发生的事件</p></div>
+        <div class="term-item"><p>通过意义与目的获得可掌控的视角</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">癌症患者随时间的应对方式 Coping with Cancer over Time（Dunkel-Schetter et al., 1992）</div>
+      <p style="font-size:13.5px;">癌症患者报告最有帮助的应对策略包括：<strong>社会支持/直接问题解决</strong>（"找人了解更多关于病情"）、<strong>距离化</strong>（"我不让它影响自己"）、<strong>积极聚焦</strong>（"我从这次经历中学到了东西"）、<strong>认知逃避/回避</strong>（"希望这一切会消失"）以及<strong>行为逃避/回避</strong>（如进食、饮酒、睡眠等）。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">癌症中的控制感 Feelings of Control in Cancer（A Closer Look）</div>
+      <p style="font-size:13.5px;">癌症患者的个人控制感在<strong>确诊后的最初几个月内下降</strong>，随后开始回升（Ranchor et al., 2010）。</p>
+    </div>
+  </section>
+
+  <!-- Maladaptive coping -->
+  <section class="section" id="maladaptive">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>适应不良的应对、自我责备与抑郁 Maladaptive Coping, Self-Blame & Depression</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">哪些应对策略是适应不良的？Maladaptive Coping Over Time</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;">
+          <span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span>
+          <p><strong>反刍（Rumination）</strong>——与症状加重相关联</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;">
+          <span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span>
+          <p><strong>人际退缩</strong>——与孤独感及较低的关系满意度相关</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;">
+          <span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span>
+          <p><strong>回避型应对（如否认）</strong>——与心理痛苦增加相关，可能加重疾病进程，导致适应不良</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">癌症患者中的否认 Denial in Cancer Patients（Vos & de Haes, 2007 综述）</div>
+      <div class="stat-grid">
+        <div class="stat-box"><div class="stat-n">4–47%</div><div class="stat-l">否认诊断</div></div>
+        <div class="stat-box"><div class="stat-n">8–70%</div><div class="stat-l">否认后果/影响</div></div>
+        <div class="stat-box"><div class="stat-n">18–42%</div><div class="stat-l">否认情绪</div></div>
+      </div>
+      <p style="font-size:13.5px; margin-top:0.5rem;">年长患者更倾向于否认；有一些证据显示男性的否认水平更高。否认对身体与社会功能的影响并不一致；对心理功能的影响则取决于否认的具体形式——<strong>分散注意力策略</strong>可减轻痛苦，而<strong>被动逃避机制</strong>会降低心理幸福感。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">自我责备 Self-Blame（Friedman et al., 2007; Schiaffino, Shawaryn, & Blum, 1998）</div>
+      <p style="font-size:13.5px;">相信自己应对患病负有个人责任的人，报告的<strong>抑郁水平随时间升高</strong>。责怪自己患病的癌症患者表现出更高的痛苦感和更低的生活质量。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">抑郁 Depression</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">悲伤、绝望、无助与无望的感受，可能因患者需要时间理解病情含义而延迟出现；对生理功能有直接影响，可使身体机能进一步衰弱。抑郁史与癌症及其他慢性病的<strong>较差适应</strong>相关（Howren et al., 2010; Jim et al., 2012）。</p>
+      <div class="inline-note">⚑ 思考：抑郁如何使医学评估复杂化？</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">A Closer Look · 癌症与抑郁 Cancer and Depression（Giese-Davis et al., 2011, JCO）</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">对101名转移性乳腺癌女性随访1年，通过CES-D量表3次测量抑郁水平，并控制人口学与医学因素。</p>
+      <div class="compare-split">
+        <div class="compare-box b">
+          <div class="cbig">53.6</div>
+          <div class="clabel">CES-D 得分下降组<br>中位生存月数</div>
+        </div>
+        <div class="compare-box a">
+          <div class="cbig">25.1</div>
+          <div class="clabel">CES-D 得分上升组<br>中位生存月数</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social challenges & stigma -->
+  <section class="section" id="stigma">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>社会挑战与污名 Social Challenges & Stigma</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">癌症患者的社会挑战 Social Challenges in Cancer（Bloom et al., 1991; Lepore et al., 2008）</div>
+      <p style="font-size:13.5px;">患者可能因病情或治疗难以与家人朋友见面，或因病情感到社交尴尬。他人也可能因脆弱感而回避患者，或担心说错话、情绪失控。<strong>污名（imposed or internalized stigma）</strong>同样会影响人际关系。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">癌症污名 Cancer Stigma（Knapp et al., 2014）</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">当代文献表明，癌症污名的强弱取决于诊断对个体<strong>身份认同与自我感</strong>影响的程度。<strong>感知可控性、可见性</strong>以及是否影响日常功能，是癌症污名体验的主要因素——不同人经历的污名程度也因此不同。</p>
+      <div class="inline-note">⚑ 肺癌及影响性功能与外貌的癌症更易受到污名化。2010年加拿大调查显示，因与吸烟的关联，肺癌患者面临更大污名：1/5 受访者对肺癌患者的同情心低于其他癌症患者；肺癌研究获得的资助也相对更少（Kamath et al., 2019）。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">癌症污名的影响 Effects of Cancer Stigma</div>
+      <p style="font-size:13.5px;">癌症污名与<strong>抑郁</strong>等问题结果相关（Yılmaz et al., 2020）。在社区样本中，癌症污名与<strong>宫颈癌、乳腺癌及结直肠癌筛查率降低</strong>相关（Vrinten et al., 2019）；污名程度在<strong>男性与少数族裔</strong>中更高。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">HIV/AIDS 与抑郁 HIV/AIDS and Depression（BC Centre for Excellence in HIV/AIDS, 2018）</div>
+      <p style="font-size:13.5px;">与HIV阴性患者相比，HIV阳性患者被诊断为情绪障碍（如重度抑郁）的可能性<strong>高出两倍</strong>；焦虑、PTSD及物质使用障碍也更为常见。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">A Closer Look · 人与动物互动在HIV/AIDS中的作用 The Role of HAI</div>
+      <p style="font-size:13.5px;"><strong>Carmack (1991)</strong>：对HIV/AIDS患者而言，陪伴宠物与情感依恋、陪伴感、被重视感、专注当下及获得支持来源相关联。<strong>Matusziek (2010)</strong>：HIV/AIDS患者可能被亲友疏远，宠物往往成为最持续稳定的身体接触来源。</p>
+    </div>
+  </section>
+
+  <!-- QoL & self-reported health -->
+  <section class="section" id="qol">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>适应、生活质量与自评健康 Adaptation, Quality of Life & Self-Reported Health</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">适应 Adaptation</div>
+      <p style="font-size:13.5px;">指为了建设性地适应生活状况而做出改变的过程。随着应对重心从危机阶段转向应对更持久的变化，慢性病患者的成功适应涉及若干持续存在的重大适应性任务，包括掌握疾病持续管理的要求、最小化身体限制与残疾，以及尽可能保持积极的功能状态。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">A Closer Look · 癌症幸存 Cancer Survivorship</div>
+      <p style="font-size:13.5px;">长期癌症幸存者情绪痛苦发生率更高，尤其是来自较低社会阶层、单身及残障者（Hoffman et al., 2009）。社会关系也受到影响，尤其对伴侣而言（Dorros et al., 2010; Hagedoorn et al., 2008）。但<strong>大多数癌症患者表现出相当的韧性</strong>，适应情况相对良好（Sawyer et al., 2010）。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">生活质量 Quality of Life (QoL)</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">人们对自己生活所包含的<strong>卓越程度</strong>的评价，基于身体、心理、职业与社会功能，包括与疾病或治疗相关的症状；强调日常生活层面，如睡眠、饮食、工作与社交活动。</p>
+      <div class="quote-block">
+        个体在其所生活的文化与价值体系背景下，对自身生活状态的感知，与其目标、期望、标准及关注点相关。它是一个受身体健康、心理状态、个人信念、社会关系及所处环境显著特征复杂影响的宽泛概念。
+        <cite>— World Health Organization (2020)</cite>
+      </div>
+      <p style="font-size:13.5px; margin-top:0.75rem;">生活质量是评估慢性病<strong>康复或适应情况</strong>的重要指标。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">评估生活质量 Evaluating Quality of Life</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">生活质量的一个重要方面是个人对<strong>自身健康的感知</strong>，常用李克特量表问卷进行测量（如：您如何评价当前健康——很差/差/一般/好/极好）。</p>
+      <div class="card-title" style="margin-top:0.5rem;">例：SF-36 医疗结果简表健康调查</div>
+      <div class="terms-grid">
+        <div class="term-item"><p>身体功能</p></div>
+        <div class="term-item"><p>因身体健康导致的角色限制</p></div>
+        <div class="term-item"><p>身体疼痛</p></div>
+        <div class="term-item"><p>总体健康</p></div>
+        <div class="term-item"><p>活力</p></div>
+        <div class="term-item"><p>社会功能</p></div>
+        <div class="term-item"><p>因情绪问题导致的角色限制</p></div>
+        <div class="term-item"><p>心理健康</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">自评健康 Self-Reported Health (SRH)</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">这类问卷测量的变量虽然可能反映身体健康相关的体验，但本质上是<strong>心理层面的</strong>——因此我们不将其称为"健康"，而称为<strong>自评/主观健康（self-reported/subjective health）</strong>。</p>
+      <div class="inline-good">✓ 与客观健康一致：SRH 与所有疾病的患病率、发病及实验室健康指标相关（Jylhä, 2009; Latham & Peek, 2013; Wu et al., 2013）；但部分研究发现其与癌症缺乏关联（Latham & Peek, 2013; Roelsgaard et al., 2016）。</div>
+      <div class="inline-good">✓ 预测死亡率：SRH在纵向研究中显著预测死亡率，甚至常常超过客观身体健康指标（DeSalvo et al., 2006; Falconer, 2016; Idler & Benyamini, 1997; Jylhä, 2009; Nery Guimarães et al., 2012）。且其预测效度<strong>随时间不断增强</strong>（Schnittker & Bacak, 2014）。</div>
+      <div class="inline-note">⚑ 思考：为什么"你如何评价自己的健康"这一简单问题比血压读数更能预测生存？其中可能涉及哪些机制？</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">生活满意度量表 Satisfaction with Life Scale（Diener et al., 1985）</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">从1（强烈不同意）到7（强烈同意）评价：①我的生活在大多数方面接近理想；②我的生活条件极好；③我对生活感到满意；④到目前为止，我已获得了生活中重要的东西；⑤如果重新来过，我几乎不会做任何改变。</p>
+      <p style="font-size:13.5px;">生活满意度可显著预测<strong>许多慢性病的发生</strong>（Feller et al., 2013），也能预测<strong>死亡率</strong>（Koivumaa-Honkanen et al., 2000; Li, 2013; St. John et al., 2014），但一致性不如自评健康。</p>
+    </div>
+  </section>
+
+  <!-- Psychosocial interventions -->
+  <section class="section" id="interventions">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>慢性病的心理社会干预 Psychosocial Interventions for Chronic Illness</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">常见干预类型</div>
+      <div class="terms-grid">
+        <div class="term-item"><p>精神药理学干预 Psychopharmacological</p></div>
+        <div class="term-item"><p>患者与家庭教育 Patient & Family Education</p></div>
+        <div class="term-item"><p>个体或家庭治疗 Individual/Family Therapy</p></div>
+        <div class="term-item"><p>压力管理 / 放松训练</p></div>
+        <div class="term-item"><p>支持团体 Support Groups</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">A Closer Look · 癌症支持团体 Cancer Support Groups</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">相当一部分参加支持团体的乳腺癌患者，是抱着<strong>延长生命</strong>的信念而来（Miller et al., 1998）。</p>
+      <div class="card-title" style="margin-top:0.5rem;">Spiegel et al. (1989) · 心理社会治疗对转移性乳腺癌生存的影响（10年随访）</div>
+      <div class="compare-split">
+        <div class="compare-box b">
+          <div class="cbig">36.6</div>
+          <div class="clabel">支持团体组<br>平均生存月数（自干预起）</div>
+        </div>
+        <div class="compare-box a">
+          <div class="cbig">18.9</div>
+          <div class="clabel">对照组<br>平均生存月数</div>
+        </div>
+      </div>
+      <p style="font-size:13.5px; margin-top:0.75rem;"><strong>Fu et al. (2016，元分析)</strong>：支持团体在<strong>1年</strong>随访时显示显著生存获益，但在<strong>4年</strong>随访时未显示。相较之下，我们对支持团体带来的<strong>心理社会效益</strong>更有把握（Goodwin, 2004）：情绪改善、不确定感降低、自尊提升、应对技能增强、生活质量提高。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">A Closer Look · HIV/AIDS 支持团体（Bateganya et al., 2016，系统综述）</div>
+      <p style="font-size:13.5px;">支持团体与以下临床结果相关：<strong>死亡率降低、发病率降低、护理留存率提高、生活质量改善</strong>。其与发病/死亡率的联系机制在于：社会支持能提高<strong>用药依从性与HIV护理的留存</strong>，同时降低抑郁水平。</p>
+    </div>
+  </section>
+
+  <!-- Caregiving -->
+  <section class="section" id="caregiving">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>非正式照护者 Informal Caregiving</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">定义 Definition</div>
+      <p style="font-size:13.5px;">向患有长期健康状况、身体或心理障碍或与衰老相关问题的家人或朋友，在家中提供<strong>身体和/或情感照护</strong>。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">加拿大照护现状 Caregiving in Canada（Statistics Canada, 2012, 2018）</div>
+      <div class="stat-grid">
+        <div class="stat-box"><div class="stat-n">1/4</div><div class="stat-l">15岁以上加拿大人提供照护（超800万人）</div></div>
+        <div class="stat-box"><div class="stat-n">64%</div><div class="stat-l">每周花费不足10小时照护</div></div>
+        <div class="stat-box"><div class="stat-n">21%</div><div class="stat-l">每周花费20小时以上</div></div>
+        <div class="stat-box"><div class="stat-n">54%</div><div class="stat-l">照护者为女性</div></div>
+      </div>
+      <p style="font-size:13.5px; margin-top:0.5rem;">大多数照护者（约70%）能从工作、家人、朋友或政府项目中获得某种支持或协助。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">照护对象 Who is Being Cared For（Statistics Canada, 2018）</div>
+      <div class="terms-grid">
+        <div class="term-item"><p><strong>47%</strong> 父母或岳父母/公婆</p></div>
+        <div class="term-item"><p><strong>13%</strong> 配偶或伴侣</p></div>
+        <div class="term-item"><p><strong>13%</strong> 亲密朋友、同事或邻居</p></div>
+        <div class="term-item"><p><strong>10%</strong> 大家庭成员</p></div>
+        <div class="term-item"><p><strong>9%</strong> 祖父母</p></div>
+        <div class="term-item"><p><strong>8%</strong> 患长期病或障碍的子女</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">照护轨迹 Caregiving Trajectories（Fast et al., 2020，n=3299，65岁以上）</div>
+      <div class="traj-list">
+        <div class="traj-item"><div class="traj-num">1</div><p><strong>压缩式代际照护</strong>——晚年一次性短期照护，通常给家人，最常见的经历。</p></div>
+        <div class="traj-item"><div class="traj-num">2</div><p><strong>广泛式代际照护</strong>——中年一次长期照护，随后晚年多次短期照护，多给朋友和邻居。</p></div>
+        <div class="traj-item"><div class="traj-num">3</div><p><strong>密集型父母照护</strong>——中年十年以上照护父母，常同时照护多位父母。</p></div>
+        <div class="traj-item"><div class="traj-num">4</div><p><strong>职业型照护</strong>——较早年龄开始，长期照护高义务、亲密的家庭成员，跨度超过20年。</p></div>
+        <div class="traj-item"><div class="traj-num">5</div><p><strong>连续型照护</strong>——从三十多岁开始的终生照护模式，常同时照护多人，跨度超过30年。</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">照护是一种慢性压力源 Caregiving is a Chronic Stressor（APA, Our Health At Risk, 2011）</div>
+      <div class="compare-split">
+        <div class="compare-box a">
+          <div class="cbig">4.8</div>
+          <div class="clabel">一般人群（50岁以上）<br>平均压力水平（0–10）</div>
+        </div>
+        <div class="compare-box b">
+          <div class="cbig">6.5</div>
+          <div class="clabel">照护者（50岁以上）<br>平均压力水平（0–10）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">照护者压力的影响因素（APA, 2011）</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;"><span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span><p>没有时间照顾自己，感到不堪重负</p></div>
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;"><span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span><p>因缺乏时间而出现不健康行为（暴饮暴食、跳过用餐、饮食不健康）</p></div>
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;"><span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span><p>睡眠中断或不足</p></div>
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;"><span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span><p>不良的压力管理（如看电视）与预防</p></div>
+        <div style="display:flex; gap:10px; align-items:flex-start; font-size:13.5px;"><span style="color:var(--coral); font-weight:700; margin-top:2px;">▸</span><p>社会关系恶化、支持不足</p></div>
+      </div>
+      <div class="inline-note">⚑ 照护者也更倾向于认为压力正在对自身身体健康产生负面影响。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">照护的健康代价 Health Costs of Caregiving</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">与非照护者相比，照护者的<strong>抑郁与身体健康问题水平更高</strong>（Pinquart & Sorensen, 2003; Vitaliano, Zhang & Scanlon, 2003）。比较照护者与非照护者的生物标志物研究发现<strong>内分泌与免疫系统功能异常</strong>（Lovell & Wetherell, 2011）。报告照护负担的配偶照护者面临<strong>过早死亡</strong>风险（Schulz & Beach, 1999）——但更近期的研究提示照护者或许寿命更长（Roth et al., 2015）。</p>
+      <div class="sub-note">经济负担方面（Statistics Canada, 2007）：照护者中额外支出、缺勤天数及缩减工时的比例，女性均高于男性。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">照护的益处 Benefits of Caregiving?</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">调查显示，绝大多数照护者认为这是一种<strong>积极的经历</strong>（如83%，Opinion Research Center, 2014）。</p>
+      <div class="terms-grid">
+        <div class="term-item"><p>提供力所能及的最佳照护</p></div>
+        <div class="term-item"><p>保持联系或变得更亲密</p></div>
+        <div class="term-item"><p>获得成就感，回馈曾经照顾过自己的人</p></div>
+        <div class="term-item"><p>获得意义与目的感</p></div>
+        <div class="term-item"><p>传承家庭照护的传统</p></div>
+        <div class="term-item"><p>学习新技能</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">加拿大照护的未来 The Future of Caregiving（MacDonald et al., 2019）</div>
+      <p style="font-size:13.5px;">预计到2050年：需要居家护理支持的老年人将<strong>增加约120%</strong>；可提供无偿照护的近亲家人（配偶、成年子女）将<strong>减少约30%</strong>；无偿照护者需要<strong>增加约40%</strong>的照护投入才能满足需求（部分人增加更多）。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">三明治世代 The Sandwich Generation</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">指成年子女在照顾自己的孩子的同时，也需要照顾年迈父母的经历。随着婴儿潮一代变老（并更长寿），以及许多人选择较晚生育，这一现象日益普遍。</p>
+      <p style="font-size:13.5px;">人们常常假定三明治世代经历更多压力与更差的结果，但研究并不总是支持这一点（Solberg et al., 2014）。Solberg 等人（2014）提出，三明治世代成年人的子女可能通过为父母提供情感支持或帮助照顾祖父母来<strong>减轻负担</strong>。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">支持我们的照护者 Supporting Our Carers</div>
+      <p style="font-size:13.5px;">支持非正式照护者，对其自身及被照护者的福祉都至关重要。例如，为痴呆症照护者提供支持的干预已被证实能<strong>提升生活质量并降低抑郁</strong>（Belle et al., 2006）；改善照护者福祉还能<strong>延迟阿尔茨海默病患者入住养老院</strong>的时间（Mittelman et al., 2006）。</p>
+    </div>
+  </section>
+
+  <!-- Terminal illness -->
+  <section class="section" id="terminal">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>临终疾病的管理 Managing Terminal Illness</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">高死亡率疾病 High-Mortality Illness</div>
+      <p style="font-size:13.5px;">对刚被诊断出严重威胁生命疾病的患者而言，<strong>死亡率</strong>是最初几个月内最主要的关切。高死亡率疾病并不总意味着几周或几个月内死亡——许多癌症患者可存活10到20年，部分人完全治愈。但无人能确定病程走向，患者及其家人必须适应这种<strong>不确定性</strong>；在另一些情况下，患者可能被告知仅剩数周或数月生命。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">临终疾病的压力 The Stress of Terminal Illness</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">身患任何高死亡率疾病都可能相当有压力，但每种疾病都会产生独特的压力模式，取决于：</p>
+      <div class="terms-grid">
+        <div class="term-item"><p>疾病或病症的症状</p></div>
+        <div class="term-item"><p>治疗效果（如化疗）</p></div>
+        <div class="term-item"><p>预后与预期生存时间</p></div>
+        <div class="term-item"><p>社会因素，如社会支持</p></div>
+        <div class="term-item"><p>其他资源与情境因素</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">临终疾病中的否认 Denial in Terminal Illness</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">否认在临终疾病中很常见，但可能给患者及其家人带来重大挑战；有时否认会变得极端而持续。</p>
+      <div class="inline-note">⚑ 思考：否认可能如何给他人（临终者的家人朋友）带来问题？——他们可能不得不在患者否认的状态下照顾其生活，配合忽视症状或医嘱，甚至直到为时已晚才得知患者即将离世。</div>
+      <div class="quote-block">
+        照护者因患者的否认承受额外负担。为了维护他们认为无法改变的否认状态，照护者被阻止寻求信息来管理患者的照护。同时，照顾不配合治疗的患者会让他们感到被剥夺了自己的角色，产生无力感与内疚感……他们发展出独自的应对策略，寻求专业心理支持，或自己也采用否认。
+        <cite>— Kogan et al. (2013)，对临终癌症患者家庭照护者的研究</cite>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">乐观与希望 Optimism & Hope</div>
+      <p style="font-size:13.5px;">患者早期常表现出乐观态度，但会逐渐以更保留的态度看待未来的计划。许多患者也希望能够治愈或出现奇迹般的康复——这可能导致患者选择<strong>激进的治疗</strong>，即使这种治疗可能是徒劳的（Shinall et al., 2018）。乐观与希望的具体性质不同，其影响也会有所不同。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">否认 / 接受 Denial vs. Acceptance（Kalish, 1985）</div>
+      <p style="font-size:13.5px;">有证据表明，<strong>否认在病程早期更常见，而接受在临近死亡时更为常见</strong>。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">临终疾病中的接受 Acceptance in Terminal Illness</div>
+      <p style="font-size:13.5px;">接受对患者及其所爱之人<strong>都很重要</strong>。但接受对不同的人有不同的含义。</p>
+      <div class="inline-note">⚑ 思考：与临终者本人相比，幸存者对死亡的接受在哪些方面有所不同？</div>
+    </div>
+  </section>
+
+  <!-- Objectives -->
+  <section class="section" id="objectives">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <h2>学习目标 Learning Objectives</h2>
+    </div>
+    <div class="objectives">
+      <h3>完成本讲后，你应能够 After this lecture, you should be able to…</h3>
+      <ol>
+        <li>举例描述慢性病管理中的心理社会因素（包括初期反应、情绪、应对策略、自我责备、抑郁、社会挑战、污名、支持团体、适应等）</li>
+        <li>说出并描述慢性病背景下具体的适应性与适应不良的应对策略</li>
+        <li>定义生活质量并解释其评估方式；定义主观健康并描述其与客观健康的关系</li>
+        <li>解释为什么照护是一种慢性压力源，并引用关键研究发现；识别照护的成本与益处</li>
+        <li>思考照护的未来，指出需要克服的关键挑战；解释"三明治世代"的含义</li>
+        <li>批判性思考临终疾病中特有的心理社会因素（包括否认、接受、乐观与希望）</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC-314 第十讲：临终与老化的心理社会因素</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --teal: #1D9E75;--teal-light: #E1F5EE;--teal-dark: #085041;--teal-mid: #0F6E56;
+    --gray: #2C2C2A;--gray-mid: #5F5E5A;--gray-light: #F1EFE8;--gray-border: #D3D1C7;
+    --purple: #534AB7;--purple-light: #EEEDFE;--coral: #D85A30;--coral-light: #FAECE7;
+    --amber: #BA7517;--amber-light: #FAEEDA;--blue: #185FA5;--blue-light: #E6F1FB;
+    --bg: #FAFAF8;--card-bg: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--gray); line-height: 1.75; font-size: 15px; }
+
+  .topbar { background: var(--card-bg); border-bottom: 1px solid var(--gray-border); padding: 10px 2rem; display: flex; align-items: center; justify-content: space-between; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--gray-mid); text-decoration: none; padding: 5px 14px; border: 1px solid var(--gray-border); border-radius: 6px; background: var(--bg); transition: all .15s; }
+  .back-btn:hover { color: var(--teal); border-color: var(--teal); background: var(--teal-light); }
+  .topbar-right { font-size: 12px; color: var(--gray-mid); letter-spacing: .05em; }
+
+  .hero { background: var(--teal-dark); color: #fff; padding: 3.5rem 2rem 2.5rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; border: 40px solid rgba(255,255,255,0.05); }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: 30%; width: 200px; height: 200px; border-radius: 50%; border: 30px solid rgba(255,255,255,0.04); }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 4px; margin-bottom: 1.2rem; color: rgba(255,255,255,0.85); }
+  .hero h1 { font-family: 'Noto Serif SC', serif; font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.75rem; color: #fff; }
+  .hero-sub { color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 300; }
+
+  .nav-bar { background: var(--card-bg); border-bottom: 1px solid var(--gray-border); padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
+  .nav-bar ul { display: flex; gap: 0; list-style: none; max-width: 860px; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
+  .nav-bar ul::-webkit-scrollbar { display: none; }
+  .nav-bar a { display: block; padding: 0.9rem 1rem; font-size: 13px; font-weight: 500; color: var(--gray-mid); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .nav-bar a:hover { color: var(--teal); border-bottom-color: var(--teal); }
+
+  .main { max-width: 860px; margin: 0 auto; padding: 2rem; }
+  .section { margin-bottom: 3rem; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--teal-light); }
+  .section-num { width: 32px; height: 32px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .section-header h2 { font-family: 'Noto Serif SC', serif; font-size: 1.35rem; font-weight: 700; color: var(--teal-dark); }
+
+  .card { background: var(--card-bg); border: 1px solid var(--gray-border); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .card-title { font-weight: 700; font-size: 14px; color: var(--teal-mid); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .kw { font-weight: 700; color: var(--teal-mid); }
+  .en { font-size: 12px; color: var(--gray-mid); font-style: italic; margin-left: 2px; }
+  .sub-note { font-size: 13px; color: var(--gray-mid); font-style: italic; margin-top: 6px; }
+
+  .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .model-card { border-radius: 10px; padding: 1.25rem; border: 1px solid; }
+  .model-card.bio { background: var(--coral-light); border-color: #F5C4B3; }
+  .model-card.bps { background: var(--teal-light); border-color: #9FE1CB; }
+  .model-card.pu { background: var(--purple-light); border-color: #CECBF6; }
+  .model-card.am { background: var(--amber-light); border-color: #FAC775; }
+  .model-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 0.5rem; }
+  .model-card.bio h3 { color: var(--coral); }
+  .model-card.bps h3 { color: var(--teal-dark); }
+  .model-card.pu h3 { color: var(--purple); }
+  .model-card.am h3 { color: var(--amber); }
+  .model-card p { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+  .model-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.6rem; }
+  .bio .model-badge { background: #F5C4B3; color: var(--coral); }
+  .bps .model-badge { background: #9FE1CB; color: var(--teal-dark); }
+  .pu .model-badge { background: #CECBF6; color: var(--purple); }
+  .am .model-badge { background: #FAC775; color: var(--amber); }
+
+  .bps-venn { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .bps-circle { border-radius: 10px; padding: 1.1rem; text-align: center; }
+  .bps-circle.bio-c { background: var(--coral-light); border: 1px solid #F5C4B3; }
+  .bps-circle.psy-c { background: var(--purple-light); border: 1px solid #CECBF6; }
+  .bps-circle.soc-c { background: var(--blue-light); border: 1px solid #B5D4F4; }
+  .bps-circle h4 { font-size: 13px; font-weight: 700; margin-bottom: 0.5rem; }
+  .bps-circle.bio-c h4 { color: var(--coral); }
+  .bps-circle.psy-c h4 { color: var(--purple); }
+  .bps-circle.soc-c h4 { color: var(--blue); }
+  .bps-circle ul { list-style: none; text-align: left; }
+  .bps-circle li { font-size: 12.5px; color: var(--gray); padding: 2px 0 2px 12px; position: relative; }
+  .bps-circle li::before { content: '·'; position: absolute; left: 0; font-weight: 700; }
+
+  .timeline { display: flex; flex-direction: column; gap: 0; margin: 1rem 0; }
+  .tl-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed var(--gray-border); }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-era { min-width: 130px; font-size: 12px; font-weight: 700; color: var(--teal-mid); text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+  .tl-content { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+
+  .disease-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .disease-box { border-radius: 10px; padding: 1.2rem; }
+  .disease-box.old { background: var(--amber-light); border: 1px solid #FAC775; }
+  .disease-box.new { background: var(--teal-light); border: 1px solid #9FE1CB; }
+  .disease-box.coral { background: var(--coral-light); border: 1px solid #F5C4B3; }
+  .disease-box.blue { background: var(--blue-light); border: 1px solid #B5D4F4; }
+  .disease-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 0.5rem; }
+  .disease-box.old h4 { color: var(--amber); }
+  .disease-box.new h4 { color: var(--teal-dark); }
+  .disease-box.coral h4 { color: var(--coral); }
+  .disease-box.blue h4 { color: var(--blue); }
+  .disease-box ul { list-style: none; }
+  .disease-box li { font-size: 13px; color: var(--gray); padding: 3px 0 3px 14px; position: relative; line-height: 1.55; }
+  .disease-box li::before { position: absolute; left: 0; }
+  .old li::before { content: '✗'; color: var(--amber); font-weight: 700; }
+  .new li::before { content: '✓'; color: var(--teal); font-weight: 700; }
+  .coral li::before { content: '▸'; color: var(--coral); font-weight: 700; }
+  .blue li::before { content: '▸'; color: var(--blue); font-weight: 700; }
+
+  .tips-banner { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .tip-card { background: var(--card-bg); border: 1px solid var(--gray-border); border-radius: 10px; padding: 1rem 1.1rem; display: flex; gap: 10px; align-items: flex-start; }
+  .tip-num { width: 26px; height: 26px; background: var(--teal); color: #fff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .tip-card p { font-size: 13.5px; color: var(--gray); line-height: 1.55; }
+
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+  .term-item { background: var(--gray-light); border-radius: 8px; padding: 0.9rem 1rem; border-left: 3px solid var(--teal); }
+  .term-item.pu { border-left-color: var(--purple); }
+  .term-item.co { border-left-color: var(--coral); }
+  .term-item.am { border-left-color: var(--amber); }
+  .term-item .term-name { font-size: 13px; font-weight: 700; color: var(--teal-mid); margin-bottom: 4px; }
+  .term-item p { font-size: 13px; color: var(--gray); line-height: 1.55; }
+
+  .objectives { background: var(--teal-dark); color: #fff; border-radius: 12px; padding: 1.75rem 2rem; }
+  .objectives h3 { font-size: 12px; font-weight: 700; margin-bottom: 1rem; color: rgba(255,255,255,0.9); letter-spacing: 0.05em; text-transform: uppercase; }
+  .objectives ol { list-style: none; counter-reset: obj; }
+  .objectives li { counter-increment: obj; padding: 0.5rem 0 0.5rem 2.5rem; position: relative; font-size: 13.5px; color: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,255,255,0.08); line-height: 1.6; }
+  .objectives li:last-child { border-bottom: none; }
+  .objectives li::before { content: counter(obj); position: absolute; left: 0; top: 0.5rem; width: 24px; height: 24px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; line-height: 24px; text-align: center; }
+
+  .inline-note { background: var(--amber-light); border-left: 3px solid var(--amber); border-radius: 0 6px 6px 0; padding: 8px 12px; font-size: 13px; color: var(--amber); margin-top: 10px; }
+  .inline-good { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 6px 6px 0; padding: 8px 12px; font-size: 13px; color: var(--teal-dark); margin-top: 10px; }
+  .inline-question { background: var(--purple-light); border-left: 3px solid var(--purple); border-radius: 0 6px 6px 0; padding: 8px 12px; font-size: 13px; color: var(--purple); margin-top: 10px; }
+
+  .quote-block { background: var(--teal-light); border-left: 4px solid var(--teal); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-style: italic; font-size: 14px; color: var(--teal-dark); }
+  .quote-block cite { display: block; margin-top: 6px; font-style: normal; font-size: 12px; font-weight: 700; color: var(--teal-mid); }
+  .quote-block.pu { background: var(--purple-light); border-left-color: var(--purple); color: var(--purple); }
+  .quote-block.pu cite { color: var(--purple); }
+  .quote-block.am { background: var(--amber-light); border-left-color: var(--amber); color: var(--amber); }
+  .quote-block.am cite { color: var(--amber); }
+
+  /* 5-stage grid */
+  .stage-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem; margin: 1rem 0; }
+  .stage-box { border-radius: 10px; padding: 0.9rem 0.7rem; text-align: center; border: 1px solid; }
+  .stage-box:nth-child(1) { background: var(--gray-light); border-color: var(--gray-border); }
+  .stage-box:nth-child(2) { background: var(--coral-light); border-color: #F5C4B3; }
+  .stage-box:nth-child(3) { background: var(--amber-light); border-color: #FAC775; }
+  .stage-box:nth-child(4) { background: var(--blue-light); border-color: #B5D4F4; }
+  .stage-box:nth-child(5) { background: var(--teal-light); border-color: #9FE1CB; }
+  .stage-box h5 { font-size: 12.5px; font-weight: 700; margin-bottom: 4px; color: var(--gray); }
+  .stage-box p { font-size: 11.5px; color: var(--gray-mid); line-height: 1.4; }
+
+  /* checklist */
+  .check-list { list-style: none; margin: 0.5rem 0; }
+  .check-list li { font-size: 13.5px; color: var(--gray); padding: 4px 0 4px 22px; position: relative; line-height: 1.55; }
+  .check-list li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+
+  /* stat row */
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+  .stat-box { background: var(--gray-light); border-radius: 8px; padding: 0.9rem; text-align: center; }
+  .stat-box .num { font-family: 'Noto Serif SC', serif; font-size: 1.5rem; font-weight: 700; color: var(--teal-dark); }
+  .stat-box .lbl { font-size: 11.5px; color: var(--gray-mid); margin-top: 2px; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.6rem; }
+    .model-grid, .bps-venn, .disease-split { grid-template-columns: 1fr; }
+    .stage-grid { grid-template-columns: 1fr 1fr; }
+    .main { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="PSYC314_index.html" class="back-btn">← 返回主页 Back to Home</a>
+  <span class="topbar-right">PSYC 314 · 第十讲</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PSYC 314 · Health Psychology · UBC Distance Education · David King, PhD</div>
+    <h1>第十讲：临终在望——临终与老化中的心理社会因素<br><span style="font-size:1.4rem; font-weight:400; color:rgba(255,255,255,0.8);">Lecture 10: An End in Sight — Psychosocial Factors in Dying & Aging</span></h1>
+    <div class="hero-sub">临终关怀 · 死亡与哀伤心理学 · 老化视角 · 如何"成功"老化</div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#tips">健康提示</a></li>
+    <li><a href="#death">死亡定义</a></li>
+    <li><a href="#eol">临终关怀</a></li>
+    <li><a href="#maid">医助死亡</a></li>
+    <li><a href="#dying">临终体验</a></li>
+    <li><a href="#grief">丧失与哀伤</a></li>
+    <li><a href="#aging">老化视角</a></li>
+    <li><a href="#successful">成功老化</a></li>
+    <li><a href="#telomeres">端粒与抗衰老</a></li>
+    <li><a href="#objectives">学习目标</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- Tips -->
+  <section class="section" id="tips">
+    <div class="section-header">
+      <div class="section-num">★</div>
+      <h2>本讲健康提示 L-10 Health Tips</h2>
+    </div>
+    <div class="tips-banner">
+      <div class="tip-card"><div class="tip-num">1</div><p><strong>控制感在临终阶段很重要，但接纳同样重要</strong>——学会适时放手。</p></div>
+      <div class="tip-card"><div class="tip-num">2</div><p><strong>真正经历死亡时，恐惧往往比想象中要小</strong>。</p></div>
+      <div class="tip-card"><div class="tip-num">3</div><p><strong>哀伤没有\"正确的方式\"</strong>——每个人的哀伤过程都是独特的。</p></div>
+      <div class="tip-card"><div class="tip-num">4</div><p><strong>成功老化的秘诀？</strong>保持智慧，寻找意义……</p></div>
+    </div>
+  </section>
+
+  <!-- What is Death -->
+  <section class="section" id="death">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>什么是死亡？What is Death?</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">医学定义 Medical Definition</div>
+      <p style="font-size:13.5px;">循环与呼吸的<strong>不可逆丧失</strong>，或脑功能的<strong>不可逆丧失</strong>（全脑，包括大脑半球与脑干；或仅脑干）。</p>
+      <div class="inline-note">⚑ 若死亡发生在<strong>75岁之前</strong>，则被视为\"过早死亡\"（premature death）（CIHI, 2012）。</div>
+    </div>
+
+    <div class="quote-block">
+      从心理学角度而言，死亡是<strong>"任何存在之可能性的不可能性"</strong>（"the possibility of the impossibility of any existence at all"）。
+      <cite>— Heidegger (1962)</cite>
+    </div>
+
+    <div class="card">
+      <div class="card-title">疾病间的差异 Variations by Disease</div>
+      <p style="font-size:13.5px;">不同疾病的<strong>病程与病期长短差异很大</strong>（Northcott & Wilson, 2016）——这意味着临终过程本身也具有相当的<strong>变异性（variability）</strong>。</p>
+    </div>
+  </section>
+
+  <!-- End-of-Life Care -->
+  <section class="section" id="eol">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>临终关怀：管理绝症的关键因素 End-of-Life Care</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">无效医疗 Futile Medical Care</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">在<strong>没有合理的治愈或获益希望</strong>的情况下，继续提供治疗或护理。</p>
+      <p style="font-size:13.5px;">大多数麻醉科医师认为不应提供无效医疗，但对于\"什么算无效\"并无共识（Saettele & Kras, 2013）。对无效医疗的<strong>感知</strong>与ICU护士的<strong>道德困扰（moral distress）</strong>呈正相关（Asayesh et al., 2018）。</p>
+      <div class="inline-question">⚑ 伦理困境：治疗真的无效吗？谁有权判定"无效"——医生、患者还是家属？意见分歧时该怎么办？</div>
+    </div>
+
+    <div class="model-grid">
+      <div class="model-card bps">
+        <div class="model-badge">标准照护 Standard Care</div>
+        <h3>姑息治疗 Palliative Care</h3>
+        <p>旨在<strong>减轻疼痛与不适、改善生活质量</strong>的照护，适用于慢性/绝症患者；无论预后如何，是护理院的标准照护形式。</p>
+      </div>
+      <div class="model-card pu">
+        <div class="model-badge">临终阶段 End of Life</div>
+        <h3>安宁缓和医疗 Hospice Palliative Care</h3>
+        <p>缓解绝症带来的痛苦。在<strong>疾病治疗停止后</strong>开始，提供有温度的临终关怀；疼痛得到管理，侵入性治疗停止；<strong>心理慰藉与社会支持</strong>是核心目标，有时延续至丧亲期的陪伴。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">安宁疗护机构 Hospice Care</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">可发生在医院的姑息治疗单元、独立的安宁疗护机构，或家中（居家安宁疗护服务）。<span class="en">例：St. John Hospice at UBC（2013年开放）</span></p>
+      <div class="stat-row">
+        <div class="stat-box"><div class="num">16–30%</div><div class="lbl">加拿大逝者中能获得安宁缓和/临终关怀服务的比例</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">居家照护 Home Care</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">伴随更强的<strong>个人控制感</strong>与支持的可及性，但也可能给家庭成员带来负担。多数加拿大人希望在<strong>亲人陪伴下于家中离世</strong>（CIHI, 2007）。</p>
+      <div class="inline-note">⚑ 但近<strong>60%</strong>的加拿大人死于医院——不过这一比例正在下降（Statistics Canada, 2020）。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">改善原住民照护 Improving Care of Indigenous People</div>
+      <p style="font-size:13.5px;">原住民同样偏好在家中离世；但居住在<strong>偏远地区</strong>者常被转送至大型城市医疗中心，最终远离家人与文化背景在医院离世（Hotson et al., 2016）。原住民的文化与丧葬传统在加拿大医院中<strong>常未被充分照顾到</strong>（Hampton et al., 2010）。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">姑息治疗研究 Research on Palliative Care — Temel et al. (2010)</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">对151名新诊断转移性肺癌患者进行研究：随机分为<strong>早期姑息治疗+标准肿瘤照护</strong> vs. <strong>标准肿瘤照护单独</strong>两组。姑息治疗包括与专科医师至少每月一次的会面，评估身心症状、照护计划与决策协调。</p>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">12周随访结果：早期姑息治疗组的抑郁、焦虑与重性抑郁障碍（MDD）症状比例均<strong>显著更低</strong>；生存时间的<strong>中位数更长</strong>（11.6个月 vs. 8.9个月，<em>P</em>=0.02）。</p>
+      <div class="check-list">
+        <li>更低的疼痛水平</li>
+        <li>更高的生活质量</li>
+        <li>更低的焦虑与抑郁</li>
+        <li>疾病症状减轻</li>
+        <li>生存期延长</li>
+      </div>
+      <div class="sub-note">接受姑息/安宁疗护的绝症患者，其医疗费用也显著低于未接受者（如 Chiang et al., 2015）。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">临终关怀的目标 Goals in End-of-Life Care — Avery Weisman</div>
+      <div class="terms-grid">
+        <div class="term-item"><div class="term-name">知情同意 Informed Consent</div><p>提供知识，鼓励患者参与决策</p></div>
+        <div class="term-item pu"><div class="term-name">安全护航 Safe Conduct</div><p>作为患者的有益向导</p></div>
+        <div class="term-item co"><div class="term-name">有意义的存活 Significant Survival</div><p>帮助患者充分利用余下时间</p></div>
+        <div class="term-item am"><div class="term-name">预期性哀伤 Anticipatory Grief</div><p>帮助患者与家属应对失落感</p></div>
+      </div>
+      <p style="font-size:13.5px; margin-top:0.5rem;"><strong>及时且"恰当"的死亡</strong>：患者应尽可能被允许按自己希望的时间与方式离世，帮助患者获得<strong>有尊严的死亡</strong>。<span class="sub-note">（Weisman & Hackett, 1961; Weisman, 1972）</span></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">临终关怀工作的挑战 End-of-Life Care is Hard Work</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">对医护人员及正式照护者而言，临终照护往往更困难：情感消耗大、令人不适的日常照护工作、非治愈性照护、趣味性/刺激性较低。</p>
+      <p style="font-size:13.5px;">Pavelkova & Buzgova (2015)：与临终患者工作会增加倦怠感。但也有研究发现，安宁/姑息护士的倦怠程度反而<strong>低于</strong>其他护士（如 Whitebird et al., 2013）。</p>
+    </div>
+  </section>
+
+  <!-- MAID -->
+  <section class="section" id="maid">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>医助死亡 Medically Assisted Dying</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">定义 Definitions</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;"><strong>医助自杀（Physician Assisted Suicide）</strong>：医生知情且有意地为患者提供结束生命所需的知识或手段（或两者），包括关于致死剂量药物的咨询、开具处方或直接提供药物（Canadian Medical Association, 2007）。</p>
+      <p style="font-size:13.5px;"><strong>安乐死（Euthanasia）</strong>：为减轻患者痛苦而刻意结束其生命——与医助自杀不同。</p>
+      <div class="inline-question">⚑ 思考：\"尊严\"对你而言意味着什么？\"有尊严地死去\"又意味着什么？</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">目前允许某种形式医助死亡的国家/地区 Where MAID is Legal</div>
+      <p style="font-size:13.5px;">加拿大、瑞士、荷兰、比利时、卢森堡、法国、德国、哥伦比亚、西班牙、新西兰、澳大利亚部分州，以及美国华盛顿、俄勒冈、科罗拉多、夏威夷、佛蒙特、缅因、新泽西、新墨西哥、蒙大拿、加利福尼亚州及哥伦比亚特区。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">加拿大医助死亡进程 Assisted Dying in Canada</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-era">2015</div>
+          <div class="tl-content">最高法院裁定加拿大人拥有<strong>协助自杀的权利</strong>（适用于因严重且无法缓解的病症而遭受不可忍受痛苦的、有能力表示同意的成年人）；魁北克省同步立法。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-era">2016</div>
+          <div class="tl-content"><strong>C-14法案</strong>将"医疗协助死亡"（MAiD）限定于：有精神行为能力的成年人，患有严重且不可治愈的疾病/障碍，处于不可逆的衰退阶段，且面临"可合理预见"的死亡。需两名独立见证人书面申请、通常10天反思期、须自愿且可随时撤回、年满18岁并为加拿大公民。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-era">2019</div>
+          <div class="tl-content">魁北克法院裁定：将MAiD限于"死亡可预见"违反宪法；该裁决被最高法院接受。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-era">2020–2021</div>
+          <div class="tl-content">联邦政府展开公众意见调查；<strong>C-7法案</strong>取消"死亡须可合理预见"的要求，新增两项针对非可预见死亡病例的保障措施：90天等待期、咨询一名对该病症有专长的医生。规定<strong>精神疾病不能作为唯一的合格病因</strong>（为期两年，此后精神疾病将符合资格；2021年经参议院批准，精神疾病资格延至2027年生效）。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-era">2023<br>（2024年报告）</div>
+          <div class="tl-content">全年报告 <strong>15,343例</strong> MAID，占加拿大全部死亡的<strong>4.1%</strong>；较2022年增长<strong>16%</strong>（增速趋缓）；癌症、神经系统疾病、呼吸系统疾病最为常见；接受MAID者中仅<strong>96%</strong>面临可预见的死亡。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">争议与批评 Concerns & Criticisms</div>
+      <div class="terms-grid">
+        <div class="term-item"><p>与照护者伦理不相容</p></div>
+        <div class="term-item pu"><p>诊断或预后错误</p></div>
+        <div class="term-item co"><p>家属或医生的胁迫</p></div>
+        <div class="term-item am"><p>自杀的"传染效应"</p></div>
+        <div class="term-item"><p>对残障人士的影响</p></div>
+        <div class="term-item pu"><p>对弱势群体的不成比例影响</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">是否存在不成比例的影响？Disproportionate Impacts?</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">Battin et al. (2007) 分析了俄勒冈州与荷兰的医助死亡比率，<strong>未发现</strong>以下弱势群体的风险升高：老年人、女性、种族/民族少数群体、贫困者、无保险者（仅俄勒冈）、低教育水平者、身体残疾或慢性病患者、患精神疾病（含抑郁症）者。</p>
+      <div class="inline-note">⚑ 唯一发现风险升高的群体：<strong>艾滋病患者（people with AIDS）</strong>。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">贫困是否是一个因素？Could Poverty Play a Role?</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">安大略早期研究认为"MAiD 不太可能由社会或经济脆弱性驱动"（Downar et al., 2020）；另一项研究发现，低社会经济地位（SES）患者<strong>更不易</strong>接受医助死亡（Redelmeier et al., 2021）。</p>
+      <p style="font-size:13.5px;">2016–2019年，伦敦健康科学中心（LHSC）中申请MAiD评估的患者中，低SES者比例<strong>偏高</strong>（Tran et al., 2021）——但各SES群体中最终<strong>获得</strong>医助死亡的比例相近。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">选择死亡的原因 Reasons for Choosing Death</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">2019年多伦多研究发现，<strong>64%</strong>的受访患者将"功能衰退或无法参与有意义的活动"列为申请MAID的首要因素（Selby et al., 2019）。</p>
+      <p style="font-size:13.5px;">俄勒冈州20年来报告的理由高度一致（Morrow, 2017）：<strong>90%</strong>报告参与愉悦活动的能力下降，<strong>90%</strong>报告自主性丧失，<strong>65%</strong>报告尊严丧失。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">抑郁是否是一个因素？Is Depression a Factor?</div>
+      <p style="font-size:13.5px;">Chochinov et al. (1995) 对温尼伯200名姑息治疗癌症患者的调查：46名有强烈求死意愿的患者中，<strong>52%</strong>符合焦虑或抑郁的诊断标准，相比之下无求死意愿者中仅<strong>20%</strong>——提示抑郁可能是求死意愿的相关因素。</p>
+      <div class="inline-question">⚑ 思考：在绝症背景下，我们应治疗抑郁，还是支持个人选择？（或两者兼顾？）</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">躯体疾病与自杀 Physical Illness & Suicide</div>
+      <p style="font-size:13.5px;">Ahmedani et al. (2017) 分析了2000–2013年间2,674例自杀死亡个案，与在世人群比较疾病发生率：<strong>17种病症</strong>（含偏头痛、背痛、糖尿病、心脏病、慢阻肺、癌症）与自杀风险升高相关；自杀风险<strong>最高</strong>的是创伤性脑损伤、睡眠障碍与艾滋病。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">死亡的权利 The Right to Die</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">患有严重（且治疗抵抗性）重性抑郁障碍者是否应有资格申请协助自杀？（目前在加拿大不具资格，但在其他一些国家如比利时，精神障碍已属合格病因。）</p>
+      <div class="quote-block pu">
+        "人们往往很难直觉地理解，非'生理性'痛苦背后所涉及的真实苦难……对抑郁症，人们常常认为'振作起来就好了'。我认为这非常令人遗憾。"
+        <cite>— 皇后大学生命伦理学家 Dr. Udo Schuklenk</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Dying Experience -->
+  <section class="section" id="dying">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>临终体验：死亡与濒死的心理学 The Dying Experience</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">临终五阶段 Stages of Dying — Elisabeth Kübler-Ross (1969)</div>
+      <div class="stage-grid">
+        <div class="stage-box"><h5>否认<br>Denial</h5><p>缺乏信念或接受</p></div>
+        <div class="stage-box"><h5>愤怒<br>Anger</h5><p>向最亲近的人发泄</p></div>
+        <div class="stage-box"><h5>讨价还价<br>Bargaining</h5><p>协商争取更多时间或延长生命</p></div>
+        <div class="stage-box"><h5>抑郁<br>Depression</h5><p>对死亡的认知感到绝望</p></div>
+        <div class="stage-box"><h5>接纳<br>Acceptance</h5><p>拥抱死亡与未来</p></div>
+      </div>
+      <div class="inline-note">⚑ 临终阶段人们最主要的应对机制是<strong>否认（denial）</strong>。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">死亡接纳 Death Acceptance</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">一种\"顺其自然\"的过程，认识到死亡不可避免；往往<strong>既非快乐也非悲伤</strong>——有时甚至没有明显情绪。可能涉及\"放手\"、与过去看重的人事物脱离依附。不再处于否认，也不再抑郁或愤怒。</p>
+      <div class="quote-block">
+        "我很惊讶自己竟然相当容易地接受了这一切。现在我躺在这里，等待死亡。但我珍惜拥有的每一天，充分体验生活。以前我从未留意过云朵，现在我从完全不同的视角看待一切：窗外的每一片云，花瓶里的每一朵花。突然间，一切都变得重要起来。"
+        <cite>— Wolfgang Kotzahn，安宁疗护患者，逝世于57岁</cite>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">否认的复杂性 Complexities of Denial</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">Copp & Field (2002) 对12名安宁疗护患者的质性研究发现：<strong>否认与接纳</strong>是相互依存、彼此波动的应对策略。</p>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">Weisman (1972) 提出\"<span class="kw">中间知晓（middle knowledge）</span>\"概念：死亡否认是复杂的（并非总是有害的），常同时包含两种对立的态度：</p>
+      <div class="check-list">
+        <li>否认死亡、淡化预后的严峻性</li>
+        <li>同时着手安排身后事——立遗嘱、安排墓地、规划葬礼</li>
+      </div>
+      <div class="sub-note">Weisman 认为死亡否认能防止我们被死亡的恐惧所压垮，使我们能以可承受的节奏逐步同化并接受临终的现实。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">实现"恰当的死亡" Achieving an "Appropriate Death" — Weisman</div>
+      <div class="terms-grid">
+        <div class="term-item"><p>减少内在与外在冲突</p></div>
+        <div class="term-item pu"><p>与自我理想相符</p></div>
+        <div class="term-item co"><p>关系的延续得以保持或修复</p></div>
+        <div class="term-item am"><p>实现主要的愿望</p></div>
+      </div>
+      <div class="quote-block" style="margin-top:0.75rem;">
+        "如果有一点选择和自主权，我们会为自己选择什么样的死亡——最符合我们一生所秉持的价值观和追求的死亡？"
+        <cite>— Weisman</cite>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">临终阶段愈发凸显的心理因素 What Becomes Salient at the End of Life</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">遗憾、心愿与目标、缅怀往事、生产性关怀、象征性不朽、个人遗产、存在性反思、灵性/宗教信仰……这些因素的共同驱动力，往往是<strong>对意义与目的的渴望</strong>。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">什么是个人意义？What is Personal Meaning?</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">\"一种目标感\"（Oxford University Press）；\"拥有人生目标、方向感、秩序感与存在的理由\"（Reker, 1997）。</p>
+      <div class="quote-block am">
+        生命在一切境遇下都具有意义，即使是最悲惨的境遇。
+        <cite>— Viktor Frankl（1905–1997）</cite>
+      </div>
+    </div>
+
+    <div class="model-grid">
+      <div class="model-card bps">
+        <div class="model-badge">自传性活动 Autobiographical</div>
+        <h3>缅怀 / 生命回顾 / 引导式自传</h3>
+        <p><strong>缅怀（Reminiscence）</strong>：自发地回忆过往经历与人生事件。<strong>生命回顾（Life Review）</strong>：临终时对往昔记忆与未解冲突的重现，可自发或有结构地展开评估/和解。<strong>引导式自传（Guided Autobiography）</strong>：系统性地重构过去并将其与当下整合。</p>
+      </div>
+      <div class="model-card pu">
+        <div class="model-badge">跨代目标 Cross-Generational</div>
+        <h3>象征性不朽 / 生产性关怀</h3>
+        <p><strong>象征性不朽（Symbolic Immortality）</strong>：留下遗产、将智慧传递给下一代的感觉——常表现为\"回馈\"\"做出改变\"或\"照顾他人\"。<strong>生产性关怀（Generativity）</strong>：对建立与引导下一代的关切（vs. 停滞不前）（Erikson）。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">宗教与灵性 Religion and Spirituality</div>
+      <p style="font-size:13.5px;"><strong>宗教信仰（Religiosity）</strong>：个人对有组织宗教及其信仰、实践与仪式的参与和投入（外在型 vs. 内在型信仰）。<strong>灵性（Spirituality）</strong>：个人对生命、意义以及与神圣/超越性关系等终极问题的探寻。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">寻找接纳 Finding Acceptance</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">临终阶段的意义与目的来源，也有助于个体<strong>达到死亡接纳</strong>；而死亡接纳与晚年的<strong>幸福感和生活质量</strong>密切相关。</p>
+      <div class="inline-question">⚑ 一个悖论：临终阶段控制感很重要，但接纳同样重要。二者的替代方案是什么？</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">死亡焦虑 Death Anxiety</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">对死亡与濒死过程的<strong>担忧、恐惧与恐怖</strong>；亦称存在性神经症或存在性真空。</p>
+      <div class="quote-block">
+        "意识的终止，是死亡恐惧的本质所在。"
+        <cite>— Breitbart (2017)</cite>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">对死亡的恐惧 The Fear of Death</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">老年人比中年或年轻人<strong>更常想到死亡</strong>，但对死亡的<strong>恐惧反而更低</strong>（Aiken, 2001; Marshall, 1986; Novak et al., 2014）。可能原因（Johnson & Barer, 1997）：积累了更多丧失与死亡的经验；经历了漫长的一生，更接受死亡为自然过程。</p>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">但在<strong>80岁以上、居住于护理院</strong>并临近死亡的老年人中，死亡焦虑会再度上升（Viney, 1984）。</p>
+      <div class="inline-note">⚑ Sinoff (2017)：年轻人更害怕死亡本身，老年人更害怕<strong>濒死的过程</strong>。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">别太担心……Goranson et al. (2017)</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">比较了真实面临死亡者与被要求想象临终情境者的情绪状态。</p>
+      <p style="font-size:13.5px;"><strong>研究一</strong>：临终癌症患者的博客帖子，比模拟的\"非患者\"帖子情绪<strong>更积极、更少负面</strong>。<br><strong>研究二</strong>：死刑犯的遗言，也比模拟的\"非死刑犯\"遗言<strong>更积极、更少负面</strong>。</p>
+    </div>
+  </section>
+
+  <!-- Loss and Grief -->
+  <section class="section" id="grief">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>丧失与哀伤 Loss and Grief</h2>
+    </div>
+
+    <div class="terms-grid">
+      <div class="term-item"><div class="term-name">丧亲 Bereavement</div><p>因死亡而经历丧失的<strong>时期</strong>。</p></div>
+      <div class="term-item pu"><div class="term-name">哀伤 Grief</div><p>因所爱之人离世而产生的<strong>强烈悲痛与情感痛苦</strong>。</p></div>
+      <div class="term-item co"><div class="term-name">哀悼 Mourning</div><p>哀伤的<strong>公开表达</strong>。</p></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">哀伤五阶段 Stages of Grief — Kübler-Ross (1969); Kübler-Ross & Kessler (2005)</div>
+      <div class="stage-grid">
+        <div class="stage-box"><h5>否认<br>Denial</h5><p>不相信或不接受；一种应对策略</p></div>
+        <div class="stage-box"><h5>愤怒<br>Anger</h5><p>对最亲近的人表达怨恨</p></div>
+        <div class="stage-box"><h5>讨价还价<br>Bargaining</h5><p>希望逝者归来，希望回到过去</p></div>
+        <div class="stage-box"><h5>抑郁<br>Depression</h5><p>对丧失感到绝望与空虚</p></div>
+        <div class="stage-box"><h5>接纳<br>Acceptance</h5><p>认识到逝者已经离去这一现实</p></div>
+      </div>
+    </div>
+
+    <div class="model-grid">
+      <div class="model-card bps">
+        <div class="model-badge">丧亲者的接纳 Survivor's Acceptance</div>
+        <h3>"重新学习生活"</h3>
+        <p>接受所爱之人已在<strong>物理层面永远离去</strong>这一现实，并学着与这份现实（及痛苦）共存。这<strong>不等于</strong>对已发生的事情感到"没关系"。</p>
+      </div>
+      <div class="model-card pu">
+        <div class="model-badge">整合性哀伤 Integrated Grief</div>
+        <h3>持续存在但不主导生活</h3>
+        <p>与丧失相关的想法、情绪与行为被<strong>整合进个体持续的日常功能</strong>之中——哀伤在生活中占有一席之地，但不再主导一切。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">复杂性哀伤 Complicated Grief</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">当哀伤过程未如预期进展时出现，典型症状包括：持续而强烈的渴望与悲伤、频繁困扰性地想起逝者、对丧失相关提示物的过度回避。</p>
+      <div class="inline-note">⚑ <strong>延长哀伤障碍（Prolonged Grief Disorder, DSM-5-TR, APA 2022）</strong>：丧失亲人后持续的哀伤反应，伴对逝者的渴望/思念和（或）沉溺至少<strong>12个月</strong>，并伴随情绪与社交功能上的额外困扰。据估计发生于约<strong>10%</strong>的丧亲者中（Lundorff et al., 2017）。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">哀伤的本质 The Nature of Grief</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">尽管DSM-5纳入了相关诊断，如今哀伤总体上被视为<strong>灵活且非线性</strong>的（Howarth, 2007）；每个人的哀伤都是<strong>个人化且独特</strong>的（Clark, 1993）。</p>
+      <p class="sub-note">丧失中体验/报告的情绪范围极广：悲伤、痛苦、抑郁、怨恨、愤怒、愤慨、悔恨、自责、内疚、孤独、悲观、绝望、困惑、空虚、麻木、疲惫、动力缺乏、自尊低落、疏离感、意义丧失、目的丧失等。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">适应轨迹 Trajectories of Adjustment — Bonanno et al. (2011)</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">针对丧失/创伤的研究发现存在<strong>多种适应轨迹</strong>：</p>
+      <div class="stat-row">
+        <div class="stat-box"><div class="num">35–65%</div><div class="lbl">韧性 Resilient</div></div>
+        <div class="stat-box"><div class="num">15–25%</div><div class="lbl">恢复 Recovered</div></div>
+        <div class="stat-box"><div class="num">5–30%</div><div class="lbl">慢性 Chronic</div></div>
+        <div class="stat-box"><div class="num">0–15%</div><div class="lbl">延迟 Delayed</div></div>
+      </div>
+      <div class="inline-good">✓ 根据 Bonanno，创伤或丧失后<strong>最常见</strong>的经历是<strong>韧性（resilience）</strong>。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">哀伤轨迹 Trajectories of Grief — Bonanno et al. (2002)</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">对丧偶老年人的研究，基于丧偶前及丧偶后6个月、18个月的抑郁症状，识别出多种<strong>哀伤轨迹</strong>：常见哀伤（Common Grief）、慢性哀伤（Chronic Grief）、慢性抑郁（Chronic Depression）、抑郁后改善（Depressed-Improved）、韧性（Resilient，<strong>占46%</strong>）。</p>
+      <div class="inline-good">✓ 哀伤没有唯一"正确"的方式。</div>
+    </div>
+  </section>
+
+  <!-- Perspectives on Aging -->
+  <section class="section" id="aging">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>老化的视角 Perspectives on Aging</h2>
+    </div>
+
+    <div class="inline-note">⚑ 尽管绝症与死亡的风险随年龄增长而上升，但<strong>老化与临终并非同义词，也不平行发生</strong>——老化 ≠ 死亡（Aging ≠ dying）。</div>
+
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-title">老化与疾病 Aging and Illness</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">65岁以上成年人较少将自己的健康描述为\"很好\"或\"优秀\"。<strong>老化</strong>是绝大多数严重影响健康和/或缩短预期寿命的疾病（包括大多数主要死因）的<strong>首要风险因素</strong>。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">加拿大的老化情况 Aging in Canada</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">65岁以上加拿大人最常报告的健康问题包括：关节炎、高血压、白内障、背痛与心脏病。<strong>癌症</strong>是老年加拿大人最常见的死因（与\"癌症是老年最令人恐惧的疾病\"这一发现相符）；<strong>85岁以后，心脏病</strong>取代癌症成为首要死因。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">健康—生存悖论 The Health-Survival Paradox</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">尽管女性比男性寿命更长，但她们的<strong>残疾率与不良健康率却更高</strong>——这一模式持续到老年，并在包括加拿大、美国在内的多个文化与国家中观察到。</p>
+      <div class="sub-note">（Alberts et al., 2014; Crimmins et al., 2019; Luy & Minagawa, 2014; Ostan et al., 2016; Public Health Agency of Canada, 2012）</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">衰弱综合征 Frailty</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;"><strong>衰弱综合征（Frailty Syndrome）</strong>是一种只在老年出现的病症，特征包括：</p>
+      <div class="check-list">
+        <li>应对与适应压力（哪怕是较轻微的压力）能力显著下降</li>
+        <li>身体储备能力的丧失</li>
+        <li>疾病带来更大的冲击</li>
+        <li>跌倒或严重受伤风险增加；行动能力受损</li>
+        <li>住院可能性增加</li>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">预防衰退 Preventing Decline</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">已确认有助于预防身体与认知功能衰退的关键因素：<strong>增加身体活动/运动</strong>——加拿大一项随机对照试验发现，有氧训练能改善轻度认知障碍老年人的脑健康（Barha et al., 2019）；<strong>增加认知活动（含认知训练）</strong>——加拿大近期研究提示，运动与认知训练结合可能放大二者对大脑的益处（Heisz et al., 2017）。</p>
+      <p style="font-size:13.5px;">此外：<strong>减压、社交活动、健康饮食</strong>同样重要。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">晚年的压力 Stress in Later Life</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">老年人较少报告与工作、财务、家庭相关的压力源，更多报告与<strong>疾病</strong>相关的压力源。常见的老年压力来源：疾病、性健康与性功能问题、日益增加的社会性丧失，以及退休。<strong>感知控制感</strong>似乎随年龄增长而下降（尤其在养老院中）。</p>
+      <div class="inline-good">✓ 但老年人似乎能<strong>更有效地应对压力</strong>、更好地调节情绪，并使用更复杂的问题解决策略。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">幸福感悖论 The Well-Being Paradox</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">尽管晚年压力的性质在不断变化，跨生命周期研究表明：老年人报告的<strong>压力更少、幸福感更高、生活满意度更高</strong>，即便面对日益加重的身体/认知衰退，这一发现依然成立；已在加拿大样本中得到验证（如 Uppal & Barayandema, 2018）。</p>
+      <div class="sub-note">（Robnett, 2002; Thomas et al., 2016）该现象受经济背景制约，仅在GDP较高的国家中被观察到（Swift et al., 2014）。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">晚年的社会支持 Social Support in Later Life</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">晚年的幸福感很大程度上依赖于<strong>健康的社会网络</strong>与有意义的社会联系的维持。但由于社会性丧失、身体与认知衰退的增加，<strong>孤独感</strong>可能在老年时上升。</p>
+      <p style="font-size:13.5px;">尽管女性比男性长寿，但有证据显示女性的孤独感<strong>随年龄增长而下降</strong>（男性则不然）——老年女性可能更善于适应社会网络的变化（Menec et al., 2019）。</p>
+    </div>
+  </section>
+
+  <!-- Successful Aging -->
+  <section class="section" id="successful">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>成功老化 Successful Aging</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">什么是"成功"？What is Success?</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;"><strong>成功（Success）</strong>：对所尝试之事的兴旺达成；根据个人意愿实现目标（Oxford University Press）。</p>
+      <div class="inline-good">✓ <strong>成功老化</strong>是一种关于老化的<strong>积极视角</strong>（相对于\"一般老化\"），是从聚焦"衰退"中<strong>转移出来</strong>的视角。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">成功老化 vs 生活满意度 Fisher (1995)</div>
+      <p style="font-size:13.5px;">成功老化更强调：社交互动、目标感、自我接纳、个人成长、自主性、环境驾驭感。<br>生活满意度则更多代表<strong>基本需求</strong>——身体活动、收入、健康、社交互动，是成功老化的<strong>前提条件</strong>。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">医学 / 公共卫生视角 Fries (1990)</div>
+      <p style="font-size:13.5px;">成功老化可定义为：<strong>①优化预期寿命</strong>；<strong>②将身体/心理/社会层面的病态发生率降到最低</strong>——即"<span class="kw">病态压缩（compression of morbidity）</span>"，将其压缩到较短、较晚的时间段。这意味着以尽可能短的时间、尽可能晚的年龄经历疾病。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">生物心理社会视角 Rowe & Kahn (1997)</div>
+      <div class="bps-venn">
+        <div class="bps-circle bio-c">
+          <h4>避免疾病与残疾<br>Avoiding Disease & Disability</h4>
+        </div>
+        <div class="bps-circle psy-c">
+          <h4>较高的认知与身体功能<br>High Cognitive & Physical Function</h4>
+        </div>
+        <div class="bps-circle soc-c">
+          <h4>积极的生活参与<br>Active Engagement with Life</h4>
+        </div>
+      </div>
+      <p style="font-size:13.5px;">社会关系是<strong>积极生活参与</strong>的核心方面之一。<span class="sub-note">Crowther et al. (2002) 建议在此模型中加入"积极的灵性（positive spirituality）"这一维度。</span></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">生命历程视角 Baltes & Baltes (1990)</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">成功老化涉及<strong>最大化积极结果、最小化消极结果</strong>——通过\"<span class="kw">选择性优化伴随补偿（selective optimization with compensation）</span>\"实现：</p>
+      <div class="check-list">
+        <li>选择更少、但更有意义的目标</li>
+        <li>通过新策略优化现有能力</li>
+        <li>借助练习与科技手段补偿能力的丧失</li>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">老年的目标脱离 Goal Disengagement in Old Age</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">Carsten Wrosch et al. (2003)：脱离无法实现的目标在老年阶段（尤其是为避免目标失败）表现出<strong>适应性</strong>；目标重新投入（goal reengagement）能够缓冲目标脱离带来的困难。</p>
+      <p style="font-size:13.5px;">Dunne et al. (2011)：目标脱离在老年似乎具有适应性，能够<strong>保护老年人</strong>免受"功能性残疾对抑郁的影响"的伤害。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Erikson 夫妇的成功观 Success according to the Eriksons</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">老年（65岁以上）的核心任务是对自己人生与过往事件的<strong>反思</strong>。<strong>成功</strong>体现为<strong>智慧感</strong>与<strong>对死亡的接纳</strong>；<strong>失败</strong>则表现为遗憾与怨恨。</p>
+      <div class="inline-good">✓ Baltes et al. (1992)：智慧可能是评估老年"成功"更灵活的指标——对客观指标的依赖更低。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">智慧 Wisdom</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;"><strong>协调知识与经验以提升幸福感</strong>（Peterson & Seligman, 2004）。</p>
+      <div class="quote-block">
+        "什么是真正的智慧？它来自充分消化的生活经验，而非阅读经典书籍所得。理解生活，唯有经验学习才是真正有价值的方式；其余的都只是道听途说。"
+        <cite>— Joan Erikson</cite>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">社会情绪选择理论 Socio-Emotional Selectivity Theory — Carstensen et al. (2003)</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">随着人生进入下半场，人们越发有动力去<strong>寻找意义</strong>，重新调整优先事项：当老年人意识到自己的人生视野正在缩小时，会更关注<strong>更有意义的目标与人际关系</strong>。据此，成功老化可被理解为<strong>重新聚焦人生中最重要之事</strong>。</p>
+      <div class="sub-note">个人意义是晚年心理幸福感的重要预测因素（Fry, 2000）。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">成功老化的诸多预测因素 Many Predictors of Successful Aging</div>
+      <div class="check-list">
+        <li>早年对成功老化的自我评价</li>
+        <li>身体功能状况</li>
+        <li>社会支持与社会资源</li>
+        <li>幸福感与生活满意度</li>
+        <li>情绪安全感</li>
+        <li>经济状况（尤其对男性而言）</li>
+        <li>人生目标与个人意义</li>
+        <li>灵性与内心的平静感</li>
+        <li>参与宗教活动</li>
+      </div>
+    </div>
+  </section>
+
+  <!-- Telomeres & Anti-Aging -->
+  <section class="section" id="telomeres">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>热点话题：端粒与抗衰老 Telomeres & Anti-Aging Science</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title">什么是端粒？Telomeres</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;"><strong>端粒（Telomeres）</strong>是位于染色体末端的重复核苷酸序列区域，可保护染色体末端免于降解或与相邻染色体融合。随着细胞分裂，端粒会逐渐<strong>缩短</strong>。</p>
+      <p style="font-size:13.5px;">细胞加速老化的一个指标是<strong>端粒缩短</strong>；较短的端粒与老化的诸多表现相关，可能<strong>限制人类寿命</strong>。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">端粒与压力 Telomeres & Stress — Epel et al. (2004)</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">首个发现<strong>高心理压力与更短端粒</strong>存在关联的研究。压力影响老化的一种路径：<span class="kw">压力↑ → 端粒长度↓ → 老化↑</span>。</p>
+      <div class="quote-block">
+        "感知压力最高的女性，其端粒长度平均比低压力女性短出相当于至少<strong>十年</strong>的额外老化程度。"
+        <cite>— Epel et al. (2004)</cite>
+      </div>
+      <p style="font-size:13.5px; margin-top:0.5rem;">Puterman et al. (2010)：高压力个体若能<strong>坚持每周运动</strong>，可以防止端粒缩短。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">延长端粒的疗法？Therapies to Lengthen Telomeres?</div>
+      <p style="font-size:13.5px; margin-bottom:0.5rem;">2015年，西雅图生物科技公司 BioViva 的CEO Elizabeth Parrish 接受了多次实验性基因疗法注射以延长端粒；2016年该公司称其结果\"成功\"。此类疗法旨在通过激活通常处于\"关闭\"状态的 <strong>TERT基因</strong>，帮助细胞重建端粒——该基因携带合成\"<span class="kw">端粒酶（telomerase）</span>\"的指令，这种酶能在细胞复制过程中为端粒末端添加分子，防止其缩短。</p>
+      <div class="sub-note">市面上也出现了标榜"抗衰老"的补充剂产品与高价临床试验（如每人1百万美元参与费的 Libella 疗法试验）。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">抗衰老科学 Anti-Aging Science</div>
+      <p style="font-size:13.5px; margin-bottom:0.75rem;">多个实验室正致力于同一目标：<strong>将老化变为一种可治疗的慢性病</strong>。相关机构/公司包括 SENS Research Foundation（Aubrey de Grey）、Human Longevity Inc.（Diamandis, Venter, Hariri）、Google 旗下的 Calico（"谷歌能否攻克死亡？"——Time杂志）。</p>
+      <div class="quote-block pu">
+        "我这个年龄段（40多岁）的人，也许还年轻到足以从这些疗法中获益。我认为有30%到40%的可能性。但这不是我做这件事的原因——我是想帮助每天挽救10万条生命。"
+        <cite>— Aubrey de Grey，接受 The Guardian 采访，2010</cite>
+      </div>
+      <div class="inline-note">⚑ 尽管颇具争议，de Grey 的目标<strong>并非</strong>无限延长生命，而是希望挽救更多生命。思考：即便结果确实是激进的寿命延长，我们能否仅因年龄原因，在伦理上拒绝人们获得可能挽救生命的干预措施？</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">老化与死亡是"疾病"吗？Aging & Dying as Diseases?</div>
+      <p style="font-size:13.5px;">老化与死亡是需要被"攻克"的疾病吗？一些人如此描述，也有人相信我们终将能像对待其他疾病一样治疗它们……<strong>思考</strong>：你是否愿意尽可能长久地保持年轻？如果可以，你会选择永生吗？这带来哪些心理、社会与环境层面的影响？</p>
+    </div>
+  </section>
+
+  <!-- Objectives -->
+  <section class="section" id="objectives">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <h2>学习目标 Learning Objectives</h2>
+    </div>
+    <div class="objectives">
+      <h3>完成本讲后，你应能够 After this lecture, you should be able to…</h3>
+      <ol>
+        <li>描述无效医疗、姑息治疗、安宁疗护与居家照护等临终关怀方式，包括相关研究与照护者需考量的因素（Describe futile care, palliative care, hospice care, and home care options for terminally ill patients）</li>
+        <li>定义并讨论加拿大的医助死亡及相关问题、争议与挑战（Define and discuss medically assisted dying in Canada）</li>
+        <li>识别并解释绝症患者及临终者需考量的心理社会因素（如接纳、否认、个人意义、缅怀、生产性关怀、死亡焦虑）（Identify psychosocial factors for terminally ill patients）</li>
+        <li>识别并解释哀伤中的心理社会因素（如接纳、整合性哀伤、复杂性哀伤、哀伤轨迹）（Identify psychosocial factors in grief）</li>
+        <li>讨论老化中的相关因素，从疾病与衰退到压力与社会支持；解释健康—生存悖论与幸福感悖论（Discuss factors in aging & explain the health-survival and well-being paradoxes）</li>
+        <li>说明"成功老化"的各种定义（含相关因素）（Name/describe definitions of successful aging）</li>
+        <li>思考抗衰老努力，以及"老化/死亡即疾病"这一观念（Consider anti-aging efforts and aging/dying as diseases）</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
